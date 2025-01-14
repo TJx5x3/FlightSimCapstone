@@ -110,6 +110,9 @@ namespace FlightSimCapstone
             {
                 AppConsole.AppendText("Opening secret developer settings...\n");
                 e.SuppressKeyPress = true;
+
+                Form2 secretMenu = new Form2();
+                secretMenu.Show();
             }
         }
     }
