@@ -18,6 +18,8 @@ namespace FlightSimCapstone
         const string simConnectDllPath = @"C:\MSFS SDK\SimConnect SDK\lib\SimConnect.dll";
         const string simConnectNETDllPath = @"C:\MSFS SDK\SimConnect SDK\lib\managed\Microsoft.FlightSimulator.SimConnect.dll";
 
+        const string flightSimExePath = @"C:\Program Files (x86)\Steam\steamapps\common\MicrosoftFlightSimulator\FlightSimulator.exe";
+
         // Path to SimConnect.dll
         const String simConnectPath = @"C:\";
 
@@ -43,6 +45,12 @@ namespace FlightSimCapstone
         public static bool locateSimConnectNETDll()
         {
             return File.Exists(simConnectNETDllPath);
+        }
+
+        // Return the file path to FlightSim.exe
+        public static string getFlightSimExePath()
+        {
+            return flightSimExePath;
         }
     }
 }
