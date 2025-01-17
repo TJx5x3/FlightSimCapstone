@@ -90,12 +90,13 @@ namespace FlightSimCapstone
          * Start button:
          * Launches MSFS,
          * Opens graphical interface & Launch Flight Simulator
+         * 
+         * Promblem: MSFS displays warning message when launched this way. Potentially try running with a batch command?
+         * https://stackoverflow.com/questions/1469764/run-command-prompt-commands
          */
         private void startButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("it did the thing");
             Process.Start(BaseDependencyUtility.getFlightSimExePath());
-
         }
 
         /*

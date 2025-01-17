@@ -42,6 +42,7 @@
             this.yokeConnectionTitleLabel = new System.Windows.Forms.Label();
             this.arduinoConnectionTitleLabel = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +102,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.rudderStatusLabel);
             this.panel1.Controls.Add(this.yokeStatusLabel);
             this.panel1.Controls.Add(this.arduinoStatusLabel);
@@ -184,6 +186,15 @@
             this.progressBar1.Size = new System.Drawing.Size(232, 15);
             this.progressBar1.TabIndex = 6;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(48, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "n/a";
+            // 
             // UtilityForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,6 +234,7 @@
         private System.Windows.Forms.Label rudderStatusLabel;
         private System.Windows.Forms.Label yokeStatusLabel;
         private System.Windows.Forms.Label arduinoStatusLabel;
+        private System.Windows.Forms.Label label2;
     }
 }
 
