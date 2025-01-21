@@ -19,6 +19,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/**
+ * TODO:
+ * Create new static class for SimConnect, and Enums
+ */
 
 
 namespace FlightSimCapstone
