@@ -23,6 +23,7 @@ namespace FlightSimCapstone
         const int WM_USER_SIMCONNECT = 0x0402;
         static IntPtr windowHandle;
 
+        // https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/API_Reference/Events_And_Data/SimConnect_RequestDataOnSimObject.htm
         private enum Requests
         {
             Altimeter
