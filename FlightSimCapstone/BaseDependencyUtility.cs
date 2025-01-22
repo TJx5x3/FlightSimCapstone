@@ -13,15 +13,16 @@ namespace FlightSimCapstone
     {
         // Locate the Microsoft FLight Sim directory
         // NOTE: This will only work if MSFS 2020 is installed using Steam
-        const string steamFlightSimPath = @"C:\Program Files (x86)\Steam\steamapps\common\MicrosoftFlightSimulator";
-        const string msfsSdkPath= @"C:\MSFS SDK";
-        const string simConnectDllPath = @"C:\MSFS SDK\SimConnect SDK\lib\SimConnect.dll";
-        const string simConnectNETDllPath = @"C:\MSFS SDK\SimConnect SDK\lib\managed\Microsoft.FlightSimulator.SimConnect.dll";
-
-        const string flightSimExePath = @"C:\Program Files (x86)\Steam\steamapps\common\MicrosoftFlightSimulator\FlightSimulator.exe";
+        private const string steamFlightSimPath = @"C:\Program Files (x86)\Steam\steamapps\common\MicrosoftFlightSimulator";
+        private const string msfsSdkPath= @"C:\MSFS SDK";
+        private const string simConnectDllPath = @"C:\MSFS SDK\SimConnect SDK\lib\SimConnect.dll";
+        private const string simConnectNETDllPath = @"C:\MSFS SDK\SimConnect SDK\lib\managed\Microsoft.FlightSimulator.SimConnect.dll";
+        private const string flightSimExePath = @"C:\Program Files (x86)\Steam\steamapps\common\MicrosoftFlightSimulator\FlightSimulator.exe";
 
         // Path to SimConnect.dll
-        const String simConnectPath = @"C:\";
+        // Default to steamFlightSimPath
+        private const string simConnectPath = steamFlightSimPath;
+
 
         // Return bool if Flight Sim Directory can be located
         public static bool locateFlightSim()
@@ -51,6 +52,12 @@ namespace FlightSimCapstone
         public static string getFlightSimExePath()
         {
             return flightSimExePath;
+        }
+
+        // Return File Path to SimConnect.DLL
+        public static string getSimConnectDLLPath()
+        {
+            return simConnectPath;
         }
     }
 }

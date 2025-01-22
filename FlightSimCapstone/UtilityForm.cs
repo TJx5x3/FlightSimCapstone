@@ -29,6 +29,10 @@ namespace FlightSimCapstone
 {
     public partial class UtilityForm : Form
     {
+        /***
+         * Utility Form Constructor.
+         * Map events
+         */
         public UtilityForm()
         {
 
@@ -43,11 +47,22 @@ namespace FlightSimCapstone
             checkSoftwareDependencies();
         }
 
+
+        /**
+        * This function appends text to the application console displayed in the Utility Window.
+        * Appended text color can be specified. 
+        */
+        public void appendAppConsole(String text, Color color)
+        {
+            AppConsole.SelectionColor = color;
+            AppConsole.AppendText(text);
+        }
+
         /**
          * This method checks hardware and software dependencies when application launched
          * Check for Flight Sim installation (ONLY CHECKS STEAM INSTALL)
-         */ 
-        public void checkSoftwareDependencies()
+         */
+        private void checkSoftwareDependencies()
         {
             AppConsole.AppendText("Checking software dependencies...\n");
             AppConsole.AppendText("Locating Microsoft Flight Sim 2020...\n");
@@ -80,15 +95,6 @@ namespace FlightSimCapstone
         }
 
 
-        /**
-         * This function appends text to the application console displayed in the Utility Window.
-         * Appended text color can be specified. 
-         */
-        private void appendAppConsole(String text, Color color)
-        {
-            AppConsole.SelectionColor = color;
-            AppConsole.AppendText(text);
-        }
 
         /**
          * Start button:
@@ -105,7 +111,6 @@ namespace FlightSimCapstone
 
         /*
          * Launch Flight Sim
-         * 
          */
         private void label1_Click(object sender, EventArgs e)
         {
@@ -123,7 +128,7 @@ namespace FlightSimCapstone
                 AppConsole.AppendText("Opening secret developer settings...\n");
                 e.SuppressKeyPress = true;
 
-                Form2 secretMenu = new Form2();
+                Form2 secretMenu = new Form2(this);
                 secretMenu.Show();
             }
         }

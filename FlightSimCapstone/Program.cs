@@ -8,12 +8,18 @@ namespace FlightSimCapstone
 {
     internal static class Program
     {
+        // Dependency inject SimConnect DLLs at runtime
+        // https://stackoverflow.com/questions/8836093/how-can-i-specify-a-dllimport-path-at-runtime
+
+        
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
+
+            Console.WriteLine(BaseDependencyUtility.locateSimConnectDll());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new UtilityForm());
