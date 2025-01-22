@@ -46,5 +46,12 @@ namespace FlightSimCapstone
             else
                 this.utilityForm.appendAppConsole("Could not connect to SimConnect", Color.Yellow);
         }
+
+
+        // Test retrieval of Altemeter data
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SimConnectUtility.printAltemeter();
+        }
     }
 }

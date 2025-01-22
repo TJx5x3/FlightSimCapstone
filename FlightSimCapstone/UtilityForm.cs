@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 /**
  * TODO:
  * Create new static class for SimConnect, and Enums
@@ -29,6 +30,7 @@ namespace FlightSimCapstone
 {
     public partial class UtilityForm : Form
     {
+
         /***
          * Utility Form Constructor.
          * Map events
@@ -41,6 +43,8 @@ namespace FlightSimCapstone
             // Map events
             this.KeyPreview = true;
             this.KeyDown += UtilityForm_KeyDown;
+            this.Closing += CloseHandler; // map FormClosed event to CloseHandler()
+
 
             // Append starting message to console
             AppConsole.AppendText("Application launched.\n");
@@ -95,7 +99,6 @@ namespace FlightSimCapstone
         }
 
 
-
         /**
          * Start button:
          * Launches MSFS,
@@ -108,6 +111,8 @@ namespace FlightSimCapstone
         {
             Process.Start(BaseDependencyUtility.getFlightSimExePath());
         }
+
+
 
         /*
          * Launch Flight Sim
@@ -125,11 +130,34 @@ namespace FlightSimCapstone
         {
             if (e.KeyCode == Keys.F6)
             {
-                AppConsole.AppendText("Opening secret developer settings...\n");
-                e.SuppressKeyPress = true;
+                appendAppConsole("Opening Secret Developer Settings...\n", Color.MediumPurple);
 
+
+                e.SuppressKeyPress = true;
                 Form2 secretMenu = new Form2(this);
                 secretMenu.Show();
+            }
+        }
+    
+        /**
+         * Event when Utility form is closed
+         * https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.canceleventargs.cancel?view=net-9.0
+         * 
+         * NOTE: This needs to be formatted better once you figure out where it will be used
+         * If close is set to anything other than 0, the utility form will not close. 
+         */
+        int close = 0;
+        protected void CloseHandler(object sender, CancelEventArgs e)
+        {
+            SimConnectUtility.disconnect_simconnect();
+
+            if (close != 0)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
             }
         }
     }
