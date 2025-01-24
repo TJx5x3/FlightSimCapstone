@@ -23,6 +23,16 @@ namespace FlightSimCapstone
         const int WM_USER_SIMCONNECT = 0x0402;
         static IntPtr windowHandle;
 
+
+        private static double _altimeterValue = 0.0;
+        // Altimeter Value
+        public static double AltimeterValue 
+        {
+            get { return _altimeterValue; }
+            private set { _altimeterValue = value; } 
+        }
+
+
         // https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/API_Reference/Events_And_Data/SimConnect_RequestDataOnSimObject.htm
         private enum Requests
         {
@@ -54,6 +64,7 @@ namespace FlightSimCapstone
             if ((Requests)data.dwRequestID == Requests.Altimeter)
             {
                 AltimeterData altimeter = (AltimeterData)data.dwData[0];
+                AltimeterValue = altimeter.AltimeterReading; 
                 Console.WriteLine($"Altimeter Reading: {altimeter.AltimeterReading} feet");
             }
         }
@@ -74,6 +85,7 @@ namespace FlightSimCapstone
                 simconnect.ReceiveMessage();
             }
         }
+
 
         // Test Connection to SimConnect
         // Currently attempts connection, then disconnects
@@ -118,6 +130,16 @@ namespace FlightSimCapstone
             MessageBox.Show("Terminated SimConnect Session", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return true;
+        }
+
+        public static void refreshAltimeterValue()
+        {
+            
+            if(simconnect != null)
+            {
+                simconnect.ReceiveMessage();
+
+            }
         }
     }
 }

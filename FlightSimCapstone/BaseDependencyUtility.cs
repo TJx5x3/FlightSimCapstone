@@ -23,7 +23,6 @@ namespace FlightSimCapstone
         // Default to steamFlightSimPath
         private const string simConnectPath = steamFlightSimPath;
 
-
         // Return bool if Flight Sim Directory can be located
         public static bool locateFlightSim()
         {

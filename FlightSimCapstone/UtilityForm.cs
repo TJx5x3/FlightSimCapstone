@@ -109,6 +109,7 @@ namespace FlightSimCapstone
          */
         private void startButton_Click(object sender, EventArgs e)
         {
+            appendAppConsole("Launching MSFS 2020...\n",Color.White);
             Process.Start(BaseDependencyUtility.getFlightSimExePath());
         }
 
