@@ -1,12 +1,25 @@
 ﻿
-/*
+/**************************************************************
+ *  Author          :   Jason Broom
+ *  Course Number   :   STG-452
+ *  Last Revision   :   1/24/25
+ *  Class           :   UtilityForm.cs
+ **************************************************************
+ *  I used source code from the following websites to complete
+ *  this assignment:
  * 
- * Key events resources:
- * https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=windowsdesktop-8.0
- * https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.keypreview?view=windowsdesktop-9.0&redirectedfrom=MSDN#System_Windows_Forms_Form_KeyPreview
+ *  Detecting Keypresses in Form Windows:
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=windowsdesktop-8.0
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.keypreview?view=windowsdesktop-9.0&redirectedfrom=MSDN#System_Windows_Forms_Form_KeyPreview
  *
+ *  Header block comment format reference:
+ *  https://www.baeldung.com/wp-content/uploads/2019/07/eclipsecopy3-1024x484.png
+ *  
+ *  Form Closing event:
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.closing?view=windowsdesktop-9.0
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.canceleventargs.cancel?view=net-9.0
  *
- */
+ **************************************************************/
 
 using System;
 using System.Collections.Generic;
@@ -20,21 +33,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-/**
- * TODO:
- * Create new static class for SimConnect, and Enums
- */
-
-
 namespace FlightSimCapstone
 {
+    /// <summary>
+    /// Form object for Utility Window
+    /// </summary>
+    /// <remarks>
+    /// This form provides a console showing application information,
+    /// and buttons for opening the graphical interface configuration,
+    /// and to launch Microsoft Flight Simulator.
+    /// </remarks>
+    /// 
     public partial class UtilityForm : Form
     {
-
-        /***
-         * Utility Form Constructor.
-         * Map events
-         */
+        /// <summary>
+        /// Utility Form Constructor
+        /// </summary>
+        /// <remarks>
+        /// Maps Utility Form events,
+        /// checks for software and hardware dependencies.
+        /// </remarks>
         public UtilityForm()
         {
 
@@ -45,49 +63,57 @@ namespace FlightSimCapstone
             this.KeyDown += UtilityForm_KeyDown;
             this.Closing += CloseHandler; // map FormClosed event to CloseHandler()
 
-
             // Append starting message to console
             AppConsole.AppendText("Application launched.\n");
             checkSoftwareDependencies();
         }
 
 
-        /**
-        * This function appends text to the application console displayed in the Utility Window.
-        * Appended text color can be specified. 
-        */
+        /// <summary>
+        /// This function appends text to the rich textbox element displayed in the Utility Window.
+        /// Appended text color can be specified.
+        /// </summary>
+        /// <param name="text">
+        /// Text to append to utility form console
+        /// </param>
+        /// <param name="color">
+        /// Color of appended text
+        /// </param>
         public void appendAppConsole(String text, Color color)
         {
             AppConsole.SelectionColor = color;
             AppConsole.AppendText(text);
         }
 
-        /**
-         * This method checks hardware and software dependencies when application launched
-         * Check for Flight Sim installation (ONLY CHECKS STEAM INSTALL)
-         */
+        /// <summary>
+        /// This method checks hardware and software dependencies when application launched
+        /// Check for Flight Sim installation. 
+        /// (ONLY CHECKS STEAM INSTALL)
+        /// </summary>
+        /// <remarks>
+        /// Locate SimConnect.dll, Microsoft.FlightSimulator.SimConnect.dll
+        /// </remarks>
         private void checkSoftwareDependencies()
         {
             AppConsole.AppendText("Checking software dependencies...\n");
             AppConsole.AppendText("Locating Microsoft Flight Sim 2020...\n");
 
-            // Check for MSFS Program path. Append application console message
-            if (BaseDependencyUtility.locateFlightSim())
-                appendAppConsole("Flight Sim 2020 Located :D\n", Color.LightGreen);
+            // Check for MSFS Program path. Append application console message with result
+            if (BaseDependencyUtility.locateFlightSim()) 
+                appendAppConsole("Flight Sim 2020 Located :D\n", Color.LightGreen); // success
             else
-                appendAppConsole("Flight Sim not found :(\n", Color.OrangeRed);
+                appendAppConsole("Flight Sim not found :(\n", Color.OrangeRed); // fail
 
-            // Check for Sim Connect DLLs
             // Check for SimConnect.dll
             AppConsole.AppendText("Locating SimConnect DLL dependencies\n");
-            AppConsole.AppendText("SimConnect.dll: ");
+            AppConsole.AppendText("SimConnect.dll: \n");
             if (BaseDependencyUtility.locateSimConnectDll())
                 appendAppConsole("OK\n", Color.LightGreen);
             else
                 appendAppConsole("Not Found\n", Color.OrangeRed);
 
             // Check for Microsoft.FlightSimulator.SimConnect.dll
-            AppConsole.AppendText("Microsoft.FlightSimulator.SimConnect.dll: ");
+            AppConsole.AppendText("Locating Microsoft.FlightSimulator.SimConnect.dll:\n");
             if (BaseDependencyUtility.locateSimConnectNETDll())
                 appendAppConsole("OK\n", Color.LightGreen);
             else
@@ -95,38 +121,40 @@ namespace FlightSimCapstone
 
             // If any DLL cannot be located, append yellow warning message to app console
             if(!BaseDependencyUtility.locateSimConnectNETDll() || !BaseDependencyUtility.locateSimConnectDll())
-                appendAppConsole("Warning: One or more SimConnect libraries could not be located. To resolve this, please install the MSFS SDK", Color.Yellow);
+                appendAppConsole("Warning: One or more SimConnect libraries could not be located. To resolve this, please install the MSFS SDK\n", Color.Yellow);
         }
-
 
         /**
          * Start button:
-         * Launches MSFS,
          * Opens graphical interface & Launch Flight Simulator
          * 
+         * TODO: Launch graphical interface once implemented 
          * Promblem: MSFS displays warning message when launched this way. Potentially try running with a batch command?
+         * THIS RESOURCE HAS NOT (yet) BEEN USED
          * https://stackoverflow.com/questions/1469764/run-command-prompt-commands
          */
-        private void startButton_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// Start button click event
+        /// </summary>
+        /// <remarks>
+        /// Launches Microsoft Flight SImulator.
+        /// Will launch Graphical Interface in future revision.
+        /// </remarks>
+        private void StartButton_Click(object sender, EventArgs e)
         {
-            appendAppConsole("Launching MSFS 2020...\n",Color.White);
+            appendAppConsole("Launching MSFS 2020...\n", Color.White);
             Process.Start(BaseDependencyUtility.getFlightSimExePath());
         }
 
-
-
-        /*
-         * Launch Flight Sim
-         */
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /*
-         * Handle keypresses in Utility Window
-         * NOTE: Find way to prevent loop if key held down
-         */
+        /// <summary>
+        /// Keyboard press event
+        /// </summary>
+        /// <remarks>
+        /// Keyboard input is handled when Utility Form is selected.
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UtilityForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F6)
@@ -140,14 +168,22 @@ namespace FlightSimCapstone
             }
         }
     
+
         /**
-         * Event when Utility form is closed
-         * https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.canceleventargs.cancel?view=net-9.0
-         * 
          * NOTE: This needs to be formatted better once you figure out where it will be used
          * If close is set to anything other than 0, the utility form will not close. 
          */
         int close = 0;
+
+
+        /// <summary>
+        /// Utility Form Close Event
+        /// </summary>
+        /// <remarks>
+        /// Logic conducted when Utility Form is closed
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void CloseHandler(object sender, CancelEventArgs e)
         {
             SimConnectUtility.disconnect_simconnect();

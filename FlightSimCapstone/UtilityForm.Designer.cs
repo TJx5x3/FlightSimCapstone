@@ -34,6 +34,7 @@
             this.OpenGraphicConfigButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.rudderStatusLabel = new System.Windows.Forms.Label();
             this.yokeStatusLabel = new System.Windows.Forms.Label();
             this.arduinoStatusLabel = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.yokeConnectionTitleLabel = new System.Windows.Forms.Label();
             this.arduinoConnectionTitleLabel = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             this.StartButton.TabIndex = 0;
             this.StartButton.Text = "Start";
             this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.startButton_Click);
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // AppConsole
             // 
@@ -79,7 +79,6 @@
             this.AppConsoleTitle.Size = new System.Drawing.Size(56, 13);
             this.AppConsoleTitle.TabIndex = 2;
             this.AppConsoleTitle.Text = "Console:";
-            this.AppConsoleTitle.Click += new System.EventHandler(this.label1_Click);
             // 
             // OpenGraphicConfigButton
             // 
@@ -115,6 +114,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(222, 265);
             this.panel1.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(48, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "n/a";
             // 
             // rudderStatusLabel
             // 
@@ -185,15 +193,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(232, 15);
             this.progressBar1.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 134);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "n/a";
             // 
             // UtilityForm
             // 

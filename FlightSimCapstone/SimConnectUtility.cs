@@ -23,7 +23,9 @@ namespace FlightSimCapstone
         const int WM_USER_SIMCONNECT = 0x0402;
         static IntPtr windowHandle;
 
+        public static bool connectionStatus { get { return (simconnect != null); } }
 
+        // RESEARCH THIS SYNTAX/////////////////////
         private static double _altimeterValue = 0.0;
         // Altimeter Value
         public static double AltimeterValue 
@@ -31,7 +33,7 @@ namespace FlightSimCapstone
             get { return _altimeterValue; }
             private set { _altimeterValue = value; } 
         }
-
+        ////////////////////////////////////
 
         // https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/API_Reference/Events_And_Data/SimConnect_RequestDataOnSimObject.htm
         private enum Requests
@@ -134,12 +136,12 @@ namespace FlightSimCapstone
 
         public static void refreshAltimeterValue()
         {
-            
             if(simconnect != null)
             {
                 simconnect.ReceiveMessage();
-
             }
         }
+
+
     }
 }

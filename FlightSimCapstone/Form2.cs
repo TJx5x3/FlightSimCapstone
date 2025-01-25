@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace FlightSimCapstone
 {
@@ -25,16 +25,17 @@ namespace FlightSimCapstone
         {
             InitializeComponent();
 
-            valueTimer = new Timer();
-            valueTimer.Interval = 1000; // every 1 second
-            valueTimer.Tick += ValueTimer_Tick;
-            valueTimer.Start();
+            //valueTimer = new Timer();
+            //valueTimer.Interval = 1000; // every 1 second
+            //valueTimer.Tick += ValueTimer_Tick;
+            //valueTimer.Start();
         }
 
         // https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.timer?view=windowsdesktop-9.0
         public Form2(Form callingUtilityForm)
         {
             utilityForm = callingUtilityForm as UtilityForm;
+            this.FormClosing += CloseHandler;
             InitializeComponent();
 
             valueTimer = new Timer();
@@ -76,20 +77,31 @@ namespace FlightSimCapstone
 
         private void ValueTimer_Tick(object sender, EventArgs e)
         {
-            AltimeterValue.Text = $"{SimConnectUtility.AltimeterValue}"; // Formatted string
-            Console.WriteLine($"{SimConnectUtility.AltimeterValue}");
+            if (SimConnectUtility.connectionStatus)
+            {
+                AltimeterValue.Text = $"{SimConnectUtility.AltimeterValue}"; // Formatted string
+                Console.WriteLine($"{SimConnectUtility.AltimeterValue}");
 
-            SimConnectUtility.refreshAltimeterValue();
+               
+                SimConnectUtility.refreshAltimeterValue();
 
+
+            }
             Console.WriteLine("tick\n");
+
         }
 
+
+        // Tasks to do when Developer Form is closed
+        // https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.formclosing?view=windowsdesktop-9.0#system-windows-forms-form-formclosing
         protected void CloseHandler(object sender, FormClosingEventArgs e)
         {
-            
+            Console.WriteLine("Closing dev form instance\n");
+            utilityForm.appendAppConsole("Closing dev form instance", Color.White);
             valueTimer.Stop();
             valueTimer.Dispose();
-            base.OnFormClosing(e);
+
+
         }
     }
 }
