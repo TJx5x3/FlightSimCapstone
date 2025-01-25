@@ -1,10 +1,12 @@
 ﻿
-/**************************************************************
+/**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
  *  Last Revision   :   1/24/25
  *  Class           :   UtilityForm.cs
- **************************************************************
+ *  Description     :   This module defines the Utility Form. This is the first
+ *                      form displayed when the application is launched. 
+ **********************************************************************************
  *  I used source code from the following websites to complete
  *  this assignment:
  * 
@@ -19,7 +21,7 @@
  *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.closing?view=windowsdesktop-9.0
  *  https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.canceleventargs.cancel?view=net-9.0
  *
- **************************************************************/
+ **********************************************************************************/
 
 using System;
 using System.Collections.Generic;
