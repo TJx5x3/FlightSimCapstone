@@ -1,5 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/**********************************************************************************
+ *  Author          :   Jason Broom
+ *  Course Number   :   STG-452
+ *  Last Revision   :   1/28/25
+ *  Class           :   BaseDependencyUtility.cs
+ *  Description     :   This module holds several methods used to check software
+ *                      and hardware dependencies. These methods are called when
+ *                      an instance of UtilityForm is instantiated.
+ **********************************************************************************
+ *  I used source code from the following websites to complete
+ *  this assignment:
+ *
+ *  To check if file or directory exists:
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.io.directory.exists?view=net-9.0
+ **********************************************************************************/
+
+using System;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,12 +23,16 @@ using System.IO;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 using System.Management;
-
 using System.Runtime.InteropServices;
 
 
 namespace FlightSimCapstone
 {
+    /// <summary>
+    /// This module holds several methods used to check software and hardware
+    /// dependencies. These methods are called when an instance of UtilityForm
+    /// is instantiated.
+    /// </summary>
     public static class BaseDependencyUtility
     {
         // Locate the Microsoft FLight Sim directory
@@ -27,37 +47,55 @@ namespace FlightSimCapstone
         // Default to steamFlightSimPath
         private const string simConnectPath = steamFlightSimPath;
 
-        // Return bool if Flight Sim Directory can be located
+        /// <summary>
+        /// Return bool if Flight Sim Directory can be located
+        /// </summary>
+        /// <returns></returns>
         public static bool locateFlightSim()
         {
             return Directory.Exists(steamFlightSimPath);
         }
 
-        // Return bool if Flight Sim SDK can be located
+        /// <summary>
+        /// Return bool if Flight Sim SDK can be located
+        /// </summary>
+        /// <returns></returns>
         public static bool locateFlightSimSDK()
         {
             return Directory.Exists(msfsSdkPath);
         }
 
-        // Return bool if Flight Sim DLL can be located
+        /// <summary>
+        /// Return bool if Flight Sim DLL can be located
+        /// </summary>
+        /// <returns></returns>
         public static bool locateSimConnectDll()
         {
             return File.Exists(simConnectDllPath);
         }
 
-        // Return bool if Flight Sim .NET DLL can be located
+        /// <summary>
+        /// Return bool if Flight Sim .NET DLL can be located
+        /// </summary>
+        /// <returns></returns>
         public static bool locateSimConnectNETDll()
         {
             return File.Exists(simConnectNETDllPath);
         }
 
-        // Return the file path to FlightSim.exe
+        /// <summary>
+        /// Return the file path to FlightSim.exe
+        /// </summary>
+        /// <returns></returns>
         public static string getFlightSimExePath()
         {
             return flightSimExePath;
         }
 
-        // Return File Path to SimConnect.DLL
+        /// <summary>
+        /// Return File Path to SimConnect.DLL
+        /// </summary>
+        /// <returns></returns>
         public static string getSimConnectDLLPath()
         {
             return simConnectPath;
@@ -65,6 +103,9 @@ namespace FlightSimCapstone
 
 
         /*
+        ////////////////////
+        // FROM Prototype application created in Fall 2024 semester
+        ////////////////////
         private bool CheckArduinoMega(string vid, string pid)
         {
             try

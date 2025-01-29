@@ -3,7 +3,7 @@
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
  *  Last Revision   :   1/28/25
- *  Class           :   UtilityForm.cs
+ *  Class           :   DevForm.cs
  *  Description     :   This module defines the Developer Form. This is a secret
  *                      form that can be launched by pressing F6 from the Utility
  *                      Form.
@@ -20,6 +20,9 @@
  *  
  *  Creating a Timer to Periodically check SimConnect Values
  *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.timer?view=windowsdesktop-9.0
+ *  
+ *  Form Close handler / Event when Dev Form is closing:
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.formclosing?view=windowsdesktop-9.0#system-windows-forms-form-formclosing
  *  
  *  
  */
@@ -55,13 +58,15 @@ namespace FlightSimCapstone
         public DevForm()
         {
             InitializeComponent();
-
-            //valueTimer = new Timer();
-            //valueTimer.Interval = 1000; // every 1 second
-            //valueTimer.Tick += ValueTimer_Tick;
-            //valueTimer.Start();
         }
 
+        /// <summary>
+        /// Overloaded constructor. Accepts instance of Utility form.
+        /// 
+        /// Creates a timer that ticks every 1 second.
+        /// This is used to retrieve Instrumentation panel data from SimConnect.
+        /// </summary>
+        /// <param name="callingUtilityForm"></param>
         public DevForm(Form callingUtilityForm)
         {
             utilityForm = callingUtilityForm as UtilityForm; // Register UtilityForm Instance as previously called form
@@ -75,14 +80,17 @@ namespace FlightSimCapstone
             valueTimer.Start();
         }
 
+        // Unused, to be removed
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        /**
-         * Test Connection to SimConnect
-         */
+        /// <summary>
+        /// Test connection to SimConnect
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (SimConnectUtility.connect_simconnect())
@@ -91,7 +99,11 @@ namespace FlightSimCapstone
                 this.utilityForm.appendAppConsole("Could not connect to SimConnect", Color.Yellow);
         }
 
-        // Test retrieval of Altemeter data
+        /// <summary>
+        /// Test retrieval of Altemeter data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             SimConnectUtility.printAltemeter();
@@ -111,7 +123,6 @@ namespace FlightSimCapstone
         /// valueTimer Event
         /// <br/>
         /// This event handles logic to conduct on each valueTimer clock tick.
-        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -126,18 +137,16 @@ namespace FlightSimCapstone
 
                 SimConnectUtility.refreshAltimeterValue();
             }
-
             Console.WriteLine("tick\n");
         }
 
         // Tasks to do when Developer Form is closed
-        // https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.formclosing?view=windowsdesktop-9.0#system-windows-forms-form-formclosing
-
+        // 
         /// <summary>
         /// Form Close event
         /// <br/>
         /// When dev form is closed, stop and discard the valueTimer.
-        /// 
+        /// <br/>
         /// NOTE: Consider terminating connection to SimConnect if deemed applicable later.
         /// </summary>
         /// <param name="sender"></param>
