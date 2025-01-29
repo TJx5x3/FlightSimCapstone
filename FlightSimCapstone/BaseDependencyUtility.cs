@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
+using System.Management;
+
+using System.Runtime.InteropServices;
+
 
 namespace FlightSimCapstone
 {
@@ -58,5 +62,39 @@ namespace FlightSimCapstone
         {
             return simConnectPath;
         }
+
+
+        /*
+        private bool CheckArduinoMega(string vid, string pid)
+        {
+            try
+            {
+                // Query all USB devices
+                var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE DeviceID LIKE 'USB%'");
+
+                // Search all detected USB devices for match
+                foreach (var device in searcher.Get())
+                {
+                    string deviceId = device["DeviceID"]?.ToString();
+                    string name = device["Name"]?.ToString();
+
+                    // Check if VID and PID match retrieved DeviceID and Name
+                    if (deviceId != null && deviceId.Contains($"VID_{vid}") && deviceId.Contains($"PID_{pid}"))
+                    {
+                        return true; // Arduino Mega found
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle errors
+                MessageBox.Show($"Error detecting Arduino Mega: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false; // Arduino Mega not found
+
+        
+        }
+        */
     }
 }

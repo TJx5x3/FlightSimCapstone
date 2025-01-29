@@ -1,6 +1,6 @@
 ﻿namespace FlightSimCapstone
 {
-    partial class Form2
+    partial class DevForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.AltimeterValue = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.AltimeterValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -64,6 +64,15 @@
             this.panel1.Size = new System.Drawing.Size(707, 432);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // AltimeterValue
+            // 
+            this.AltimeterValue.AutoSize = true;
+            this.AltimeterValue.Location = new System.Drawing.Point(402, 124);
+            this.AltimeterValue.Name = "AltimeterValue";
+            this.AltimeterValue.Size = new System.Drawing.Size(28, 13);
+            this.AltimeterValue.TabIndex = 6;
+            this.AltimeterValue.Text = "0.00";
             // 
             // button2
             // 
@@ -104,15 +113,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
-            // 
-            // AltimeterValue
-            // 
-            this.AltimeterValue.AutoSize = true;
-            this.AltimeterValue.Location = new System.Drawing.Point(402, 124);
-            this.AltimeterValue.Name = "AltimeterValue";
-            this.AltimeterValue.Size = new System.Drawing.Size(28, 13);
-            this.AltimeterValue.TabIndex = 6;
-            this.AltimeterValue.Text = "0.00";
             // 
             // Form2
             // 

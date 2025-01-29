@@ -2,17 +2,16 @@
 /**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   1/24/25
+ *  Last Revision   :   1/28/25
  *  Class           :   UtilityForm.cs
  *  Description     :   This module defines the Utility Form. This is the first
  *                      form displayed when the application is launched. 
  **********************************************************************************
- *  I used source code from the following websites to complete
- *  this assignment:
- * 
+ *  I used source code from the following websites to complete this assignment:
+ *  
  *  Detecting Keypresses in Form Windows:
  *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=windowsdesktop-8.0
- *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.keypreview?view=windowsdesktop-9.0&redirectedfrom=MSDN#System_Windows_Forms_Form_KeyPreview
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.keypreview?view=windowsdesktop-9.0&redirectedfrom=MSDN
  *
  *  Header block comment format reference:
  *  https://www.baeldung.com/wp-content/uploads/2019/07/eclipsecopy3-1024x484.png
@@ -21,6 +20,20 @@
  *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.closing?view=windowsdesktop-9.0
  *  https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.canceleventargs.cancel?view=net-9.0
  *
+ *  Using C# to run CMD commands (Currently Unused)
+ *  https://stackoverflow.com/questions/1469764/run-command-prompt-commands
+ *  
+ *  To launch Microsoft Flight Simulator when Start Button is clicked 
+ *  (Process.Start() method)
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.process.start?view=net-9.0
+ *  
+ *  To skip intro when Microsoft Flight Simulator is launched / launch process with parameters 
+ *  (Removed from current build, -FastLaunch was confugured in Steam)
+ *  https://stackoverflow.com/questions/5766574/start-a-process-with-parameters
+ *  https://forums.flightsimulator.com/t/skip-the-intro-spots-when-loading-the-game/222479/4
+ *  
+ *  Communicating between multiple Windows Forms:
+ *  https://stackoverflow.com/questions/1665533/communicate-between-two-windows-forms-in-c-sharp
  **********************************************************************************/
 
 using System;
@@ -126,23 +139,13 @@ namespace FlightSimCapstone
                 appendAppConsole("Warning: One or more SimConnect libraries could not be located. To resolve this, please install the MSFS SDK\n", Color.Yellow);
         }
 
-        /**
-         * Start button:
-         * Opens graphical interface & Launch Flight Simulator
-         * 
-         * TODO: Launch graphical interface once implemented 
-         * Promblem: MSFS displays warning message when launched this way. Potentially try running with a batch command?
-         * THIS RESOURCE HAS NOT (yet) BEEN USED
-         * https://stackoverflow.com/questions/1469764/run-command-prompt-commands
-         */
-
         /// <summary>
         /// Start button click event
+        /// Launches Microsoft Flight Simulator.
+        /// Will also launch Graphical Interface on specified display(s) in future revision.
+        /// 
+        /// NOTE: Consider making FlightSimPath a UtilityForm class attribute
         /// </summary>
-        /// <remarks>
-        /// Launches Microsoft Flight SImulator.
-        /// Will launch Graphical Interface in future revision.
-        /// </remarks>
         private void StartButton_Click(object sender, EventArgs e)
         {
             appendAppConsole("Launching MSFS 2020...\n", Color.White);
@@ -154,6 +157,7 @@ namespace FlightSimCapstone
         /// </summary>
         /// <remarks>
         /// Keyboard input is handled when Utility Form is selected.
+        /// Creates new instance of DevForm when F6 is pressed.
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -165,12 +169,11 @@ namespace FlightSimCapstone
 
 
                 e.SuppressKeyPress = true;
-                Form2 secretMenu = new Form2(this);
+                DevForm secretMenu = new DevForm(this);
                 secretMenu.Show();
             }
         }
     
-
         /**
          * NOTE: This needs to be formatted better once you figure out where it will be used
          * If close is set to anything other than 0, the utility form will not close. 
@@ -182,7 +185,13 @@ namespace FlightSimCapstone
         /// Utility Form Close Event
         /// </summary>
         /// <remarks>
-        /// Logic conducted when Utility Form is closed
+        /// Logic conducted when Utility Form is closed.
+        /// 
+        /// <br/>
+        /// NOTE: This will be required when the Graphical Interface is created.
+        ///       Currently a prototype. The UtilityForm will not close if 'int close'
+        ///       is set to 1.
+        /// 
         /// </remarks>
         /// <param name="sender"></param>
         /// <param name="e"></param>

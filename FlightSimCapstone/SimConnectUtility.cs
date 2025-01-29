@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-
 using Microsoft.FlightSimulator.SimConnect;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -25,8 +24,10 @@ namespace FlightSimCapstone
 
         public static bool connectionStatus { get { return (simconnect != null); } }
 
-        // RESEARCH THIS SYNTAX/////////////////////
+        // Auto Nammed by VS. 
+        // TODO: Research proper naming convention
         private static double _altimeterValue = 0.0;
+
         // Altimeter Value
         public static double AltimeterValue 
         {
@@ -50,19 +51,29 @@ namespace FlightSimCapstone
         {
             public double AltimeterReading; // Altimeter reading in feet
         }
-            
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
-        struct AltitudeStruct
-        {
-            public double altitude;
-        }
 
+        ////////////////
+        struct AltitudeIndicatorData
+        {
+            public double AltitudeIndicatorReading;
+        }
+            
+
+        /// <summary>
+        /// This method requests data from SimConnect 
+        /// </summary>
+        /// 
+        /// https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/API_Reference/Structures_And_Enumerations/SIMCONNECT_RECV_SIMOBJECT_DATA.htm
+        /// 
+        /// <param name="sender"></param>
+        /// <param name="data"></param>
         public static void Simconnect_OnRecvSimobjectData(SimConnect sender, SIMCONNECT_RECV_SIMOBJECT_DATA data)
         {
             // If no simconnection
             if (simconnect == null)
                 return;
 
+            // Request Altimeter data. 
             if ((Requests)data.dwRequestID == Requests.Altimeter)
             {
                 AltimeterData altimeter = (AltimeterData)data.dwData[0];
@@ -71,6 +82,9 @@ namespace FlightSimCapstone
             }
         }
 
+        /// <summary>
+        /// Print Altimeter data to console
+        /// </summary>
         public static void printAltemeter()
         {
             if(connect_simconnect())
@@ -119,7 +133,7 @@ namespace FlightSimCapstone
         }
 
         /**
-         * Disconnect from SimConnect
+         * Disconnect from SimConnect client
          */ 
         public static bool disconnect_simconnect()
         {
@@ -134,6 +148,8 @@ namespace FlightSimCapstone
             return true;
         }
 
+        // Request SimConnect Data
+        // TODO: This is not specific to altimeter.
         public static void refreshAltimeterValue()
         {
             if(simconnect != null)

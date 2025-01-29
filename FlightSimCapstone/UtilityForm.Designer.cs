@@ -65,10 +65,10 @@
             this.AppConsole.Location = new System.Drawing.Point(255, 25);
             this.AppConsole.Name = "AppConsole";
             this.AppConsole.ReadOnly = true;
-            this.AppConsole.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.AppConsole.Size = new System.Drawing.Size(237, 218);
             this.AppConsole.TabIndex = 1;
             this.AppConsole.Text = "";
+            this.AppConsole.WordWrap = false;
             // 
             // AppConsoleTitle
             // 
