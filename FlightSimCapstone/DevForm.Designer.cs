@@ -31,11 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.AltimeterValue = new System.Windows.Forms.Label();
+            this.AltimeterLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.HeadingIndicatorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -53,7 +54,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.AltimeterValue);
+            this.panel1.Controls.Add(this.HeadingIndicatorLabel);
+            this.panel1.Controls.Add(this.AltimeterLabel);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.pictureBox3);
@@ -65,14 +67,14 @@
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // AltimeterValue
+            // AltimeterLabel
             // 
-            this.AltimeterValue.AutoSize = true;
-            this.AltimeterValue.Location = new System.Drawing.Point(402, 124);
-            this.AltimeterValue.Name = "AltimeterValue";
-            this.AltimeterValue.Size = new System.Drawing.Size(28, 13);
-            this.AltimeterValue.TabIndex = 6;
-            this.AltimeterValue.Text = "0.00";
+            this.AltimeterLabel.AutoSize = true;
+            this.AltimeterLabel.Location = new System.Drawing.Point(336, 124);
+            this.AltimeterLabel.Name = "AltimeterLabel";
+            this.AltimeterLabel.Size = new System.Drawing.Size(28, 13);
+            this.AltimeterLabel.TabIndex = 6;
+            this.AltimeterLabel.Text = "0.00";
             // 
             // button2
             // 
@@ -114,13 +116,22 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // Form2
+            // HeadingIndicatorLabel
+            // 
+            this.HeadingIndicatorLabel.AutoSize = true;
+            this.HeadingIndicatorLabel.Location = new System.Drawing.Point(336, 153);
+            this.HeadingIndicatorLabel.Name = "HeadingIndicatorLabel";
+            this.HeadingIndicatorLabel.Size = new System.Drawing.Size(91, 13);
+            this.HeadingIndicatorLabel.TabIndex = 7;
+            this.HeadingIndicatorLabel.Text = "Heading Indicator";
+            // 
+            // DevForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(731, 564);
             this.Controls.Add(this.panel1);
-            this.Name = "Form2";
+            this.Name = "DevForm";
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -139,6 +150,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label AltimeterValue;
+        private System.Windows.Forms.Label AltimeterLabel;
+        private System.Windows.Forms.Label HeadingIndicatorLabel;
     }
 }

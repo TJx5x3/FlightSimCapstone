@@ -25,6 +25,7 @@
  *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.formclosing?view=windowsdesktop-9.0#system-windows-forms-form-formclosing
  *  
  *  
+ *  
  */
 
 using System;
@@ -106,17 +107,22 @@ namespace FlightSimCapstone
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            SimConnectUtility.printAltemeter();
+            SimConnectUtility.initializeSimReadings();
         }
 
-        /// <summary>
-        /// Update altemeter value shown in the dev form
-        /// </summary>
-        /// <param name="value"></param>
-        public void updateAltimeterValue(string value)
-        {
-            AltimeterValue.Text = value;
-        }
+        ///// <summary>
+        ///// Update altemeter value shown in the dev form
+        ///// </summary>
+        ///// <param name="value"></param>
+        //public void updateAltimeterValue(string value)
+        //{
+        //    AltimeterLabel.Text = value;
+        //}
+
+        //public void updateHeadingIndicatorValue(string value)
+        //{
+        //    HeadingIndicatorLabel.Text = value;
+        //}
 
 
         /// <summary>
@@ -132,10 +138,13 @@ namespace FlightSimCapstone
             // with the retrieved value.
             if (SimConnectUtility.connectionStatus)
             {
-                AltimeterValue.Text = $"Altimeter Value: {SimConnectUtility.AltimeterValue}"; // Formatted string
+                AltimeterLabel.Text = $"Altimeter Value: {SimConnectUtility.AltimeterValue}"; // Formatted string
                 Console.WriteLine($"{SimConnectUtility.AltimeterValue}");
 
-                SimConnectUtility.refreshAltimeterValue();
+                HeadingIndicatorLabel.Text = $"Heading Indicator: {SimConnectUtility.HeadingIndicatorValue}";
+                Console.WriteLine($"{SimConnectUtility.HeadingIndicatorValue}");
+
+                SimConnectUtility.refreshSimconnect();
             }
             Console.WriteLine("tick\n");
         }

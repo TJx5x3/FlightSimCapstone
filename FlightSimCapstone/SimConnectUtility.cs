@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ *  Attribute Properties syntax - like getter and setter for class attribute(these are cool)
+ *  https://www.w3schools.com/cs/cs_properties.php
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,42 +27,43 @@ namespace FlightSimCapstone
         const int WM_USER_SIMCONNECT = 0x0402;
         static IntPtr windowHandle;
 
-        public static bool connectionStatus { get { return (simconnect != null); } }
+        // Tweak this, get proper get/set logic
+        public static bool connectionStatus 
+        { 
+            get { return (simconnect != null); } 
+        }
 
-        // Auto Nammed by VS. 
-        // TODO: Research proper naming convention
+        // Retrieved simconnect data attributes
         private static double _altimeterValue = 0.0;
+        private static double _headingIndicatorValue = 0.0;
 
-        // Altimeter Value
+        // Retrieved simconnect data attributes.
         public static double AltimeterValue 
         {
             get { return _altimeterValue; }
             private set { _altimeterValue = value; } 
         }
-        ////////////////////////////////////
+
+        public static double HeadingIndicatorValue
+        {
+            get { return _headingIndicatorValue; }
+            private set { _headingIndicatorValue = value; }
+        }
+
 
         // https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/API_Reference/Events_And_Data/SimConnect_RequestDataOnSimObject.htm
         private enum Requests
         {
-            Altimeter
+            Altimeter,
+            HeadingIndicator
         }
 
         private enum Definitions
         {
-            AltimeterData
+            AltimeterData,
+            HeadingIndicatorData
         }
-
-        struct AltimeterData
-        {
-            public double AltimeterReading; // Altimeter reading in feet
-        }
-
-        ////////////////
-        struct AltitudeIndicatorData
-        {
-            public double AltitudeIndicatorReading;
-        }
-            
+    
 
         /// <summary>
         /// This method requests data from SimConnect 
@@ -80,20 +86,36 @@ namespace FlightSimCapstone
                 AltimeterValue = altimeter.AltimeterReading; 
                 Console.WriteLine($"Altimeter Reading: {altimeter.AltimeterReading} feet");
             }
+
+            // Request Heading Indicator Data
+            if ((Requests)data.dwRequestID == Requests.HeadingIndicator)
+            {
+                HeadingIndicatorData headingindicator = (HeadingIndicatorData)data.dwData[0];
+                HeadingIndicatorValue = headingindicator.HeadingIndicatorReading;
+                Console.WriteLine($"Heading Indicator Reading: {headingindicator.HeadingIndicatorReading} deg");
+            }
         }
 
         /// <summary>
         /// Print Altimeter data to console
         /// </summary>
-        public static void printAltemeter()
+        public static void initializeSimReadings()
         {
             if(connect_simconnect())
             { 
+                // Define Altimeter data
                 simconnect.AddToDataDefinition(Definitions.AltimeterData, "Indicated Altitude", "feet", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
                 simconnect.RegisterDataDefineStruct<AltimeterData>(Definitions.AltimeterData);
 
+                // Define Heading Indicator data
+                simconnect.AddToDataDefinition(Definitions.HeadingIndicatorData, "Plane Heading Degrees Gyro", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                simconnect.RegisterDataDefineStruct<HeadingIndicatorData>(Definitions.HeadingIndicatorData);
+
                 // Request Altimeter value
                 simconnect.RequestDataOnSimObject(Requests.Altimeter, Definitions.AltimeterData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+                // Request Heading Indicator value
+                simconnect.RequestDataOnSimObject(Requests.HeadingIndicator, Definitions.HeadingIndicatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
                 // Handle SimConnect events
                 simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
@@ -150,7 +172,7 @@ namespace FlightSimCapstone
 
         // Request SimConnect Data
         // TODO: This is not specific to altimeter.
-        public static void refreshAltimeterValue()
+        public static void refreshSimconnect()
         {
             if(simconnect != null)
             {

@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDependencyUtility.cs" />
+    <Compile Include="SimConnectData.cs" />
     <Compile Include="UtilityForm.cs">
       <SubType>Form</SubType>
     </Compile>
