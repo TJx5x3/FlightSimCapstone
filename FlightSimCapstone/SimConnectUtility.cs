@@ -101,7 +101,10 @@ namespace FlightSimCapstone
         /// </summary>
         public static void initializeSimReadings()
         {
-            if(connect_simconnect())
+            // NOTE: Pass Simulation variable as string 
+            // in 2nd param in AddToDataDefinition 
+            // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_System_Variables.htm
+            if (connect_simconnect())
             { 
                 // Define Altimeter data
                 simconnect.AddToDataDefinition(Definitions.AltimeterData, "Indicated Altitude", "feet", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
