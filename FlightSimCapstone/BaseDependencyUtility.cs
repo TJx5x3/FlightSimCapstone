@@ -1,7 +1,7 @@
 ﻿/**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   1/28/25
+ *  Last Revision   :   2/1/25
  *  Class           :   BaseDependencyUtility.cs
  *  Description     :   This module holds several methods used to check software
  *                      and hardware dependencies. These methods are called when
@@ -139,45 +139,5 @@ namespace FlightSimCapstone
 
             return false;
         }
-
-
-
-        // string arduinoMegaVID = "2341"; // Vendor ID
-        // string arduinoMegaPID = "0042"; // PID Controller ID
-        /*
-        ////////////////////
-        // FROM Prototype application created in Fall 2024 semester
-        ////////////////////
-        private bool CheckArduinoMega(string vid, string pid)
-        {
-            try
-            {
-                // Query all USB devices
-                var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE DeviceID LIKE 'USB%'");
-
-                // Search all detected USB devices for match
-                foreach (var device in searcher.Get())
-                {
-                    string deviceId = device["DeviceID"]?.ToString();
-                    string name = device["Name"]?.ToString();
-
-                    // Check if VID and PID match retrieved DeviceID and Name
-                    if (deviceId != null && deviceId.Contains($"VID_{vid}") && deviceId.Contains($"PID_{pid}"))
-                    {
-                        return true; // Arduino Mega found
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle errors
-                MessageBox.Show($"Error detecting Arduino Mega: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return false; // Arduino Mega not found
-
-        
-        }
-        */
     }
 }
