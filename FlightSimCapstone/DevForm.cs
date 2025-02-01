@@ -24,7 +24,8 @@
  *  Form Close handler / Event when Dev Form is closing:
  *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.form.formclosing?view=windowsdesktop-9.0#system-windows-forms-form-formclosing
  *  
- *  
+ *  Testing if COM Port is open:
+ *  https://stackoverflow.com/questions/26487061/unauthorizedaccessexception-when-trying-to-open-a-com-port-in-c-sharp
  *  
  */
 
@@ -33,10 +34,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace FlightSimCapstone
 {
@@ -54,7 +57,11 @@ namespace FlightSimCapstone
         private UtilityForm utilityForm = null;
 
         // Timer to update retrieved SimConnect values in text fields
-        private Timer valueTimer = null; 
+        private Timer valueTimer = null;
+
+        // Serial port on COM5 to read arduino Serial Print
+        private SerialPort serialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
+        
 
         public DevForm()
         {
@@ -72,6 +79,18 @@ namespace FlightSimCapstone
         {
             utilityForm = callingUtilityForm as UtilityForm; // Register UtilityForm Instance as previously called form
             this.FormClosing += CloseHandler;
+
+
+            // Close COM5 if already open
+            if(!serialPort.IsOpen)
+                serialPort.Open();
+            
+            // Map event when serial data is recieved and open Serial port on COM5
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
+
+
+            //serialPort.Open();
+
             InitializeComponent();
 
             // Instantiate timer. Tick every second.
@@ -146,7 +165,7 @@ namespace FlightSimCapstone
 
                 SimConnectUtility.refreshSimconnect();
             }
-            Console.WriteLine("tick\n");
+            
         }
 
         // Tasks to do when Developer Form is closed
@@ -163,19 +182,46 @@ namespace FlightSimCapstone
         protected void CloseHandler(object sender, FormClosingEventArgs e)
         {
             Console.WriteLine("Closing dev form instance\n");
-            utilityForm.appendAppConsole("Closing dev form instance", Color.White);
+            utilityForm.appendAppConsole("Closing dev form instance\n", Color.White);
             valueTimer.Stop();
             valueTimer.Dispose();
+
+            serialPort.Close(); // Close serial port
         }
 
         /// <summary>
-        /// Check Arduino connection status
+        /// Close COM5 port
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button3_Click(object sender, EventArgs e)
+        private void CloseCOMPort(object sender, EventArgs e)
         {
-            BaseDependencyUtility.CheckArduinoConnection();
+            serialPort.Close();
+        }
+
+        private void SerialPortDataRecieved(object sender, EventArgs e)
+        {
+
+            //NOTE: Cross thread operation error
+            // https://stackoverflow.com/questions/22356/cleanest-way-to-invoke-cross-thread-events
+            // https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.methodinvoker?view=windowsdesktop-9.0
+            try
+            {
+                string serialData = serialPort.ReadLine();
+
+                this.Invoke(new MethodInvoker(delegate
+                {
+                    potentiometerValueLabel.Text = $"Potentiometer Readings: {serialData}";
+                }));
+                    
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Read Error: {ex.Message}");
+            }
+            //Console.Write(serialPort.ReadExisting());
+            //Console.Write("poop");
+            //this.potentiometerValueLabel.Text = $"Potentiometer Readings: {readSerialData}";
         }
     }
 }

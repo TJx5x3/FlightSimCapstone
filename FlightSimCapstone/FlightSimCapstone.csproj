@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArduinoCommunicationUtility.cs" />
     <Compile Include="BaseDependencyUtility.cs" />
     <Compile Include="SimConnectData.cs" />
     <Compile Include="UtilityForm.cs">

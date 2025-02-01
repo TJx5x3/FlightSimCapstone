@@ -31,13 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.HeadingIndicatorLabel = new System.Windows.Forms.Label();
             this.AltimeterLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.potentiometerValueLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -55,6 +56,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.potentiometerValueLabel);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.HeadingIndicatorLabel);
             this.panel1.Controls.Add(this.AltimeterLabel);
@@ -68,6 +70,16 @@
             this.panel1.Size = new System.Drawing.Size(707, 432);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(110, 185);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(178, 22);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Close COM5 ";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.CloseCOMPort);
             // 
             // HeadingIndicatorLabel
             // 
@@ -127,15 +139,15 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
-            // button3
+            // potentiometerValueLabel
             // 
-            this.button3.Location = new System.Drawing.Point(110, 185);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(178, 22);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Check Arduino Connection";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.potentiometerValueLabel.AutoSize = true;
+            this.potentiometerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.potentiometerValueLabel.Location = new System.Drawing.Point(105, 307);
+            this.potentiometerValueLabel.Name = "potentiometerValueLabel";
+            this.potentiometerValueLabel.Size = new System.Drawing.Size(279, 29);
+            this.potentiometerValueLabel.TabIndex = 9;
+            this.potentiometerValueLabel.Text = "Potentiometer Readings:";
             // 
             // DevForm
             // 
@@ -165,5 +177,6 @@
         private System.Windows.Forms.Label AltimeterLabel;
         private System.Windows.Forms.Label HeadingIndicatorLabel;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label potentiometerValueLabel;
     }
 }

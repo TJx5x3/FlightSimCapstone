@@ -147,13 +147,13 @@ namespace FlightSimCapstone
             {
                 this.arduinoStatusLabel.Text = "OK";
                 this.arduinoStatusLabel.ForeColor = Color.Green;
-                appendAppConsole("Arduino Located!", Color.LightGreen);
+                appendAppConsole("Arduino Located!\n", Color.LightGreen);
             }
             else
             {
                 this.arduinoStatusLabel.Text = "Failed";
                 this.arduinoStatusLabel.ForeColor = Color.Red;
-                appendAppConsole("Arduino could not be located", Color.OrangeRed);
+                appendAppConsole("Arduino could not be located\n", Color.OrangeRed);
             }
 
         }
