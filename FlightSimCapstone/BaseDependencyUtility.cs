@@ -13,6 +13,13 @@
  *  To check if file or directory exists:
  *  https://learn.microsoft.com/en-us/dotnet/api/system.io.directory.exists?view=net-9.0
  * 
+ * To check for USB Hardware devices:
+ * ManagementObjectSearcher - Needs System.Management.dll    ----- NOTE: This may break install wizard if not added as dependency
+ * https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher?view=net-9.0-pp
+ * 
+ * ManagementObject.Get() documentation:
+ * https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher.get?view=net-9.0-pp
+ * 
  **********************************************************************************/
 
 using System;
@@ -25,6 +32,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
 using System.Management;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 
 namespace FlightSimCapstone
@@ -47,6 +55,12 @@ namespace FlightSimCapstone
         // Path to SimConnect.dll
         // Default to steamFlightSimPath
         private const string simConnectPath = steamFlightSimPath;
+
+        // Arduino Vendor ID and Product ID
+        // These values are used to detect the connected Arduino device
+        // See: https://forum.arduino.cc/t/whats-the-vid-and-pid/305399
+        private const string arduinoPID = "PID_0042";
+        private const string arduinoVID = "VID_2341";
 
         /// <summary>
         /// Return bool if Flight Sim Directory can be located
@@ -102,7 +116,34 @@ namespace FlightSimCapstone
             return simConnectPath;
         }
 
+        /// <summary>
+        /// Check if Arduino device is connected to system
+        /// </summary>
+        /// <returns></returns>
+        public static bool CheckArduinoConnection()
+        {
+            // Retrieve Plug and play (PnP) USB Devices. Search for Arduino 
+            ManagementObjectSearcher usbSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE DeviceID LIKE 'USB%'");
+            foreach (ManagementObject device in usbSearcher.Get())
+            {
+                // Get USB Device ID as string
+                string deviceId = device["DeviceID"]?.ToString();
+                Console.WriteLine(deviceId);   
+                
+                // If Device containing specified Arduino PID and VID, Arduino is connected to system.
+                if (deviceId.Contains(arduinoPID) &&  deviceId.Contains(arduinoVID))
+                {
+                    return true;
+                }
+            }
 
+            return false;
+        }
+
+
+
+        // string arduinoMegaVID = "2341"; // Vendor ID
+        // string arduinoMegaPID = "0042"; // PID Controller ID
         /*
         ////////////////////
         // FROM Prototype application created in Fall 2024 semester

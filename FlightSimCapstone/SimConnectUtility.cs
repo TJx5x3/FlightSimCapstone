@@ -1,6 +1,9 @@
-﻿/*
+﻿/* USE PASCAL CASE (not cammel case) For method names
+ * 
+ * https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions
  *  Attribute Properties syntax - like getter and setter for class attribute(these are cool)
  *  https://www.w3schools.com/cs/cs_properties.php
+ *  
  */
 
 using System;

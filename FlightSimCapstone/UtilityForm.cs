@@ -34,6 +34,9 @@
  *  
  *  Communicating between multiple Windows Forms:
  *  https://stackoverflow.com/questions/1665533/communicate-between-two-windows-forms-in-c-sharp
+ *  
+ *  
+ *  NOTE: Remember, in form designer -> lightning bolt - > propper wat to create event handler
  **********************************************************************************/
 
 using System;
@@ -137,6 +140,22 @@ namespace FlightSimCapstone
             // If any DLL cannot be located, append yellow warning message to app console
             if(!BaseDependencyUtility.locateSimConnectNETDll() || !BaseDependencyUtility.locateSimConnectDll())
                 appendAppConsole("Warning: One or more SimConnect libraries could not be located. To resolve this, please install the MSFS SDK\n", Color.Yellow);
+
+            // Check System Management for Arduino connection
+            AppConsole.AppendText("Checking Arduino Connection...\n");
+            if (BaseDependencyUtility.CheckArduinoConnection())
+            {
+                this.arduinoStatusLabel.Text = "OK";
+                this.arduinoStatusLabel.ForeColor = Color.Green;
+                appendAppConsole("Arduino Located!", Color.LightGreen);
+            }
+            else
+            {
+                this.arduinoStatusLabel.Text = "Failed";
+                this.arduinoStatusLabel.ForeColor = Color.Red;
+                appendAppConsole("Arduino could not be located", Color.OrangeRed);
+            }
+
         }
 
         /// <summary>
