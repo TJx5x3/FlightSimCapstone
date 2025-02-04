@@ -2,7 +2,7 @@
 /**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   1/28/25
+ *  Last Revision   :   2/1/25
  *  Class           :   UtilityForm.cs
  *  Description     :   This module defines the Utility Form. This is the first
  *                      form displayed when the application is launched. 
@@ -61,7 +61,6 @@ namespace FlightSimCapstone
     /// and buttons for opening the graphical interface configuration,
     /// and to launch Microsoft Flight Simulator.
     /// </remarks>
-    /// 
     public partial class UtilityForm : Form
     {
         /// <summary>
@@ -97,7 +96,7 @@ namespace FlightSimCapstone
         /// <param name="color">
         /// Color of appended text
         /// </param>
-        public void appendAppConsole(String text, Color color)
+        public void AppendAppConsole(String text, Color color)
         {
             AppConsole.SelectionColor = color;
             AppConsole.AppendText(text);
@@ -117,29 +116,29 @@ namespace FlightSimCapstone
             AppConsole.AppendText("Locating Microsoft Flight Sim 2020...\n");
 
             // Check for MSFS Program path. Append application console message with result
-            if (BaseDependencyUtility.locateFlightSim()) 
-                appendAppConsole("Flight Sim 2020 Located :D\n", Color.LightGreen); // success
+            if (BaseDependencyUtility.LocateFlightSim()) 
+                AppendAppConsole("Flight Sim 2020 Located :D\n", Color.LightGreen); // success
             else
-                appendAppConsole("Flight Sim not found :(\n", Color.OrangeRed); // fail
+                AppendAppConsole("Flight Sim not found :(\n", Color.OrangeRed); // fail
 
             // Check for SimConnect.dll
             AppConsole.AppendText("Locating SimConnect DLL dependencies\n");
             AppConsole.AppendText("SimConnect.dll: \n");
-            if (BaseDependencyUtility.locateSimConnectDll())
-                appendAppConsole("OK\n", Color.LightGreen);
+            if (BaseDependencyUtility.LocateSimConnectDll())
+                AppendAppConsole("OK\n", Color.LightGreen);
             else
-                appendAppConsole("Not Found\n", Color.OrangeRed);
+                AppendAppConsole("Not Found\n", Color.OrangeRed);
 
             // Check for Microsoft.FlightSimulator.SimConnect.dll
             AppConsole.AppendText("Locating Microsoft.FlightSimulator.SimConnect.dll:\n");
-            if (BaseDependencyUtility.locateSimConnectNETDll())
-                appendAppConsole("OK\n", Color.LightGreen);
+            if (BaseDependencyUtility.LocateSimConnectNETDll())
+                AppendAppConsole("OK\n", Color.LightGreen);
             else
-                appendAppConsole("Not Found\n", Color.OrangeRed);
+                AppendAppConsole("Not Found\n", Color.OrangeRed);
 
             // If any DLL cannot be located, append yellow warning message to app console
-            if(!BaseDependencyUtility.locateSimConnectNETDll() || !BaseDependencyUtility.locateSimConnectDll())
-                appendAppConsole("Warning: One or more SimConnect libraries could not be located. To resolve this, please install the MSFS SDK\n", Color.Yellow);
+            if(!BaseDependencyUtility.LocateSimConnectNETDll() || !BaseDependencyUtility.LocateSimConnectDll())
+                AppendAppConsole("Warning: One or more SimConnect libraries could not be located. To resolve this, please install the MSFS SDK\n", Color.Yellow);
 
             // Check System Management for Arduino connection
             AppConsole.AppendText("Checking Arduino Connection...\n");
@@ -147,13 +146,13 @@ namespace FlightSimCapstone
             {
                 this.arduinoStatusLabel.Text = "OK";
                 this.arduinoStatusLabel.ForeColor = Color.Green;
-                appendAppConsole("Arduino Located!\n", Color.LightGreen);
+                AppendAppConsole("Arduino Located!\n", Color.LightGreen);
             }
             else
             {
                 this.arduinoStatusLabel.Text = "Failed";
                 this.arduinoStatusLabel.ForeColor = Color.Red;
-                appendAppConsole("Arduino could not be located\n", Color.OrangeRed);
+                AppendAppConsole("Arduino could not be located\n", Color.OrangeRed);
             }
 
         }
@@ -163,12 +162,14 @@ namespace FlightSimCapstone
         /// Launches Microsoft Flight Simulator.
         /// Will also launch Graphical Interface on specified display(s) in future revision.
         /// 
-        /// NOTE: Consider making FlightSimPath a UtilityForm class attribute
+        /// NOTE: Consider making FlightSimPath a UtilityForm or Program.cs class attribute
+        /// 
+        /// TODO: Launch Graphical Interface on second and/or third display
         /// </summary>
         private void StartButton_Click(object sender, EventArgs e)
         {
-            appendAppConsole("Launching MSFS 2020...\n", Color.White);
-            Process.Start(BaseDependencyUtility.getFlightSimExePath());
+            AppendAppConsole("Launching MSFS 2020...\n", Color.White);
+            Process.Start(BaseDependencyUtility.GetFlightSimExePath());
         }
 
         /// <summary>
@@ -184,7 +185,7 @@ namespace FlightSimCapstone
         {
             if (e.KeyCode == Keys.F6)
             {
-                appendAppConsole("Opening Secret Developer Settings...\n", Color.MediumPurple);
+                AppendAppConsole("Opening Secret Developer Settings...\n", Color.MediumPurple);
 
 
                 e.SuppressKeyPress = true;
@@ -193,13 +194,6 @@ namespace FlightSimCapstone
             }
         }
     
-        /**
-         * NOTE: This needs to be formatted better once you figure out where it will be used
-         * If close is set to anything other than 0, the utility form will not close. 
-         */
-        int close = 0;
-
-
         /// <summary>
         /// Utility Form Close Event
         /// </summary>
@@ -216,8 +210,15 @@ namespace FlightSimCapstone
         /// <param name="e"></param>
         protected void CloseHandler(object sender, CancelEventArgs e)
         {
-            SimConnectUtility.disconnect_simconnect();
+            SimConnectUtility.DisconnectSimconnectClient();
+           
+            /*
+            * NOTE: This needs to be formatted better once you figure out where it will be used
+            * If close is set to anything other than 0, the utility form will not close. 
+            */
+            int close = 0;
 
+            // Check if form should be closed
             if (close != 0)
             {
                 e.Cancel = true;

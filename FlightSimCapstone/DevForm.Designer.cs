@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.potentiometerValueLabel = new System.Windows.Forms.Label();
+            this.CloseSerialPortButton = new System.Windows.Forms.Button();
             this.HeadingIndicatorLabel = new System.Windows.Forms.Label();
             this.AltimeterLabel = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.InitializeSimconnectButton = new System.Windows.Forms.Button();
+            this.TestSimConnect_Button = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.potentiometerValueLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -57,11 +57,11 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.potentiometerValueLabel);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.CloseSerialPortButton);
             this.panel1.Controls.Add(this.HeadingIndicatorLabel);
             this.panel1.Controls.Add(this.AltimeterLabel);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.InitializeSimconnectButton);
+            this.panel1.Controls.Add(this.TestSimConnect_Button);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -69,17 +69,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(707, 432);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // button3
+            // potentiometerValueLabel
             // 
-            this.button3.Location = new System.Drawing.Point(110, 185);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(178, 22);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Close COM5 ";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.CloseCOMPort);
+            this.potentiometerValueLabel.AutoSize = true;
+            this.potentiometerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.potentiometerValueLabel.Location = new System.Drawing.Point(105, 391);
+            this.potentiometerValueLabel.Name = "potentiometerValueLabel";
+            this.potentiometerValueLabel.Size = new System.Drawing.Size(279, 29);
+            this.potentiometerValueLabel.TabIndex = 9;
+            this.potentiometerValueLabel.Text = "Potentiometer Readings:";
+            // 
+            // CloseSerialPortButton
+            // 
+            this.CloseSerialPortButton.Location = new System.Drawing.Point(110, 185);
+            this.CloseSerialPortButton.Name = "CloseSerialPortButton";
+            this.CloseSerialPortButton.Size = new System.Drawing.Size(178, 22);
+            this.CloseSerialPortButton.TabIndex = 8;
+            this.CloseSerialPortButton.Text = "Close COM5 ";
+            this.CloseSerialPortButton.UseVisualStyleBackColor = true;
+            this.CloseSerialPortButton.Click += new System.EventHandler(this.CloseSerialPortButton_Click);
             // 
             // HeadingIndicatorLabel
             // 
@@ -99,25 +108,25 @@
             this.AltimeterLabel.TabIndex = 6;
             this.AltimeterLabel.Text = "0.00";
             // 
-            // button2
+            // InitializeSimconnectButton
             // 
-            this.button2.Location = new System.Drawing.Point(110, 153);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(178, 26);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Initialize SimConnect Readings";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.InitializeSimconnectButton.Location = new System.Drawing.Point(110, 153);
+            this.InitializeSimconnectButton.Name = "InitializeSimconnectButton";
+            this.InitializeSimconnectButton.Size = new System.Drawing.Size(178, 26);
+            this.InitializeSimconnectButton.TabIndex = 5;
+            this.InitializeSimconnectButton.Text = "Initialize SimConnect Readings";
+            this.InitializeSimconnectButton.UseVisualStyleBackColor = true;
+            this.InitializeSimconnectButton.Click += new System.EventHandler(this.InitializeSimConnectButton_Click);
             // 
-            // button1
+            // TestSimConnect_Button
             // 
-            this.button1.Location = new System.Drawing.Point(110, 124);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Test SimConnect Connection";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.TestSimConnect_Button.Location = new System.Drawing.Point(110, 124);
+            this.TestSimConnect_Button.Name = "TestSimConnect_Button";
+            this.TestSimConnect_Button.Size = new System.Drawing.Size(178, 23);
+            this.TestSimConnect_Button.TabIndex = 4;
+            this.TestSimConnect_Button.Text = "Test SimConnect Connection";
+            this.TestSimConnect_Button.UseVisualStyleBackColor = true;
+            this.TestSimConnect_Button.Click += new System.EventHandler(this.TestSimConnectButton_Click);
             // 
             // pictureBox3
             // 
@@ -138,16 +147,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
-            // 
-            // potentiometerValueLabel
-            // 
-            this.potentiometerValueLabel.AutoSize = true;
-            this.potentiometerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.potentiometerValueLabel.Location = new System.Drawing.Point(105, 307);
-            this.potentiometerValueLabel.Name = "potentiometerValueLabel";
-            this.potentiometerValueLabel.Size = new System.Drawing.Size(279, 29);
-            this.potentiometerValueLabel.TabIndex = 9;
-            this.potentiometerValueLabel.Text = "Potentiometer Readings:";
             // 
             // DevForm
             // 
@@ -172,11 +171,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button TestSimConnect_Button;
+        private System.Windows.Forms.Button InitializeSimconnectButton;
         private System.Windows.Forms.Label AltimeterLabel;
         private System.Windows.Forms.Label HeadingIndicatorLabel;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button CloseSerialPortButton;
         private System.Windows.Forms.Label potentiometerValueLabel;
     }
 }

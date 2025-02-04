@@ -2,7 +2,7 @@
 /**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   2/1/25
+ *  Last Revision   :   2/3/25
  *  Class           :   DevForm.cs
  *  Description     :   This module defines the Developer Form. This is a secret
  *                      form that can be launched by pressing F6 from the Utility
@@ -27,7 +27,12 @@
  *  Testing if COM Port is open:
  *  https://stackoverflow.com/questions/26487061/unauthorizedaccessexception-when-trying-to-open-a-com-port-in-c-sharp
  *  
- */
+ *  To fix cross-thread communication error when displaying Arduino Potentiometer data
+ *  in the developer form:
+ *  https://stackoverflow.com/questions/22356/cleanest-way-to-invoke-cross-thread-events
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.methodinvoker?view=windowsdesktop-9.0
+ *  
+ **********************************************************************************/
 
 using System;
 using System.Collections.Generic;
@@ -60,9 +65,13 @@ namespace FlightSimCapstone
         private Timer valueTimer = null;
 
         // Serial port on COM5 to read arduino Serial Print
+        // Arduino connected on COM5 on this machine. Baud rate = 9600 (Configured in Arduino IDE)
         private SerialPort serialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
         
-
+        /// <summary>
+        /// Default constructor
+        /// This should never be used. Does not allow for cross-form communication.
+        /// </summary>
         public DevForm()
         {
             InitializeComponent();
@@ -77,20 +86,22 @@ namespace FlightSimCapstone
         /// <param name="callingUtilityForm"></param>
         public DevForm(Form callingUtilityForm)
         {
-            utilityForm = callingUtilityForm as UtilityForm; // Register UtilityForm Instance as previously called form
-            this.FormClosing += CloseHandler;
+            // Register UtilityForm Instance as previously called form
+            utilityForm = callingUtilityForm as UtilityForm; 
+            this.FormClosing += CloseHandler; // Register FormClosing event
 
+            // Close Open serial port if not already open
+            // TODO: Add event handling for COM port. This is unstable.
+            if (BaseDependencyUtility.CheckArduinoConnection())
+            {
+                if (!serialPort.IsOpen)
+                    serialPort.Open();
+            }
 
-            // Close COM5 if already open
-            if(!serialPort.IsOpen)
-                serialPort.Open();
-            
             // Map event when serial data is recieved and open Serial port on COM5
             serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
 
-
-            //serialPort.Open();
-
+            // 
             InitializeComponent();
 
             // Instantiate timer. Tick every second.
@@ -100,49 +111,28 @@ namespace FlightSimCapstone
             valueTimer.Start();
         }
 
-        // Unused, to be removed
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         /// <summary>
-        /// Test connection to SimConnect
+        /// Test connection to SimConnect. Append Utility Form Console on connection status
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void TestSimConnectButton_Click(object sender, EventArgs e)
         {
-            if (SimConnectUtility.connect_simconnect())
-                this.utilityForm.appendAppConsole("SimConnect established!", Color.LightGreen);
+            if (SimConnectUtility.ConnectSimconnectClient())
+                this.utilityForm.AppendAppConsole("SimConnect established!\n", Color.LightGreen);
             else
-                this.utilityForm.appendAppConsole("Could not connect to SimConnect", Color.Yellow);
+                this.utilityForm.AppendAppConsole("Could not connect to SimConnect\n", Color.Yellow);
         }
 
         /// <summary>
-        /// Test retrieval of Altemeter data
+        /// Test retrieval of Altemeter and Heading Indicator data
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
+        private void InitializeSimConnectButton_Click(object sender, EventArgs e)
         {
-            SimConnectUtility.initializeSimReadings();
+            SimConnectUtility.InitializeSimReadings();
         }
-
-        ///// <summary>
-        ///// Update altemeter value shown in the dev form
-        ///// </summary>
-        ///// <param name="value"></param>
-        //public void updateAltimeterValue(string value)
-        //{
-        //    AltimeterLabel.Text = value;
-        //}
-
-        //public void updateHeadingIndicatorValue(string value)
-        //{
-        //    HeadingIndicatorLabel.Text = value;
-        //}
-
 
         /// <summary>
         /// valueTimer Event
@@ -155,21 +145,20 @@ namespace FlightSimCapstone
         {
             // If a connection to SimConnect is established, Update the AltimeterValue text label
             // with the retrieved value.
-            if (SimConnectUtility.connectionStatus)
+            if (SimConnectUtility.ConnectionStatus)
             {
+                // Update Altimeter label
                 AltimeterLabel.Text = $"Altimeter Value: {SimConnectUtility.AltimeterValue}"; // Formatted string
                 Console.WriteLine($"{SimConnectUtility.AltimeterValue}");
 
+                // Update Heading Indicator label
                 HeadingIndicatorLabel.Text = $"Heading Indicator: {SimConnectUtility.HeadingIndicatorValue}";
                 Console.WriteLine($"{SimConnectUtility.HeadingIndicatorValue}");
 
-                SimConnectUtility.refreshSimconnect();
+                SimConnectUtility.RefreshSimconnect();
             }
-            
         }
 
-        // Tasks to do when Developer Form is closed
-        // 
         /// <summary>
         /// Form Close event
         /// <br/>
@@ -182,7 +171,7 @@ namespace FlightSimCapstone
         protected void CloseHandler(object sender, FormClosingEventArgs e)
         {
             Console.WriteLine("Closing dev form instance\n");
-            utilityForm.appendAppConsole("Closing dev form instance\n", Color.White);
+            utilityForm.AppendAppConsole("Closing dev form instance\n", Color.White);
             valueTimer.Stop();
             valueTimer.Dispose();
 
@@ -190,21 +179,24 @@ namespace FlightSimCapstone
         }
 
         /// <summary>
-        /// Close COM5 port
+        /// Close COM5 port when CloseSerialPortButton is clicked
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CloseCOMPort(object sender, EventArgs e)
+        private void CloseSerialPortButton_Click(object sender, EventArgs e)
         {
             serialPort.Close();
         }
 
+        /// <summary>
+        /// Event called each time serial data is read from Arduino on COM5
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SerialPortDataRecieved(object sender, EventArgs e)
-        {
-
-            //NOTE: Cross thread operation error
-            // https://stackoverflow.com/questions/22356/cleanest-way-to-invoke-cross-thread-events
-            // https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.methodinvoker?view=windowsdesktop-9.0
+        { 
+            // This is a separate way of directly appending serial data to potentiometerValueLabel.
+            // This is to prevent "Cross thread operation error"
             try
             {
                 string serialData = serialPort.ReadLine();
@@ -212,8 +204,7 @@ namespace FlightSimCapstone
                 this.Invoke(new MethodInvoker(delegate
                 {
                     potentiometerValueLabel.Text = $"Potentiometer Readings: {serialData}";
-                }));
-                    
+                }));              
             }
             catch (Exception ex)
             {

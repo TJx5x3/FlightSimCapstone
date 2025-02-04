@@ -13,13 +13,15 @@
  *  To check if file or directory exists:
  *  https://learn.microsoft.com/en-us/dotnet/api/system.io.directory.exists?view=net-9.0
  * 
- * To check for USB Hardware devices:
- * ManagementObjectSearcher - Needs System.Management.dll    ----- NOTE: This may break install wizard if not added as dependency
- * https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher?view=net-9.0-pp
+ *  To check for USB Hardware devices:
+ *  ManagementObjectSearcher - Needs System.Management.dll    ----- NOTE: This may break install wizard if not added as dependency
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher?view=net-9.0-pp
  * 
- * ManagementObject.Get() documentation:
- * https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher.get?view=net-9.0-pp
+ *  ManagementObject.Get() documentation:
+ *  https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher.get?view=net-9.0-pp
  * 
+ *  Identify Arduino Mega 2560 Vendor and Product ID:
+ *  https://forum.arduino.cc/t/whats-the-vid-and-pid/305399
  **********************************************************************************/
 
 using System;
@@ -39,8 +41,8 @@ namespace FlightSimCapstone
 {
     /// <summary>
     /// This module holds several methods used to check software and hardware
-    /// dependencies. These methods are called when an instance of UtilityForm
-    /// is instantiated.
+    /// dependencies. These methods are called when an instances of forms are created,
+    /// or when Button events are fired. 
     /// </summary>
     public static class BaseDependencyUtility
     {
@@ -65,8 +67,8 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return bool if Flight Sim Directory can be located
         /// </summary>
-        /// <returns></returns>
-        public static bool locateFlightSim()
+        /// <returns>bool</returns>
+        public static bool LocateFlightSim()
         {
             return Directory.Exists(steamFlightSimPath);
         }
@@ -74,8 +76,8 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return bool if Flight Sim SDK can be located
         /// </summary>
-        /// <returns></returns>
-        public static bool locateFlightSimSDK()
+        /// <returns>bool</returns>
+        public static bool LocateFlightSimSDK()
         {
             return Directory.Exists(msfsSdkPath);
         }
@@ -83,8 +85,8 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return bool if Flight Sim DLL can be located
         /// </summary>
-        /// <returns></returns>
-        public static bool locateSimConnectDll()
+        /// <returns>bool</returns>
+        public static bool LocateSimConnectDll()
         {
             return File.Exists(simConnectDllPath);
         }
@@ -92,8 +94,8 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return bool if Flight Sim .NET DLL can be located
         /// </summary>
-        /// <returns></returns>
-        public static bool locateSimConnectNETDll()
+        /// <returns>bool</returns>
+        public static bool LocateSimConnectNETDll()
         {
             return File.Exists(simConnectNETDllPath);
         }
@@ -101,8 +103,8 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return the file path to FlightSim.exe
         /// </summary>
-        /// <returns></returns>
-        public static string getFlightSimExePath()
+        /// <returns>string</returns>
+        public static string GetFlightSimExePath()
         {
             return flightSimExePath;
         }
@@ -110,8 +112,8 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return File Path to SimConnect.DLL
         /// </summary>
-        /// <returns></returns>
-        public static string getSimConnectDLLPath()
+        /// <returns>string</returns>
+        public static string GetSimConnectDLLPath()
         {
             return simConnectPath;
         }
@@ -119,7 +121,7 @@ namespace FlightSimCapstone
         /// <summary>
         /// Check if Arduino device is connected to system
         /// </summary>
-        /// <returns></returns>
+        /// <returns>bool</returns>
         public static bool CheckArduinoConnection()
         {
             // Retrieve Plug and play (PnP) USB Devices. Search for Arduino 

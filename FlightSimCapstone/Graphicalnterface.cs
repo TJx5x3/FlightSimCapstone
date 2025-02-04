@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Work on the Graphical Interface Form has not yet begun. 
+// This code is outdated. 
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +15,10 @@ using Microsoft.FlightSimulator.SimConnect;
 
 namespace FlightSimCapstone
 {
-    public partial class Form3 : Form
+    public partial class Graphicalnterface : Form
     {
-        SimConnect simconnect = null;
-        const int WM_USER_SIMCONNECT = 0x0402;
+        //SimConnect simconnect = null;
+        //const int WM_USER_SIMCONNECT = 0x0402;
 
         // Start process with parameters:
         // https://stackoverflow.com/questions/5766574/start-a-process-with-parameters
@@ -34,7 +37,7 @@ namespace FlightSimCapstone
             }
         }
 
-        public Form3()
+        public Graphicalnterface()
         {
             InitializeComponent();
         }

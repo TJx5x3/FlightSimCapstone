@@ -18,8 +18,7 @@ namespace FlightSimCapstone
         [STAThread]
         static void Main()
         {
-
-            Console.WriteLine(BaseDependencyUtility.locateSimConnectDll());
+            Console.WriteLine(BaseDependencyUtility.LocateSimConnectDll());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new UtilityForm());

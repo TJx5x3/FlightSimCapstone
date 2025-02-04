@@ -1,6 +1,6 @@
 ﻿namespace FlightSimCapstone
 {
-    partial class Form3
+    partial class Graphicalnterface
     {
         /// <summary>
         /// Required designer variable.

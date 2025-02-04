@@ -2,13 +2,19 @@
 
 namespace FlightSimCapstone
 {
+    /// <summary>
+    /// Struct for Altimeter data
+    /// </summary>
     struct AltimeterData
     {
-        public double AltimeterReading; // Altimeter reading in feet
+        public double AltimeterReading; // Altimeter value in feet
     }
-
+    
+    /// <summary>
+    /// Struct for Heading Indicator data
+    /// </summary>
     struct HeadingIndicatorData
     {
-        public double HeadingIndicatorReading; // Altitude Indicator reading in feet
+        public double HeadingIndicatorReading; // Heading Indicator value in degrees
     }
 }
