@@ -228,5 +228,17 @@ namespace FlightSimCapstone
                 e.Cancel = false;
             }
         }
+
+        /// <summary>
+        /// Configure Graphical Interface button clicked event.
+        /// Open new instance of graphical interface form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ConfigureButton_Click(object sender, EventArgs e)
+        {
+            Graphicalnterface graphicalInterface = new Graphicalnterface();
+            graphicalInterface.Show();
+        }
     }
 }

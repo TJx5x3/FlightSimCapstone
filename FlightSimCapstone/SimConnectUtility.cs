@@ -164,11 +164,11 @@ namespace FlightSimCapstone
             // Request Heading Indicator value
             simconnect.RequestDataOnSimObject(Requests.HeadingIndicator, Definitions.HeadingIndicatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
-            // Handle SimConnect events
+            // Register Simconnect OnRecvSimobjectData event
             simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
 
+            // Recieve SimConnect data.
             simconnect.ReceiveMessage();
-            
         }
 
         // Test Connection to SimConnect

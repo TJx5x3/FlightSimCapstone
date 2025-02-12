@@ -74,7 +74,7 @@
             // 
             this.potentiometerValueLabel.AutoSize = true;
             this.potentiometerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.potentiometerValueLabel.Location = new System.Drawing.Point(105, 391);
+            this.potentiometerValueLabel.Location = new System.Drawing.Point(105, 219);
             this.potentiometerValueLabel.Name = "potentiometerValueLabel";
             this.potentiometerValueLabel.Size = new System.Drawing.Size(279, 29);
             this.potentiometerValueLabel.TabIndex = 9;
@@ -104,9 +104,9 @@
             this.AltimeterLabel.AutoSize = true;
             this.AltimeterLabel.Location = new System.Drawing.Point(336, 124);
             this.AltimeterLabel.Name = "AltimeterLabel";
-            this.AltimeterLabel.Size = new System.Drawing.Size(28, 13);
+            this.AltimeterLabel.Size = new System.Drawing.Size(47, 13);
             this.AltimeterLabel.TabIndex = 6;
-            this.AltimeterLabel.Text = "0.00";
+            this.AltimeterLabel.Text = "Altimeter";
             // 
             // InitializeSimconnectButton
             // 

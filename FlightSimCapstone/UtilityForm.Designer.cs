@@ -88,6 +88,7 @@
             this.OpenGraphicConfigButton.TabIndex = 3;
             this.OpenGraphicConfigButton.Text = "Configure Graphical Interface";
             this.OpenGraphicConfigButton.UseVisualStyleBackColor = true;
+            this.OpenGraphicConfigButton.Click += new System.EventHandler(this.ConfigureButton_Click);
             // 
             // label1
             // 
