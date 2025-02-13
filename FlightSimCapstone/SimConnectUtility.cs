@@ -62,7 +62,7 @@ namespace FlightSimCapstone
         
         // Simconnect Window Handler (Necessary for establishing SimConnect Connection)
         static IntPtr windowHandle;
-        private static bool connectionStatus;
+        private static bool connectionStatus = false;
 
         // Tweak this, get proper get/set logic
         // Getter/setter
@@ -74,7 +74,7 @@ namespace FlightSimCapstone
 
         // Retrieved simconnect data attributes
         private static double altimeterValue = 0.0;
-        private static double headingIndicatorValue = 0.0;
+        private static double headingIndicatorValue = 0.0f;
 
         // getter/setter property for altimeterValue
         public static double AltimeterValue 
@@ -159,7 +159,7 @@ namespace FlightSimCapstone
             simconnect.RegisterDataDefineStruct<HeadingIndicatorData>(Definitions.HeadingIndicatorData);
 
             // Request Altimeter value
-             simconnect.RequestDataOnSimObject(Requests.Altimeter, Definitions.AltimeterData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+            simconnect.RequestDataOnSimObject(Requests.Altimeter, Definitions.AltimeterData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
             // Request Heading Indicator value
             simconnect.RequestDataOnSimObject(Requests.HeadingIndicator, Definitions.HeadingIndicatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
@@ -192,6 +192,8 @@ namespace FlightSimCapstone
 
                     // Map Simconnect events upon successful SimConnect Connection
                     simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
+
+                    connectionStatus = true;
                     return true;
                 }
                 catch (COMException ex)
@@ -217,7 +219,7 @@ namespace FlightSimCapstone
                 simconnect.Dispose();
                 simconnect = null;
             }
-
+            connectionStatus = false;
             MessageBox.Show("Terminated SimConnect Session", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return true;
