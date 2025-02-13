@@ -101,7 +101,6 @@ namespace FlightSimCapstone
             // Map event when serial data is recieved and open Serial port on COM5
             serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
 
-            // 
             InitializeComponent();
 
             // Instantiate timer. Tick every second.
