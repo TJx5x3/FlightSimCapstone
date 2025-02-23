@@ -78,9 +78,10 @@ namespace FlightSimCapstone
         private static double turnCoordinatorValue = 0.0f;
         private static double turnIndicatorValue = 0.0f;
         private static double airspeedIndicatorValue = 0.0f;
+        private static double verticalAirspeedIndicatorValue = 0.0f;
+        private static double suctionGaugeValue = 0.0f;
 
-
-        // getter/setter property for altimeterValue
+        // getter/setter properties for simconnect attributes
         public static double AltimeterValue 
         {
             get { return altimeterValue; }
@@ -112,6 +113,18 @@ namespace FlightSimCapstone
             private set { airspeedIndicatorValue = value; }
         }
 
+        public static double VerticalAirspeedIndicatorValue
+        {
+            get { return verticalAirspeedIndicatorValue; }
+            private set { verticalAirspeedIndicatorValue = value; }
+        }
+
+        public static double SuctuionGaugeValue
+        {
+            get { return suctionGaugeValue; }
+            private set { suctionGaugeValue = value; }
+        }
+
         // Enumerations for SimConnect requests
         private enum Requests
         {
@@ -119,7 +132,9 @@ namespace FlightSimCapstone
             HeadingIndicator,
             TurnCoordinator,
             TurnIndicator,
-            AirspeedIndicator
+            AirspeedIndicator,
+            VerticalAirspeedIndicator,
+            SuctionGauge
         }
         
         // Enumerations for Definitions 
@@ -129,7 +144,10 @@ namespace FlightSimCapstone
             HeadingIndicatorData,
             TurnCoordinatorData,
             TurnIndicatorData,
-            AirspeedIndicatorData
+            AirspeedIndicatorData,
+            VerticalAirspeedIndicatorData,
+            SuctionGaugeData
+
         }
 
 
@@ -185,6 +203,22 @@ namespace FlightSimCapstone
                 AirspeedIndicatorValue = airspeedindicator.AirspeedIndicatorReading;
                 Console.WriteLine($"Airspeed Indicator Reading: {airspeedindicator.AirspeedIndicatorReading}");
             }
+            
+            // Request Vertical Airspeed Indicator Data
+            if ((Requests)data.dwRequestID == Requests.VerticalAirspeedIndicator)
+            {
+                VerticalAirspeedIndicatorData verticalairspeedindicator = (VerticalAirspeedIndicatorData)data.dwData[0];
+                VerticalAirspeedIndicatorValue = verticalairspeedindicator.VerticalAirspeedIndicatorReading;
+                Console.WriteLine($"Vertical Airspeed Indicator Reading: {verticalairspeedindicator.VerticalAirspeedIndicatorReading}");
+            }
+
+            // Request Suction Gauge Data
+            if ((Requests)data.dwRequestID == Requests.SuctionGauge)
+            {
+                SuctionGaugeData suctiongauge = (SuctionGaugeData)data.dwData[0];
+                suctionGaugeValue = suctiongauge.SuctionGaugeReading;
+                Console.WriteLine($"Suction Gauge Reading (inHg): {suctiongauge.SuctionGaugeReading}");
+            }
         }
 
         /// <summary>
@@ -228,7 +262,18 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.AirspeedIndicatorData, "AIRSPEED INDICATED", "Knots", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<AirspeedIndicatorData>(Definitions.AirspeedIndicatorData);
 
-           
+            // Define Vertical Airspeed Indicator data
+            // "VERTICAL SPEED" - Get vertical speed in feet per second
+            simconnect.AddToDataDefinition(Definitions.VerticalAirspeedIndicatorData, "VERTICAL SPEED", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<VerticalAirspeedIndicatorData>(Definitions.VerticalAirspeedIndicatorData);
+
+            // Define Suction Gauge data
+            simconnect.AddToDataDefinition(Definitions.SuctionGaugeData, "SUCTION PRESSURE", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<SuctionGaugeData>(Definitions.SuctionGaugeData);
+
+
+
+
             //TODO: See if refresh rate can be sped up using SIMCONNECT_PERIOD.SIM_FRAME
 
             // Request Altimeter value
@@ -245,6 +290,12 @@ namespace FlightSimCapstone
 
             // Request Airspeed Indicator value
             simconnect.RequestDataOnSimObject(Requests.AirspeedIndicator, Definitions.AirspeedIndicatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+            // Request Vertical Airspeed Indicator value
+            simconnect.RequestDataOnSimObject(Requests.VerticalAirspeedIndicator, Definitions.VerticalAirspeedIndicatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+            // Request Suction Gauge value
+            simconnect.RequestDataOnSimObject(Requests.SuctionGauge, Definitions.SuctionGaugeData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
             // Register Simconnect OnRecvSimobjectData event
             simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;

@@ -161,6 +161,12 @@ namespace FlightSimCapstone
                 // Update Airspeed Indicator label
                 AirspeedIndicatorLabel.Text = $"Airspeed Indicator: {SimConnectUtility.AirspeedIndicatorValue}";
 
+                // Update Vertical Airspeed Indicator Label
+                VerticalAirspeedIndicatorLabel.Text = $"Vertical Airspeed Indicator: {SimConnectUtility.VerticalAirspeedIndicatorValue}";
+
+                // Update Suction Gauge Label
+                SuctionGaugeLabel.Text = $"Suction Gauge (inHg): {SimConnectUtility.SuctuionGaugeValue}";
+
                 // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }
