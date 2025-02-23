@@ -39,6 +39,9 @@
             this.TestSimConnect_Button = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.TurnCoordinatorLabel = new System.Windows.Forms.Label();
+            this.AirspeedIndicatorLabel = new System.Windows.Forms.Label();
+            this.TurnIndicatorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -56,6 +59,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.TurnIndicatorLabel);
+            this.panel1.Controls.Add(this.AirspeedIndicatorLabel);
+            this.panel1.Controls.Add(this.TurnCoordinatorLabel);
             this.panel1.Controls.Add(this.potentiometerValueLabel);
             this.panel1.Controls.Add(this.CloseSerialPortButton);
             this.panel1.Controls.Add(this.HeadingIndicatorLabel);
@@ -74,7 +80,7 @@
             // 
             this.potentiometerValueLabel.AutoSize = true;
             this.potentiometerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.potentiometerValueLabel.Location = new System.Drawing.Point(105, 219);
+            this.potentiometerValueLabel.Location = new System.Drawing.Point(3, 403);
             this.potentiometerValueLabel.Name = "potentiometerValueLabel";
             this.potentiometerValueLabel.Size = new System.Drawing.Size(279, 29);
             this.potentiometerValueLabel.TabIndex = 9;
@@ -148,6 +154,33 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
+            // TurnCoordinatorLabel
+            // 
+            this.TurnCoordinatorLabel.AutoSize = true;
+            this.TurnCoordinatorLabel.Location = new System.Drawing.Point(336, 181);
+            this.TurnCoordinatorLabel.Name = "TurnCoordinatorLabel";
+            this.TurnCoordinatorLabel.Size = new System.Drawing.Size(86, 13);
+            this.TurnCoordinatorLabel.TabIndex = 10;
+            this.TurnCoordinatorLabel.Text = "Turn Coordinator";
+            // 
+            // AirspeedIndicatorLabel
+            // 
+            this.AirspeedIndicatorLabel.AutoSize = true;
+            this.AirspeedIndicatorLabel.Location = new System.Drawing.Point(336, 236);
+            this.AirspeedIndicatorLabel.Name = "AirspeedIndicatorLabel";
+            this.AirspeedIndicatorLabel.Size = new System.Drawing.Size(92, 13);
+            this.AirspeedIndicatorLabel.TabIndex = 11;
+            this.AirspeedIndicatorLabel.Text = "Airspeed Indicator";
+            // 
+            // TurnIndicatorLabel
+            // 
+            this.TurnIndicatorLabel.AutoSize = true;
+            this.TurnIndicatorLabel.Location = new System.Drawing.Point(336, 208);
+            this.TurnIndicatorLabel.Name = "TurnIndicatorLabel";
+            this.TurnIndicatorLabel.Size = new System.Drawing.Size(73, 13);
+            this.TurnIndicatorLabel.TabIndex = 12;
+            this.TurnIndicatorLabel.Text = "Turn Indicator";
+            // 
             // DevForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,5 +210,8 @@
         private System.Windows.Forms.Label HeadingIndicatorLabel;
         private System.Windows.Forms.Button CloseSerialPortButton;
         private System.Windows.Forms.Label potentiometerValueLabel;
+        private System.Windows.Forms.Label TurnCoordinatorLabel;
+        private System.Windows.Forms.Label AirspeedIndicatorLabel;
+        private System.Windows.Forms.Label TurnIndicatorLabel;
     }
 }

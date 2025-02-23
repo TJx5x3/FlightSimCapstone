@@ -148,12 +148,20 @@ namespace FlightSimCapstone
             {
                 // Update Altimeter label
                 AltimeterLabel.Text = $"Altimeter Value: {SimConnectUtility.AltimeterValue}"; // Formatted string
-                Console.WriteLine($"{SimConnectUtility.AltimeterValue}");
 
                 // Update Heading Indicator label
                 HeadingIndicatorLabel.Text = $"Heading Indicator: {SimConnectUtility.HeadingIndicatorValue}";
-                Console.WriteLine($"{SimConnectUtility.HeadingIndicatorValue}");
 
+                // Update Turn Coordinator label
+                TurnCoordinatorLabel.Text = $"Turn Coordinator: {SimConnectUtility.TurnCoordinatorValue}";
+                
+                // Update Turn Indicator Label
+                TurnIndicatorLabel.Text = $"Turn Indicator: {SimConnectUtility.TurnIndicatorValue}"; 
+
+                // Update Airspeed Indicator label
+                AirspeedIndicatorLabel.Text = $"Airspeed Indicator: {SimConnectUtility.AirspeedIndicatorValue}";
+
+                // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }
         }

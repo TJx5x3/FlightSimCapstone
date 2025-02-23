@@ -64,7 +64,7 @@ namespace FlightSimCapstone
         static IntPtr windowHandle;
         private static bool connectionStatus = false;
 
-        // Tweak this, get proper get/set logic
+        // TODO: Tweak this, get proper get/set logic
         // Getter/setter
         public static bool ConnectionStatus 
         { 
@@ -75,6 +75,10 @@ namespace FlightSimCapstone
         // Retrieved simconnect data attributes
         private static double altimeterValue = 0.0;
         private static double headingIndicatorValue = 0.0f;
+        private static double turnCoordinatorValue = 0.0f;
+        private static double turnIndicatorValue = 0.0f;
+        private static double airspeedIndicatorValue = 0.0f;
+
 
         // getter/setter property for altimeterValue
         public static double AltimeterValue 
@@ -90,18 +94,42 @@ namespace FlightSimCapstone
             private set { headingIndicatorValue = value; }
         }
 
+        public static double TurnCoordinatorValue
+        {
+            get { return turnCoordinatorValue; }
+            private set { turnCoordinatorValue = value; }
+        }
+
+        public static double TurnIndicatorValue
+        {
+            get { return turnIndicatorValue; }
+            private set { turnIndicatorValue = value; }
+        }
+
+        public static double AirspeedIndicatorValue
+        {
+            get { return airspeedIndicatorValue; }
+            private set { airspeedIndicatorValue = value; }
+        }
+
         // Enumerations for SimConnect requests
         private enum Requests
         {
             Altimeter,
-            HeadingIndicator
+            HeadingIndicator,
+            TurnCoordinator,
+            TurnIndicator,
+            AirspeedIndicator
         }
         
         // Enumerations for Definitions 
         private enum Definitions
         {
             AltimeterData,
-            HeadingIndicatorData
+            HeadingIndicatorData,
+            TurnCoordinatorData,
+            TurnIndicatorData,
+            AirspeedIndicatorData
         }
 
 
@@ -133,6 +161,30 @@ namespace FlightSimCapstone
                 HeadingIndicatorValue = headingindicator.HeadingIndicatorReading;
                 Console.WriteLine($"Heading Indicator Reading: {headingindicator.HeadingIndicatorReading} deg");
             }
+
+            // Request Turn Coordinator data
+            if ((Requests)data.dwRequestID == Requests.TurnCoordinator)
+            {
+                TurnCoordinatorData turncoordinator = (TurnCoordinatorData)data.dwData[0];
+                TurnCoordinatorValue = turncoordinator.TurnCoordinatorReading; 
+                Console.WriteLine($"Turn Coordinator Reading: {turncoordinator.TurnCoordinatorReading}");
+            }
+
+            // Request Turn Indicator data
+            if ((Requests)data.dwRequestID == Requests.TurnIndicator)
+            {
+                TurnIndicatorData turnindicator = (TurnIndicatorData)data.dwData[0];
+                TurnIndicatorValue = turnindicator.TurnIndicatorReading;
+                Console.WriteLine($"Turn Indicator Reading: {turnindicator.TurnIndicatorReading}");
+            }
+
+            // Request Airspeed Indicator Data
+            if ((Requests)data.dwRequestID == Requests.AirspeedIndicator)
+            {
+                AirspeedIndicatorData airspeedindicator = (AirspeedIndicatorData)data.dwData[0];
+                AirspeedIndicatorValue = airspeedindicator.AirspeedIndicatorReading;
+                Console.WriteLine($"Airspeed Indicator Reading: {airspeedindicator.AirspeedIndicatorReading}");
+            }
         }
 
         /// <summary>
@@ -147,22 +199,52 @@ namespace FlightSimCapstone
             // NOTE: Pass Simulation variable as string 
             // in 2nd param in AddToDataDefinition 
             // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_System_Variables.htm
+            // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Misc_Variables.htm
             if (!ConnectSimconnectClient())
                 return;
             
             // Define Altimeter data
-            simconnect.AddToDataDefinition(Definitions.AltimeterData, "Indicated Altitude", "feet", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            // "Indicated Altitude" - Indicated Altitude in feet
+            simconnect.AddToDataDefinition(Definitions.AltimeterData, "INDICATED ALTITUDE", "feet", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<AltimeterData>(Definitions.AltimeterData);
 
             // Define Heading Indicator data
-            simconnect.AddToDataDefinition(Definitions.HeadingIndicatorData, "Plane Heading Degrees Gyro", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            // "Plane Heading Degrees Gyro" - heading indicator in degrees
+            simconnect.AddToDataDefinition(Definitions.HeadingIndicatorData, "PLANE HEADING DEGREES GYRO", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<HeadingIndicatorData>(Definitions.HeadingIndicatorData);
+
+            // Define Turn Coordinator data
+            // "Turn Coordinator Ball" - Turn coordinator reading in degrees
+            simconnect.AddToDataDefinition(Definitions.TurnCoordinatorData, "TURN COORDINATOR BALL", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<TurnCoordinatorData>(Definitions.TurnCoordinatorData);
+
+            // Define Turn Indicator data
+            // "TURN INDICATOR RATE"  - Turn Indicator Reading in degrees per second 
+            simconnect.AddToDataDefinition(Definitions.TurnIndicatorData, "TURN INDICATOR RATE", "degrees per second", SIMCONNECT_DATATYPE.FLOAT64, 0.0F, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<TurnIndicatorData>(Definitions.TurnIndicatorData);  
+
+            // Define Airspeed Indicator data
+            // "Airspeed INDICATED" - Airspeed indicator value on true calibration scale in degrees
+            simconnect.AddToDataDefinition(Definitions.AirspeedIndicatorData, "AIRSPEED INDICATED", "Knots", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<AirspeedIndicatorData>(Definitions.AirspeedIndicatorData);
+
+           
+            //TODO: See if refresh rate can be sped up using SIMCONNECT_PERIOD.SIM_FRAME
 
             // Request Altimeter value
             simconnect.RequestDataOnSimObject(Requests.Altimeter, Definitions.AltimeterData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
             // Request Heading Indicator value
             simconnect.RequestDataOnSimObject(Requests.HeadingIndicator, Definitions.HeadingIndicatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+            // Request Turn Coordinator value
+            simconnect.RequestDataOnSimObject(Requests.TurnCoordinator, Definitions.TurnCoordinatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+            // Request Turn Indicator value
+            simconnect.RequestDataOnSimObject(Requests.TurnIndicator, Definitions.TurnIndicatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+            // Request Airspeed Indicator value
+            simconnect.RequestDataOnSimObject(Requests.AirspeedIndicator, Definitions.AirspeedIndicatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
             // Register Simconnect OnRecvSimobjectData event
             simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
