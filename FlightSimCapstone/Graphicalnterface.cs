@@ -1,8 +1,23 @@
-﻿/*
- * https://stackoverflow.com/questions/5766574/start-a-process-with-parameters
+﻿/**********************************************************************************
+ *  Author          :   Jason Broom
+ *  Course Number   :   STG-452
+ *  Last Revision   :   2/23/25
+ *  Class           :   GraphicalInterface.cs
+ *  Description     :   This module will contain various overlayed bitmap images to create graphical modules.
+ *                      Each module will update according to real-time values retrieved from the SimConnect Client.
+ **********************************************************************************
+ *  I used source code from the following websites to complete
+ *  this assignment:
  * 
+ * Image Rotation
  * https://foxlearn.com/csharp/image-rotation-8368.html
+ * 
+ * Avoid Automatic Scaling when applying Image Transformations
  * https://learn.microsoft.com/en-us/dotnet/desktop/winforms/advanced/how-to-improve-performance-by-avoiding-automatic-scaling?view=netframeworkdesktop-4.8
+ * 
+ * Overlap Transparent Image
+ * https://stackoverflow.com/questions/38566828/overlap-one-image-as-transparent-on-another-in-c-sharp
+ * 
  */
 using System;
 using System.Collections.Generic;
@@ -17,10 +32,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.FlightSimulator.SimConnect;
-//using static System.Net.Mime.MediaTypeNames;
 
 namespace FlightSimCapstone
 {
+    /// <summary>
+    /// This module holds graphical elements to be displayed in the Instrumentation Panel.
+    /// TODO: Create Second Form to display fullscreen on second display. 
+    ///       This will require BaseDependencyUtility to detect secondary displays. 
+    /// </summary>
     public partial class Graphicalnterface : Form
     {
         // Timer to update retrieved SimConnect values in text fields
@@ -29,14 +48,22 @@ namespace FlightSimCapstone
         private Bitmap originalImage;
         private float degree = 0f;
 
-
+        /// <summary>
+        /// Class constructor
+        /// 
+        /// Initialize picturebox attributes. 
+        /// Overlay transparent images, set size, parent image, location, and color
+        /// 
+        /// <br/>
+        /// Instantiate Timer
+        /// </summary>
         public Graphicalnterface()
         {
             InitializeComponent();
-            originalImage = new Bitmap(Properties.Resources.HeadingIndicator1);
+            originalImage = new Bitmap(Properties.Resources.HeadingIndicator1); // Circular gauge that shows degree values
             pictureBox1.Image = originalImage;
 
-            pictureBox2.Parent = pictureBox1;
+            pictureBox2.Parent = pictureBox1; // Transparent Airplane overlay
             pictureBox2.Location =  new Point(0,0);
             pictureBox2.BackColor = Color.Transparent;
 
@@ -54,7 +81,8 @@ namespace FlightSimCapstone
 
 
         /// <summary>
-        /// 
+        /// This image rotates a Bitmap image around the center point.
+        /// Image is re-sized accordingly to avoid visible image resize durring transformation. 
         /// </summary>
         /// <param name="image"></param>
         /// <param name="degree"></param>
@@ -65,32 +93,33 @@ namespace FlightSimCapstone
             Bitmap rotatedBitmap = new Bitmap(image.Width, image.Height);
             Graphics g = Graphics.FromImage(rotatedBitmap);
 
+            // Scale image down /2 and rotate
             g.TranslateTransform((float)image.Width / 2, (float)image.Height / 2);
             g.RotateTransform(degree);
+
+            // Scale rotated image back to full size before drawing (To avoid visible resizing)
             g.TranslateTransform(-(float)image.Width / 2, -(float)image.Height / 2);
             g.DrawImage(image, new Point(0,0));
             return rotatedBitmap;
         }
+
+        /// <summary>
+        /// Testing button 
+        /// Used to test updating data in graphical modules.
+        /// (This button is to be removed)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RotateButton_Click(object sender, EventArgs e)
         {
-            degree += 5f;
-
-            if (degree >= 360)
-                degree -= 360;
-
-            //Bitmap rotatedImage = SetImageRotation(originalImage, degree);
-
-            //pictureBox1.Image = rotatedImage;
-
-
+            // 
             if (SimConnectUtility.ConnectionStatus != false)
             {
-                Console.WriteLine("can connect");
-
+                // Retrieve Heading Indicator value from SimConnect Client, Refresh Simconnect. 
                 float test = (float)SimConnectUtility.HeadingIndicatorValue;
-                Console.WriteLine(test);
                 SimConnectUtility.RefreshSimconnect();
 
+                // Set picturebox to rotational value retrieved from SimConnect.
                 Bitmap rotatedImage = SetImageRotation(originalImage, test);
                 pictureBox1.Image = rotatedImage;
 
@@ -110,8 +139,10 @@ namespace FlightSimCapstone
             // with the retrieved value.
             if (SimConnectUtility.ConnectionStatus)
             {
+                // Refresh SimConnect Client
                 SimConnectUtility.RefreshSimconnect();
 
+                // Rotate background image based on rotational value of the Heading Indicator retrieved from SimConnect. 
                 Bitmap rotatedImage = SetImageRotation(originalImage, -(float)SimConnectUtility.HeadingIndicatorValue);
                 pictureBox1.Image = rotatedImage;
             }
@@ -119,7 +150,12 @@ namespace FlightSimCapstone
             Console.WriteLine("Tick");
         }
 
-
+        /// <summary>
+        /// OnClosing Event.
+        /// Disable and Discard Form timer when closed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GraphicalInterface_OnClosing(object sender, FormClosingEventArgs e)
         {
             formTimer.Stop();

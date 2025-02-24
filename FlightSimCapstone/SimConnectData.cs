@@ -1,4 +1,20 @@
 ﻿
+/**********************************************************************************
+ *  Author          :   Jason Broom
+ *  Course Number   :   STG-452
+ *  Last Revision   :   2/23/25
+ *  Class           :   SimConnectUtility.cs
+ *  Description     :   This module defines various structs to parse data read
+ *                      from the SimConnect Client in the FlightSimCapstone
+ *                      namespace. (See SimConnectUtility.cs)
+ **********************************************************************************
+ * I used source code from the following websites to complete
+ * this assignment:
+ * 
+ * SimConnect Struct Requirements:
+ * https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Programming_SimConnect_Clients_using_Managed_Code.htm
+ */
+
 
 namespace FlightSimCapstone
 {
@@ -58,16 +74,25 @@ namespace FlightSimCapstone
         public double SuctionGaugeReading;
     }
 
+    /// <summary>
+    /// Struct for Total Fuel data
+    /// </summary>
     struct TotalFuelData
     {
         public double TotalFuelReading; 
     }
 
+    /// <summary>
+    /// Struct for Current Fuel data
+    /// </summary>
     struct CurrentFuelData
     {
         public double CurrentFuelReading;
     }
 
+    /// <summary>
+    /// Struct for Ammeter data
+    /// </summary>
     struct AmmeterData
     {
         public double AmmeterReading;

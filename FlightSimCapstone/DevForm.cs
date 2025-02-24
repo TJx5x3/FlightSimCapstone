@@ -2,7 +2,7 @@
 /**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   2/3/25
+ *  Last Revision   :   2/23/25
  *  Class           :   DevForm.cs
  *  Description     :   This module defines the Developer Form. This is a secret
  *                      form that can be launched by pressing F6 from the Utility
@@ -31,7 +31,6 @@
  *  in the developer form:
  *  https://stackoverflow.com/questions/22356/cleanest-way-to-invoke-cross-thread-events
  *  https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.methodinvoker?view=windowsdesktop-9.0
- *  
  **********************************************************************************/
 
 using System;
@@ -216,9 +215,10 @@ namespace FlightSimCapstone
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SerialPortDataRecieved(object sender, EventArgs e)
-        { 
+        {
             // This is a separate way of directly appending serial data to potentiometerValueLabel.
             // This is to prevent "Cross thread operation error"
+            // See: https://stackoverflow.com/questions/22356/cleanest-way-to-invoke-cross-thread-events
             try
             {
                 string serialData = serialPort.ReadLine();
