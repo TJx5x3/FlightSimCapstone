@@ -46,6 +46,7 @@
             this.SuctionGaugeLabel = new System.Windows.Forms.Label();
             this.TotalFuelLabel = new System.Windows.Forms.Label();
             this.CurrentFuelLabel = new System.Windows.Forms.Label();
+            this.AmmeterLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -63,6 +64,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.AmmeterLabel);
             this.panel1.Controls.Add(this.CurrentFuelLabel);
             this.panel1.Controls.Add(this.TotalFuelLabel);
             this.panel1.Controls.Add(this.SuctionGaugeLabel);
@@ -81,7 +83,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(707, 432);
+            this.panel1.Size = new System.Drawing.Size(707, 495);
             this.panel1.TabIndex = 1;
             // 
             // TurnIndicatorLabel
@@ -225,6 +227,15 @@
             this.CurrentFuelLabel.TabIndex = 16;
             this.CurrentFuelLabel.Text = "Current Fuel";
             // 
+            // AmmeterLabel
+            // 
+            this.AmmeterLabel.AutoSize = true;
+            this.AmmeterLabel.Location = new System.Drawing.Point(336, 359);
+            this.AmmeterLabel.Name = "AmmeterLabel";
+            this.AmmeterLabel.Size = new System.Drawing.Size(48, 13);
+            this.AmmeterLabel.TabIndex = 17;
+            this.AmmeterLabel.Text = "Ammeter";
+            // 
             // DevForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,5 +272,6 @@
         private System.Windows.Forms.Label SuctionGaugeLabel;
         private System.Windows.Forms.Label CurrentFuelLabel;
         private System.Windows.Forms.Label TotalFuelLabel;
+        private System.Windows.Forms.Label AmmeterLabel;
     }
 }

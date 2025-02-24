@@ -32,6 +32,9 @@
  *  
  *  Aircraft Fuel Variables:
  *  https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Fuel_Variables.htm
+ *  
+ *  Aircraft Electrical Variables:
+ *  https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Electrics_Variables.htm
  **********************************************************************************/
 
 using System;
@@ -85,6 +88,8 @@ namespace FlightSimCapstone
         private static double suctionGaugeValue = 0.0f;
         private static double totalFuelValue = 0.0f;
         private static double currentFuelValue = 0.0f;
+        private static double ammeterValue = 0.0f;
+        
 
         // getter/setter properties for simconnect attributes
         public static double AltimeterValue
@@ -93,7 +98,6 @@ namespace FlightSimCapstone
             private set { altimeterValue = value; }
         }
 
-        // Getter/setter property for headingIndicatorValue
         public static double HeadingIndicatorValue
         {
             get { return headingIndicatorValue; }
@@ -133,15 +137,20 @@ namespace FlightSimCapstone
         public static double TotalFuelValue
         {
             get { return totalFuelValue; }
-            set { totalFuelValue = value; }
+            private set { totalFuelValue = value; }
         }
 
         public static double CurrentFuelValue
         {
             get { return currentFuelValue; }
-            set { currentFuelValue = value; }
+            private set { currentFuelValue = value; }
         }
 
+        public static double AmmeterValue
+        {
+            get { return ammeterValue; }
+            private set { ammeterValue = value; }
+        }
 
         // Enumerations for SimConnect requests
         private enum Requests
@@ -154,7 +163,8 @@ namespace FlightSimCapstone
             VerticalAirspeedIndicator,
             SuctionGauge,
             TotalFuel,
-            CurrentFuel
+            CurrentFuel,
+            Ammeter
         }
         
         // Enumerations for Definitions 
@@ -168,7 +178,8 @@ namespace FlightSimCapstone
             VerticalAirspeedIndicatorData,
             SuctionGaugeData,
             TotalFuelData,
-            CurrentFuelData
+            CurrentFuelData,
+            AmmeterData
         }
 
 
@@ -241,8 +252,6 @@ namespace FlightSimCapstone
                 Console.WriteLine($"Suction Gauge Reading (inHg): {suctiongauge.SuctionGaugeReading}");
             }
 
-            // Fuel Gauge
-
             // Request Total Fuel Capacity
             if ((Requests)data.dwRequestID == Requests.TotalFuel)
             {
@@ -259,6 +268,13 @@ namespace FlightSimCapstone
                 Console.WriteLine($"Suction Gauge Reading (inHg): {currentfuel.CurrentFuelReading}");
             }
 
+            // Request Ammeter Data
+            if ((Requests)data.dwRequestID == Requests.Ammeter)
+            {
+                AmmeterData ammeter = (AmmeterData)data.dwData[0];
+                ammeterValue = ammeter.AmmeterReading;
+                Console.WriteLine($"Ammeter Reading (amp): {ammeter.AmmeterReading}");
+            }
         }
 
         /// <summary>
@@ -267,6 +283,8 @@ namespace FlightSimCapstone
         /// <remarks>
         /// Declarations are defined to Simconnect environment variables.
         /// Retrieved data mapped to declared structs (See SimConnectData.cs)
+        /// <br/>
+        /// TODO: See if refresh rate can be sped up using SIMCONNECT_PERIOD.SIM_FRAME
         /// </remarks>
         public static void InitializeSimReadings()
         {
@@ -274,8 +292,15 @@ namespace FlightSimCapstone
             // in 2nd param in AddToDataDefinition 
             // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_System_Variables.htm
             // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Misc_Variables.htm
+            // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Fuel_Variables.htm
+            // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Electrics_Variables.htm
+
             if (!ConnectSimconnectClient())
                 return;
+
+            /////////////////////////////////
+            // Define and Register Values: //
+            /////////////////////////////////
             
             // Define Altimeter data
             // "Indicated Altitude" - Indicated Altitude in feet
@@ -321,7 +346,14 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.CurrentFuelData, "FUEL TOTAL QUANTITY", "Gallons", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<CurrentFuelData>(Definitions.CurrentFuelData);
 
-            //TODO: See if refresh rate can be sped up using SIMCONNECT_PERIOD.SIM_FRAME
+            // Define Ammeter value
+            // "ELECTRICAL BATTERY BUS AMPS" - Get Battery bus current in Amperes
+            simconnect.AddToDataDefinition(Definitions.AmmeterData, "ELECTRICAL BATTERY BUS AMPS", "Amperes", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<AmmeterData>(Definitions.AmmeterData);
+
+            /////////////////////
+            // Request Values: //
+            /////////////////////
 
             // Request Altimeter value
             simconnect.RequestDataOnSimObject(Requests.Altimeter, Definitions.AltimeterData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
@@ -350,6 +382,9 @@ namespace FlightSimCapstone
             // Request Current Fuel Capacity value
             simconnect.RequestDataOnSimObject(Requests.CurrentFuel, Definitions.CurrentFuelData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
            
+            // Request Ammeter Value
+            simconnect.RequestDataOnSimObject(Requests.Ammeter, Definitions.AmmeterData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+            
             // Register Simconnect OnRecvSimobjectData event
             simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
 

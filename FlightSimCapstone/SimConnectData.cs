@@ -67,4 +67,9 @@ namespace FlightSimCapstone
     {
         public double CurrentFuelReading;
     }
+
+    struct AmmeterData
+    {
+        public double AmmeterReading;
+    }
 }

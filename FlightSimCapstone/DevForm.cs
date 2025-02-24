@@ -173,6 +173,9 @@ namespace FlightSimCapstone
                 // Update current fuel capacity label
                 CurrentFuelLabel.Text = $"Current Fuel (gal): {SimConnectUtility.CurrentFuelValue}";
 
+                // Update Ammeter Value
+                AmmeterLabel.Text = $"Ammeter (amp): {SimConnectUtility.AmmeterValue}";
+
                 // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }
