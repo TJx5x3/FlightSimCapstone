@@ -1,1 +1,1 @@
-README in progress... I'ts gonna be awesome. 
+README in progress... It's gonna be awesome. 
