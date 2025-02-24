@@ -44,6 +44,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.VerticalAirspeedIndicatorLabel = new System.Windows.Forms.Label();
             this.SuctionGaugeLabel = new System.Windows.Forms.Label();
+            this.TotalFuelLabel = new System.Windows.Forms.Label();
+            this.CurrentFuelLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -61,6 +63,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.CurrentFuelLabel);
+            this.panel1.Controls.Add(this.TotalFuelLabel);
             this.panel1.Controls.Add(this.SuctionGaugeLabel);
             this.panel1.Controls.Add(this.VerticalAirspeedIndicatorLabel);
             this.panel1.Controls.Add(this.TurnIndicatorLabel);
@@ -203,6 +207,24 @@
             this.SuctionGaugeLabel.TabIndex = 14;
             this.SuctionGaugeLabel.Text = "Suction Gauge";
             // 
+            // TotalFuelLabel
+            // 
+            this.TotalFuelLabel.AutoSize = true;
+            this.TotalFuelLabel.Location = new System.Drawing.Point(335, 310);
+            this.TotalFuelLabel.Name = "TotalFuelLabel";
+            this.TotalFuelLabel.Size = new System.Drawing.Size(54, 13);
+            this.TotalFuelLabel.TabIndex = 15;
+            this.TotalFuelLabel.Text = "Total Fuel";
+            // 
+            // CurrentFuelLabel
+            // 
+            this.CurrentFuelLabel.AutoSize = true;
+            this.CurrentFuelLabel.Location = new System.Drawing.Point(336, 334);
+            this.CurrentFuelLabel.Name = "CurrentFuelLabel";
+            this.CurrentFuelLabel.Size = new System.Drawing.Size(64, 13);
+            this.CurrentFuelLabel.TabIndex = 16;
+            this.CurrentFuelLabel.Text = "Current Fuel";
+            // 
             // DevForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,5 +259,7 @@
         private System.Windows.Forms.Label TurnIndicatorLabel;
         private System.Windows.Forms.Label VerticalAirspeedIndicatorLabel;
         private System.Windows.Forms.Label SuctionGaugeLabel;
+        private System.Windows.Forms.Label CurrentFuelLabel;
+        private System.Windows.Forms.Label TotalFuelLabel;
     }
 }

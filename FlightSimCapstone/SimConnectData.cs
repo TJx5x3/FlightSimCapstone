@@ -57,4 +57,14 @@ namespace FlightSimCapstone
     {
         public double SuctionGaugeReading;
     }
+
+    struct TotalFuelData
+    {
+        public double TotalFuelReading; 
+    }
+
+    struct CurrentFuelData
+    {
+        public double CurrentFuelReading;
+    }
 }

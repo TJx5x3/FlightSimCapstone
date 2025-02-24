@@ -167,6 +167,12 @@ namespace FlightSimCapstone
                 // Update Suction Gauge Label
                 SuctionGaugeLabel.Text = $"Suction Gauge (inHg): {SimConnectUtility.SuctuionGaugeValue}";
 
+                // Update total fuel capacity Label
+                TotalFuelLabel.Text = $"Total Fuel (gal): {SimConnectUtility.TotalFuelValue}";
+
+                // Update current fuel capacity label
+                CurrentFuelLabel.Text = $"Current Fuel (gal): {SimConnectUtility.CurrentFuelValue}";
+
                 // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }

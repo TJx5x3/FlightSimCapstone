@@ -29,6 +29,9 @@
  *  
  *  Handling SimConnect data transmission upon successful SimConnect Connection:
  *  https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/API_Reference/Structures_And_Enumerations/SIMCONNECT_RECV_SIMOBJECT_DATA.htm
+ *  
+ *  Aircraft Fuel Variables:
+ *  https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Fuel_Variables.htm
  **********************************************************************************/
 
 using System;
@@ -59,15 +62,15 @@ namespace FlightSimCapstone
         // Initialize SimConnect
         static SimConnect simconnect = null;
         const int WM_USER_SIMCONNECT = 0x0402;
-        
+
         // Simconnect Window Handler (Necessary for establishing SimConnect Connection)
         static IntPtr windowHandle;
         private static bool connectionStatus = false;
 
         // TODO: Tweak this, get proper get/set logic
         // Getter/setter
-        public static bool ConnectionStatus 
-        { 
+        public static bool ConnectionStatus
+        {
             get { return (simconnect != null); }
             set { connectionStatus = false; }
         }
@@ -80,12 +83,14 @@ namespace FlightSimCapstone
         private static double airspeedIndicatorValue = 0.0f;
         private static double verticalAirspeedIndicatorValue = 0.0f;
         private static double suctionGaugeValue = 0.0f;
+        private static double totalFuelValue = 0.0f;
+        private static double currentFuelValue = 0.0f;
 
         // getter/setter properties for simconnect attributes
-        public static double AltimeterValue 
+        public static double AltimeterValue
         {
             get { return altimeterValue; }
-            private set { altimeterValue = value; } 
+            private set { altimeterValue = value; }
         }
 
         // Getter/setter property for headingIndicatorValue
@@ -125,6 +130,19 @@ namespace FlightSimCapstone
             private set { suctionGaugeValue = value; }
         }
 
+        public static double TotalFuelValue
+        {
+            get { return totalFuelValue; }
+            set { totalFuelValue = value; }
+        }
+
+        public static double CurrentFuelValue
+        {
+            get { return currentFuelValue; }
+            set { currentFuelValue = value; }
+        }
+
+
         // Enumerations for SimConnect requests
         private enum Requests
         {
@@ -134,7 +152,9 @@ namespace FlightSimCapstone
             TurnIndicator,
             AirspeedIndicator,
             VerticalAirspeedIndicator,
-            SuctionGauge
+            SuctionGauge,
+            TotalFuel,
+            CurrentFuel
         }
         
         // Enumerations for Definitions 
@@ -146,8 +166,9 @@ namespace FlightSimCapstone
             TurnIndicatorData,
             AirspeedIndicatorData,
             VerticalAirspeedIndicatorData,
-            SuctionGaugeData
-
+            SuctionGaugeData,
+            TotalFuelData,
+            CurrentFuelData
         }
 
 
@@ -219,6 +240,25 @@ namespace FlightSimCapstone
                 suctionGaugeValue = suctiongauge.SuctionGaugeReading;
                 Console.WriteLine($"Suction Gauge Reading (inHg): {suctiongauge.SuctionGaugeReading}");
             }
+
+            // Fuel Gauge
+
+            // Request Total Fuel Capacity
+            if ((Requests)data.dwRequestID == Requests.TotalFuel)
+            {
+                TotalFuelData totalfuel = (TotalFuelData)data.dwData[0];
+                totalFuelValue = totalfuel.TotalFuelReading;
+                Console.WriteLine($"Suction Gauge Reading (inHg): {totalfuel.TotalFuelReading}");
+            }
+
+            // Request Current Fuel Capacity
+            if ((Requests)data.dwRequestID == Requests.CurrentFuel)
+            {
+                CurrentFuelData currentfuel = (CurrentFuelData)data.dwData[0];
+                currentFuelValue = currentfuel.CurrentFuelReading;
+                Console.WriteLine($"Suction Gauge Reading (inHg): {currentfuel.CurrentFuelReading}");
+            }
+
         }
 
         /// <summary>
@@ -271,8 +311,15 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.SuctionGaugeData, "SUCTION PRESSURE", "Feet per second", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<SuctionGaugeData>(Definitions.SuctionGaugeData);
 
+            // Define Total Fuel data (How much fuel the aircraft can hold)
+            // "FUEL TOTAL CAPACITY" - Get total capacity of all fuel tanks in gallons
+            simconnect.AddToDataDefinition(Definitions.TotalFuelData, "FUEL TOTAL CAPACITY", "Gallons", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<TotalFuelData>(Definitions.TotalFuelData);
 
-
+            // Define Current Fuel Data (How much fuel the aircraft has left)
+            // "FUEL TOTAL QUANTITY" - Current total quantity of fuel left in all tanks (gal)
+            simconnect.AddToDataDefinition(Definitions.CurrentFuelData, "FUEL TOTAL QUANTITY", "Gallons", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<CurrentFuelData>(Definitions.CurrentFuelData);
 
             //TODO: See if refresh rate can be sped up using SIMCONNECT_PERIOD.SIM_FRAME
 
@@ -297,6 +344,12 @@ namespace FlightSimCapstone
             // Request Suction Gauge value
             simconnect.RequestDataOnSimObject(Requests.SuctionGauge, Definitions.SuctionGaugeData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
+            // Request Total Fuel Capacity value
+            simconnect.RequestDataOnSimObject(Requests.TotalFuel, Definitions.TotalFuelData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+            // Request Current Fuel Capacity value
+            simconnect.RequestDataOnSimObject(Requests.CurrentFuel, Definitions.CurrentFuelData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+           
             // Register Simconnect OnRecvSimobjectData event
             simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
 
