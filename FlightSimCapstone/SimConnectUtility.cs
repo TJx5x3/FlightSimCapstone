@@ -3,11 +3,13 @@
  *  Course Number   :   STG-452
  *  Last Revision   :   2/3/25
  *  Class           :   SimConnectUtility.cs
- *  Description     :   This module handles data communication with the Microsoft
- *                      Flight Simulator API (SimConnect). Datatypes, enums, and 
+ *  Description     :   This module defines the Developer Form. This is a secret
+ *                      form that can be launched by pressing F6 from the Utility
+ *                      Form.
  *                      
- *                      
- *                      
+ *                      This form is to display Diagnostics and/or test features
+ *                      before they are integrated into the application visible
+ *                      to the end user.
  **********************************************************************************
  *  I used source code from the following websites to complete
  *  this assignment:
