@@ -148,12 +148,35 @@ namespace FlightSimCapstone
             {
                 // Update Altimeter label
                 AltimeterLabel.Text = $"Altimeter Value: {SimConnectUtility.AltimeterValue}"; // Formatted string
-                Console.WriteLine($"{SimConnectUtility.AltimeterValue}");
 
                 // Update Heading Indicator label
                 HeadingIndicatorLabel.Text = $"Heading Indicator: {SimConnectUtility.HeadingIndicatorValue}";
-                Console.WriteLine($"{SimConnectUtility.HeadingIndicatorValue}");
 
+                // Update Turn Coordinator label
+                TurnCoordinatorLabel.Text = $"Turn Coordinator: {SimConnectUtility.TurnCoordinatorValue}";
+                
+                // Update Turn Indicator Label
+                TurnIndicatorLabel.Text = $"Turn Indicator: {SimConnectUtility.TurnIndicatorValue}"; 
+
+                // Update Airspeed Indicator label
+                AirspeedIndicatorLabel.Text = $"Airspeed Indicator: {SimConnectUtility.AirspeedIndicatorValue}";
+
+                // Update Vertical Airspeed Indicator Label
+                VerticalAirspeedIndicatorLabel.Text = $"Vertical Airspeed Indicator: {SimConnectUtility.VerticalAirspeedIndicatorValue}";
+
+                // Update Suction Gauge Label
+                SuctionGaugeLabel.Text = $"Suction Gauge (inHg): {SimConnectUtility.SuctuionGaugeValue}";
+
+                // Update total fuel capacity Label
+                TotalFuelLabel.Text = $"Total Fuel (gal): {SimConnectUtility.TotalFuelValue}";
+
+                // Update current fuel capacity label
+                CurrentFuelLabel.Text = $"Current Fuel (gal): {SimConnectUtility.CurrentFuelValue}";
+
+                // Update Ammeter Value
+                AmmeterLabel.Text = $"Ammeter (amp): {SimConnectUtility.AmmeterValue}";
+
+                // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }
         }

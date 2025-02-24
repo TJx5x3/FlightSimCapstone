@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TurnIndicatorLabel = new System.Windows.Forms.Label();
+            this.AirspeedIndicatorLabel = new System.Windows.Forms.Label();
+            this.TurnCoordinatorLabel = new System.Windows.Forms.Label();
             this.potentiometerValueLabel = new System.Windows.Forms.Label();
             this.CloseSerialPortButton = new System.Windows.Forms.Button();
             this.HeadingIndicatorLabel = new System.Windows.Forms.Label();
@@ -39,6 +42,11 @@
             this.TestSimConnect_Button = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.VerticalAirspeedIndicatorLabel = new System.Windows.Forms.Label();
+            this.SuctionGaugeLabel = new System.Windows.Forms.Label();
+            this.TotalFuelLabel = new System.Windows.Forms.Label();
+            this.CurrentFuelLabel = new System.Windows.Forms.Label();
+            this.AmmeterLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -56,6 +64,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.AmmeterLabel);
+            this.panel1.Controls.Add(this.CurrentFuelLabel);
+            this.panel1.Controls.Add(this.TotalFuelLabel);
+            this.panel1.Controls.Add(this.SuctionGaugeLabel);
+            this.panel1.Controls.Add(this.VerticalAirspeedIndicatorLabel);
+            this.panel1.Controls.Add(this.TurnIndicatorLabel);
+            this.panel1.Controls.Add(this.AirspeedIndicatorLabel);
+            this.panel1.Controls.Add(this.TurnCoordinatorLabel);
             this.panel1.Controls.Add(this.potentiometerValueLabel);
             this.panel1.Controls.Add(this.CloseSerialPortButton);
             this.panel1.Controls.Add(this.HeadingIndicatorLabel);
@@ -67,14 +83,41 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(707, 432);
+            this.panel1.Size = new System.Drawing.Size(707, 495);
             this.panel1.TabIndex = 1;
+            // 
+            // TurnIndicatorLabel
+            // 
+            this.TurnIndicatorLabel.AutoSize = true;
+            this.TurnIndicatorLabel.Location = new System.Drawing.Point(336, 208);
+            this.TurnIndicatorLabel.Name = "TurnIndicatorLabel";
+            this.TurnIndicatorLabel.Size = new System.Drawing.Size(73, 13);
+            this.TurnIndicatorLabel.TabIndex = 12;
+            this.TurnIndicatorLabel.Text = "Turn Indicator";
+            // 
+            // AirspeedIndicatorLabel
+            // 
+            this.AirspeedIndicatorLabel.AutoSize = true;
+            this.AirspeedIndicatorLabel.Location = new System.Drawing.Point(336, 236);
+            this.AirspeedIndicatorLabel.Name = "AirspeedIndicatorLabel";
+            this.AirspeedIndicatorLabel.Size = new System.Drawing.Size(92, 13);
+            this.AirspeedIndicatorLabel.TabIndex = 11;
+            this.AirspeedIndicatorLabel.Text = "Airspeed Indicator";
+            // 
+            // TurnCoordinatorLabel
+            // 
+            this.TurnCoordinatorLabel.AutoSize = true;
+            this.TurnCoordinatorLabel.Location = new System.Drawing.Point(336, 181);
+            this.TurnCoordinatorLabel.Name = "TurnCoordinatorLabel";
+            this.TurnCoordinatorLabel.Size = new System.Drawing.Size(86, 13);
+            this.TurnCoordinatorLabel.TabIndex = 10;
+            this.TurnCoordinatorLabel.Text = "Turn Coordinator";
             // 
             // potentiometerValueLabel
             // 
             this.potentiometerValueLabel.AutoSize = true;
             this.potentiometerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.potentiometerValueLabel.Location = new System.Drawing.Point(105, 219);
+            this.potentiometerValueLabel.Location = new System.Drawing.Point(3, 403);
             this.potentiometerValueLabel.Name = "potentiometerValueLabel";
             this.potentiometerValueLabel.Size = new System.Drawing.Size(279, 29);
             this.potentiometerValueLabel.TabIndex = 9;
@@ -148,6 +191,51 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
+            // VerticalAirspeedIndicatorLabel
+            // 
+            this.VerticalAirspeedIndicatorLabel.AutoSize = true;
+            this.VerticalAirspeedIndicatorLabel.Location = new System.Drawing.Point(335, 261);
+            this.VerticalAirspeedIndicatorLabel.Name = "VerticalAirspeedIndicatorLabel";
+            this.VerticalAirspeedIndicatorLabel.Size = new System.Drawing.Size(130, 13);
+            this.VerticalAirspeedIndicatorLabel.TabIndex = 13;
+            this.VerticalAirspeedIndicatorLabel.Text = "Vertical Airspeed Indicator";
+            // 
+            // SuctionGaugeLabel
+            // 
+            this.SuctionGaugeLabel.AutoSize = true;
+            this.SuctionGaugeLabel.Location = new System.Drawing.Point(336, 287);
+            this.SuctionGaugeLabel.Name = "SuctionGaugeLabel";
+            this.SuctionGaugeLabel.Size = new System.Drawing.Size(78, 13);
+            this.SuctionGaugeLabel.TabIndex = 14;
+            this.SuctionGaugeLabel.Text = "Suction Gauge";
+            // 
+            // TotalFuelLabel
+            // 
+            this.TotalFuelLabel.AutoSize = true;
+            this.TotalFuelLabel.Location = new System.Drawing.Point(335, 310);
+            this.TotalFuelLabel.Name = "TotalFuelLabel";
+            this.TotalFuelLabel.Size = new System.Drawing.Size(54, 13);
+            this.TotalFuelLabel.TabIndex = 15;
+            this.TotalFuelLabel.Text = "Total Fuel";
+            // 
+            // CurrentFuelLabel
+            // 
+            this.CurrentFuelLabel.AutoSize = true;
+            this.CurrentFuelLabel.Location = new System.Drawing.Point(336, 334);
+            this.CurrentFuelLabel.Name = "CurrentFuelLabel";
+            this.CurrentFuelLabel.Size = new System.Drawing.Size(64, 13);
+            this.CurrentFuelLabel.TabIndex = 16;
+            this.CurrentFuelLabel.Text = "Current Fuel";
+            // 
+            // AmmeterLabel
+            // 
+            this.AmmeterLabel.AutoSize = true;
+            this.AmmeterLabel.Location = new System.Drawing.Point(336, 359);
+            this.AmmeterLabel.Name = "AmmeterLabel";
+            this.AmmeterLabel.Size = new System.Drawing.Size(48, 13);
+            this.AmmeterLabel.TabIndex = 17;
+            this.AmmeterLabel.Text = "Ammeter";
+            // 
             // DevForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,5 +265,13 @@
         private System.Windows.Forms.Label HeadingIndicatorLabel;
         private System.Windows.Forms.Button CloseSerialPortButton;
         private System.Windows.Forms.Label potentiometerValueLabel;
+        private System.Windows.Forms.Label TurnCoordinatorLabel;
+        private System.Windows.Forms.Label AirspeedIndicatorLabel;
+        private System.Windows.Forms.Label TurnIndicatorLabel;
+        private System.Windows.Forms.Label VerticalAirspeedIndicatorLabel;
+        private System.Windows.Forms.Label SuctionGaugeLabel;
+        private System.Windows.Forms.Label CurrentFuelLabel;
+        private System.Windows.Forms.Label TotalFuelLabel;
+        private System.Windows.Forms.Label AmmeterLabel;
     }
 }

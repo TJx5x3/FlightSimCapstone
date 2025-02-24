@@ -1,4 +1,6 @@
 ﻿/*
+ * https://stackoverflow.com/questions/5766574/start-a-process-with-parameters
+ * 
  * https://foxlearn.com/csharp/image-rotation-8368.html
  * https://learn.microsoft.com/en-us/dotnet/desktop/winforms/advanced/how-to-improve-performance-by-avoiding-automatic-scaling?view=netframeworkdesktop-4.8
  */
@@ -15,7 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.FlightSimulator.SimConnect;
-using static System.Net.Mime.MediaTypeNames;
+//using static System.Net.Mime.MediaTypeNames;
 
 namespace FlightSimCapstone
 {
@@ -27,22 +29,6 @@ namespace FlightSimCapstone
         private Bitmap originalImage;
         private float degree = 0f;
 
-        // Start process with parameters:
-        // https://stackoverflow.com/questions/5766574/start-a-process-with-parameters
-        private void launchFlightSim()
-        {
-            try
-            {
-                string fsDevModePath = @"C:\Program Files (x86)\Steam\steamapps\common\MicrosoftFlightSimulator\FlightSimulator.exe";
-
-                // Launch exe
-                Process.Start(fsDevModePath);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to start FS DevMode");
-            }
-        }
 
         public Graphicalnterface()
         {
@@ -60,7 +46,7 @@ namespace FlightSimCapstone
 
             // initialize form timer
             formTimer = new Timer();
-            formTimer.Interval = 1000;
+            formTimer.Interval = 100;
             formTimer.Tick += FormTimer_Tick;
             formTimer.Start();
 
@@ -129,6 +115,8 @@ namespace FlightSimCapstone
                 Bitmap rotatedImage = SetImageRotation(originalImage, -(float)SimConnectUtility.HeadingIndicatorValue);
                 pictureBox1.Image = rotatedImage;
             }
+
+            Console.WriteLine("Tick");
         }
 
 
