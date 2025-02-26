@@ -79,5 +79,25 @@ namespace FlightSimCapstone.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TurnCoordinator {
+            get {
+                object obj = ResourceManager.GetObject("TurnCoordinator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TurnCoordinatorAirplane {
+            get {
+                object obj = ResourceManager.GetObject("TurnCoordinatorAirplane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

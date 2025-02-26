@@ -28,12 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.TurnCoordinatorAirplane = new System.Windows.Forms.PictureBox();
+            this.TurnCoordinatorBack = new System.Windows.Forms.PictureBox();
+            this.HeadingIndicatorOverlay = new System.Windows.Forms.PictureBox();
+            this.HeadingIndicatorBack = new System.Windows.Forms.PictureBox();
             this.RotateButton = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorAirplane)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorBack)).BeginInit();
             this.SuspendLayout();
+            // 
+            // TurnCoordinatorAirplane
+            // 
+            this.TurnCoordinatorAirplane.BackColor = System.Drawing.Color.Transparent;
+            this.TurnCoordinatorAirplane.Image = global::FlightSimCapstone.Properties.Resources.TurnCoordinatorAirplane;
+            this.TurnCoordinatorAirplane.Location = new System.Drawing.Point(487, 12);
+            this.TurnCoordinatorAirplane.Name = "TurnCoordinatorAirplane";
+            this.TurnCoordinatorAirplane.Size = new System.Drawing.Size(400, 400);
+            this.TurnCoordinatorAirplane.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.TurnCoordinatorAirplane.TabIndex = 4;
+            this.TurnCoordinatorAirplane.TabStop = false;
+            // 
+            // TurnCoordinatorBack
+            // 
+            this.TurnCoordinatorBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.TurnCoordinatorBack.Image = global::FlightSimCapstone.Properties.Resources.TurnCoordinator;
+            this.TurnCoordinatorBack.Location = new System.Drawing.Point(487, 12);
+            this.TurnCoordinatorBack.Name = "TurnCoordinatorBack";
+            this.TurnCoordinatorBack.Size = new System.Drawing.Size(400, 400);
+            this.TurnCoordinatorBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.TurnCoordinatorBack.TabIndex = 3;
+            this.TurnCoordinatorBack.TabStop = false;
+            // 
+            // HeadingIndicatorOverlay
+            // 
+            this.HeadingIndicatorOverlay.BackColor = System.Drawing.Color.Transparent;
+            this.HeadingIndicatorOverlay.Image = global::FlightSimCapstone.Properties.Resources.HeadingIndicator1_Airplane;
+            this.HeadingIndicatorOverlay.Location = new System.Drawing.Point(12, 12);
+            this.HeadingIndicatorOverlay.Name = "HeadingIndicatorOverlay";
+            this.HeadingIndicatorOverlay.Size = new System.Drawing.Size(400, 400);
+            this.HeadingIndicatorOverlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.HeadingIndicatorOverlay.TabIndex = 2;
+            this.HeadingIndicatorOverlay.TabStop = false;
+            // 
+            // HeadingIndicatorBack
+            // 
+            this.HeadingIndicatorBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.HeadingIndicatorBack.Image = global::FlightSimCapstone.Properties.Resources.HeadingIndicator1;
+            this.HeadingIndicatorBack.Location = new System.Drawing.Point(12, 12);
+            this.HeadingIndicatorBack.Name = "HeadingIndicatorBack";
+            this.HeadingIndicatorBack.Size = new System.Drawing.Size(400, 400);
+            this.HeadingIndicatorBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.HeadingIndicatorBack.TabIndex = 0;
+            this.HeadingIndicatorBack.TabStop = false;
             // 
             // RotateButton
             // 
@@ -45,48 +93,32 @@
             this.RotateButton.UseVisualStyleBackColor = true;
             this.RotateButton.Click += new System.EventHandler(this.RotateButton_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::FlightSimCapstone.Properties.Resources.HeadingIndicator1_Airplane;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Image = global::FlightSimCapstone.Properties.Resources.HeadingIndicator1;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // Graphicalnterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(900, 622);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1116, 622);
+            this.Controls.Add(this.TurnCoordinatorAirplane);
+            this.Controls.Add(this.TurnCoordinatorBack);
+            this.Controls.Add(this.HeadingIndicatorOverlay);
+            this.Controls.Add(this.HeadingIndicatorBack);
             this.Controls.Add(this.RotateButton);
             this.Name = "Graphicalnterface";
-            this.Text = "Form3";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Text = "Graphical Interface";
+            ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorAirplane)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorBack)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+        private System.Windows.Forms.PictureBox HeadingIndicatorBack;
+        private System.Windows.Forms.PictureBox HeadingIndicatorOverlay;
+        private System.Windows.Forms.PictureBox TurnCoordinatorAirplane;
+        private System.Windows.Forms.PictureBox TurnCoordinatorBack;
         private System.Windows.Forms.Button RotateButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

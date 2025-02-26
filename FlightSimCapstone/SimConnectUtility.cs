@@ -360,7 +360,7 @@ namespace FlightSimCapstone
             // Request Altimeter value
             simconnect.RequestDataOnSimObject(Requests.Altimeter, Definitions.AltimeterData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
-            // Request Heading Indicator value
+            // Register Heading Indicator Request
             simconnect.RequestDataOnSimObject(Requests.HeadingIndicator, Definitions.HeadingIndicatorData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
             // Request Turn Coordinator value
@@ -411,7 +411,7 @@ namespace FlightSimCapstone
                 {
                     // Open SimConnect client
                     simconnect = new SimConnect("Managed Data Request", windowHandle, WM_USER_SIMCONNECT, null, 0);
-                    MessageBox.Show("SimcConnect Connected!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("SimcConnect Connected!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Map Simconnect events upon successful SimConnect Connection
                     simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
@@ -421,7 +421,7 @@ namespace FlightSimCapstone
                 }
                 catch (COMException ex)
                 {
-                    MessageBox.Show("SimcConnect not connected!", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                   // MessageBox.Show("SimcConnect not connected!", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }

@@ -130,6 +130,8 @@
     <Content Include="bin\Debug\Microsoft.FlightSimulator.SimConnect.dll" />
     <Content Include="bin\Debug\SimConnect.dll" />
     <Content Include="bin\x64\Debug\SimConnect.dll" />
+    <None Include="Resources\TurnCoordinatorAirplane.png" />
+    <None Include="Resources\TurnCoordinator.png" />
     <None Include="Resources\HeadingIndicator1-Airplane.png" />
     <None Include="Resources\HeadingIndicator1.png" />
   </ItemGroup>

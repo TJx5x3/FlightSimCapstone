@@ -237,8 +237,20 @@ namespace FlightSimCapstone
         /// <param name="e"></param>
         private void ConfigureButton_Click(object sender, EventArgs e)
         {
-            Graphicalnterface graphicalInterface = new Graphicalnterface();
-            graphicalInterface.Show();
+            // If SimConnect Client can be created, initialize Sim Readings and Open Graphical Interface form
+            if (SimConnectUtility.ConnectSimconnectClient())
+            {
+                AppendAppConsole("Opening Graphical Interface\n", Color.White);
+                SimConnectUtility.InitializeSimReadings();
+                Graphicalnterface graphicalInterface = new Graphicalnterface();
+                graphicalInterface.Show();
+            }
+
+            else
+            {
+                MessageBox.Show("Please Start Microsoft Flight Simulator before opening graphical interface.", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AppendAppConsole("Please Start Microsoft Flight Simulator before opening graphical interface.\n", Color.Yellow);
+            }
         }
     }
 }
