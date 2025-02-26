@@ -70,7 +70,10 @@ namespace FlightSimCapstone
 
         // Simconnect Window Handler (Necessary for establishing SimConnect Connection)
         static IntPtr windowHandle;
-        private static bool connectionStatus = false;
+
+        // Status info
+        private static bool connectionStatus = false; // Simconnect Client established
+        private static bool readingsInitialized = false; // Simconnect values initialized
 
         // TODO: Tweak this, get proper get/set logic
         // Getter/setter
@@ -392,6 +395,10 @@ namespace FlightSimCapstone
 
             // Recieve SimConnect data.
             simconnect.ReceiveMessage();
+
+
+            // Indicate readings initialized
+            readingsInitialized = true;
         }
 
         // Test Connection to SimConnect
@@ -443,6 +450,7 @@ namespace FlightSimCapstone
                 simconnect = null;
             }
             connectionStatus = false;
+            readingsInitialized = false;
             MessageBox.Show("Terminated SimConnect Session", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return true;

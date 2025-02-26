@@ -197,6 +197,8 @@ namespace FlightSimCapstone
             valueTimer.Dispose();
 
             serialPort.Close(); // Close serial port
+
+            SimConnectUtility.DisconnectSimconnectClient(); // Close SimConnect CLient
         }
 
         /// <summary>

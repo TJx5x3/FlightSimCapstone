@@ -179,7 +179,8 @@ namespace FlightSimCapstone
             formTimer.Stop();
             formTimer.Dispose();
 
-            // TODO: Close SimConnect
+            //Close SimConnect client
+            SimConnectUtility.DisconnectSimconnectClient();
         }
     }
 }
