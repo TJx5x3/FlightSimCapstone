@@ -85,6 +85,7 @@ namespace FlightSimCapstone
         /// <param name="callingUtilityForm"></param>
         public DevForm(Form callingUtilityForm)
         {
+            
             // Register UtilityForm Instance as previously called form
             utilityForm = callingUtilityForm as UtilityForm; 
             this.FormClosing += CloseHandler; // Register FormClosing event
@@ -198,7 +199,7 @@ namespace FlightSimCapstone
 
             serialPort.Close(); // Close serial port
 
-            SimConnectUtility.DisconnectSimconnectClient(); // Close SimConnect CLient
+            SimConnectUtility.DisconnectSimconnectClient();
         }
 
         /// <summary>

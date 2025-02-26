@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Graphicalnterface));
             this.TurnCoordinatorAirplane = new System.Windows.Forms.PictureBox();
             this.TurnCoordinatorBack = new System.Windows.Forms.PictureBox();
             this.HeadingIndicatorOverlay = new System.Windows.Forms.PictureBox();
@@ -104,6 +105,7 @@
             this.Controls.Add(this.HeadingIndicatorOverlay);
             this.Controls.Add(this.HeadingIndicatorBack);
             this.Controls.Add(this.RotateButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Graphicalnterface";
             this.Text = "Graphical Interface";
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorAirplane)).EndInit();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UtilityForm));
             this.StartButton = new System.Windows.Forms.Button();
             this.AppConsole = new System.Windows.Forms.RichTextBox();
             this.AppConsoleTitle = new System.Windows.Forms.Label();
@@ -207,6 +208,7 @@
             this.Controls.Add(this.AppConsole);
             this.Controls.Add(this.StartButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "UtilityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

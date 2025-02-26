@@ -186,7 +186,7 @@ namespace FlightSimCapstone
             if (e.KeyCode == Keys.F6)
             {
                 AppendAppConsole("Opening Secret Developer Settings...\n", Color.MediumPurple);
-
+                MessageBox.Show("The Build Worked");
 
                 e.SuppressKeyPress = true;
                 DevForm secretMenu = new DevForm(this);
