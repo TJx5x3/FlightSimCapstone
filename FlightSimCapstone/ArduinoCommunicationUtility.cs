@@ -39,7 +39,7 @@ namespace FlightSimCapstone
         // installer.
         // TODO: Identify COM Ports, search for arduino.
         //      * This may require a different approach to how arduino is detected over USB
-        static SerialPort serialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
+        static SerialPort serialPort = new SerialPort("COM7", 9600, Parity.None, 8, StopBits.One);
 
         static String serialData; // Data read from Arduino device
 

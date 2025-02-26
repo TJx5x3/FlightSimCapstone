@@ -120,72 +120,80 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 134);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(73, 134);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.Size = new System.Drawing.Size(31, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "n/a";
             // 
             // rudderStatusLabel
             // 
             this.rudderStatusLabel.AutoSize = true;
-            this.rudderStatusLabel.Location = new System.Drawing.Point(89, 97);
+            this.rudderStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rudderStatusLabel.Location = new System.Drawing.Point(127, 97);
             this.rudderStatusLabel.Name = "rudderStatusLabel";
-            this.rudderStatusLabel.Size = new System.Drawing.Size(24, 13);
+            this.rudderStatusLabel.Size = new System.Drawing.Size(31, 20);
             this.rudderStatusLabel.TabIndex = 11;
             this.rudderStatusLabel.Text = "n/a";
             // 
             // yokeStatusLabel
             // 
             this.yokeStatusLabel.AutoSize = true;
-            this.yokeStatusLabel.Location = new System.Drawing.Point(44, 62);
+            this.yokeStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yokeStatusLabel.Location = new System.Drawing.Point(59, 62);
             this.yokeStatusLabel.Name = "yokeStatusLabel";
-            this.yokeStatusLabel.Size = new System.Drawing.Size(24, 13);
+            this.yokeStatusLabel.Size = new System.Drawing.Size(31, 20);
             this.yokeStatusLabel.TabIndex = 10;
             this.yokeStatusLabel.Text = "n/a";
             // 
             // arduinoStatusLabel
             // 
             this.arduinoStatusLabel.AutoSize = true;
-            this.arduinoStatusLabel.Location = new System.Drawing.Point(48, 30);
+            this.arduinoStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.arduinoStatusLabel.Location = new System.Drawing.Point(73, 30);
             this.arduinoStatusLabel.Name = "arduinoStatusLabel";
-            this.arduinoStatusLabel.Size = new System.Drawing.Size(24, 13);
+            this.arduinoStatusLabel.Size = new System.Drawing.Size(31, 20);
             this.arduinoStatusLabel.TabIndex = 7;
             this.arduinoStatusLabel.Text = "n/a";
             // 
             // displayStatusLabel
             // 
             this.displayStatusLabel.AutoSize = true;
+            this.displayStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.displayStatusLabel.Location = new System.Drawing.Point(3, 134);
             this.displayStatusLabel.Name = "displayStatusLabel";
-            this.displayStatusLabel.Size = new System.Drawing.Size(44, 13);
+            this.displayStatusLabel.Size = new System.Drawing.Size(64, 20);
             this.displayStatusLabel.TabIndex = 9;
             this.displayStatusLabel.Text = "Display:";
             // 
             // rudderConnectionTitleLabel
             // 
             this.rudderConnectionTitleLabel.AutoSize = true;
+            this.rudderConnectionTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rudderConnectionTitleLabel.Location = new System.Drawing.Point(3, 97);
             this.rudderConnectionTitleLabel.Name = "rudderConnectionTitleLabel";
-            this.rudderConnectionTitleLabel.Size = new System.Drawing.Size(80, 13);
+            this.rudderConnectionTitleLabel.Size = new System.Drawing.Size(118, 20);
             this.rudderConnectionTitleLabel.TabIndex = 8;
             this.rudderConnectionTitleLabel.Text = "Rudder Pedals:";
             // 
             // yokeConnectionTitleLabel
             // 
             this.yokeConnectionTitleLabel.AutoSize = true;
+            this.yokeConnectionTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yokeConnectionTitleLabel.Location = new System.Drawing.Point(3, 62);
             this.yokeConnectionTitleLabel.Name = "yokeConnectionTitleLabel";
-            this.yokeConnectionTitleLabel.Size = new System.Drawing.Size(35, 13);
+            this.yokeConnectionTitleLabel.Size = new System.Drawing.Size(50, 20);
             this.yokeConnectionTitleLabel.TabIndex = 7;
             this.yokeConnectionTitleLabel.Text = "Yoke:";
             // 
             // arduinoConnectionTitleLabel
             // 
             this.arduinoConnectionTitleLabel.AutoSize = true;
+            this.arduinoConnectionTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arduinoConnectionTitleLabel.Location = new System.Drawing.Point(3, 30);
             this.arduinoConnectionTitleLabel.Name = "arduinoConnectionTitleLabel";
-            this.arduinoConnectionTitleLabel.Size = new System.Drawing.Size(46, 13);
+            this.arduinoConnectionTitleLabel.Size = new System.Drawing.Size(68, 20);
             this.arduinoConnectionTitleLabel.TabIndex = 6;
             this.arduinoConnectionTitleLabel.Text = "Arduino:";
             // 

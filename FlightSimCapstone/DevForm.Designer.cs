@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.AmmeterLabel = new System.Windows.Forms.Label();
+            this.CurrentFuelLabel = new System.Windows.Forms.Label();
+            this.TotalFuelLabel = new System.Windows.Forms.Label();
+            this.SuctionGaugeLabel = new System.Windows.Forms.Label();
+            this.VerticalAirspeedIndicatorLabel = new System.Windows.Forms.Label();
             this.TurnIndicatorLabel = new System.Windows.Forms.Label();
             this.AirspeedIndicatorLabel = new System.Windows.Forms.Label();
             this.TurnCoordinatorLabel = new System.Windows.Forms.Label();
@@ -42,11 +47,6 @@
             this.TestSimConnect_Button = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.VerticalAirspeedIndicatorLabel = new System.Windows.Forms.Label();
-            this.SuctionGaugeLabel = new System.Windows.Forms.Label();
-            this.TotalFuelLabel = new System.Windows.Forms.Label();
-            this.CurrentFuelLabel = new System.Windows.Forms.Label();
-            this.AmmeterLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -86,6 +86,51 @@
             this.panel1.Size = new System.Drawing.Size(707, 495);
             this.panel1.TabIndex = 1;
             // 
+            // AmmeterLabel
+            // 
+            this.AmmeterLabel.AutoSize = true;
+            this.AmmeterLabel.Location = new System.Drawing.Point(336, 359);
+            this.AmmeterLabel.Name = "AmmeterLabel";
+            this.AmmeterLabel.Size = new System.Drawing.Size(48, 13);
+            this.AmmeterLabel.TabIndex = 17;
+            this.AmmeterLabel.Text = "Ammeter";
+            // 
+            // CurrentFuelLabel
+            // 
+            this.CurrentFuelLabel.AutoSize = true;
+            this.CurrentFuelLabel.Location = new System.Drawing.Point(336, 334);
+            this.CurrentFuelLabel.Name = "CurrentFuelLabel";
+            this.CurrentFuelLabel.Size = new System.Drawing.Size(64, 13);
+            this.CurrentFuelLabel.TabIndex = 16;
+            this.CurrentFuelLabel.Text = "Current Fuel";
+            // 
+            // TotalFuelLabel
+            // 
+            this.TotalFuelLabel.AutoSize = true;
+            this.TotalFuelLabel.Location = new System.Drawing.Point(335, 310);
+            this.TotalFuelLabel.Name = "TotalFuelLabel";
+            this.TotalFuelLabel.Size = new System.Drawing.Size(54, 13);
+            this.TotalFuelLabel.TabIndex = 15;
+            this.TotalFuelLabel.Text = "Total Fuel";
+            // 
+            // SuctionGaugeLabel
+            // 
+            this.SuctionGaugeLabel.AutoSize = true;
+            this.SuctionGaugeLabel.Location = new System.Drawing.Point(336, 287);
+            this.SuctionGaugeLabel.Name = "SuctionGaugeLabel";
+            this.SuctionGaugeLabel.Size = new System.Drawing.Size(78, 13);
+            this.SuctionGaugeLabel.TabIndex = 14;
+            this.SuctionGaugeLabel.Text = "Suction Gauge";
+            // 
+            // VerticalAirspeedIndicatorLabel
+            // 
+            this.VerticalAirspeedIndicatorLabel.AutoSize = true;
+            this.VerticalAirspeedIndicatorLabel.Location = new System.Drawing.Point(335, 261);
+            this.VerticalAirspeedIndicatorLabel.Name = "VerticalAirspeedIndicatorLabel";
+            this.VerticalAirspeedIndicatorLabel.Size = new System.Drawing.Size(130, 13);
+            this.VerticalAirspeedIndicatorLabel.TabIndex = 13;
+            this.VerticalAirspeedIndicatorLabel.Text = "Vertical Airspeed Indicator";
+            // 
             // TurnIndicatorLabel
             // 
             this.TurnIndicatorLabel.AutoSize = true;
@@ -116,10 +161,10 @@
             // potentiometerValueLabel
             // 
             this.potentiometerValueLabel.AutoSize = true;
-            this.potentiometerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.potentiometerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.potentiometerValueLabel.Location = new System.Drawing.Point(3, 403);
             this.potentiometerValueLabel.Name = "potentiometerValueLabel";
-            this.potentiometerValueLabel.Size = new System.Drawing.Size(279, 29);
+            this.potentiometerValueLabel.Size = new System.Drawing.Size(216, 24);
             this.potentiometerValueLabel.TabIndex = 9;
             this.potentiometerValueLabel.Text = "Potentiometer Readings:";
             // 
@@ -190,51 +235,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
-            // 
-            // VerticalAirspeedIndicatorLabel
-            // 
-            this.VerticalAirspeedIndicatorLabel.AutoSize = true;
-            this.VerticalAirspeedIndicatorLabel.Location = new System.Drawing.Point(335, 261);
-            this.VerticalAirspeedIndicatorLabel.Name = "VerticalAirspeedIndicatorLabel";
-            this.VerticalAirspeedIndicatorLabel.Size = new System.Drawing.Size(130, 13);
-            this.VerticalAirspeedIndicatorLabel.TabIndex = 13;
-            this.VerticalAirspeedIndicatorLabel.Text = "Vertical Airspeed Indicator";
-            // 
-            // SuctionGaugeLabel
-            // 
-            this.SuctionGaugeLabel.AutoSize = true;
-            this.SuctionGaugeLabel.Location = new System.Drawing.Point(336, 287);
-            this.SuctionGaugeLabel.Name = "SuctionGaugeLabel";
-            this.SuctionGaugeLabel.Size = new System.Drawing.Size(78, 13);
-            this.SuctionGaugeLabel.TabIndex = 14;
-            this.SuctionGaugeLabel.Text = "Suction Gauge";
-            // 
-            // TotalFuelLabel
-            // 
-            this.TotalFuelLabel.AutoSize = true;
-            this.TotalFuelLabel.Location = new System.Drawing.Point(335, 310);
-            this.TotalFuelLabel.Name = "TotalFuelLabel";
-            this.TotalFuelLabel.Size = new System.Drawing.Size(54, 13);
-            this.TotalFuelLabel.TabIndex = 15;
-            this.TotalFuelLabel.Text = "Total Fuel";
-            // 
-            // CurrentFuelLabel
-            // 
-            this.CurrentFuelLabel.AutoSize = true;
-            this.CurrentFuelLabel.Location = new System.Drawing.Point(336, 334);
-            this.CurrentFuelLabel.Name = "CurrentFuelLabel";
-            this.CurrentFuelLabel.Size = new System.Drawing.Size(64, 13);
-            this.CurrentFuelLabel.TabIndex = 16;
-            this.CurrentFuelLabel.Text = "Current Fuel";
-            // 
-            // AmmeterLabel
-            // 
-            this.AmmeterLabel.AutoSize = true;
-            this.AmmeterLabel.Location = new System.Drawing.Point(336, 359);
-            this.AmmeterLabel.Name = "AmmeterLabel";
-            this.AmmeterLabel.Size = new System.Drawing.Size(48, 13);
-            this.AmmeterLabel.TabIndex = 17;
-            this.AmmeterLabel.Text = "Ammeter";
             // 
             // DevForm
             // 
