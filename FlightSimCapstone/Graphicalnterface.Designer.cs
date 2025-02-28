@@ -29,22 +29,47 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Graphicalnterface));
+            this.SuctionGaugeDial = new System.Windows.Forms.PictureBox();
+            this.SuctionGauge = new System.Windows.Forms.PictureBox();
             this.TurnCoordinatorAirplane = new System.Windows.Forms.PictureBox();
             this.TurnCoordinatorBack = new System.Windows.Forms.PictureBox();
             this.HeadingIndicatorOverlay = new System.Windows.Forms.PictureBox();
             this.HeadingIndicatorBack = new System.Windows.Forms.PictureBox();
-            this.RotateButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SuctionGauge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorAirplane)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorBack)).BeginInit();
             this.SuspendLayout();
             // 
+            // SuctionGaugeDial
+            // 
+            this.SuctionGaugeDial.BackColor = System.Drawing.Color.Transparent;
+            this.SuctionGaugeDial.Image = global::FlightSimCapstone.Properties.Resources.SuctionGauge_Dial;
+            this.SuctionGaugeDial.Location = new System.Drawing.Point(418, 355);
+            this.SuctionGaugeDial.Name = "SuctionGaugeDial";
+            this.SuctionGaugeDial.Size = new System.Drawing.Size(200, 200);
+            this.SuctionGaugeDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SuctionGaugeDial.TabIndex = 6;
+            this.SuctionGaugeDial.TabStop = false;
+            // 
+            // SuctionGauge
+            // 
+            this.SuctionGauge.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.SuctionGauge.Image = global::FlightSimCapstone.Properties.Resources.SuctionGauge;
+            this.SuctionGauge.Location = new System.Drawing.Point(418, 355);
+            this.SuctionGauge.Name = "SuctionGauge";
+            this.SuctionGauge.Size = new System.Drawing.Size(200, 200);
+            this.SuctionGauge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SuctionGauge.TabIndex = 5;
+            this.SuctionGauge.TabStop = false;
+            // 
             // TurnCoordinatorAirplane
             // 
             this.TurnCoordinatorAirplane.BackColor = System.Drawing.Color.Transparent;
             this.TurnCoordinatorAirplane.Image = global::FlightSimCapstone.Properties.Resources.TurnCoordinatorAirplane;
-            this.TurnCoordinatorAirplane.Location = new System.Drawing.Point(487, 12);
+            this.TurnCoordinatorAirplane.Location = new System.Drawing.Point(12, 498);
             this.TurnCoordinatorAirplane.Name = "TurnCoordinatorAirplane";
             this.TurnCoordinatorAirplane.Size = new System.Drawing.Size(400, 400);
             this.TurnCoordinatorAirplane.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -55,7 +80,7 @@
             // 
             this.TurnCoordinatorBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.TurnCoordinatorBack.Image = global::FlightSimCapstone.Properties.Resources.TurnCoordinator;
-            this.TurnCoordinatorBack.Location = new System.Drawing.Point(487, 12);
+            this.TurnCoordinatorBack.Location = new System.Drawing.Point(12, 498);
             this.TurnCoordinatorBack.Name = "TurnCoordinatorBack";
             this.TurnCoordinatorBack.Size = new System.Drawing.Size(400, 400);
             this.TurnCoordinatorBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -84,30 +109,23 @@
             this.HeadingIndicatorBack.TabIndex = 0;
             this.HeadingIndicatorBack.TabStop = false;
             // 
-            // RotateButton
-            // 
-            this.RotateButton.Location = new System.Drawing.Point(12, 548);
-            this.RotateButton.Name = "RotateButton";
-            this.RotateButton.Size = new System.Drawing.Size(139, 50);
-            this.RotateButton.TabIndex = 1;
-            this.RotateButton.Text = "Rotate";
-            this.RotateButton.UseVisualStyleBackColor = true;
-            this.RotateButton.Click += new System.EventHandler(this.RotateButton_Click);
-            // 
             // Graphicalnterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1116, 622);
+            this.ClientSize = new System.Drawing.Size(1115, 935);
+            this.Controls.Add(this.SuctionGaugeDial);
+            this.Controls.Add(this.SuctionGauge);
             this.Controls.Add(this.TurnCoordinatorAirplane);
             this.Controls.Add(this.TurnCoordinatorBack);
             this.Controls.Add(this.HeadingIndicatorOverlay);
             this.Controls.Add(this.HeadingIndicatorBack);
-            this.Controls.Add(this.RotateButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Graphicalnterface";
             this.Text = "Graphical Interface";
+            ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SuctionGauge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorAirplane)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).EndInit();
@@ -121,6 +139,7 @@
         private System.Windows.Forms.PictureBox HeadingIndicatorOverlay;
         private System.Windows.Forms.PictureBox TurnCoordinatorAirplane;
         private System.Windows.Forms.PictureBox TurnCoordinatorBack;
-        private System.Windows.Forms.Button RotateButton;
+        private System.Windows.Forms.PictureBox SuctionGauge;
+        private System.Windows.Forms.PictureBox SuctionGaugeDial;
     }
 }

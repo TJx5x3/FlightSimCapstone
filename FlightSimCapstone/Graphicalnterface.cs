@@ -45,8 +45,10 @@ namespace FlightSimCapstone
         // Timer to update retrieved SimConnect values in text fields
         private Timer formTimer = null;
 
+        // Attributes for Bitmaps that will be rotated
         private Bitmap originalHeadingIndicatorGauge;
         private Bitmap originalTurnCoordinatorAirplane;
+        private Bitmap originalSuctionGaugeDial;
 
         private float degree = 0f;
 
@@ -63,7 +65,7 @@ namespace FlightSimCapstone
         {
             InitializeComponent();
 
-
+            // Heading Indicator
             originalHeadingIndicatorGauge = new Bitmap(Properties.Resources.HeadingIndicator1); // Circular gauge that shows degree values
             HeadingIndicatorBack.Image = originalHeadingIndicatorGauge;
 
@@ -71,12 +73,21 @@ namespace FlightSimCapstone
             HeadingIndicatorOverlay.Location =  new Point(0,0);
             HeadingIndicatorOverlay.BackColor = Color.Transparent;
 
+            // Turn Coordinator
             originalTurnCoordinatorAirplane = new Bitmap(Properties.Resources.TurnCoordinatorAirplane);
             TurnCoordinatorAirplane.Image = originalTurnCoordinatorAirplane;
 
             TurnCoordinatorAirplane.Parent = TurnCoordinatorBack;
             TurnCoordinatorAirplane.Location = new Point(0, 0);
             TurnCoordinatorAirplane.BackColor = Color.Transparent;
+
+            // Suction Gauge
+            //originalTurnCoordinatorAirplane = new Bitmap(Properties.Resources.SuctionGauge_Dial);
+            //SuctionGaugeDial.Image = originalSuctionGaugeDial;
+
+            //SuctionGaugeDial.Parent = SuctionGauge;
+            //SuctionGaugeDial.Location = new Point(0, 0);
+            //SuctionGaugeDial.BackColor = Color.Transparent;
 
 
             // initialize form closing event
@@ -114,32 +125,7 @@ namespace FlightSimCapstone
             return rotatedBitmap;
         }
 
-        /// <summary>
-        /// Testing button 
-        /// Used to test updating data in graphical modules.
-        /// (This button is to be removed)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RotateButton_Click(object sender, EventArgs e)
-        {
 
-            degree += 5;
-
-
-            // Set picturebox to rotational value retrieved from SimConnect.
-            Bitmap rotatedImage = new Bitmap(originalTurnCoordinatorAirplane.Width, originalTurnCoordinatorAirplane.Height);
-            Graphics g = Graphics.FromImage(rotatedImage);
-            g.TranslateTransform((float)rotatedImage.Width / 2, (float)rotatedImage.Height / 2);
-            g.RotateTransform(degree);
-
-            g.TranslateTransform(-(float)rotatedImage.Width / 2, -(float)rotatedImage.Height / 2);
-            g.DrawImage(originalTurnCoordinatorAirplane, new Point(0,0));
-
-            TurnCoordinatorAirplane.Image = rotatedImage;
-
-            
-        }
 
         /// <summary>
         /// valueTimer Event
@@ -163,6 +149,8 @@ namespace FlightSimCapstone
                 // TODO: Swap names of TurnIndicator and TurnCoordinator in simconnect request declaration
                 Bitmap rotatedTurnCoordinatorAirplane = SetImageRotation(originalTurnCoordinatorAirplane, (float)SimConnectUtility.TurnIndicatorValue * 5.0f); // Multiply 5 to get proper degree rotation value
                 TurnCoordinatorAirplane.Image = rotatedTurnCoordinatorAirplane;
+
+                // Rotate 
             }
 
             Console.WriteLine("Tick");
