@@ -40,7 +40,7 @@ namespace FlightSimCapstone
     /// TODO: Create Second Form to display fullscreen on second display. 
     ///       This will require BaseDependencyUtility to detect secondary displays. 
     /// </summary>
-    public partial class Graphicalnterface_Right : Form
+    public partial class GraphicalInterface_Left : Form
     {
         // Timer to update retrieved SimConnect values in text fields
         private Timer formTimer = null;
@@ -61,7 +61,7 @@ namespace FlightSimCapstone
         /// <br/>
         /// Instantiate Timer
         /// </summary>
-        public Graphicalnterface_Right()
+        public GraphicalInterface_Left()
         {
             InitializeComponent();
 
