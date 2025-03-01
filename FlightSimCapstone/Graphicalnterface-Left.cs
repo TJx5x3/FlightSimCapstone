@@ -1,7 +1,7 @@
 ﻿/**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   2/23/25
+ *  Last Revision   :   2/28/25
  *  Class           :   GraphicalInterface.cs
  *  Description     :   This module will contain various overlayed bitmap images to create graphical modules.
  *                      Each module will update according to real-time values retrieved from the SimConnect Client.

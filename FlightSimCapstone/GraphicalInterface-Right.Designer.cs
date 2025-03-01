@@ -28,12 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.VerticalAirspeedIndicator = new System.Windows.Forms.PictureBox();
+            this.VerticalAirspeedIndicatorDial = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicatorDial)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // VerticalAirspeedIndicator
+            // 
+            this.VerticalAirspeedIndicator.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.VerticalAirspeedIndicator.Image = global::FlightSimCapstone.Properties.Resources.VerticalAirspeedIndicator;
+            this.VerticalAirspeedIndicator.Location = new System.Drawing.Point(34, 25);
+            this.VerticalAirspeedIndicator.Name = "VerticalAirspeedIndicator";
+            this.VerticalAirspeedIndicator.Size = new System.Drawing.Size(400, 400);
+            this.VerticalAirspeedIndicator.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.VerticalAirspeedIndicator.TabIndex = 4;
+            this.VerticalAirspeedIndicator.TabStop = false;
+            // 
+            // VerticalAirspeedIndicatorDial
+            // 
+            this.VerticalAirspeedIndicatorDial.BackColor = System.Drawing.Color.Transparent;
+            this.VerticalAirspeedIndicatorDial.Image = global::FlightSimCapstone.Properties.Resources.VerticalAirspeedIndicatorDial;
+            this.VerticalAirspeedIndicatorDial.Location = new System.Drawing.Point(34, 25);
+            this.VerticalAirspeedIndicatorDial.Name = "VerticalAirspeedIndicatorDial";
+            this.VerticalAirspeedIndicatorDial.Size = new System.Drawing.Size(400, 400);
+            this.VerticalAirspeedIndicatorDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.VerticalAirspeedIndicatorDial.TabIndex = 3;
+            this.VerticalAirspeedIndicatorDial.TabStop = false;
+            // 
+            // GraphicalInterface_Right
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.VerticalAirspeedIndicatorDial);
+            this.Controls.Add(this.VerticalAirspeedIndicator);
+            this.Name = "GraphicalInterface_Right";
             this.Text = "GraphicalInterface_Right";
+            ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicatorDial)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox VerticalAirspeedIndicatorDial;
+        private System.Windows.Forms.PictureBox VerticalAirspeedIndicator;
     }
 }
