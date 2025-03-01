@@ -40,7 +40,7 @@ namespace FlightSimCapstone
     /// TODO: Create Second Form to display fullscreen on second display. 
     ///       This will require BaseDependencyUtility to detect secondary displays. 
     /// </summary>
-    public partial class Graphicalnterface : Form
+    public partial class Graphicalnterface_Right : Form
     {
         // Timer to update retrieved SimConnect values in text fields
         private Timer formTimer = null;
@@ -61,7 +61,7 @@ namespace FlightSimCapstone
         /// <br/>
         /// Instantiate Timer
         /// </summary>
-        public Graphicalnterface()
+        public Graphicalnterface_Right()
         {
             InitializeComponent();
 
@@ -82,12 +82,12 @@ namespace FlightSimCapstone
             TurnCoordinatorAirplane.BackColor = Color.Transparent;
 
             // Suction Gauge
-            //originalTurnCoordinatorAirplane = new Bitmap(Properties.Resources.SuctionGauge_Dial);
-            //SuctionGaugeDial.Image = originalSuctionGaugeDial;
+            originalSuctionGaugeDial = new Bitmap(Properties.Resources.SuctionGauge_Dial);
+            SuctionGaugeDial.Image = originalSuctionGaugeDial;
 
-            //SuctionGaugeDial.Parent = SuctionGauge;
-            //SuctionGaugeDial.Location = new Point(0, 0);
-            //SuctionGaugeDial.BackColor = Color.Transparent;
+            SuctionGaugeDial.Parent = SuctionGauge;
+            SuctionGaugeDial.Location = new Point(0, 0);
+            SuctionGaugeDial.BackColor = Color.Transparent;
 
 
             // initialize form closing event

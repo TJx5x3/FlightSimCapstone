@@ -241,7 +241,7 @@ namespace FlightSimCapstone
             {
                 AppendAppConsole("Opening Graphical Interface\n", Color.White);
                 SimConnectUtility.InitializeSimReadings();
-                Graphicalnterface graphicalInterface = new Graphicalnterface();
+                Graphicalnterface_Right graphicalInterface = new Graphicalnterface_Right();
                 graphicalInterface.Show();
             }
 
@@ -249,7 +249,7 @@ namespace FlightSimCapstone
             {
                 MessageBox.Show("Please Start Microsoft Flight Simulator before opening graphical interface.", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 SimConnectUtility.InitializeSimReadings();
-                Graphicalnterface graphicalInterface = new Graphicalnterface();
+                Graphicalnterface_Right graphicalInterface = new Graphicalnterface_Right();
                 graphicalInterface.Show();
                 
                 AppendAppConsole("Please Start Microsoft Flight Simulator before opening graphical interface.\n", Color.Yellow);

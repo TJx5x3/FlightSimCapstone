@@ -1,6 +1,6 @@
 ﻿namespace FlightSimCapstone
 {
-    partial class Graphicalnterface
+    partial class Graphicalnterface_Right
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Graphicalnterface));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Graphicalnterface_Right));
             this.SuctionGaugeDial = new System.Windows.Forms.PictureBox();
             this.SuctionGauge = new System.Windows.Forms.PictureBox();
             this.TurnCoordinatorAirplane = new System.Windows.Forms.PictureBox();
@@ -109,7 +109,7 @@
             this.HeadingIndicatorBack.TabIndex = 0;
             this.HeadingIndicatorBack.TabStop = false;
             // 
-            // Graphicalnterface
+            // Graphicalnterface_Right
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,7 +122,7 @@
             this.Controls.Add(this.HeadingIndicatorOverlay);
             this.Controls.Add(this.HeadingIndicatorBack);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Graphicalnterface";
+            this.Name = "Graphicalnterface_Right";
             this.Text = "Graphical Interface";
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGauge)).EndInit();
