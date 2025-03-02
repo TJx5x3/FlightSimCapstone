@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalInterface_Right));
             this.VerticalAirspeedIndicator = new System.Windows.Forms.PictureBox();
             this.VerticalAirspeedIndicatorDial = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).BeginInit();
@@ -63,6 +64,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.VerticalAirspeedIndicatorDial);
             this.Controls.Add(this.VerticalAirspeedIndicator);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicalInterface_Right";
             this.Text = "GraphicalInterface_Right";
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).EndInit();
