@@ -470,5 +470,29 @@ namespace FlightSimCapstone
                 simconnect.ReceiveMessage();
             }
         }
+
+        public static DevForm DevForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static GraphicalInterface_Left GraphicalInterface_Left
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static GraphicalInterface_Right GraphicalInterface_Right
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

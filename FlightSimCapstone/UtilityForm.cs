@@ -81,8 +81,32 @@ namespace FlightSimCapstone
             this.Closing += CloseHandler; // map FormClosed event to CloseHandler()
 
             // Append starting message to console
-            AppConsole.AppendText("Application launched.\n");
+            appConsole.AppendText("Application launched.\n");
             checkSoftwareDependencies();
+        }
+
+        public GraphicalInterface_Right GraphicalInterface_Right
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public GraphicalInterface_Left GraphicalInterface_Left
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public DevForm DevForm
+        {
+            get => default;
+            set
+            {
+            }
         }
 
 
@@ -98,8 +122,8 @@ namespace FlightSimCapstone
         /// </param>
         public void AppendAppConsole(String text, Color color)
         {
-            AppConsole.SelectionColor = color;
-            AppConsole.AppendText(text);
+            appConsole.SelectionColor = color;
+            appConsole.AppendText(text);
         }
 
         /// <summary>
@@ -112,8 +136,8 @@ namespace FlightSimCapstone
         /// </remarks>
         private void checkSoftwareDependencies()
         {
-            AppConsole.AppendText("Checking software dependencies...\n");
-            AppConsole.AppendText("Locating Microsoft Flight Sim 2020...\n");
+            appConsole.AppendText("Checking software dependencies...\n");
+            appConsole.AppendText("Locating Microsoft Flight Sim 2020...\n");
 
             // Check for MSFS Program path. Append application console message with result
             if (BaseDependencyUtility.LocateFlightSim()) 
@@ -122,15 +146,15 @@ namespace FlightSimCapstone
                 AppendAppConsole("Flight Sim not found :(\n", Color.OrangeRed); // fail
 
             // Check for SimConnect.dll
-            AppConsole.AppendText("Locating SimConnect DLL dependencies\n");
-            AppConsole.AppendText("SimConnect.dll: \n");
+            appConsole.AppendText("Locating SimConnect DLL dependencies\n");
+            appConsole.AppendText("SimConnect.dll: \n");
             if (BaseDependencyUtility.LocateSimConnectDll())
                 AppendAppConsole("OK\n", Color.LightGreen);
             else
                 AppendAppConsole("Not Found\n", Color.OrangeRed);
 
             // Check for Microsoft.FlightSimulator.SimConnect.dll
-            AppConsole.AppendText("Locating Microsoft.FlightSimulator.SimConnect.dll:\n");
+            appConsole.AppendText("Locating Microsoft.FlightSimulator.SimConnect.dll:\n");
             if (BaseDependencyUtility.LocateSimConnectNETDll())
                 AppendAppConsole("OK\n", Color.LightGreen);
             else
@@ -141,7 +165,7 @@ namespace FlightSimCapstone
                 AppendAppConsole("Warning: One or more SimConnect libraries could not be located. To resolve this, please install the MSFS SDK\n", Color.Yellow);
 
             // Check System Management for Arduino connection
-            AppConsole.AppendText("Checking Arduino Connection...\n");
+            appConsole.AppendText("Checking Arduino Connection...\n");
             if (BaseDependencyUtility.CheckArduinoConnection())
             {
                 this.arduinoStatusLabel.Text = "OK";
@@ -255,7 +279,6 @@ namespace FlightSimCapstone
                 graphicalInterfaceLeft.Show();
                 graphicalInterfaceRight.Show();
             }
-
             else
             {
                 MessageBox.Show("Please Start Microsoft Flight Simulator before opening graphical interface.", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);

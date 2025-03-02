@@ -8,10 +8,18 @@ namespace FlightSimCapstone
 {
     internal static class Program
     {
+        public static UtilityForm UtilityForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         // Dependency inject SimConnect DLLs at runtime
         // https://stackoverflow.com/questions/8836093/how-can-i-specify-a-dllimport-path-at-runtime
 
-        
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

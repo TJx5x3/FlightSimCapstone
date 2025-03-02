@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.TitleGif = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.AmmeterLabel = new System.Windows.Forms.Label();
             this.CurrentFuelLabel = new System.Windows.Forms.Label();
@@ -45,22 +45,22 @@
             this.AltimeterLabel = new System.Windows.Forms.Label();
             this.InitializeSimconnectButton = new System.Windows.Forms.Button();
             this.TestSimConnect_Button = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.RightSkeleton = new System.Windows.Forms.PictureBox();
+            this.LeftSkeleton = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.TitleGif)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LeftSkeleton)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // TitleGif
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(58, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(601, 105);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.TitleGif.Image = ((System.Drawing.Image)(resources.GetObject("TitleGif.Image")));
+            this.TitleGif.Location = new System.Drawing.Point(58, 3);
+            this.TitleGif.Name = "TitleGif";
+            this.TitleGif.Size = new System.Drawing.Size(601, 105);
+            this.TitleGif.TabIndex = 0;
+            this.TitleGif.TabStop = false;
             // 
             // panel1
             // 
@@ -78,9 +78,9 @@
             this.panel1.Controls.Add(this.AltimeterLabel);
             this.panel1.Controls.Add(this.InitializeSimconnectButton);
             this.panel1.Controls.Add(this.TestSimConnect_Button);
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.RightSkeleton);
+            this.panel1.Controls.Add(this.LeftSkeleton);
+            this.panel1.Controls.Add(this.TitleGif);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(707, 495);
@@ -216,25 +216,25 @@
             this.TestSimConnect_Button.UseVisualStyleBackColor = true;
             this.TestSimConnect_Button.Click += new System.EventHandler(this.TestSimConnectButton_Click);
             // 
-            // pictureBox3
+            // RightSkeleton
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(603, 124);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(101, 99);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
+            this.RightSkeleton.Image = ((System.Drawing.Image)(resources.GetObject("RightSkeleton.Image")));
+            this.RightSkeleton.Location = new System.Drawing.Point(603, 124);
+            this.RightSkeleton.Name = "RightSkeleton";
+            this.RightSkeleton.Size = new System.Drawing.Size(101, 99);
+            this.RightSkeleton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.RightSkeleton.TabIndex = 3;
+            this.RightSkeleton.TabStop = false;
             // 
-            // pictureBox2
+            // LeftSkeleton
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, 124);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(101, 99);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.LeftSkeleton.Image = ((System.Drawing.Image)(resources.GetObject("LeftSkeleton.Image")));
+            this.LeftSkeleton.Location = new System.Drawing.Point(3, 124);
+            this.LeftSkeleton.Name = "LeftSkeleton";
+            this.LeftSkeleton.Size = new System.Drawing.Size(101, 99);
+            this.LeftSkeleton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.LeftSkeleton.TabIndex = 2;
+            this.LeftSkeleton.TabStop = false;
             // 
             // DevForm
             // 
@@ -244,21 +244,21 @@
             this.Controls.Add(this.panel1);
             this.Name = "DevForm";
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TitleGif)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LeftSkeleton)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox TitleGif;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox LeftSkeleton;
+        private System.Windows.Forms.PictureBox RightSkeleton;
         private System.Windows.Forms.Button TestSimConnect_Button;
         private System.Windows.Forms.Button InitializeSimconnectButton;
         private System.Windows.Forms.Label AltimeterLabel;

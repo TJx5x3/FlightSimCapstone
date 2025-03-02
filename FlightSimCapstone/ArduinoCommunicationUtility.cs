@@ -52,6 +52,14 @@ namespace FlightSimCapstone
             serialPort.Open();
         }
 
+        public static DevForm DevForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         /// <summary>
         /// Read serial data from arduino device.
         /// </summary>

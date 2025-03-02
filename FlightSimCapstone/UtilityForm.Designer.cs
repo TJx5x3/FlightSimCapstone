@@ -29,103 +29,103 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UtilityForm));
-            this.StartButton = new System.Windows.Forms.Button();
-            this.AppConsole = new System.Windows.Forms.RichTextBox();
-            this.AppConsoleTitle = new System.Windows.Forms.Label();
-            this.OpenGraphicConfigButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.startButton = new System.Windows.Forms.Button();
+            this.appConsole = new System.Windows.Forms.RichTextBox();
+            this.appConsoleTitle = new System.Windows.Forms.Label();
+            this.openGraphicConfigButton = new System.Windows.Forms.Button();
+            this.connectionStatusTitleLabel = new System.Windows.Forms.Label();
+            this.statusInfoPanel = new System.Windows.Forms.Panel();
+            this.displayStatusLabel = new System.Windows.Forms.Label();
             this.rudderStatusLabel = new System.Windows.Forms.Label();
             this.yokeStatusLabel = new System.Windows.Forms.Label();
             this.arduinoStatusLabel = new System.Windows.Forms.Label();
-            this.displayStatusLabel = new System.Windows.Forms.Label();
+            this.displayConnectionTitleLabel = new System.Windows.Forms.Label();
             this.rudderConnectionTitleLabel = new System.Windows.Forms.Label();
             this.yokeConnectionTitleLabel = new System.Windows.Forms.Label();
             this.arduinoConnectionTitleLabel = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.panel1.SuspendLayout();
+            this.statusInfoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // StartButton
+            // startButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(255, 283);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(237, 52);
-            this.StartButton.TabIndex = 0;
-            this.StartButton.Text = "Start";
-            this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+            this.startButton.Location = new System.Drawing.Point(255, 283);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(237, 52);
+            this.startButton.TabIndex = 0;
+            this.startButton.Text = "Start";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
-            // AppConsole
+            // appConsole
             // 
-            this.AppConsole.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.AppConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AppConsole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppConsole.ForeColor = System.Drawing.SystemColors.Window;
-            this.AppConsole.Location = new System.Drawing.Point(255, 25);
-            this.AppConsole.Name = "AppConsole";
-            this.AppConsole.ReadOnly = true;
-            this.AppConsole.Size = new System.Drawing.Size(237, 218);
-            this.AppConsole.TabIndex = 1;
-            this.AppConsole.Text = "";
-            this.AppConsole.WordWrap = false;
+            this.appConsole.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.appConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.appConsole.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appConsole.ForeColor = System.Drawing.SystemColors.Window;
+            this.appConsole.Location = new System.Drawing.Point(255, 25);
+            this.appConsole.Name = "appConsole";
+            this.appConsole.ReadOnly = true;
+            this.appConsole.Size = new System.Drawing.Size(237, 231);
+            this.appConsole.TabIndex = 1;
+            this.appConsole.Text = "";
+            this.appConsole.WordWrap = false;
             // 
-            // AppConsoleTitle
+            // appConsoleTitle
             // 
-            this.AppConsoleTitle.AutoSize = true;
-            this.AppConsoleTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppConsoleTitle.Location = new System.Drawing.Point(252, 9);
-            this.AppConsoleTitle.Name = "AppConsoleTitle";
-            this.AppConsoleTitle.Size = new System.Drawing.Size(56, 13);
-            this.AppConsoleTitle.TabIndex = 2;
-            this.AppConsoleTitle.Text = "Console:";
+            this.appConsoleTitle.AutoSize = true;
+            this.appConsoleTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appConsoleTitle.Location = new System.Drawing.Point(252, 9);
+            this.appConsoleTitle.Name = "appConsoleTitle";
+            this.appConsoleTitle.Size = new System.Drawing.Size(56, 13);
+            this.appConsoleTitle.TabIndex = 2;
+            this.appConsoleTitle.Text = "Console:";
             // 
-            // OpenGraphicConfigButton
+            // openGraphicConfigButton
             // 
-            this.OpenGraphicConfigButton.Location = new System.Drawing.Point(12, 283);
-            this.OpenGraphicConfigButton.Name = "OpenGraphicConfigButton";
-            this.OpenGraphicConfigButton.Size = new System.Drawing.Size(237, 52);
-            this.OpenGraphicConfigButton.TabIndex = 3;
-            this.OpenGraphicConfigButton.Text = "Configure Graphical Interface";
-            this.OpenGraphicConfigButton.UseVisualStyleBackColor = true;
-            this.OpenGraphicConfigButton.Click += new System.EventHandler(this.ConfigureButton_Click);
+            this.openGraphicConfigButton.Location = new System.Drawing.Point(12, 283);
+            this.openGraphicConfigButton.Name = "openGraphicConfigButton";
+            this.openGraphicConfigButton.Size = new System.Drawing.Size(237, 52);
+            this.openGraphicConfigButton.TabIndex = 3;
+            this.openGraphicConfigButton.Text = "Configure Graphical Interface";
+            this.openGraphicConfigButton.UseVisualStyleBackColor = true;
+            this.openGraphicConfigButton.Click += new System.EventHandler(this.ConfigureButton_Click);
             // 
-            // label1
+            // connectionStatusTitleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Connection Status:";
+            this.connectionStatusTitleLabel.AutoSize = true;
+            this.connectionStatusTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.connectionStatusTitleLabel.Location = new System.Drawing.Point(3, 0);
+            this.connectionStatusTitleLabel.Name = "connectionStatusTitleLabel";
+            this.connectionStatusTitleLabel.Size = new System.Drawing.Size(115, 13);
+            this.connectionStatusTitleLabel.TabIndex = 4;
+            this.connectionStatusTitleLabel.Text = "Connection Status:";
             // 
-            // panel1
+            // statusInfoPanel
             // 
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.rudderStatusLabel);
-            this.panel1.Controls.Add(this.yokeStatusLabel);
-            this.panel1.Controls.Add(this.arduinoStatusLabel);
-            this.panel1.Controls.Add(this.displayStatusLabel);
-            this.panel1.Controls.Add(this.rudderConnectionTitleLabel);
-            this.panel1.Controls.Add(this.yokeConnectionTitleLabel);
-            this.panel1.Controls.Add(this.arduinoConnectionTitleLabel);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(222, 265);
-            this.panel1.TabIndex = 5;
+            this.statusInfoPanel.Controls.Add(this.displayStatusLabel);
+            this.statusInfoPanel.Controls.Add(this.rudderStatusLabel);
+            this.statusInfoPanel.Controls.Add(this.yokeStatusLabel);
+            this.statusInfoPanel.Controls.Add(this.arduinoStatusLabel);
+            this.statusInfoPanel.Controls.Add(this.displayConnectionTitleLabel);
+            this.statusInfoPanel.Controls.Add(this.rudderConnectionTitleLabel);
+            this.statusInfoPanel.Controls.Add(this.yokeConnectionTitleLabel);
+            this.statusInfoPanel.Controls.Add(this.arduinoConnectionTitleLabel);
+            this.statusInfoPanel.Controls.Add(this.connectionStatusTitleLabel);
+            this.statusInfoPanel.Location = new System.Drawing.Point(12, 12);
+            this.statusInfoPanel.Name = "statusInfoPanel";
+            this.statusInfoPanel.Size = new System.Drawing.Size(222, 265);
+            this.statusInfoPanel.TabIndex = 5;
             // 
-            // label2
+            // displayStatusLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 134);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "n/a";
+            this.displayStatusLabel.AutoSize = true;
+            this.displayStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayStatusLabel.Location = new System.Drawing.Point(73, 134);
+            this.displayStatusLabel.Name = "displayStatusLabel";
+            this.displayStatusLabel.Size = new System.Drawing.Size(31, 20);
+            this.displayStatusLabel.TabIndex = 7;
+            this.displayStatusLabel.Text = "n/a";
             // 
             // rudderStatusLabel
             // 
@@ -157,15 +157,15 @@
             this.arduinoStatusLabel.TabIndex = 7;
             this.arduinoStatusLabel.Text = "n/a";
             // 
-            // displayStatusLabel
+            // displayConnectionTitleLabel
             // 
-            this.displayStatusLabel.AutoSize = true;
-            this.displayStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.displayStatusLabel.Location = new System.Drawing.Point(3, 134);
-            this.displayStatusLabel.Name = "displayStatusLabel";
-            this.displayStatusLabel.Size = new System.Drawing.Size(64, 20);
-            this.displayStatusLabel.TabIndex = 9;
-            this.displayStatusLabel.Text = "Display:";
+            this.displayConnectionTitleLabel.AutoSize = true;
+            this.displayConnectionTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayConnectionTitleLabel.Location = new System.Drawing.Point(3, 134);
+            this.displayConnectionTitleLabel.Name = "displayConnectionTitleLabel";
+            this.displayConnectionTitleLabel.Size = new System.Drawing.Size(64, 20);
+            this.displayConnectionTitleLabel.TabIndex = 9;
+            this.displayConnectionTitleLabel.Text = "Display:";
             // 
             // rudderConnectionTitleLabel
             // 
@@ -210,19 +210,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 341);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.OpenGraphicConfigButton);
-            this.Controls.Add(this.AppConsoleTitle);
-            this.Controls.Add(this.AppConsole);
-            this.Controls.Add(this.StartButton);
+            this.Controls.Add(this.statusInfoPanel);
+            this.Controls.Add(this.openGraphicConfigButton);
+            this.Controls.Add(this.appConsoleTitle);
+            this.Controls.Add(this.appConsole);
+            this.Controls.Add(this.startButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "UtilityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flight Sim Capstone - Utility";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.statusInfoPanel.ResumeLayout(false);
+            this.statusInfoPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,21 +230,21 @@
 
         #endregion
 
-        private System.Windows.Forms.Button StartButton;
-        private System.Windows.Forms.RichTextBox AppConsole;
-        private System.Windows.Forms.Label AppConsoleTitle;
-        private System.Windows.Forms.Button OpenGraphicConfigButton;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.RichTextBox appConsole;
+        private System.Windows.Forms.Label appConsoleTitle;
+        private System.Windows.Forms.Button openGraphicConfigButton;
+        private System.Windows.Forms.Label connectionStatusTitleLabel;
+        private System.Windows.Forms.Panel statusInfoPanel;
         private System.Windows.Forms.Label arduinoConnectionTitleLabel;
         private System.Windows.Forms.Label yokeConnectionTitleLabel;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label rudderConnectionTitleLabel;
-        private System.Windows.Forms.Label displayStatusLabel;
+        private System.Windows.Forms.Label displayConnectionTitleLabel;
         private System.Windows.Forms.Label rudderStatusLabel;
         private System.Windows.Forms.Label yokeStatusLabel;
         private System.Windows.Forms.Label arduinoStatusLabel;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label displayStatusLabel;
     }
 }
 

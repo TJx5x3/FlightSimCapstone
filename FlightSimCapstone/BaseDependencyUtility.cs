@@ -64,6 +64,14 @@ namespace FlightSimCapstone
         private const string arduinoPID = "PID_0042";
         private const string arduinoVID = "VID_2341";
 
+        public static UtilityForm UtilityForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         /// <summary>
         /// Return bool if Flight Sim Directory can be located
         /// </summary>
