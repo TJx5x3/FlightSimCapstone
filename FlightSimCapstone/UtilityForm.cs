@@ -230,7 +230,8 @@ namespace FlightSimCapstone
 
         /// <summary>
         /// Configure Graphical Interface button clicked event.
-        /// Open new instance of graphical interface form.
+        /// Open new instance of left and right graphical 
+        /// interface forms.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -246,6 +247,10 @@ namespace FlightSimCapstone
                 GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left();
                 GraphicalInterface_Right graphicalInterfaceRight = new GraphicalInterface_Right();
 
+                //Link graphical interface forms together to ensure they close each other.
+                graphicalInterfaceLeft.setLinkedForm(graphicalInterfaceRight); // Link Left Graphical Interface to Right 
+                graphicalInterfaceRight.setLinkedForm(graphicalInterfaceLeft);  // Link Right Graphical Interface to Left 
+
                 // Show Graphical Interface Forms
                 graphicalInterfaceLeft.Show();
                 graphicalInterfaceRight.Show();
@@ -259,7 +264,11 @@ namespace FlightSimCapstone
                 // Define Graphical Interface Forms (Left and right)
                 GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left();
                 GraphicalInterface_Right graphicalInterfaceRight = new GraphicalInterface_Right();
-                
+
+                //Link graphical interface forms together to ensure they close each other.
+                graphicalInterfaceLeft.setLinkedForm(graphicalInterfaceRight); // Link Left Graphical Interface to Right 
+                graphicalInterfaceRight.setLinkedForm(graphicalInterfaceLeft);  // Link Right Graphical Interface to Left 
+
                 // Show Graphical Interface Forms
                 graphicalInterfaceLeft.Show();
                 graphicalInterfaceRight.Show();

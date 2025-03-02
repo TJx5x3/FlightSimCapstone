@@ -50,6 +50,14 @@ namespace FlightSimCapstone
         private Bitmap originalTurnCoordinatorAirplane;
         private Bitmap originalSuctionGaugeDial;
 
+        // Link Right form to current form
+        private GraphicalInterface_Right linkedForm;
+
+        // Check if OnClosing event first fired in other form
+        public bool isRightClosing { get; set; }
+
+
+        // Degree attribute for testing/debug
         private float degree = 0f;
 
         /// <summary>
@@ -127,6 +135,11 @@ namespace FlightSimCapstone
 
 
 
+        public void setLinkedForm(GraphicalInterface_Right rightForm)
+        {
+            linkedForm = rightForm;
+        }
+
         /// <summary>
         /// valueTimer Event
         /// <br/>
@@ -166,6 +179,16 @@ namespace FlightSimCapstone
         {
             formTimer.Stop();
             formTimer.Dispose();
+
+            // Tell other form that this form is closing
+            linkedForm.isLeftClosing = true;
+
+            // If the other form didn't tell us it closed first, close it first
+            if (!isRightClosing)
+            {
+                isRightClosing = true;
+                linkedForm.Close();
+            }
 
             //Close SimConnect client
             SimConnectUtility.DisconnectSimconnectClient();

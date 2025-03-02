@@ -15,6 +15,13 @@ namespace FlightSimCapstone
         private Timer formTimer = null;
 
         private Bitmap originalVerticalAirspeedIndicatorDial;
+
+        // Link Left form to current form
+        private GraphicalInterface_Left linkedForm;
+        
+        // Check if OnClosing event first fired in left form
+        public bool isLeftClosing { get; set; }
+
         public GraphicalInterface_Right()
         {
             InitializeComponent();
@@ -81,7 +88,11 @@ namespace FlightSimCapstone
 
             Console.WriteLine("Tick");
         }
-
+        
+        public void setLinkedForm(GraphicalInterface_Left leftForm)
+        {
+            linkedForm = leftForm;
+        }
         /// <summary>
         /// OnClosing Event.
         /// Disable and Discard Form timer when closed
@@ -93,8 +104,15 @@ namespace FlightSimCapstone
             formTimer.Stop();
             formTimer.Dispose();
 
-            //Close SimConnect client
-            //SimConnectUtility.DisconnectSimconnectClient();
+            // Tell other form that this form is closing
+            linkedForm.isRightClosing = true;
+
+            // If the other form didn't tell us it closed first, close it first
+            if (!isLeftClosing)
+            {
+                isLeftClosing = true; 
+                linkedForm.Close();
+            }
         }
     }
 }
