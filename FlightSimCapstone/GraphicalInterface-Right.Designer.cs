@@ -66,7 +66,7 @@
             this.Controls.Add(this.VerticalAirspeedIndicator);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicalInterface_Right";
-            this.Text = "GraphicalInterface_Right";
+            this.Text = "Graphical Interface - Right";
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicatorDial)).EndInit();
             this.ResumeLayout(false);

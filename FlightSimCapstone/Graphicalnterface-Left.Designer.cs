@@ -123,7 +123,7 @@
             this.Controls.Add(this.HeadingIndicatorBack);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicalInterface_Left";
-            this.Text = "Graphical Interface";
+            this.Text = "Graphical Interface - Left";
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGauge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorAirplane)).EndInit();
