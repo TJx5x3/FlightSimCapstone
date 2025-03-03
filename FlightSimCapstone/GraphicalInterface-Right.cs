@@ -1,4 +1,25 @@
-﻿using System;
+﻿/**********************************************************************************
+ *  Author          :   Jason Broom
+ *  Course Number   :   STG-452
+ *  Last Revision   :   3/3/25
+ *  Class           :   GraphicalInterface-Right.cs
+ *  Description     :   This module will contain various overlayed bitmap images to create graphical modules.
+ *                      Each module will update according to real-time values retrieved from the SimConnect Client.
+ **********************************************************************************
+ *  I used source code from the following websites to complete
+ *  this assignment:
+ * 
+ * Image Rotation
+ * https://foxlearn.com/csharp/image-rotation-8368.html
+ * 
+ * Avoid Automatic Scaling when applying Image Transformations
+ * https://learn.microsoft.com/en-us/dotnet/desktop/winforms/advanced/how-to-improve-performance-by-avoiding-automatic-scaling?view=netframeworkdesktop-4.8
+ * 
+ * Overlap Transparent Image
+ * https://stackoverflow.com/questions/38566828/overlap-one-image-as-transparent-on-another-in-c-sharp
+ * 
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,10 +31,16 @@ using System.Windows.Forms;
 
 namespace FlightSimCapstone
 {
+    /// <summary>
+    /// This module holds graphical elements to be displayed in the 
+    /// Right Side of the Instrumentation Panel
+    /// </summary>
     public partial class GraphicalInterface_Right : Form
     {
+        // Timer to update retrieved SimConnect values 
         private Timer formTimer = null;
 
+        // Attributes for Bitmaps that will be rotated
         private Bitmap originalVerticalAirspeedIndicatorDial;
 
         // Link Left form to current form

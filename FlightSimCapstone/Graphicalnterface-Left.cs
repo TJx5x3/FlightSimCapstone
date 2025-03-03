@@ -1,8 +1,8 @@
 ﻿/**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   2/28/25
- *  Class           :   GraphicalInterface.cs
+ *  Last Revision   :   3/8/25
+ *  Class           :   GraphicalInterface-Left.cs
  *  Description     :   This module will contain various overlayed bitmap images to create graphical modules.
  *                      Each module will update according to real-time values retrieved from the SimConnect Client.
  **********************************************************************************
@@ -36,13 +36,12 @@ using Microsoft.FlightSimulator.SimConnect;
 namespace FlightSimCapstone
 {
     /// <summary>
-    /// This module holds graphical elements to be displayed in the Instrumentation Panel.
-    /// TODO: Create Second Form to display fullscreen on second display. 
-    ///       This will require BaseDependencyUtility to detect secondary displays. 
+    /// This module holds graphical elements to be displayed in the 
+    /// Left Side of the Instrumentation Panel
     /// </summary>
     public partial class GraphicalInterface_Left : Form
     {
-        // Timer to update retrieved SimConnect values in text fields
+        // Timer to update retrieved SimConnect values
         private Timer formTimer = null;
 
         // Attributes for Bitmaps that will be rotated
@@ -163,7 +162,7 @@ namespace FlightSimCapstone
                 Bitmap rotatedTurnCoordinatorAirplane = SetImageRotation(originalTurnCoordinatorAirplane, (float)SimConnectUtility.TurnIndicatorValue * 5.0f); // Multiply 5 to get proper degree rotation value
                 TurnCoordinatorAirplane.Image = rotatedTurnCoordinatorAirplane;
 
-                // Rotate 
+                // TODO: Implement Suction Gauge  
             }
 
             Console.WriteLine("Tick");
