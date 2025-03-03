@@ -49,6 +49,15 @@ namespace FlightSimCapstone
         // Check if OnClosing event first fired in left form
         public bool isLeftClosing { get; set; }
 
+        /// <summary>
+        /// Class constructor
+        /// 
+        /// Initialize picturebox attributes.
+        /// Oberlay transparent images, set size, parent image(s) and color
+        /// 
+        /// <br/>
+        /// Instantiate Timer.
+        /// </summary>
         public GraphicalInterface_Right()
         {
             InitializeComponent();

@@ -63,7 +63,7 @@ namespace FlightSimCapstone
         /// Class constructor
         /// 
         /// Initialize picturebox attributes. 
-        /// Overlay transparent images, set size, parent image, location, and color
+        /// Overlay transparent images, set size, parent image(s), location, and color.
         /// 
         /// <br/>
         /// Instantiate Timer
