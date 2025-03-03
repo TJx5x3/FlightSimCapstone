@@ -133,7 +133,10 @@ namespace FlightSimCapstone
         }
 
 
-
+        /// <summary>
+        /// Setter method for linked form
+        /// </summary>
+        /// <param name="rightForm"></param>
         public void setLinkedForm(GraphicalInterface_Right rightForm)
         {
             linkedForm = rightForm;

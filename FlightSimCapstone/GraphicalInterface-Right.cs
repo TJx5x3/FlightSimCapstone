@@ -125,6 +125,10 @@ namespace FlightSimCapstone
             Console.WriteLine("Tick");
         }
         
+        /// <summary>
+        /// Setter method for linked form
+        /// </summary>
+        /// <param name="leftForm"></param>
         public void setLinkedForm(GraphicalInterface_Left leftForm)
         {
             linkedForm = leftForm;
