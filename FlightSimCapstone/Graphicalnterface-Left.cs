@@ -45,6 +45,7 @@ namespace FlightSimCapstone
         private Timer formTimer = null;
 
         // Attributes for Bitmaps that will be rotated
+        private Bitmap originalAirspeedIndicatorDial;
         private Bitmap originalHeadingIndicatorGauge;
         private Bitmap originalTurnCoordinatorAirplane;
         private Bitmap originalSuctionGaugeDial;
@@ -71,6 +72,14 @@ namespace FlightSimCapstone
         public GraphicalInterface_Left()
         {
             InitializeComponent();
+
+            // Airspeed Indicator
+            originalAirspeedIndicatorDial = new Bitmap(Properties.Resources.AirspeedIndicator_Dial); // Rotating dial that shows airspeed values
+            AirspeedIndicatorDial.Image = originalAirspeedIndicatorDial;
+
+            AirspeedIndicatorDial.Parent = AirspeedIndicatorBack; // Transparent needle overlay
+            AirspeedIndicatorDial.Location = new Point(0, 0);
+            AirspeedIndicatorDial.BackColor = Color.Transparent;
 
             // Heading Indicator
             originalHeadingIndicatorGauge = new Bitmap(Properties.Resources.HeadingIndicator1); // Circular gauge that shows degree values
@@ -156,6 +165,10 @@ namespace FlightSimCapstone
             {
                 // Refresh SimConnect Client
                 SimConnectUtility.RefreshSimconnect();
+
+                // Rotate Airspeed Indicator dial
+                Bitmap rotatedAirspeedIndicatorDial = SetImageRotation(originalAirspeedIndicatorDial, (float)(SimConnectUtility.AirspeedIndicatorValue * (10000.0f / 13909.0f))); // Multiply 9/7 to get proper degree rotation value
+                AirspeedIndicatorDial.Image = rotatedAirspeedIndicatorDial;
 
                 // Rotate background image based on rotational value of the Heading Indicator retrieved from SimConnect. 
                 Bitmap rotatedImage = SetImageRotation(originalHeadingIndicatorGauge, -(float)SimConnectUtility.HeadingIndicatorValue);
