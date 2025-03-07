@@ -55,7 +55,7 @@
   <Class Name="FlightSimCapstone.GraphicalInterface_Left">
     <Position X="0.5" Y="8.75" Width="4" />
     <TypeIdentifier>
-      <HashCode>AABAgAAAACAARgAAgECgAAACAAAFEAAAQACACAEECAA=</HashCode>
+      <HashCode>AABAgAAAACAARgAAgECgAAACAAAFEAAAQACACAFECAA=</HashCode>
       <FileName>Graphicalnterface-Left.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -94,7 +94,7 @@
       <Path>
         <Point X="4.5" Y="15.688" />
         <Point X="2.5" Y="15.688" />
-        <Point X="2.5" Y="14.348" />
+        <Point X="2.5" Y="14.733" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="GraphicalInterface_Right" Type="FlightSimCapstone.GraphicalInterface_Right" FixedToPoint="true">

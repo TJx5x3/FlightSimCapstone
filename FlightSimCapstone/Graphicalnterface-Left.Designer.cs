@@ -29,19 +29,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalInterface_Left));
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SuctionGaugeDial = new System.Windows.Forms.PictureBox();
             this.SuctionGauge = new System.Windows.Forms.PictureBox();
             this.TurnCoordinatorAirplane = new System.Windows.Forms.PictureBox();
             this.TurnCoordinatorBack = new System.Windows.Forms.PictureBox();
             this.HeadingIndicatorOverlay = new System.Windows.Forms.PictureBox();
             this.HeadingIndicatorBack = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGauge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorAirplane)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBox1.Image = global::FlightSimCapstone.Properties.Resources.AirspeedIndicator;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 29);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // SuctionGaugeDial
             // 
@@ -91,7 +106,7 @@
             // 
             this.HeadingIndicatorOverlay.BackColor = System.Drawing.Color.Transparent;
             this.HeadingIndicatorOverlay.Image = global::FlightSimCapstone.Properties.Resources.HeadingIndicator1_Airplane;
-            this.HeadingIndicatorOverlay.Location = new System.Drawing.Point(12, 12);
+            this.HeadingIndicatorOverlay.Location = new System.Drawing.Point(624, 498);
             this.HeadingIndicatorOverlay.Name = "HeadingIndicatorOverlay";
             this.HeadingIndicatorOverlay.Size = new System.Drawing.Size(400, 400);
             this.HeadingIndicatorOverlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -102,12 +117,23 @@
             // 
             this.HeadingIndicatorBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.HeadingIndicatorBack.Image = global::FlightSimCapstone.Properties.Resources.HeadingIndicator1;
-            this.HeadingIndicatorBack.Location = new System.Drawing.Point(12, 12);
+            this.HeadingIndicatorBack.Location = new System.Drawing.Point(624, 498);
             this.HeadingIndicatorBack.Name = "HeadingIndicatorBack";
             this.HeadingIndicatorBack.Size = new System.Drawing.Size(400, 400);
             this.HeadingIndicatorBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.HeadingIndicatorBack.TabIndex = 0;
             this.HeadingIndicatorBack.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::FlightSimCapstone.Properties.Resources.AirspeedIndicator_Dial;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 29);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
             // 
             // GraphicalInterface_Left
             // 
@@ -115,6 +141,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1115, 935);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.SuctionGaugeDial);
             this.Controls.Add(this.SuctionGauge);
             this.Controls.Add(this.TurnCoordinatorAirplane);
@@ -124,12 +152,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicalInterface_Left";
             this.Text = "Graphical Interface - Left";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGauge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorAirplane)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -141,5 +171,7 @@
         private System.Windows.Forms.PictureBox TurnCoordinatorBack;
         private System.Windows.Forms.PictureBox SuctionGauge;
         private System.Windows.Forms.PictureBox SuctionGaugeDial;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

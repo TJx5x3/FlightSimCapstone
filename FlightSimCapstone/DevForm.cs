@@ -194,10 +194,11 @@ namespace FlightSimCapstone
         {
             Console.WriteLine("Closing dev form instance\n");
             utilityForm.AppendAppConsole("Closing dev form instance\n", Color.White);
+            serialPort.Close(); // Close serial port
             valueTimer.Stop();
             valueTimer.Dispose();
 
-            serialPort.Close(); // Close serial port
+            //serialPort.Close(); // Close serial port
 
             SimConnectUtility.DisconnectSimconnectClient();
         }

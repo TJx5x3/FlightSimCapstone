@@ -61,7 +61,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1228, 574);
             this.Controls.Add(this.VerticalAirspeedIndicatorDial);
             this.Controls.Add(this.VerticalAirspeedIndicator);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
