@@ -94,7 +94,9 @@ namespace FlightSimCapstone
         private static double totalFuelValue = 0.0f;
         private static double currentFuelValue = 0.0f;
         private static double ammeterValue = 0.0f;
-        
+        private static double pitchValue = 0.0f;
+        private static double rollValue = 0.0f;
+
 
         // getter/setter properties for simconnect attributes
         public static double AltimeterValue
@@ -157,6 +159,18 @@ namespace FlightSimCapstone
             private set { ammeterValue = value; }
         }
 
+        public static double PitchValue
+        {
+            get { return pitchValue; }
+            private set { pitchValue = value; }
+        }
+
+        public static double RollValue
+        {
+            get { return rollValue; }
+            private set { rollValue = value; }
+        }
+
         // Enumerations for SimConnect requests
         private enum Requests
         {
@@ -169,7 +183,9 @@ namespace FlightSimCapstone
             SuctionGauge,
             TotalFuel,
             CurrentFuel,
-            Ammeter
+            Ammeter,
+            Pitch,
+            Roll
         }
         
         // Enumerations for Definitions 
@@ -184,7 +200,9 @@ namespace FlightSimCapstone
             SuctionGaugeData,
             TotalFuelData,
             CurrentFuelData,
-            AmmeterData
+            AmmeterData,
+            PitchData,
+            RollData
         }
 
 
@@ -280,6 +298,22 @@ namespace FlightSimCapstone
                 ammeterValue = ammeter.AmmeterReading;
                 Console.WriteLine($"Ammeter Reading (amp): {ammeter.AmmeterReading}");
             }
+
+            // Request Pitch Data
+            if ((Requests)data.dwRequestID == Requests.Pitch)
+            {
+                PitchData pitch = (PitchData)data.dwData[0];
+                pitchValue = pitch.PitchReading;
+                Console.WriteLine($"Pitch Reading (deg): {pitch.PitchReading}");
+            }
+
+            // Request Roll Data
+            if ((Requests)data.dwRequestID == Requests.Roll)
+            {
+                RollData roll = (RollData)data.dwData[0];
+                rollValue = roll.RollReading;
+                Console.WriteLine($"Roll Reading (deg): {roll.RollReading}");
+            }
         }
 
         /// <summary>
@@ -356,6 +390,15 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.AmmeterData, "ELECTRICAL BATTERY BUS AMPS", "Amperes", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<AmmeterData>(Definitions.AmmeterData);
 
+            // Define Pitch value
+            // "ALTITUDE INDICATOR PITCH DEGREES" - Get pitch value in degrees
+            simconnect.AddToDataDefinition(Definitions.PitchData, "ATTITUDE INDICATOR PITCH DEGREES", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<PitchData>(Definitions.PitchData);
+
+            // Define Roll value
+            simconnect.AddToDataDefinition(Definitions.RollData, "ATTITUDE INDICATOR BANK DEGREES", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<RollData>(Definitions.RollData);
+
             /////////////////////
             // Request Values: //
             /////////////////////
@@ -389,7 +432,13 @@ namespace FlightSimCapstone
            
             // Request Ammeter Value
             simconnect.RequestDataOnSimObject(Requests.Ammeter, Definitions.AmmeterData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
-            
+
+            // Request Pitch Value
+            simconnect.RequestDataOnSimObject(Requests.Pitch, Definitions.PitchData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+            // Request Roll Value
+            simconnect.RequestDataOnSimObject(Requests.Roll, Definitions.RollData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
             // Register Simconnect OnRecvSimobjectData event
             simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
 

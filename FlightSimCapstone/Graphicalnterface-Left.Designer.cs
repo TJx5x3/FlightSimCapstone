@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalInterface_Left));
+            this.AirspeedIndicatorDial = new System.Windows.Forms.PictureBox();
             this.AirspeedIndicatorBack = new System.Windows.Forms.PictureBox();
             this.SuctionGaugeDial = new System.Windows.Forms.PictureBox();
             this.SuctionGauge = new System.Windows.Forms.PictureBox();
@@ -36,7 +37,7 @@
             this.TurnCoordinatorBack = new System.Windows.Forms.PictureBox();
             this.HeadingIndicatorOverlay = new System.Windows.Forms.PictureBox();
             this.HeadingIndicatorBack = new System.Windows.Forms.PictureBox();
-            this.AirspeedIndicatorDial = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorDial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGauge)).BeginInit();
@@ -44,8 +45,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorBack)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorDial)).BeginInit();
             this.SuspendLayout();
+            // 
+            // AirspeedIndicatorDial
+            // 
+            this.AirspeedIndicatorDial.BackColor = System.Drawing.Color.Transparent;
+            this.AirspeedIndicatorDial.Image = global::FlightSimCapstone.Properties.Resources.AirspeedIndicator_Dial;
+            this.AirspeedIndicatorDial.Location = new System.Drawing.Point(12, 29);
+            this.AirspeedIndicatorDial.Name = "AirspeedIndicatorDial";
+            this.AirspeedIndicatorDial.Size = new System.Drawing.Size(400, 400);
+            this.AirspeedIndicatorDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AirspeedIndicatorDial.TabIndex = 8;
+            this.AirspeedIndicatorDial.TabStop = false;
             // 
             // AirspeedIndicatorBack
             // 
@@ -124,23 +135,12 @@
             this.HeadingIndicatorBack.TabIndex = 0;
             this.HeadingIndicatorBack.TabStop = false;
             // 
-            // AirspeedIndicatorDial
-            // 
-            this.AirspeedIndicatorDial.BackColor = System.Drawing.Color.Transparent;
-            this.AirspeedIndicatorDial.Image = global::FlightSimCapstone.Properties.Resources.AirspeedIndicator_Dial;
-            this.AirspeedIndicatorDial.Location = new System.Drawing.Point(12, 29);
-            this.AirspeedIndicatorDial.Name = "AirspeedIndicatorDial";
-            this.AirspeedIndicatorDial.Size = new System.Drawing.Size(400, 400);
-            this.AirspeedIndicatorDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.AirspeedIndicatorDial.TabIndex = 8;
-            this.AirspeedIndicatorDial.TabStop = false;
-            // 
             // GraphicalInterface_Left
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1115, 935);
+            this.ClientSize = new System.Drawing.Size(1034, 911);
             this.Controls.Add(this.AirspeedIndicatorDial);
             this.Controls.Add(this.AirspeedIndicatorBack);
             this.Controls.Add(this.SuctionGaugeDial);
@@ -152,6 +152,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicalInterface_Left";
             this.Text = "Graphical Interface - Left";
+            ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorDial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGauge)).EndInit();
@@ -159,7 +160,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorBack)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorDial)).EndInit();
             this.ResumeLayout(false);
 
         }

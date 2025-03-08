@@ -176,6 +176,12 @@ namespace FlightSimCapstone
                 // Update Ammeter Value
                 AmmeterLabel.Text = $"Ammeter (amp): {SimConnectUtility.AmmeterValue}";
 
+                // Update Pitch Value
+                PitchLabel.Text = $"Pitch (degrees): {SimConnectUtility.PitchValue}";
+
+                // Update Roll Value
+                RollLabel.Text = $"Roll (degrees): {SimConnectUtility.RollValue}";
+
                 // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }

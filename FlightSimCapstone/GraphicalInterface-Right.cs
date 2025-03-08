@@ -18,6 +18,10 @@
  * Overlap Transparent Image
  * https://stackoverflow.com/questions/38566828/overlap-one-image-as-transparent-on-another-in-c-sharp
  * 
+ * Understanding what an Altimeter does
+ * https://www.wikihow.com/Read-an-Altimeter
+ * 
+ * 
  */
 using System;
 using System.Collections.Generic;
@@ -170,7 +174,6 @@ namespace FlightSimCapstone
                 Bitmap rotatedAltimeter100Dial = SetImageRotation(originalAltimeter100Dial, dial100angle);
                 Altimeter100Dial.Image = rotatedAltimeter100Dial;
 
-               
                 Bitmap rotatedAltimeter1kDial = SetImageRotation(originalAltimeter1kDial, dial1kangle);
                 Altimeter1kDial.Image = rotatedAltimeter1kDial;
 

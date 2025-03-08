@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
-            this.TitleGif = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.AmmeterLabel = new System.Windows.Forms.Label();
             this.CurrentFuelLabel = new System.Windows.Forms.Label();
@@ -47,23 +46,19 @@
             this.TestSimConnect_Button = new System.Windows.Forms.Button();
             this.RightSkeleton = new System.Windows.Forms.PictureBox();
             this.LeftSkeleton = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.TitleGif)).BeginInit();
+            this.TitleGif = new System.Windows.Forms.PictureBox();
+            this.PitchLabel = new System.Windows.Forms.Label();
+            this.RollLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LeftSkeleton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TitleGif)).BeginInit();
             this.SuspendLayout();
-            // 
-            // TitleGif
-            // 
-            this.TitleGif.Image = ((System.Drawing.Image)(resources.GetObject("TitleGif.Image")));
-            this.TitleGif.Location = new System.Drawing.Point(58, 3);
-            this.TitleGif.Name = "TitleGif";
-            this.TitleGif.Size = new System.Drawing.Size(601, 105);
-            this.TitleGif.TabIndex = 0;
-            this.TitleGif.TabStop = false;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.RollLabel);
+            this.panel1.Controls.Add(this.PitchLabel);
             this.panel1.Controls.Add(this.AmmeterLabel);
             this.panel1.Controls.Add(this.CurrentFuelLabel);
             this.panel1.Controls.Add(this.TotalFuelLabel);
@@ -236,6 +231,33 @@
             this.LeftSkeleton.TabIndex = 2;
             this.LeftSkeleton.TabStop = false;
             // 
+            // TitleGif
+            // 
+            this.TitleGif.Image = ((System.Drawing.Image)(resources.GetObject("TitleGif.Image")));
+            this.TitleGif.Location = new System.Drawing.Point(58, 3);
+            this.TitleGif.Name = "TitleGif";
+            this.TitleGif.Size = new System.Drawing.Size(601, 105);
+            this.TitleGif.TabIndex = 0;
+            this.TitleGif.TabStop = false;
+            // 
+            // PitchLabel
+            // 
+            this.PitchLabel.AutoSize = true;
+            this.PitchLabel.Location = new System.Drawing.Point(336, 381);
+            this.PitchLabel.Name = "PitchLabel";
+            this.PitchLabel.Size = new System.Drawing.Size(31, 13);
+            this.PitchLabel.TabIndex = 18;
+            this.PitchLabel.Text = "Pitch";
+            // 
+            // RollLabel
+            // 
+            this.RollLabel.AutoSize = true;
+            this.RollLabel.Location = new System.Drawing.Point(336, 403);
+            this.RollLabel.Name = "RollLabel";
+            this.RollLabel.Size = new System.Drawing.Size(25, 13);
+            this.RollLabel.TabIndex = 19;
+            this.RollLabel.Text = "Roll";
+            // 
             // DevForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,11 +266,11 @@
             this.Controls.Add(this.panel1);
             this.Name = "DevForm";
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.TitleGif)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LeftSkeleton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TitleGif)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -273,5 +295,7 @@
         private System.Windows.Forms.Label CurrentFuelLabel;
         private System.Windows.Forms.Label TotalFuelLabel;
         private System.Windows.Forms.Label AmmeterLabel;
+        private System.Windows.Forms.Label RollLabel;
+        private System.Windows.Forms.Label PitchLabel;
     }
 }

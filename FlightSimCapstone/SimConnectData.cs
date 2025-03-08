@@ -97,4 +97,20 @@ namespace FlightSimCapstone
     {
         public double AmmeterReading;
     }
+
+    /// <summary>
+    /// Struct for Pitch Data
+    /// </summary>
+    struct PitchData
+    {
+        public double PitchReading;
+    }
+
+    /// <summary>
+    /// Struct for Roll Data
+    /// </summary>
+    struct RollData
+    {
+        public double RollReading;
+    }
 }

@@ -29,25 +29,58 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalInterface_Right));
+            this.Altimeter10kDial = new System.Windows.Forms.PictureBox();
+            this.Altimeter1kDial = new System.Windows.Forms.PictureBox();
+            this.Altimeter100Dial = new System.Windows.Forms.PictureBox();
             this.AltimeterBack = new System.Windows.Forms.PictureBox();
             this.VerticalAirspeedIndicatorDial = new System.Windows.Forms.PictureBox();
             this.VerticalAirspeedIndicator = new System.Windows.Forms.PictureBox();
-            this.Altimeter100Dial = new System.Windows.Forms.PictureBox();
-            this.Altimeter1kDial = new System.Windows.Forms.PictureBox();
-            this.Altimeter10kDial = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.Altimeter10kDial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Altimeter1kDial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Altimeter100Dial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltimeterBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicatorDial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Altimeter100Dial)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Altimeter1kDial)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Altimeter10kDial)).BeginInit();
             this.SuspendLayout();
+            // 
+            // Altimeter10kDial
+            // 
+            this.Altimeter10kDial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Altimeter10kDial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial10k;
+            this.Altimeter10kDial.Location = new System.Drawing.Point(647, 25);
+            this.Altimeter10kDial.Name = "Altimeter10kDial";
+            this.Altimeter10kDial.Size = new System.Drawing.Size(400, 400);
+            this.Altimeter10kDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Altimeter10kDial.TabIndex = 8;
+            this.Altimeter10kDial.TabStop = false;
+            // 
+            // Altimeter1kDial
+            // 
+            this.Altimeter1kDial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Altimeter1kDial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial1k;
+            this.Altimeter1kDial.Location = new System.Drawing.Point(647, 25);
+            this.Altimeter1kDial.Name = "Altimeter1kDial";
+            this.Altimeter1kDial.Size = new System.Drawing.Size(400, 400);
+            this.Altimeter1kDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Altimeter1kDial.TabIndex = 7;
+            this.Altimeter1kDial.TabStop = false;
+            // 
+            // Altimeter100Dial
+            // 
+            this.Altimeter100Dial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Altimeter100Dial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial100;
+            this.Altimeter100Dial.Location = new System.Drawing.Point(647, 25);
+            this.Altimeter100Dial.Name = "Altimeter100Dial";
+            this.Altimeter100Dial.Size = new System.Drawing.Size(400, 400);
+            this.Altimeter100Dial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Altimeter100Dial.TabIndex = 6;
+            this.Altimeter100Dial.TabStop = false;
             // 
             // AltimeterBack
             // 
             this.AltimeterBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.AltimeterBack.Image = global::FlightSimCapstone.Properties.Resources.Altimeter;
-            this.AltimeterBack.Location = new System.Drawing.Point(474, 25);
+            this.AltimeterBack.Location = new System.Drawing.Point(647, 25);
             this.AltimeterBack.Name = "AltimeterBack";
             this.AltimeterBack.Size = new System.Drawing.Size(400, 400);
             this.AltimeterBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -76,44 +109,11 @@
             this.VerticalAirspeedIndicator.TabIndex = 4;
             this.VerticalAirspeedIndicator.TabStop = false;
             // 
-            // Altimeter100Dial
-            // 
-            this.Altimeter100Dial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Altimeter100Dial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial100;
-            this.Altimeter100Dial.Location = new System.Drawing.Point(474, 25);
-            this.Altimeter100Dial.Name = "Altimeter100Dial";
-            this.Altimeter100Dial.Size = new System.Drawing.Size(400, 400);
-            this.Altimeter100Dial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Altimeter100Dial.TabIndex = 6;
-            this.Altimeter100Dial.TabStop = false;
-            // 
-            // Altimeter1kDial
-            // 
-            this.Altimeter1kDial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Altimeter1kDial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial1k;
-            this.Altimeter1kDial.Location = new System.Drawing.Point(474, 25);
-            this.Altimeter1kDial.Name = "Altimeter1kDial";
-            this.Altimeter1kDial.Size = new System.Drawing.Size(400, 400);
-            this.Altimeter1kDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Altimeter1kDial.TabIndex = 7;
-            this.Altimeter1kDial.TabStop = false;
-            // 
-            // Altimeter10kDial
-            // 
-            this.Altimeter10kDial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Altimeter10kDial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial10k;
-            this.Altimeter10kDial.Location = new System.Drawing.Point(474, 25);
-            this.Altimeter10kDial.Name = "Altimeter10kDial";
-            this.Altimeter10kDial.Size = new System.Drawing.Size(400, 400);
-            this.Altimeter10kDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Altimeter10kDial.TabIndex = 8;
-            this.Altimeter10kDial.TabStop = false;
-            // 
             // GraphicalInterface_Right
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 574);
+            this.ClientSize = new System.Drawing.Size(1059, 911);
             this.Controls.Add(this.Altimeter10kDial);
             this.Controls.Add(this.Altimeter1kDial);
             this.Controls.Add(this.Altimeter100Dial);
@@ -123,12 +123,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicalInterface_Right";
             this.Text = "Graphical Interface - Right";
+            ((System.ComponentModel.ISupportInitialize)(this.Altimeter10kDial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Altimeter1kDial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Altimeter100Dial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltimeterBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicatorDial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Altimeter100Dial)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Altimeter1kDial)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Altimeter10kDial)).EndInit();
             this.ResumeLayout(false);
 
         }

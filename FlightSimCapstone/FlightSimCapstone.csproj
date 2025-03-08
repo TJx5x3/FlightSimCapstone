@@ -155,9 +155,9 @@
     <Content Include="bin\Debug\Microsoft.FlightSimulator.SimConnect.dll" />
     <Content Include="bin\Debug\SimConnect.dll" />
     <Content Include="bin\x64\Debug\SimConnect.dll" />
-    <None Include="Resources\AltimeterDial100.png" />
-    <None Include="Resources\AltimeterDial10k.png" />
     <None Include="Resources\AltimeterDial1k.png" />
+    <None Include="Resources\AltimeterDial10k.png" />
+    <None Include="Resources\AltimeterDial100.png" />
     <None Include="Resources\Altimeter.png" />
     <None Include="Resources\AirspeedIndicator-Dial.png" />
     <None Include="Resources\AirspeedIndicator.png" />
