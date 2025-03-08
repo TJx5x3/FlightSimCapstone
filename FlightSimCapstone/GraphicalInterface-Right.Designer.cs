@@ -29,22 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalInterface_Right));
-            this.VerticalAirspeedIndicator = new System.Windows.Forms.PictureBox();
+            this.AltimeterBack = new System.Windows.Forms.PictureBox();
             this.VerticalAirspeedIndicatorDial = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).BeginInit();
+            this.VerticalAirspeedIndicator = new System.Windows.Forms.PictureBox();
+            this.Altimeter100Dial = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.AltimeterBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicatorDial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Altimeter100Dial)).BeginInit();
             this.SuspendLayout();
             // 
-            // VerticalAirspeedIndicator
+            // AltimeterBack
             // 
-            this.VerticalAirspeedIndicator.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.VerticalAirspeedIndicator.Image = global::FlightSimCapstone.Properties.Resources.VerticalAirspeedIndicator;
-            this.VerticalAirspeedIndicator.Location = new System.Drawing.Point(34, 25);
-            this.VerticalAirspeedIndicator.Name = "VerticalAirspeedIndicator";
-            this.VerticalAirspeedIndicator.Size = new System.Drawing.Size(400, 400);
-            this.VerticalAirspeedIndicator.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.VerticalAirspeedIndicator.TabIndex = 4;
-            this.VerticalAirspeedIndicator.TabStop = false;
+            this.AltimeterBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AltimeterBack.Image = global::FlightSimCapstone.Properties.Resources.Altimeter;
+            this.AltimeterBack.Location = new System.Drawing.Point(474, 25);
+            this.AltimeterBack.Name = "AltimeterBack";
+            this.AltimeterBack.Size = new System.Drawing.Size(400, 400);
+            this.AltimeterBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AltimeterBack.TabIndex = 5;
+            this.AltimeterBack.TabStop = false;
             // 
             // VerticalAirspeedIndicatorDial
             // 
@@ -57,18 +61,44 @@
             this.VerticalAirspeedIndicatorDial.TabIndex = 3;
             this.VerticalAirspeedIndicatorDial.TabStop = false;
             // 
+            // VerticalAirspeedIndicator
+            // 
+            this.VerticalAirspeedIndicator.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.VerticalAirspeedIndicator.Image = global::FlightSimCapstone.Properties.Resources.VerticalAirspeedIndicator;
+            this.VerticalAirspeedIndicator.Location = new System.Drawing.Point(34, 25);
+            this.VerticalAirspeedIndicator.Name = "VerticalAirspeedIndicator";
+            this.VerticalAirspeedIndicator.Size = new System.Drawing.Size(400, 400);
+            this.VerticalAirspeedIndicator.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.VerticalAirspeedIndicator.TabIndex = 4;
+            this.VerticalAirspeedIndicator.TabStop = false;
+            // 
+            // Altimeter100Dial
+            // 
+            this.Altimeter100Dial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Altimeter100Dial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial100;
+            this.Altimeter100Dial.Location = new System.Drawing.Point(474, 25);
+            this.Altimeter100Dial.Name = "Altimeter100Dial";
+            this.Altimeter100Dial.Size = new System.Drawing.Size(400, 400);
+            this.Altimeter100Dial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Altimeter100Dial.TabIndex = 6;
+            this.Altimeter100Dial.TabStop = false;
+            // 
             // GraphicalInterface_Right
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1228, 574);
+            this.Controls.Add(this.Altimeter100Dial);
+            this.Controls.Add(this.AltimeterBack);
             this.Controls.Add(this.VerticalAirspeedIndicatorDial);
             this.Controls.Add(this.VerticalAirspeedIndicator);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicalInterface_Right";
             this.Text = "Graphical Interface - Right";
-            ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AltimeterBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicatorDial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Altimeter100Dial)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -77,5 +107,7 @@
 
         private System.Windows.Forms.PictureBox VerticalAirspeedIndicatorDial;
         private System.Windows.Forms.PictureBox VerticalAirspeedIndicator;
+        private System.Windows.Forms.PictureBox AltimeterBack;
+        private System.Windows.Forms.PictureBox Altimeter100Dial;
     }
 }

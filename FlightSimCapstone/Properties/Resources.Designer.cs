@@ -83,6 +83,46 @@ namespace FlightSimCapstone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Altimeter {
+            get {
+                object obj = ResourceManager.GetObject("Altimeter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AltimeterDial100 {
+            get {
+                object obj = ResourceManager.GetObject("AltimeterDial100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AltimeterDial10k {
+            get {
+                object obj = ResourceManager.GetObject("AltimeterDial10k", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AltimeterDial1k {
+            get {
+                object obj = ResourceManager.GetObject("AltimeterDial1k", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HeadingIndicator1 {
             get {
                 object obj = ResourceManager.GetObject("HeadingIndicator1", resourceCulture);

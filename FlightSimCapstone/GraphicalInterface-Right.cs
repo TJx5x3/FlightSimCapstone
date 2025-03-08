@@ -43,6 +43,13 @@ namespace FlightSimCapstone
         // Attributes for Bitmaps that will be rotated
         private Bitmap originalVerticalAirspeedIndicatorDial;
 
+
+        private Bitmap originalAltimeter100Dial;
+        private Bitmap originalAltimeter1kDial;
+        private Bitmap originalAltimeter10kDial;
+
+
+
         // Link Left form to current form
         private GraphicalInterface_Left linkedForm;
         
@@ -61,12 +68,22 @@ namespace FlightSimCapstone
         public GraphicalInterface_Right()
         {
             InitializeComponent();
+
+            // Vertical Airspeed Indicator
             originalVerticalAirspeedIndicatorDial = new Bitmap(Properties.Resources.VerticalAirspeedIndicatorDial);
             VerticalAirspeedIndicatorDial.Image = originalVerticalAirspeedIndicatorDial;
 
             VerticalAirspeedIndicatorDial.Parent = VerticalAirspeedIndicator;
             VerticalAirspeedIndicatorDial.Location = new Point(0, 0);
             VerticalAirspeedIndicatorDial.BackColor = Color.Transparent;
+
+            // Altimeter
+            originalAltimeter100Dial = new Bitmap(Properties.Resources.AltimeterDial100);
+            Altimeter100Dial.Image = originalAltimeter100Dial;
+
+            Altimeter100Dial.Parent = AltimeterBack;
+            Altimeter100Dial.Location = new Point(0, 0);
+            Altimeter100Dial.BackColor = Color.Transparent;
 
             this.FormClosing += GraphicalInterface_OnClosing;
 
@@ -117,9 +134,17 @@ namespace FlightSimCapstone
 
                 // Rotate background image based on rotational value of the Heading Indicator retrieved from SimConnect.
                 // // TODO: Stop vertical airspeed indicator if speed > 200 feet/sec
-                Bitmap rotatedImage = SetImageRotation(originalVerticalAirspeedIndicatorDial, (float)(SimConnectUtility.VerticalAirspeedIndicatorValue) * 5.0f);
-                VerticalAirspeedIndicatorDial.Image = rotatedImage;
+                Bitmap rotatedVerticalAirspeedIndicatorDial= SetImageRotation(originalVerticalAirspeedIndicatorDial, (float)(SimConnectUtility.VerticalAirspeedIndicatorValue) * 5.0f);
+                VerticalAirspeedIndicatorDial.Image = rotatedVerticalAirspeedIndicatorDial;
 
+
+                float altitudeMod1000 = (float)(SimConnectUtility.AltimeterValue % 1000.0f);
+                float angle = (altitudeMod1000 / 1000.0f) * 360.0f;
+                //Bitmap rotatedAltimeter100Dial = SetImageRotation(originalAltimeter100Dial, -((float)(SimConnectUtility.AltimeterValue) % 1000.0f) * (25.0f / 9.0f) );
+                Bitmap rotatedAltimeter100Dial = SetImageRotation(originalAltimeter100Dial, angle);
+                Console.WriteLine($"THIS IS THE THING:   {((SimConnectUtility.AltimeterValue % 1000.0f))}");
+                //Console.WriteLine($"THIS IS THE OTHER THING:   {(172.0f - (SimConnectUtility.AltimeterValue % 1000.0f) * (25.0f/9.0f)) % 360.0f}");
+                Altimeter100Dial.Image = rotatedAltimeter100Dial;
             }
 
             Console.WriteLine("Tick");
