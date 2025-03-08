@@ -201,12 +201,14 @@ namespace FlightSimCapstone
             // If the other form didn't tell us it closed first, close it first
             if (!isRightClosing)
             {
+                //Close SimConnect client
+                SimConnectUtility.DisconnectSimconnectClient();
+
                 isRightClosing = true;
                 linkedForm.Close();
             }
 
-            //Close SimConnect client
-            SimConnectUtility.DisconnectSimconnectClient();
+            
         }
     }
 }

@@ -467,7 +467,6 @@ namespace FlightSimCapstone
                 {
                     // Open SimConnect client
                     simconnect = new SimConnect("Managed Data Request", windowHandle, WM_USER_SIMCONNECT, null, 0);
-                    //MessageBox.Show("SimcConnect Connected!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Map Simconnect events upon successful SimConnect Connection
                     simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;

@@ -209,6 +209,9 @@ namespace FlightSimCapstone
             // If the other form didn't tell us it closed first, close it first
             if (!isLeftClosing)
             {
+                //Close SimConnect client
+                SimConnectUtility.DisconnectSimconnectClient();
+
                 isLeftClosing = true; 
                 linkedForm.Close();
             }
