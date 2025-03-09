@@ -25,6 +25,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Configuration;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Security.Cryptography;
@@ -49,6 +50,16 @@ namespace FlightSimCapstone
         private Bitmap originalHeadingIndicatorGauge;
         private Bitmap originalTurnCoordinatorAirplane;
         private Bitmap originalSuctionGaugeDial;
+        private Bitmap originalAltitudeIndicatorBase;
+
+        private Bitmap originalAltitudeIndicatorMiddle;
+        private Bitmap originalAltitudeIndicatorRoll;
+
+        // updated images
+        private Bitmap rotatedAirspeedIndicatorDial;
+        private Bitmap rotatedHeadingIndicator;
+        private Bitmap rotatedTurnCoordinatorAirplane;
+
 
         // Link Right form to current form
         private GraphicalInterface_Right linkedForm;
@@ -105,6 +116,28 @@ namespace FlightSimCapstone
             SuctionGaugeDial.Location = new Point(0, 0);
             SuctionGaugeDial.BackColor = Color.Transparent;
 
+            // Atitude Indicator
+            originalAltitudeIndicatorBase = new Bitmap(Properties.Resources.AltitudeIndicator_Base);
+            AltitudeIndicatorBase.Image = originalAltitudeIndicatorBase;
+
+            originalAltitudeIndicatorRoll = new Bitmap(Properties.Resources.AltitudeIndicator_Roll);
+            AltitudeIndicatorRoll.Image = originalAltitudeIndicatorRoll;
+
+            originalAltitudeIndicatorMiddle = new Bitmap(Properties.Resources.AltitudeIndicator_Middle);
+            AltitudeIndicatorMiddle.Image = originalAltitudeIndicatorMiddle;
+
+            AltitudeIndicatorMiddle.Parent = AltitudeIndicatorBase;
+            AltitudeIndicatorMiddle.Location = new Point(0, 0);
+            AltitudeIndicatorMiddle.BackColor = Color.Transparent;
+
+            AltitudeIndicatorRoll.Parent = AltitudeIndicatorMiddle;
+            AltitudeIndicatorRoll.Location = new Point(0, 0);
+
+            AltitudeIndicatorStatic.Parent = AltitudeIndicatorRoll;
+            AltitudeIndicatorStatic.Location = new Point(0, 0);
+            AltitudeIndicatorStatic.BackColor = Color.Transparent;
+
+
 
             // initialize form closing event
             this.FormClosing += GraphicalInterface_OnClosing;
@@ -128,6 +161,7 @@ namespace FlightSimCapstone
         /// <see cref="https://foxlearn.com/csharp/image-rotation-8368.html"/>
         public static Bitmap SetImageRotation(Bitmap image, float degree)
         {
+            
             Bitmap rotatedBitmap = new Bitmap(image.Width, image.Height);
             Graphics g = Graphics.FromImage(rotatedBitmap);
 
@@ -139,6 +173,18 @@ namespace FlightSimCapstone
             g.TranslateTransform(-(float)image.Width / 2, -(float)image.Height / 2);
             g.DrawImage(image, new Point(0,0));
             return rotatedBitmap;
+        }
+
+        public static Bitmap TranslateImageY(Bitmap image, float y)
+        {
+            Bitmap translatedImage = new Bitmap(image.Width, image.Height);
+            Graphics g = Graphics.FromImage(translatedImage);
+
+            g.TranslateTransform(0, y);
+            g.DrawImage(image, new Point(0, 0));
+
+
+            return translatedImage;
         }
 
 
@@ -160,6 +206,8 @@ namespace FlightSimCapstone
         /// <param name="e"></param>
         private void FormTimer_Tick(object sender, EventArgs e)
         {
+            
+
             // If a connection to SimConnect is established, update graphical modules
             if (SimConnectUtility.ConnectionStatus)
             {
@@ -167,18 +215,54 @@ namespace FlightSimCapstone
                 SimConnectUtility.RefreshSimconnect();
 
                 // Rotate Airspeed Indicator dial
-                Bitmap rotatedAirspeedIndicatorDial = SetImageRotation(originalAirspeedIndicatorDial, (float)(SimConnectUtility.AirspeedIndicatorValue * (10000.0f / 13909.0f))); // Multiply 9/7 to get proper degree rotation value
+
+                // If imagebox or previously transformed images not null, clear from memory
+                if (AirspeedIndicatorDial.Image != null && rotatedAirspeedIndicatorDial != null)
+                {
+                    rotatedAirspeedIndicatorDial.Dispose();
+                }
+
+                // Update and set Airspeed Indicator dial
+                rotatedAirspeedIndicatorDial = SetImageRotation(originalAirspeedIndicatorDial, (float)(SimConnectUtility.AirspeedIndicatorValue * (10000.0f / 13909.0f))); // Multiply 9/7 to get proper degree rotation value
                 AirspeedIndicatorDial.Image = rotatedAirspeedIndicatorDial;
 
+                
+                if (HeadingIndicatorBack.Image != null && rotatedHeadingIndicator != null)
+                {
+                    Console.WriteLine("Old Image disposed");
+                    rotatedHeadingIndicator.Dispose();
+                }
+
                 // Rotate background image based on rotational value of the Heading Indicator retrieved from SimConnect. 
-                Bitmap rotatedImage = SetImageRotation(originalHeadingIndicatorGauge, -(float)SimConnectUtility.HeadingIndicatorValue);
-                HeadingIndicatorBack.Image = rotatedImage;
+                rotatedHeadingIndicator = SetImageRotation(originalHeadingIndicatorGauge, -(float)SimConnectUtility.HeadingIndicatorValue);
+                HeadingIndicatorBack.Image = rotatedHeadingIndicator;
+
+
+                // Turn Coordinator
+                if (TurnCoordinatorAirplane.Image != null && rotatedTurnCoordinatorAirplane != null)
+                {
+                    Console.WriteLine("Old Image disposed");
+                    rotatedTurnCoordinatorAirplane.Dispose();
+                }
 
                 // TODO: Swap names of TurnIndicator and TurnCoordinator in simconnect request declaration
-                Bitmap rotatedTurnCoordinatorAirplane = SetImageRotation(originalTurnCoordinatorAirplane, (float)SimConnectUtility.TurnIndicatorValue * 5.0f); // Multiply 5 to get proper degree rotation value
+                rotatedTurnCoordinatorAirplane = SetImageRotation(originalTurnCoordinatorAirplane, (float)SimConnectUtility.TurnIndicatorValue * 5.0f); // Multiply 5 to get proper degree rotation value
                 TurnCoordinatorAirplane.Image = rotatedTurnCoordinatorAirplane;
 
+                
+
                 // TODO: Implement Suction Gauge  
+
+                // Rotate Atitude Indicator Roll dial
+                Bitmap rotatedAltitudeIndicatorRoll = SetImageRotation(originalAltitudeIndicatorRoll, (float)SimConnectUtility.RollValue);
+                AltitudeIndicatorRoll.Image = rotatedAltitudeIndicatorRoll;
+
+                Bitmap translatedAltitudeIndicatorCenter = TranslateImageY(originalAltitudeIndicatorMiddle, -(float)SimConnectUtility.PitchValue * 10.0f);
+                Bitmap rotatedAltitudeIndicatorCenter = SetImageRotation(translatedAltitudeIndicatorCenter, (float)SimConnectUtility.RollValue);
+                AltitudeIndicatorMiddle.Image = rotatedAltitudeIndicatorCenter;
+
+                Bitmap rotatedAltitudeIndicatorBase = SetImageRotation(originalAltitudeIndicatorBase, (float)SimConnectUtility.RollValue);
+                AltitudeIndicatorBase.Image = rotatedAltitudeIndicatorBase;                
             }
 
             Console.WriteLine("Tick");
