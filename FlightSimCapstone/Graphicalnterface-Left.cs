@@ -45,20 +45,24 @@ namespace FlightSimCapstone
         // Timer to update retrieved SimConnect values
         private Timer formTimer = null;
 
-        // Attributes for Bitmaps that will be rotated
+        // Original Bitmap images that are transformed
         private Bitmap originalAirspeedIndicatorDial;
         private Bitmap originalHeadingIndicatorGauge;
         private Bitmap originalTurnCoordinatorAirplane;
         private Bitmap originalSuctionGaugeDial;
         private Bitmap originalAltitudeIndicatorBase;
-
         private Bitmap originalAltitudeIndicatorMiddle;
         private Bitmap originalAltitudeIndicatorRoll;
 
-        // updated images
+        // updated and transformed images
         private Bitmap rotatedAirspeedIndicatorDial;
         private Bitmap rotatedHeadingIndicator;
         private Bitmap rotatedTurnCoordinatorAirplane;
+        private Bitmap rotatedSuctionGaugeDial;
+        private Bitmap rotatedAltitudeIndicatorBase;
+        private Bitmap rotatedAltitudeIndicatorCenter;
+        private Bitmap rotatedAltitudeIndicatorRoll;
+        private Bitmap translatedAltitudeIndicatorCenter;
 
 
         // Link Right form to current form
@@ -229,7 +233,6 @@ namespace FlightSimCapstone
                 
                 if (HeadingIndicatorBack.Image != null && rotatedHeadingIndicator != null)
                 {
-                    Console.WriteLine("Old Image disposed");
                     rotatedHeadingIndicator.Dispose();
                 }
 
@@ -241,7 +244,6 @@ namespace FlightSimCapstone
                 // Turn Coordinator
                 if (TurnCoordinatorAirplane.Image != null && rotatedTurnCoordinatorAirplane != null)
                 {
-                    Console.WriteLine("Old Image disposed");
                     rotatedTurnCoordinatorAirplane.Dispose();
                 }
 
@@ -249,19 +251,40 @@ namespace FlightSimCapstone
                 rotatedTurnCoordinatorAirplane = SetImageRotation(originalTurnCoordinatorAirplane, (float)SimConnectUtility.TurnIndicatorValue * 5.0f); // Multiply 5 to get proper degree rotation value
                 TurnCoordinatorAirplane.Image = rotatedTurnCoordinatorAirplane;
 
-                
+
 
                 // TODO: Implement Suction Gauge  
 
+                // Altitude Indicator //
+
                 // Rotate Atitude Indicator Roll dial
-                Bitmap rotatedAltitudeIndicatorRoll = SetImageRotation(originalAltitudeIndicatorRoll, (float)SimConnectUtility.RollValue);
+                if (AltitudeIndicatorRoll.Image != null && rotatedAltitudeIndicatorRoll != null)
+                {
+                    rotatedAltitudeIndicatorRoll.Dispose();
+                }
+                rotatedAltitudeIndicatorRoll = SetImageRotation(originalAltitudeIndicatorRoll, (float)SimConnectUtility.RollValue);
                 AltitudeIndicatorRoll.Image = rotatedAltitudeIndicatorRoll;
 
-                Bitmap translatedAltitudeIndicatorCenter = TranslateImageY(originalAltitudeIndicatorMiddle, -(float)SimConnectUtility.PitchValue * 10.0f);
-                Bitmap rotatedAltitudeIndicatorCenter = SetImageRotation(translatedAltitudeIndicatorCenter, (float)SimConnectUtility.RollValue);
+                // Rotate Atitude Indicator Center dial
+                if (AltitudeIndicatorMiddle.Image != null && translatedAltitudeIndicatorCenter != null && rotatedAltitudeIndicatorCenter != null)
+                {
+                    Console.WriteLine("Old Images disposed");
+                    translatedAltitudeIndicatorCenter.Dispose();
+                    rotatedAltitudeIndicatorCenter.Dispose();
+                }
+
+                translatedAltitudeIndicatorCenter = TranslateImageY(originalAltitudeIndicatorMiddle, -(float)SimConnectUtility.PitchValue * 10.0f);
+                rotatedAltitudeIndicatorCenter = SetImageRotation(translatedAltitudeIndicatorCenter, (float)SimConnectUtility.RollValue);
                 AltitudeIndicatorMiddle.Image = rotatedAltitudeIndicatorCenter;
 
-                Bitmap rotatedAltitudeIndicatorBase = SetImageRotation(originalAltitudeIndicatorBase, (float)SimConnectUtility.RollValue);
+
+                if (AltitudeIndicatorBase.Image != null && rotatedAltitudeIndicatorBase != null)
+                {
+                    rotatedAltitudeIndicatorBase.Dispose();
+                }
+
+                // Rotate Atitude Indicator Base dial
+                rotatedAltitudeIndicatorBase = SetImageRotation(originalAltitudeIndicatorBase, (float)SimConnectUtility.RollValue);
                 AltitudeIndicatorBase.Image = rotatedAltitudeIndicatorBase;                
             }
 
