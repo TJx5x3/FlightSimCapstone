@@ -123,6 +123,46 @@ namespace FlightSimCapstone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AltitudeIndicator_Base {
+            get {
+                object obj = ResourceManager.GetObject("AltitudeIndicator-Base", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AltitudeIndicator_Middle {
+            get {
+                object obj = ResourceManager.GetObject("AltitudeIndicator-Middle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AltitudeIndicator_Overlay {
+            get {
+                object obj = ResourceManager.GetObject("AltitudeIndicator-Overlay", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AltitudeIndicator_Roll {
+            get {
+                object obj = ResourceManager.GetObject("AltitudeIndicator-Roll", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HeadingIndicator1 {
             get {
                 object obj = ResourceManager.GetObject("HeadingIndicator1", resourceCulture);

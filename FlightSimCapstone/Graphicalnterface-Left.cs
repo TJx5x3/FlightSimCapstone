@@ -207,8 +207,6 @@ namespace FlightSimCapstone
                 isRightClosing = true;
                 linkedForm.Close();
             }
-
-            
         }
     }
 }

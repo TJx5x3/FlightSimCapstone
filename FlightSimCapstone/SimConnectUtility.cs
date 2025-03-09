@@ -501,7 +501,6 @@ namespace FlightSimCapstone
             readingsInitialized = false;
             MessageBox.Show("Terminated SimConnect Session", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
             return true;
         }
 

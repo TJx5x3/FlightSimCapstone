@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalInterface_Left));
+            this.AltitudeIndicatorMiddle = new System.Windows.Forms.PictureBox();
+            this.AltitudeIndicatorBase = new System.Windows.Forms.PictureBox();
             this.AirspeedIndicatorDial = new System.Windows.Forms.PictureBox();
             this.AirspeedIndicatorBack = new System.Windows.Forms.PictureBox();
             this.SuctionGaugeDial = new System.Windows.Forms.PictureBox();
@@ -37,6 +39,10 @@
             this.TurnCoordinatorBack = new System.Windows.Forms.PictureBox();
             this.HeadingIndicatorOverlay = new System.Windows.Forms.PictureBox();
             this.HeadingIndicatorBack = new System.Windows.Forms.PictureBox();
+            this.AltitudeIndicatorRoll = new System.Windows.Forms.PictureBox();
+            this.AltitudeIndicatorStatic = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorMiddle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorDial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).BeginInit();
@@ -45,7 +51,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorRoll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorStatic)).BeginInit();
             this.SuspendLayout();
+            // 
+            // AltitudeIndicatorMiddle
+            // 
+            this.AltitudeIndicatorMiddle.BackColor = System.Drawing.Color.Transparent;
+            this.AltitudeIndicatorMiddle.Image = global::FlightSimCapstone.Properties.Resources.AltitudeIndicator_Middle;
+            this.AltitudeIndicatorMiddle.Location = new System.Drawing.Point(624, 29);
+            this.AltitudeIndicatorMiddle.Name = "AltitudeIndicatorMiddle";
+            this.AltitudeIndicatorMiddle.Size = new System.Drawing.Size(400, 400);
+            this.AltitudeIndicatorMiddle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AltitudeIndicatorMiddle.TabIndex = 10;
+            this.AltitudeIndicatorMiddle.TabStop = false;
+            // 
+            // AltitudeIndicatorBase
+            // 
+            this.AltitudeIndicatorBase.BackColor = System.Drawing.Color.Transparent;
+            this.AltitudeIndicatorBase.Image = global::FlightSimCapstone.Properties.Resources.AltitudeIndicator_Base;
+            this.AltitudeIndicatorBase.Location = new System.Drawing.Point(624, 29);
+            this.AltitudeIndicatorBase.Name = "AltitudeIndicatorBase";
+            this.AltitudeIndicatorBase.Size = new System.Drawing.Size(400, 400);
+            this.AltitudeIndicatorBase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AltitudeIndicatorBase.TabIndex = 9;
+            this.AltitudeIndicatorBase.TabStop = false;
             // 
             // AirspeedIndicatorDial
             // 
@@ -135,12 +165,38 @@
             this.HeadingIndicatorBack.TabIndex = 0;
             this.HeadingIndicatorBack.TabStop = false;
             // 
+            // AltitudeIndicatorRoll
+            // 
+            this.AltitudeIndicatorRoll.BackColor = System.Drawing.Color.Transparent;
+            this.AltitudeIndicatorRoll.Image = global::FlightSimCapstone.Properties.Resources.AltitudeIndicator_Roll;
+            this.AltitudeIndicatorRoll.Location = new System.Drawing.Point(624, 29);
+            this.AltitudeIndicatorRoll.Name = "AltitudeIndicatorRoll";
+            this.AltitudeIndicatorRoll.Size = new System.Drawing.Size(400, 400);
+            this.AltitudeIndicatorRoll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AltitudeIndicatorRoll.TabIndex = 11;
+            this.AltitudeIndicatorRoll.TabStop = false;
+            // 
+            // AltitudeIndicatorStatic
+            // 
+            this.AltitudeIndicatorStatic.BackColor = System.Drawing.Color.Transparent;
+            this.AltitudeIndicatorStatic.Image = global::FlightSimCapstone.Properties.Resources.AltitudeIndicator_Overlay;
+            this.AltitudeIndicatorStatic.Location = new System.Drawing.Point(622, 29);
+            this.AltitudeIndicatorStatic.Name = "AltitudeIndicatorStatic";
+            this.AltitudeIndicatorStatic.Size = new System.Drawing.Size(400, 400);
+            this.AltitudeIndicatorStatic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AltitudeIndicatorStatic.TabIndex = 12;
+            this.AltitudeIndicatorStatic.TabStop = false;
+            // 
             // GraphicalInterface_Left
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1034, 911);
+            this.Controls.Add(this.AltitudeIndicatorStatic);
+            this.Controls.Add(this.AltitudeIndicatorRoll);
+            this.Controls.Add(this.AltitudeIndicatorMiddle);
+            this.Controls.Add(this.AltitudeIndicatorBase);
             this.Controls.Add(this.AirspeedIndicatorDial);
             this.Controls.Add(this.AirspeedIndicatorBack);
             this.Controls.Add(this.SuctionGaugeDial);
@@ -152,6 +208,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicalInterface_Left";
             this.Text = "Graphical Interface - Left";
+            ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorMiddle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorBase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorDial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SuctionGaugeDial)).EndInit();
@@ -160,6 +218,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.TurnCoordinatorBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorOverlay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeadingIndicatorBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorRoll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorStatic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,5 +233,9 @@
         private System.Windows.Forms.PictureBox SuctionGaugeDial;
         private System.Windows.Forms.PictureBox AirspeedIndicatorBack;
         private System.Windows.Forms.PictureBox AirspeedIndicatorDial;
+        private System.Windows.Forms.PictureBox AltitudeIndicatorBase;
+        private System.Windows.Forms.PictureBox AltitudeIndicatorMiddle;
+        private System.Windows.Forms.PictureBox AltitudeIndicatorRoll;
+        private System.Windows.Forms.PictureBox AltitudeIndicatorStatic;
     }
 }
