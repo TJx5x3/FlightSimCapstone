@@ -52,7 +52,11 @@ namespace FlightSimCapstone
         private Bitmap originalAltimeter1kDial;
         private Bitmap originalAltimeter10kDial;
 
-
+        // Rotated Images 
+        private Bitmap rotatedVerticalAirspeedIndicatorDial;
+        private Bitmap rotatedAltimeter100Dial;
+        private Bitmap rotatedAltimeter1kDial;
+        private Bitmap rotatedAltimeter10kDial;
 
         // Link Left form to current form
         private GraphicalInterface_Left linkedForm;
@@ -127,15 +131,24 @@ namespace FlightSimCapstone
         public static Bitmap SetImageRotation(Bitmap image, float degree)
         {
             Bitmap rotatedBitmap = new Bitmap(image.Width, image.Height);
-            Graphics g = Graphics.FromImage(rotatedBitmap);
+            //Graphics g = Graphics.FromImage(rotatedBitmap);
 
-            // Scale image down /2 and rotate
-            g.TranslateTransform((float)image.Width / 2, (float)image.Height / 2);
-            g.RotateTransform(degree);
+            //// Scale image down /2 and rotate
+            //g.TranslateTransform((float)image.Width / 2, (float)image.Height / 2);
+            //g.RotateTransform(degree);
 
-            // Scale rotated image back to full size before drawing (To avoid visible resizing)
-            g.TranslateTransform(-(float)image.Width / 2, -(float)image.Height / 2);
-            g.DrawImage(image, new Point(0, 0));
+            //// Scale rotated image back to full size before drawing (To avoid visible resizing)
+            //g.TranslateTransform(-(float)image.Width / 2, -(float)image.Height / 2);
+            //g.DrawImage(image, new Point(0, 0));
+
+            using (Graphics g = Graphics.FromImage(rotatedBitmap))
+            {
+                // Translate to center, rotate, then translate back
+                g.TranslateTransform(image.Width / 2f, image.Height / 2f);
+                g.RotateTransform(degree);
+                g.TranslateTransform(-image.Width / 2f, -image.Height / 2f);
+                g.DrawImage(image, new Point(0, 0));
+            }
             return rotatedBitmap;
         }
 
@@ -158,7 +171,7 @@ namespace FlightSimCapstone
 
                 // Rotate background image based on rotational value of the Heading Indicator retrieved from SimConnect.
                 // // TODO: Stop vertical airspeed indicator if speed > 200 feet/sec
-                Bitmap rotatedVerticalAirspeedIndicatorDial = SetImageRotation(originalVerticalAirspeedIndicatorDial, (float)(SimConnectUtility.VerticalAirspeedIndicatorValue) * 5.0f);
+                rotatedVerticalAirspeedIndicatorDial = SetImageRotation(originalVerticalAirspeedIndicatorDial, (float)(SimConnectUtility.VerticalAirspeedIndicatorValue) * 5.0f);
                 VerticalAirspeedIndicatorDial.Image = rotatedVerticalAirspeedIndicatorDial;
 
                 // Altimeter //
@@ -171,13 +184,13 @@ namespace FlightSimCapstone
                 float dial1kangle = ((thousands % 10.0f) / 10.0f) * 360.0f;// - 180.0f;
                 float dial100angle = (altitudeMod1000 / 1000.0f) * 360.0f;// - 180.0f;
                 
-                Bitmap rotatedAltimeter100Dial = SetImageRotation(originalAltimeter100Dial, dial100angle);
+                rotatedAltimeter100Dial = SetImageRotation(originalAltimeter100Dial, dial100angle);
                 Altimeter100Dial.Image = rotatedAltimeter100Dial;
 
-                Bitmap rotatedAltimeter1kDial = SetImageRotation(originalAltimeter1kDial, dial1kangle);
+                rotatedAltimeter1kDial = SetImageRotation(originalAltimeter1kDial, dial1kangle);
                 Altimeter1kDial.Image = rotatedAltimeter1kDial;
 
-                Bitmap rotatedAltimeter10kDial = SetImageRotation(originalAltimeter10kDial, dial10kangle);
+                rotatedAltimeter10kDial = SetImageRotation(originalAltimeter10kDial, dial10kangle);
                 Altimeter10kDial.Image = rotatedAltimeter10kDial;
             }
 

@@ -18,6 +18,9 @@
  * Overlap Transparent Image
  * https://stackoverflow.com/questions/38566828/overlap-one-image-as-transparent-on-another-in-c-sharp
  * 
+ * Optimizing memory usage of image transformation functions
+ * https://codereview.stackexchange.com/questions/273064/memory-leak-i-cant-identify-using-bitmap-and-graphics-classes
+ * 
  */
 using System;
 using System.Collections.Generic;
@@ -167,26 +170,40 @@ namespace FlightSimCapstone
         {
             
             Bitmap rotatedBitmap = new Bitmap(image.Width, image.Height);
-            Graphics g = Graphics.FromImage(rotatedBitmap);
+            //Graphics g = Graphics.FromImage(rotatedBitmap);
 
-            // Scale image down /2 and rotate
-            g.TranslateTransform((float)image.Width / 2, (float)image.Height / 2);
-            g.RotateTransform(degree);
+            //// Scale image down /2 and rotate
+            //g.TranslateTransform((float)image.Width / 2, (float)image.Height / 2);
+            //g.RotateTransform(degree);
 
-            // Scale rotated image back to full size before drawing (To avoid visible resizing)
-            g.TranslateTransform(-(float)image.Width / 2, -(float)image.Height / 2);
-            g.DrawImage(image, new Point(0,0));
+            //// Scale rotated image back to full size before drawing (To avoid visible resizing)
+            //g.TranslateTransform(-(float)image.Width / 2, -(float)image.Height / 2);
+            //g.DrawImage(image, new Point(0,0));
+            //return rotatedBitmap;
+
+            using (Graphics g = Graphics.FromImage(rotatedBitmap))
+            {
+                // Translate to center, rotate, then translate back
+                g.TranslateTransform(image.Width / 2f, image.Height / 2f);
+                g.RotateTransform(degree);
+                g.TranslateTransform(-image.Width / 2f, -image.Height / 2f);
+                g.DrawImage(image, new Point(0, 0));
+            }
+
             return rotatedBitmap;
+
         }
 
         public static Bitmap TranslateImageY(Bitmap image, float y)
         {
             Bitmap translatedImage = new Bitmap(image.Width, image.Height);
-            Graphics g = Graphics.FromImage(translatedImage);
+            //Graphics g = Graphics.FromImage(translatedImage);
 
-            g.TranslateTransform(0, y);
-            g.DrawImage(image, new Point(0, 0));
-
+            using (Graphics g = Graphics.FromImage(translatedImage))
+            { 
+                g.TranslateTransform(0, y);
+                g.DrawImage(image, new Point(0, 0));
+            }
 
             return translatedImage;
         }
