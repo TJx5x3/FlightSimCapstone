@@ -145,9 +145,11 @@ namespace FlightSimCapstone
 
             using (Graphics g = Graphics.FromImage(rotatedBitmap))
             {
-                // Translate to center, rotate, then translate back
+                // Translate image to center then rotate
                 g.TranslateTransform(image.Width / 2f, image.Height / 2f);
                 g.RotateTransform(degree);
+
+                // Translate back to original position (to avoid resizing issue)
                 g.TranslateTransform(-image.Width / 2f, -image.Height / 2f);
                 g.DrawImage(image, new Point(0, 0));
             }
@@ -186,12 +188,25 @@ namespace FlightSimCapstone
                 float dial1kangle = ((thousands % 10.0f) / 10.0f) * 360.0f;// - 180.0f;
                 float dial100angle = (altitudeMod1000 / 1000.0f) * 360.0f;// - 180.0f;
                 
+                if (Altimeter100Dial.Image != null && rotatedAltimeter100Dial != null)
+                {
+                    rotatedAltimeter100Dial.Dispose();
+                }
+
                 rotatedAltimeter100Dial = SetImageRotation(originalAltimeter100Dial, dial100angle);
                 Altimeter100Dial.Image = rotatedAltimeter100Dial;
 
+                if (Altimeter1kDial.Image != null && rotatedAltimeter1kDial != null)
+                {
+                    rotatedAltimeter1kDial.Dispose();
+                }
                 rotatedAltimeter1kDial = SetImageRotation(originalAltimeter1kDial, dial1kangle);
                 Altimeter1kDial.Image = rotatedAltimeter1kDial;
 
+                if (Altimeter10kDial.Image != null && rotatedAltimeter10kDial != null)
+                {
+                    rotatedAltimeter10kDial.Dispose();
+                }
                 rotatedAltimeter10kDial = SetImageRotation(originalAltimeter10kDial, dial10kangle);
                 Altimeter10kDial.Image = rotatedAltimeter10kDial;
             }

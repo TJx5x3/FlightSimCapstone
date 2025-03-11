@@ -187,9 +187,11 @@ namespace FlightSimCapstone
 
             using (Graphics g = Graphics.FromImage(rotatedBitmap))
             {
-                // Translate to center, rotate, then translate back
+                // Translate image to center, then rotate
                 g.TranslateTransform(image.Width / 2f, image.Height / 2f);
                 g.RotateTransform(degree);
+
+                // Translate back to original position (to avoid resizing issue)
                 g.TranslateTransform(-image.Width / 2f, -image.Height / 2f);
                 g.DrawImage(image, new Point(0, 0));
             }

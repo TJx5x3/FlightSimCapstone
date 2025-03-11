@@ -162,7 +162,7 @@ namespace FlightSimCapstone
 
             // If any DLL cannot be located, append yellow warning message to app console
             if(!BaseDependencyUtility.LocateSimConnectNETDll() || !BaseDependencyUtility.LocateSimConnectDll())
-                AppendAppConsole("Warning: One or more SimConnect libraries could not be located. To resolve this, please install the MSFS SDK\n", Color.Yellow);
+                AppendAppConsole("Warning: One or more SimConnect libraries could not be located. To resolve this, please install the MSFS SDK\n", Color.OrangeRed);
 
             // Check System Management for Arduino connection
             appConsole.AppendText("Checking Arduino Connection...\n");
@@ -233,8 +233,12 @@ namespace FlightSimCapstone
         /// <param name="e"></param>
         protected void CloseHandler(object sender, CancelEventArgs e)
         {
+            // Disconnect Simconnect Client (If exists)
             SimConnectUtility.DisconnectSimconnectClient();
-           
+
+            // Close Arduino Serial Port (If open)
+
+
             /*
             * NOTE: This needs to be formatted better once you figure out where it will be used
             * If close is set to anything other than 0, the utility form will not close. 

@@ -90,16 +90,9 @@ namespace FlightSimCapstone
             utilityForm = callingUtilityForm as UtilityForm; 
             this.FormClosing += CloseHandler; // Register FormClosing event
 
-            // Close Open serial port if not already open
-            // TODO: Add event handling for COM port. This is unstable.
-            if (BaseDependencyUtility.CheckArduinoConnection())
-            {
-                if (!serialPort.IsOpen)
-                    serialPort.Open();
-            }
 
-            // Map event when serial data is recieved and open Serial port on COM5
-            serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
+            // Map event when serial data is recieved and open Serial port on COM
+            //serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
 
             InitializeComponent();
 
@@ -185,6 +178,8 @@ namespace FlightSimCapstone
                 // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }
+
+            potentiometerValueLabel.Text = $"Arduino Readings:\n{ArduinoCommunicationUtility.serialData}";
         }
 
         /// <summary>
@@ -231,7 +226,7 @@ namespace FlightSimCapstone
             // See: https://stackoverflow.com/questions/22356/cleanest-way-to-invoke-cross-thread-events
             try
             {
-                string serialData = serialPort.ReadLine();
+                string serialData = ArduinoCommunicationUtility.serialPort.ReadLine();
 
                 this.Invoke(new MethodInvoker(delegate
                 {

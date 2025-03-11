@@ -1,7 +1,7 @@
 ﻿/**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   2/1/25
+ *  Last Revision   :   3/11/25
  *  Class           :   BaseDependencyUtility.cs
  *  Description     :   This module holds several methods used to check software
  *                      and hardware dependencies. These methods are called when
@@ -16,11 +16,6 @@
  *  To check for USB Hardware devices:
  *  ManagementObjectSearcher - Needs System.Management.dll    ----- NOTE: This may break install wizard if not added as dependency
  *  https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher?view=net-9.0-pp
- * 
- *  ManagementObject.Get() documentation:
- *  https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher.get?view=net-9.0-pp
- *  https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-pnpentity
- *  https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/getdeviceproperties-win32-pnpentity
  *  
  *  Identify Arduino Mega 2560 Vendor and Product ID:
  *  https://forum.arduino.cc/t/whats-the-vid-and-pid/305399
@@ -136,20 +131,8 @@ namespace FlightSimCapstone
         /// <returns>bool</returns>
         public static bool CheckArduinoConnection()
         {
-            // Retrieve Plug and play (PnP) USB Devices. Search for Arduino 
-            ManagementObjectSearcher usbSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE DeviceID LIKE 'USB%'");
-            foreach (ManagementObject device in usbSearcher.Get())
-            {
-                // Get USB Device ID as string
-                string deviceId = device["DeviceID"]?.ToString();
-                Console.WriteLine(deviceId);   
-                
-                // If Device containing specified Arduino PID and VID, Arduino is connected to system.
-                if (deviceId.Contains(arduinoPID) &&  deviceId.Contains(arduinoVID))
-                {
-                    return true;
-                }
-            }
+            if (ArduinoCommunicationUtility.comPort != "none" & ArduinoCommunicationUtility.comPort != null)
+                return true;
 
             return false;
         }
