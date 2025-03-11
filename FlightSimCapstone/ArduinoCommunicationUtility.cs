@@ -122,5 +122,11 @@ namespace FlightSimCapstone
 
             return "none"; 
         }
+
+        public static int[] castSerialInput()
+        {
+            int[] cast = Array.ConvertAll(serialData.Split(','), int.Parse);
+            return cast;
+        }
     }
 }

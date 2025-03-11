@@ -113,4 +113,15 @@ namespace FlightSimCapstone
     {
         public double RollReading;
     }
+
+    struct AttitudeIndicatorCalibation
+    {
+        public double PitchCalibration;
+    }
+
+
+    struct ThrottleData
+    {
+        public double ThrottleReading;
+    }
 }

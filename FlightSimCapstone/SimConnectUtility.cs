@@ -97,7 +97,9 @@ namespace FlightSimCapstone
         private static double pitchValue = 0.0f;
         private static double rollValue = 0.0f;
 
-
+        
+        private static double throttleValue = 0.0f;
+       
         // getter/setter properties for simconnect attributes
         public static double AltimeterValue
         {
@@ -171,6 +173,14 @@ namespace FlightSimCapstone
             private set { rollValue = value; }
         }
 
+
+
+        private static double ThrottleValue
+        {
+            get { return throttleValue; }
+            set { throttleValue = value; }
+        }
+
         // Enumerations for SimConnect requests
         private enum Requests
         {
@@ -185,7 +195,8 @@ namespace FlightSimCapstone
             CurrentFuel,
             Ammeter,
             Pitch,
-            Roll
+            Roll,
+            Throttle
         }
         
         // Enumerations for Definitions 
@@ -202,9 +213,21 @@ namespace FlightSimCapstone
             CurrentFuelData,
             AmmeterData,
             PitchData,
-            RollData
+            RollData,
+            ThrottleData
         }
 
+        // Custom enum for SimConnect Input Events
+        private enum CustomEvents
+        {
+            THROTTLE_INCREASE = 0,
+            THROTTLE_DECREASE = 1 
+        }
+
+        public enum SIMCONNECT_NOTIFICATION_GROUP_ID : uint
+        {
+            Default = 0
+        }
 
         /// <summary>
         /// This method specifies what data the SimConnect Client should expect to recieve
@@ -314,6 +337,14 @@ namespace FlightSimCapstone
                 rollValue = roll.RollReading;
                 Console.WriteLine($"Roll Reading (deg): {roll.RollReading}");
             }
+
+            if ((Requests)data.dwRequestID == Requests.Throttle)
+            {
+                ThrottleData throttleData = (ThrottleData)data.dwData[0];
+                ThrottleValue = throttleData.ThrottleReading;
+                Console.WriteLine($"Throttle Reading: {throttleData.ThrottleReading}");
+            }
+
         }
 
         /// <summary>
@@ -337,10 +368,14 @@ namespace FlightSimCapstone
             if (!ConnectSimconnectClient())
                 return;
 
+            // Map events to Simulator Events
+            simconnect.MapClientEventToSimEvent(CustomEvents.THROTTLE_INCREASE, "THROTTLE_INCR");
+            simconnect.MapClientEventToSimEvent(CustomEvents.THROTTLE_DECREASE, "THROTTLE_DECR");
+
             /////////////////////////////////
             // Define and Register Values: //
             /////////////////////////////////
-            
+
             // Define Altimeter data
             // "Indicated Altitude" - Indicated Altitude in feet
             simconnect.AddToDataDefinition(Definitions.AltimeterData, "INDICATED ALTITUDE", "feet", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
@@ -399,6 +434,10 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.RollData, "ATTITUDE INDICATOR BANK DEGREES", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<RollData>(Definitions.RollData);
 
+            // Define Throttle value
+            simconnect.AddToDataDefinition(Definitions.ThrottleData, "GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<ThrottleData>(Definitions.ThrottleData);
+
             /////////////////////
             // Request Values: //
             /////////////////////
@@ -439,6 +478,9 @@ namespace FlightSimCapstone
             // Request Roll Value
             simconnect.RequestDataOnSimObject(Requests.Roll, Definitions.RollData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
+            // Request Throttle Value
+            simconnect.RequestDataOnSimObject(Requests.Throttle, Definitions.ThrottleData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+            
             // Register Simconnect OnRecvSimobjectData event
             simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
 
@@ -518,28 +560,33 @@ namespace FlightSimCapstone
             }
         }
 
-        public static DevForm DevForm
-        {
-            get => default;
-            set
-            {
-            }
-        }
 
-        public static GraphicalInterface_Left GraphicalInterface_Left
-        {
-            get => default;
-            set
-            {
-            }
-        }
 
-        public static GraphicalInterface_Right GraphicalInterface_Right
+        public static void UpdateThrottleFromPotentiometer(int potValue)
         {
-            get => default;
-            set
+            // Map potentiometer value (0-1023) to desired throttle percentage (0-100)
+            double desiredThrottlePercentage = (potValue / 1023.0) * 100.0;
+            // Read the current throttle percentage (assumed already updated via SimConnect)
+            double currentThrottlePercentage = ThrottleValue;
+
+            Console.WriteLine($"Desired Throttle: {desiredThrottlePercentage}%, Current Throttle: {currentThrottlePercentage}%");
+
+            // If the current throttle is less than desired, simulate throttle increase
+            if (currentThrottlePercentage < desiredThrottlePercentage)
             {
+                Console.WriteLine("\n\nCurrent < Desired\n\n");
+                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                    CustomEvents.THROTTLE_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             }
+            // If the current throttle is greater than desired, simulate throttle decrease
+            else if (currentThrottlePercentage > desiredThrottlePercentage)
+            {
+                Console.WriteLine("\n\nCurrent > Desired\n\n");
+
+                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                    CustomEvents.THROTTLE_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+            }
+            
         }
     }
 }
