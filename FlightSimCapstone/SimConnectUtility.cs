@@ -37,6 +37,9 @@
  *  
  *  Aircraft Electrical Variables:
  *  https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Electrics_Variables.htm
+ *  
+ *  MSFS Input Mapping
+ *  https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/API_Reference/Events_And_Data/SimConnect_MapClientEventToSimEvent.htm
  **********************************************************************************/
 
 using System;
@@ -479,7 +482,11 @@ namespace FlightSimCapstone
             simconnect.RequestDataOnSimObject(Requests.Roll, Definitions.RollData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
             // Request Throttle Value
-            simconnect.RequestDataOnSimObject(Requests.Throttle, Definitions.ThrottleData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+            //////////////////////////////////////////////////////
+            ///NOTE:  The throttle periiod is every Sim_Frame ////
+            //////////////////////////////////////////////////////
+            simconnect.RequestDataOnSimObject(Requests.Throttle, Definitions.ThrottleData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SIM_FRAME, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
             
             // Register Simconnect OnRecvSimobjectData event
             simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
@@ -566,27 +573,39 @@ namespace FlightSimCapstone
         {
             // Map potentiometer value (0-1023) to desired throttle percentage (0-100)
             double desiredThrottlePercentage = (potValue / 1023.0) * 100.0;
+            
             // Read the current throttle percentage (assumed already updated via SimConnect)
             double currentThrottlePercentage = ThrottleValue;
 
-            Console.WriteLine($"Desired Throttle: {desiredThrottlePercentage}%, Current Throttle: {currentThrottlePercentage}%");
+            double tolerance = 5.0;
 
-            // If the current throttle is less than desired, simulate throttle increase
-            if (currentThrottlePercentage < desiredThrottlePercentage)
-            {
-                Console.WriteLine("\n\nCurrent < Desired\n\n");
-                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
-                    CustomEvents.THROTTLE_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
-            }
-            // If the current throttle is greater than desired, simulate throttle decrease
-            else if (currentThrottlePercentage > desiredThrottlePercentage)
-            {
-                Console.WriteLine("\n\nCurrent > Desired\n\n");
+            int speed = 1;
 
-                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
-                    CustomEvents.THROTTLE_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+            for (int i = 0; i < speed; i++)
+            {
+
+                // Return if throttle within 1% to avoid jittering
+                if (Math.Abs(currentThrottlePercentage - desiredThrottlePercentage) < tolerance)
+                {
+                    return;
+                }
+
+                // If the current throttle is less than desired, simulate throttle increase
+                if (currentThrottlePercentage < desiredThrottlePercentage)
+                {
+                    Console.WriteLine("\n\nCurrent < Desired\n\n");
+                    simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                        CustomEvents.THROTTLE_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                }
+                // If the current throttle is greater than desired, simulate throttle decrease
+                else if (currentThrottlePercentage > desiredThrottlePercentage)
+                {
+                    Console.WriteLine("\n\nCurrent > Desired\n\n");
+
+                    simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                        CustomEvents.THROTTLE_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                }
             }
-            
         }
     }
 }

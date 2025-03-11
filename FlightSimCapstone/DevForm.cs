@@ -2,7 +2,7 @@
 /**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   2/23/25
+ *  Last Revision   :   3/11/25
  *  Class           :   DevForm.cs
  *  Description     :   This module defines the Developer Form. This is a secret
  *                      form that can be launched by pressing F6 from the Utility
@@ -98,7 +98,7 @@ namespace FlightSimCapstone
 
             // Instantiate timer. Tick every second.
             valueTimer = new Timer();
-            valueTimer.Interval = 1000; // every 1 second
+            valueTimer.Interval = 200; // every .2 second
             valueTimer.Tick += ValueTimer_Tick;
             valueTimer.Start();
         }
