@@ -19,9 +19,13 @@
  * 
  *  ManagementObject.Get() documentation:
  *  https://learn.microsoft.com/en-us/dotnet/api/system.management.managementobjectsearcher.get?view=net-9.0-pp
- * 
+ *  https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-pnpentity
+ *  https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/getdeviceproperties-win32-pnpentity
+ *  
  *  Identify Arduino Mega 2560 Vendor and Product ID:
  *  https://forum.arduino.cc/t/whats-the-vid-and-pid/305399
+ *  
+ *  
  **********************************************************************************/
 
 using System;

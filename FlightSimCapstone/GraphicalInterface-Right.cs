@@ -1,7 +1,7 @@
 ﻿/**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   3/3/25
+ *  Last Revision   :   3/11/25
  *  Class           :   GraphicalInterface-Right.cs
  *  Description     :   This module will contain various overlayed bitmap images to create graphical modules.
  *                      Each module will update according to real-time values retrieved from the SimConnect Client.
@@ -21,6 +21,8 @@
  * Understanding what an Altimeter does
  * https://www.wikihow.com/Read-an-Altimeter
  * 
+ * Ensuring object disposal
+ * https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/using
  * 
  */
 using System;

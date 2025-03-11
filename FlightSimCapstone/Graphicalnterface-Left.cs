@@ -1,7 +1,7 @@
 ﻿/**********************************************************************************
  *  Author          :   Jason Broom
  *  Course Number   :   STG-452
- *  Last Revision   :   3/8/25
+ *  Last Revision   :   3/11/25
  *  Class           :   GraphicalInterface-Left.cs
  *  Description     :   This module will contain various overlayed bitmap images to create graphical modules.
  *                      Each module will update according to real-time values retrieved from the SimConnect Client.
@@ -20,6 +20,10 @@
  * 
  * Optimizing memory usage of image transformation functions
  * https://codereview.stackexchange.com/questions/273064/memory-leak-i-cant-identify-using-bitmap-and-graphics-classes
+ * 
+ * Ensuring object disposal
+ * https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/using
+ * 
  * 
  */
 using System;

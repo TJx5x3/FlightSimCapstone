@@ -92,5 +92,12 @@ namespace FlightSimCapstone
         {
             serialData = serialPort.ReadExisting();
         }
+
+        private static String GetArduinoCOMPort()
+        {
+
+
+            return "Moo";
+        }
     }
 }
