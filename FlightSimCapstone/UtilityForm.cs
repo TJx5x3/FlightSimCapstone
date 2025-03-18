@@ -63,6 +63,15 @@ namespace FlightSimCapstone
     /// </remarks>
     public partial class UtilityForm : Form
     {
+        private bool isGraphicalInterfaceOpen;
+
+        public bool IsGraphicalInterfaceOpen
+        {
+            get { return isGraphicalInterfaceOpen; }
+            set { isGraphicalInterfaceOpen = value; }
+        }
+
+
         /// <summary>
         /// Utility Form Constructor
         /// </summary>
@@ -265,6 +274,14 @@ namespace FlightSimCapstone
         /// <param name="e"></param>
         private void ConfigureButton_Click(object sender, EventArgs e)
         {
+            // Check if instance of graphical interface is already running
+            if(IsGraphicalInterfaceOpen)
+            {
+                ;
+                MessageBox.Show("Graphical Interface is already open!", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);           
+                return;
+            }
+
             // If SimConnect Client can be created, initialize Sim Readings and Open Graphical Interface form
             if (SimConnectUtility.ConnectSimconnectClient())
             {
@@ -272,7 +289,7 @@ namespace FlightSimCapstone
                 SimConnectUtility.InitializeSimReadings();
 
                 // Define Graphical Interface Forms (Left and right)
-                GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left();
+                GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left(this);
                 GraphicalInterface_Right graphicalInterfaceRight = new GraphicalInterface_Right();
 
                 //Link graphical interface forms together to ensure they close each other.
@@ -282,6 +299,10 @@ namespace FlightSimCapstone
                 // Show Graphical Interface Forms
                 graphicalInterfaceLeft.Show();
                 graphicalInterfaceRight.Show();
+
+
+                // Declare graphical interface instance as true
+                IsGraphicalInterfaceOpen = true;
             }
             else
             {
@@ -289,7 +310,7 @@ namespace FlightSimCapstone
                 SimConnectUtility.InitializeSimReadings();
                 
                 // Define Graphical Interface Forms (Left and right)
-                GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left();
+                GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left(this);
                 GraphicalInterface_Right graphicalInterfaceRight = new GraphicalInterface_Right();
 
                 //Link graphical interface forms together to ensure they close each other.
@@ -300,7 +321,11 @@ namespace FlightSimCapstone
                 graphicalInterfaceLeft.Show();
                 graphicalInterfaceRight.Show();
 
+                // Write warning message to app console
                 AppendAppConsole("Please Start Microsoft Flight Simulator before opening graphical interface.\n", Color.Yellow);
+
+                // Declare graphical interface instance as true
+                IsGraphicalInterfaceOpen = true;
             }
         }
     }

@@ -525,7 +525,7 @@ namespace FlightSimCapstone
                 }
                 catch (COMException ex)
                 {
-                   // MessageBox.Show("SimcConnect not connected!", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                   // MessageBox.Show("SimConnect not connected!", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
             }
@@ -568,7 +568,11 @@ namespace FlightSimCapstone
         }
 
 
-
+        /// <summary>
+        /// Update MSFS Throttle from Arduino Potentiometer value 
+        /// (Range: 0-1023)
+        /// </summary>
+        /// <param name="potValue"></param>
         public static void UpdateThrottleFromPotentiometer(int potValue)
         {
             // Map potentiometer value (0-1023) to desired throttle percentage (0-100)
@@ -584,7 +588,7 @@ namespace FlightSimCapstone
             for (int i = 0; i < speed; i++)
             {
 
-                // Return if throttle within 1% to avoid jittering
+                // Return if throttle within 5% to avoid jittering
                 if (Math.Abs(currentThrottlePercentage - desiredThrottlePercentage) < tolerance)
                 {
                     return;

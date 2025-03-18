@@ -175,8 +175,9 @@ namespace FlightSimCapstone
                 // Update Roll Value
                 RollLabel.Text = $"Roll (degrees): {SimConnectUtility.RollValue}";
 
-                SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[0]);
+                SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[7]);
                 Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[0]);
+                
                 // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }

@@ -133,15 +133,6 @@ namespace FlightSimCapstone
         public static Bitmap SetImageRotation(Bitmap image, float degree)
         {
             Bitmap rotatedBitmap = new Bitmap(image.Width, image.Height);
-            //Graphics g = Graphics.FromImage(rotatedBitmap);
-
-            //// Scale image down /2 and rotate
-            //g.TranslateTransform((float)image.Width / 2, (float)image.Height / 2);
-            //g.RotateTransform(degree);
-
-            //// Scale rotated image back to full size before drawing (To avoid visible resizing)
-            //g.TranslateTransform(-(float)image.Width / 2, -(float)image.Height / 2);
-            //g.DrawImage(image, new Point(0, 0));
 
             using (Graphics g = Graphics.FromImage(rotatedBitmap))
             {

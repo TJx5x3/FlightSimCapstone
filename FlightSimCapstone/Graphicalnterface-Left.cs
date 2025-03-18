@@ -27,6 +27,7 @@
  * 
  */
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,6 +50,8 @@ namespace FlightSimCapstone
     /// </summary>
     public partial class GraphicalInterface_Left : Form
     {
+        private UtilityForm utilityForm = null;
+
         // Timer to update retrieved SimConnect values
         private Timer formTimer = null;
 
@@ -75,6 +78,9 @@ namespace FlightSimCapstone
         // Link Right form to current form
         private GraphicalInterface_Right linkedForm;
 
+
+        private ArrayList ImageResources = new ArrayList();
+
         // Check if OnClosing event first fired in other form
         public bool isRightClosing { get; set; }
 
@@ -91,9 +97,12 @@ namespace FlightSimCapstone
         /// <br/>
         /// Instantiate Timer
         /// </summary>
-        public GraphicalInterface_Left()
+        public GraphicalInterface_Left(UtilityForm callingUtilityForm)
         {
             InitializeComponent();
+
+            // initialize calling utility form
+            utilityForm = callingUtilityForm;
 
             // Airspeed Indicator
             originalAirspeedIndicatorDial = new Bitmap(Properties.Resources.AirspeedIndicator_Dial); // Rotating dial that shows airspeed values
@@ -158,6 +167,25 @@ namespace FlightSimCapstone
             formTimer.Interval = 1000;
             formTimer.Tick += FormTimer_Tick;
             formTimer.Start();
+
+
+            // Initialize Image Resources array list
+
+            ImageResources.Add(originalAirspeedIndicatorDial);
+            ImageResources.Add(originalHeadingIndicatorGauge);
+            ImageResources.Add(originalTurnCoordinatorAirplane);
+            ImageResources.Add(originalSuctionGaugeDial);
+            ImageResources.Add(originalAltitudeIndicatorBase);
+            ImageResources.Add(originalAltitudeIndicatorMiddle);
+            ImageResources.Add(originalAltitudeIndicatorRoll);
+
+            ImageResources.Add(rotatedAirspeedIndicatorDial);
+            ImageResources.Add(rotatedHeadingIndicator);
+            ImageResources.Add(rotatedTurnCoordinatorAirplane);
+            ImageResources.Add(rotatedSuctionGaugeDial);
+            ImageResources.Add(rotatedAltitudeIndicatorBase);
+            ImageResources.Add(rotatedAltitudeIndicatorCenter);
+            ImageResources.Add(rotatedAltitudeIndicatorRoll);
 
         }
 
@@ -312,6 +340,10 @@ namespace FlightSimCapstone
             }
 
             Console.WriteLine("Tick");
+
+
+            // Force Garbage Collection to reduce memory usage
+            GC.Collect();
         }
 
         /// <summary>
@@ -337,6 +369,14 @@ namespace FlightSimCapstone
                 isRightClosing = true;
                 linkedForm.Close();
             }
+
+            // Disable open graphical interface check
+            utilityForm.IsGraphicalInterfaceOpen = false;
+
+            // Garbage collection
+            GC.WaitForPendingFinalizers();
+
+
         }
     }
 }
