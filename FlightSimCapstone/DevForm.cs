@@ -65,7 +65,7 @@ namespace FlightSimCapstone
 
         // Serial port on COM5 to read arduino Serial Print
         // Arduino connected on COM5 on this machine. Baud rate = 9600 (Configured in Arduino IDE)
-        private SerialPort serialPort = new SerialPort("COM7", 9600, Parity.None, 8, StopBits.One);
+        // private SerialPort serialPort = new SerialPort("COM7", 9600, Parity.None, 8, StopBits.One);
         
         /// <summary>
         /// Default constructor
@@ -95,6 +95,8 @@ namespace FlightSimCapstone
             //serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
 
             InitializeComponent();
+
+            ArduinoCommunicationUtility.Initialize(); // Initialize Arduino Communication Utility
 
             // Instantiate timer. Tick every second.
             valueTimer = new Timer();
@@ -175,13 +177,15 @@ namespace FlightSimCapstone
                 // Update Roll Value
                 RollLabel.Text = $"Roll (degrees): {SimConnectUtility.RollValue}";
 
-                SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[7]);
+                // Write potentiometer value to SimConnect client
+                SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[0]);
                 Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[0]);
                 
                 // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }
 
+            // Update Potentiometer Label with read Arduino serial data
             potentiometerValueLabel.Text = $"Arduino Readings:\n{ArduinoCommunicationUtility.serialData}";
         }
 
@@ -198,13 +202,15 @@ namespace FlightSimCapstone
         {
             Console.WriteLine("Closing dev form instance\n");
             utilityForm.AppendAppConsole("Closing dev form instance\n", Color.White);
-            serialPort.Close(); // Close serial port
+
+            
             valueTimer.Stop();
             valueTimer.Dispose();
 
-            //serialPort.Close(); // Close serial port
-
+            ArduinoCommunicationUtility.CloseSerialPort();
             SimConnectUtility.DisconnectSimconnectClient();
+
+            GC.Collect();
         }
 
         /// <summary>
@@ -214,7 +220,7 @@ namespace FlightSimCapstone
         /// <param name="e"></param>
         private void CloseSerialPortButton_Click(object sender, EventArgs e)
         {
-            serialPort.Close();
+            //serialPort.Close();
         }
 
         /// <summary>

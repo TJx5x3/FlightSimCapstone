@@ -341,6 +341,7 @@ namespace FlightSimCapstone
                 Console.WriteLine($"Roll Reading (deg): {roll.RollReading}");
             }
 
+            // Request Throttle Data
             if ((Requests)data.dwRequestID == Requests.Throttle)
             {
                 ThrottleData throttleData = (ThrottleData)data.dwData[0];

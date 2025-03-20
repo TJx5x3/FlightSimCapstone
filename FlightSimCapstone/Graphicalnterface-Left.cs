@@ -228,11 +228,13 @@ namespace FlightSimCapstone
 
         }
 
+        /// <summary>
+        /// Translate bitmap image across Y axis
+        /// </summary>
         public static Bitmap TranslateImageY(Bitmap image, float y)
         {
             Bitmap translatedImage = new Bitmap(image.Width, image.Height);
-            //Graphics g = Graphics.FromImage(translatedImage);
-
+            
             using (Graphics g = Graphics.FromImage(translatedImage))
             { 
                 g.TranslateTransform(0, y);
@@ -375,8 +377,6 @@ namespace FlightSimCapstone
 
             // Garbage collection
             GC.WaitForPendingFinalizers();
-
-
         }
     }
 }

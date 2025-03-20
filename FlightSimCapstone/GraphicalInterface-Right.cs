@@ -213,6 +213,7 @@ namespace FlightSimCapstone
         {
             linkedForm = leftForm;
         }
+
         /// <summary>
         /// OnClosing Event.
         /// Disable and Discard Form timer when closed
