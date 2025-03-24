@@ -49,16 +49,23 @@ namespace FlightSimCapstone
         // Attributes for Bitmaps that will be rotated
         private Bitmap originalVerticalAirspeedIndicatorDial;
 
-
         private Bitmap originalAltimeter100Dial;
         private Bitmap originalAltimeter1kDial;
         private Bitmap originalAltimeter10kDial;
+
+        private Bitmap originalClockSeconds;
+        private Bitmap originalClockMinutes;
+        private Bitmap originalClockHours;
 
         // Rotated Images 
         private Bitmap rotatedVerticalAirspeedIndicatorDial;
         private Bitmap rotatedAltimeter100Dial;
         private Bitmap rotatedAltimeter1kDial;
         private Bitmap rotatedAltimeter10kDial;
+
+        private Bitmap rotatedClockSeconds;
+        private Bitmap rotatedClockMinutes;
+        private Bitmap rotatedClockHours;
 
         // Link Left form to current form
         private GraphicalInterface_Left linkedForm;
@@ -111,6 +118,33 @@ namespace FlightSimCapstone
             Altimeter10kDial.Parent = Altimeter1kDial;
             Altimeter10kDial.Location = new Point(0, 0);
             Altimeter10kDial.BackColor = Color.Transparent;
+
+            // Clock
+
+            // Hours
+            originalClockHours = new Bitmap(Properties.Resources.Clock_Hours);
+            ClockHours.Image = originalClockHours;
+
+            ClockHours.Parent = ClockBase;
+            ClockHours.Location = new Point(0, 0);
+            ClockHours.BackColor = Color.Transparent;
+
+            // Seconds
+            originalClockSeconds = new Bitmap(Properties.Resources.Clock_Seconds);
+            ClockSeconds.Image = originalClockSeconds;
+
+            ClockSeconds.Parent = ClockHours;
+            ClockSeconds.Location = new Point(0, 0);
+            ClockSeconds.BackColor = Color.Transparent;
+
+            // Minutes
+            originalClockMinutes = new Bitmap(Properties.Resources.Clock_Minutes);
+            ClockMinutes.Image = originalClockMinutes;
+
+            ClockMinutes.Parent = ClockSeconds;
+            ClockMinutes.Location = new Point(0, 0);
+            ClockMinutes.BackColor = Color.Transparent;
+
 
 
             this.FormClosing += GraphicalInterface_OnClosing;

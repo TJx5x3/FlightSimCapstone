@@ -155,6 +155,10 @@
     <Content Include="bin\Debug\Microsoft.FlightSimulator.SimConnect.dll" />
     <Content Include="bin\Debug\SimConnect.dll" />
     <Content Include="bin\x64\Debug\SimConnect.dll" />
+    <None Include="Resources\Clock_Minutes.png" />
+    <None Include="Resources\Clock_Seconds.png" />
+    <None Include="Resources\Clock_Hours.png" />
+    <None Include="Resources\Clock_Base.png" />
     <None Include="Resources\AltitudeIndicator-Roll.png" />
     <None Include="Resources\AltitudeIndicator-Overlay.png" />
     <None Include="Resources\AltitudeIndicator-Middle.png" />
