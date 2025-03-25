@@ -34,6 +34,7 @@ using System.Windows.Forms;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 
 namespace FlightSimCapstone
@@ -135,6 +136,35 @@ namespace FlightSimCapstone
                 return true;
 
             return false;
+        }
+
+        /// <summary>
+        /// Check if USB Yoke is connected to system
+        /// </summary>
+        /// <returns></returns>
+        public static bool CheckYokeConnection()
+        {
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%(COM%'"))
+            {
+                foreach (ManagementObject device in searcher.Get())
+                {
+                    // Search for Device name
+                    string deviceName = device["Name"]?.ToString() ?? string.Empty;
+
+                    // Check device "Name" index for Arduino devices
+                    if (deviceName.IndexOf("CH Flight Sim Yoke USB", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        // Extract the COM port using regex
+                        Match match = Regex.Match(deviceName, @"(COM\d+)");
+                        if (match.Success)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+
         }
     }
 }

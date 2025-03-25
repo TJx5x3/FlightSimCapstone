@@ -263,8 +263,7 @@ namespace FlightSimCapstone
         /// <param name="e"></param>
         private void FormTimer_Tick(object sender, EventArgs e)
         {
-            
-
+       
             // If a connection to SimConnect is established, update graphical modules
             if (SimConnectUtility.ConnectionStatus)
             {

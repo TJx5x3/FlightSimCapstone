@@ -188,6 +188,20 @@ namespace FlightSimCapstone
                 AppendAppConsole("Arduino could not be located\n", Color.OrangeRed);
             }
 
+
+            appConsole.AppendText("Locating USB Yoke...\n");
+            if (BaseDependencyUtility.CheckYokeConnection())
+            {
+                this.yokeStatusLabel.Text = "OK";
+                this.yokeStatusLabel.ForeColor = Color.Green;
+                AppendAppConsole("USB Yoke Located!\n", Color.LightGreen);
+            }
+            else
+            {
+                this.yokeStatusLabel.Text = "Failed";
+                this.yokeStatusLabel.ForeColor = Color.Red;
+                AppendAppConsole("USB Yoke could not be located\n", Color.OrangeRed);
+            }
         }
 
         /// <summary>
