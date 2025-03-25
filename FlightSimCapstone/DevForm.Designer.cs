@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.RollLabel = new System.Windows.Forms.Label();
+            this.PitchLabel = new System.Windows.Forms.Label();
             this.AmmeterLabel = new System.Windows.Forms.Label();
             this.CurrentFuelLabel = new System.Windows.Forms.Label();
             this.TotalFuelLabel = new System.Windows.Forms.Label();
@@ -47,8 +49,9 @@
             this.RightSkeleton = new System.Windows.Forms.PictureBox();
             this.LeftSkeleton = new System.Windows.Forms.PictureBox();
             this.TitleGif = new System.Windows.Forms.PictureBox();
-            this.PitchLabel = new System.Windows.Forms.Label();
-            this.RollLabel = new System.Windows.Forms.Label();
+            this.HourLabel = new System.Windows.Forms.Label();
+            this.MinuteLabel = new System.Windows.Forms.Label();
+            this.SecondsLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LeftSkeleton)).BeginInit();
@@ -57,6 +60,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.SecondsLabel);
+            this.panel1.Controls.Add(this.MinuteLabel);
+            this.panel1.Controls.Add(this.HourLabel);
             this.panel1.Controls.Add(this.RollLabel);
             this.panel1.Controls.Add(this.PitchLabel);
             this.panel1.Controls.Add(this.AmmeterLabel);
@@ -80,6 +86,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(707, 495);
             this.panel1.TabIndex = 1;
+            // 
+            // RollLabel
+            // 
+            this.RollLabel.AutoSize = true;
+            this.RollLabel.Location = new System.Drawing.Point(336, 403);
+            this.RollLabel.Name = "RollLabel";
+            this.RollLabel.Size = new System.Drawing.Size(25, 13);
+            this.RollLabel.TabIndex = 19;
+            this.RollLabel.Text = "Roll";
+            // 
+            // PitchLabel
+            // 
+            this.PitchLabel.AutoSize = true;
+            this.PitchLabel.Location = new System.Drawing.Point(336, 381);
+            this.PitchLabel.Name = "PitchLabel";
+            this.PitchLabel.Size = new System.Drawing.Size(31, 13);
+            this.PitchLabel.TabIndex = 18;
+            this.PitchLabel.Text = "Pitch";
             // 
             // AmmeterLabel
             // 
@@ -240,23 +264,32 @@
             this.TitleGif.TabIndex = 0;
             this.TitleGif.TabStop = false;
             // 
-            // PitchLabel
+            // HourLabel
             // 
-            this.PitchLabel.AutoSize = true;
-            this.PitchLabel.Location = new System.Drawing.Point(336, 381);
-            this.PitchLabel.Name = "PitchLabel";
-            this.PitchLabel.Size = new System.Drawing.Size(31, 13);
-            this.PitchLabel.TabIndex = 18;
-            this.PitchLabel.Text = "Pitch";
+            this.HourLabel.AutoSize = true;
+            this.HourLabel.Location = new System.Drawing.Point(335, 423);
+            this.HourLabel.Name = "HourLabel";
+            this.HourLabel.Size = new System.Drawing.Size(35, 13);
+            this.HourLabel.TabIndex = 20;
+            this.HourLabel.Text = "Hours";
             // 
-            // RollLabel
+            // MinuteLabel
             // 
-            this.RollLabel.AutoSize = true;
-            this.RollLabel.Location = new System.Drawing.Point(336, 403);
-            this.RollLabel.Name = "RollLabel";
-            this.RollLabel.Size = new System.Drawing.Size(25, 13);
-            this.RollLabel.TabIndex = 19;
-            this.RollLabel.Text = "Roll";
+            this.MinuteLabel.AutoSize = true;
+            this.MinuteLabel.Location = new System.Drawing.Point(336, 445);
+            this.MinuteLabel.Name = "MinuteLabel";
+            this.MinuteLabel.Size = new System.Drawing.Size(44, 13);
+            this.MinuteLabel.TabIndex = 21;
+            this.MinuteLabel.Text = "Minutes";
+            // 
+            // SecondsLabel
+            // 
+            this.SecondsLabel.AutoSize = true;
+            this.SecondsLabel.Location = new System.Drawing.Point(336, 468);
+            this.SecondsLabel.Name = "SecondsLabel";
+            this.SecondsLabel.Size = new System.Drawing.Size(49, 13);
+            this.SecondsLabel.TabIndex = 22;
+            this.SecondsLabel.Text = "Seconds";
             // 
             // DevForm
             // 
@@ -265,7 +298,7 @@
             this.ClientSize = new System.Drawing.Size(731, 564);
             this.Controls.Add(this.panel1);
             this.Name = "DevForm";
-            this.Text = "Form2";
+            this.Text = "Secret Dev Menu";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).EndInit();
@@ -297,5 +330,8 @@
         private System.Windows.Forms.Label AmmeterLabel;
         private System.Windows.Forms.Label RollLabel;
         private System.Windows.Forms.Label PitchLabel;
+        private System.Windows.Forms.Label SecondsLabel;
+        private System.Windows.Forms.Label MinuteLabel;
+        private System.Windows.Forms.Label HourLabel;
     }
 }

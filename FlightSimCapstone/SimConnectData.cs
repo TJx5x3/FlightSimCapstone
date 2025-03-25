@@ -114,6 +114,15 @@ namespace FlightSimCapstone
         public double RollReading;
     }
 
+    /// <summary>
+    /// Struct for Hour Data
+    /// </summary>
+    struct ZuluTimeData
+    {
+        public double ZuluTimeReading;
+    }
+
+
     struct AttitudeIndicatorCalibation
     {
         public double PitchCalibration;

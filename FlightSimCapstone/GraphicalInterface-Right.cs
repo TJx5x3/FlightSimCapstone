@@ -213,6 +213,7 @@ namespace FlightSimCapstone
                 float dial1kangle = ((thousands % 10.0f) / 10.0f) * 360.0f;// - 180.0f;
                 float dial100angle = (altitudeMod1000 / 1000.0f) * 360.0f;// - 180.0f;
                 
+                // Cleanup Altimeter 100 Dial
                 if (Altimeter100Dial.Image != null && rotatedAltimeter100Dial != null)
                 {
                     rotatedAltimeter100Dial.Dispose();
@@ -221,17 +222,21 @@ namespace FlightSimCapstone
                 rotatedAltimeter100Dial = SetImageRotation(originalAltimeter100Dial, dial100angle);
                 Altimeter100Dial.Image = rotatedAltimeter100Dial;
 
+                // Cleanup Altimeter 1k Dial
                 if (Altimeter1kDial.Image != null && rotatedAltimeter1kDial != null)
                 {
                     rotatedAltimeter1kDial.Dispose();
                 }
+
                 rotatedAltimeter1kDial = SetImageRotation(originalAltimeter1kDial, dial1kangle);
                 Altimeter1kDial.Image = rotatedAltimeter1kDial;
 
+                // Cleanup Altimeter 10k dial
                 if (Altimeter10kDial.Image != null && rotatedAltimeter10kDial != null)
                 {
                     rotatedAltimeter10kDial.Dispose();
                 }
+
                 rotatedAltimeter10kDial = SetImageRotation(originalAltimeter10kDial, dial10kangle);
                 Altimeter10kDial.Image = rotatedAltimeter10kDial;
             }

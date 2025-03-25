@@ -51,7 +51,7 @@ namespace FlightSimCapstone
         public static SerialPort serialPort;
         public static String serialData; // Data read from Arduino device
 
-        private static bool isComOpen; // Flag to check if COM port is open
+        public static bool isComOpen; // Flag to check if COM port is open
 
         /// <summary>
         /// Arduino Communication Utility Constructor. Creates event when data is recieved from the COM serial port

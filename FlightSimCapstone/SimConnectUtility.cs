@@ -40,6 +40,9 @@
  *  
  *  MSFS Input Mapping
  *  https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/API_Reference/Events_And_Data/SimConnect_MapClientEventToSimEvent.htm
+ *  
+ *  Date & Time Simulation variables
+ *  https://docs.flightsimulator.com/html/Programming_Tools/WASM/Gauge_API/Token_Vars/General_Simulation.htm?rhhlterm=clock_hour&rhsearch=CLOCK_hour
  **********************************************************************************/
 
 using System;
@@ -100,7 +103,12 @@ namespace FlightSimCapstone
         private static double pitchValue = 0.0f;
         private static double rollValue = 0.0f;
 
-        
+        private static double hourValue = 0.0f;
+        private static double minuteValue = 0.0f;
+        private static double secondValue = 0.0f;
+
+
+
         private static double throttleValue = 0.0f;
        
         // getter/setter properties for simconnect attributes
@@ -176,7 +184,23 @@ namespace FlightSimCapstone
             private set { rollValue = value; }
         }
 
+        public static double HourValue
+        {
+            get { return hourValue; }
+            private set { hourValue = value; }
+        }
 
+        public static double MinuteValue
+        {
+            get { return minuteValue; }
+            private set { minuteValue = value; }
+        }
+
+        public static double SecondValue
+        {
+            get { return secondValue; }
+            private set { secondValue = value; }
+        }
 
         private static double ThrottleValue
         {
@@ -199,6 +223,7 @@ namespace FlightSimCapstone
             Ammeter,
             Pitch,
             Roll,
+            ZuluTime,
             Throttle
         }
         
@@ -217,6 +242,7 @@ namespace FlightSimCapstone
             AmmeterData,
             PitchData,
             RollData,
+            ZuluTimeData,
             ThrottleData
         }
 
@@ -341,12 +367,25 @@ namespace FlightSimCapstone
                 Console.WriteLine($"Roll Reading (deg): {roll.RollReading}");
             }
 
+            // Request Clock Data
+            if ((Requests)data.dwRequestID == Requests.ZuluTime)
+            {
+                ZuluTimeData zulutime = (ZuluTimeData)data.dwData[0];
+                hourValue = (zulutime.ZuluTimeReading / 3600) % 12;
+                minuteValue = (zulutime.ZuluTimeReading / 60) % 60;
+                secondValue = zulutime.ZuluTimeReading % 60;
+                //hourValue = clock.HourReading;
+                //minuteValue = clock.MinuteReading;
+                //secondValue = clock.SecondReading;
+                //Console.WriteLine($"Clock Reading: {clock.HourReading}:{clock.MinuteReading}:{clock.SecondReading}");
+            }
+
             // Request Throttle Data
             if ((Requests)data.dwRequestID == Requests.Throttle)
             {
                 ThrottleData throttleData = (ThrottleData)data.dwData[0];
                 ThrottleValue = throttleData.ThrottleReading;
-                Console.WriteLine($"Throttle Reading: {throttleData.ThrottleReading}");
+                //Console.WriteLine($"Throttle Reading: {throttleData.ThrottleReading}");
             }
 
         }
@@ -438,6 +477,14 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.RollData, "ATTITUDE INDICATOR BANK DEGREES", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<RollData>(Definitions.RollData);
 
+            // Define Hour value
+
+            //https://docs.flightsimulator.com/html/Programming_Tools/Environment_Variables.htm?rhhlterm=zulu%20time&rhsearch=zulu%20time
+            simconnect.AddToDataDefinition(Definitions.ZuluTimeData, "LOCAL TIME", "seconds", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            //simconnect.AddToDataDefinition(Definitions.ClockData, "ZULU TIME", "seconds", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            //simconnect.AddToDataDefinition(Definitions.ClockData, "ZULU TIME", "seconds", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<ZuluTimeData>(Definitions.ZuluTimeData);
+
             // Define Throttle value
             simconnect.AddToDataDefinition(Definitions.ThrottleData, "GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<ThrottleData>(Definitions.ThrottleData);
@@ -481,6 +528,9 @@ namespace FlightSimCapstone
 
             // Request Roll Value
             simconnect.RequestDataOnSimObject(Requests.Roll, Definitions.RollData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
+            // Request Clock
+            simconnect.RequestDataOnSimObject(Requests.ZuluTime, Definitions.ZuluTimeData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
             // Request Throttle Value
 

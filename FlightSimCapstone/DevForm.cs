@@ -177,10 +177,23 @@ namespace FlightSimCapstone
                 // Update Roll Value
                 RollLabel.Text = $"Roll (degrees): {SimConnectUtility.RollValue}";
 
+                // Update Hour Value
+                HourLabel.Text = $"Hour: {SimConnectUtility.HourValue}"; 
+
+                MinuteLabel.Text = $"Minute: {SimConnectUtility.MinuteValue}";
+
+                SecondsLabel.Text = $"Seconds: {SimConnectUtility.SecondValue}";
+                // Update Hour Value label
+                //HourLabel.Text = $"Hour Value: {SimConnectUtility.HourValue}";
+
                 // Write potentiometer value to SimConnect client
-                SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[0]);
-                Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[0]);
-                
+                if (ArduinoCommunicationUtility.isComOpen == true)
+                {
+                    // Update throttle value in SimConnect from Arduino potentiometer value
+                    SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[0]);
+                    Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[0]);
+                }
+
                 // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }
