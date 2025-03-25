@@ -269,7 +269,11 @@ namespace FlightSimCapstone
             if (SimConnectUtility.ConnectionStatus)
             {
                 // Refresh SimConnect Client
-                SimConnectUtility.RefreshSimconnect();
+                if (!SimConnectUtility.RefreshSimconnect())
+                {
+                    linkedForm.Close();
+                    this.Close();
+                };
 
                 // Rotate Airspeed Indicator dial
 

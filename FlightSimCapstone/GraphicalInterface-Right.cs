@@ -194,8 +194,12 @@ namespace FlightSimCapstone
             if (SimConnectUtility.ConnectionStatus)
             {
                 // Refresh SimConnect Client
-                SimConnectUtility.RefreshSimconnect();
+                if (!SimConnectUtility.RefreshSimconnect())
+                {
+                    linkedForm.Close();
+                    this.Close();
 
+                }
                 // Vertical Airspeed Indicator //
 
                 // Rotate background image based on rotational value of the Heading Indicator retrieved from SimConnect.
@@ -239,6 +243,29 @@ namespace FlightSimCapstone
 
                 rotatedAltimeter10kDial = SetImageRotation(originalAltimeter10kDial, dial10kangle);
                 Altimeter10kDial.Image = rotatedAltimeter10kDial;
+
+
+                // Clock //
+                if (ClockSeconds.Image != null && rotatedClockSeconds != null)
+                {
+                    rotatedClockSeconds.Dispose();
+                }
+                rotatedClockSeconds = SetImageRotation(originalClockSeconds, (float)(SimConnectUtility.SecondValue) * 6.0f);
+                ClockSeconds.Image = rotatedClockSeconds;
+
+                if (ClockMinutes.Image != null && rotatedClockMinutes != null)
+                {
+                    rotatedClockMinutes.Dispose();
+                }
+                rotatedClockMinutes = SetImageRotation(originalClockMinutes, (float)(SimConnectUtility.MinuteValue) * 6.0f);
+                ClockMinutes.Image = rotatedClockMinutes;
+
+                if (ClockHours.Image != null && rotatedClockHours != null)
+                {
+                    rotatedClockHours.Dispose();
+                }
+                rotatedClockHours = SetImageRotation(originalClockHours, (float)(SimConnectUtility.HourValue) * 30.0f);
+                ClockHours.Image = rotatedClockHours;
             }
 
             Console.WriteLine("Tick");

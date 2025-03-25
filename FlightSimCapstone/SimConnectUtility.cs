@@ -609,13 +609,26 @@ namespace FlightSimCapstone
         /// </summary>
         /// <remarks>
         /// This method should called on each timer itteration of Form objects
+        /// Returns true if successful, returns false if exception thrown
         /// </remarks>
-        public static void RefreshSimconnect()
+        public static bool RefreshSimconnect()
         {
             if(simconnect != null)
             {
-                simconnect.ReceiveMessage();
+                try
+                {
+                    simconnect.ReceiveMessage();
+                    return true;
+
+                }
+                catch(COMException ex) 
+                {
+                    // Handle exception
+                    DisconnectSimconnectClient();
+                    return false;
+                }
             }
+            return false;
         }
 
 
