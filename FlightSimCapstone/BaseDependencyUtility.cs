@@ -64,6 +64,15 @@ namespace FlightSimCapstone
         private const string arduinoPID = "PID_0042";
         private const string arduinoVID = "VID_2341";
 
+
+        // Yoke Vendor ID and Product ID
+        private const string yokePID = "PID_00FF";
+        private const string yokeVID = "VID_068E";
+
+        // Rudder pedals Vendor ID and Product ID
+        private const string rudderPID = "PID_B679";
+        private const string rudderVID = "VID_044F";
+
         public static UtilityForm UtilityForm
         {
             get => default;
@@ -141,30 +150,48 @@ namespace FlightSimCapstone
         /// <summary>
         /// Check if USB Yoke is connected to system
         /// </summary>
-        /// <returns></returns>
+        /// <returns>bool</returns>
         public static bool CheckYokeConnection()
         {
-            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%(COM%'"))
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity"))
             {
                 foreach (ManagementObject device in searcher.Get())
                 {
-                    // Search for Device name
-                    string deviceName = device["Name"]?.ToString() ?? string.Empty;
+                    string pnpDeviceId = device["PNPDeviceID"]?.ToString() ?? string.Empty;
 
-                    // Check device "Name" index for Arduino devices
-                    if (deviceName.IndexOf("CH Flight Sim Yoke USB", StringComparison.OrdinalIgnoreCase) >= 0)
+                    // Check if both the VID and PID appear in the PNPDeviceID string.
+                    if (pnpDeviceId.IndexOf(yokeVID, StringComparison.OrdinalIgnoreCase) >= 0 &&
+                        pnpDeviceId.IndexOf(yokePID, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
-                        // Extract the COM port using regex
-                        Match match = Regex.Match(deviceName, @"(COM\d+)");
-                        if (match.Success)
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
-                return false;
+            }
+            return false;
+
+        }
+
+        /// <summary>
+        /// Check if Rudder pedals are connected to system
+        /// </summary>
+        /// <returns>bool</returns>
+        public static bool CheckRudderPedalConnection()
+        {
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity"))
+            {
+                foreach (ManagementObject device in searcher.Get())
+                {
+                    string pnpDeviceId = device["PNPDeviceID"]?.ToString() ?? string.Empty;
+
+                    if (pnpDeviceId.IndexOf(rudderVID, StringComparison.OrdinalIgnoreCase) >= 0 &&
+                        pnpDeviceId.IndexOf(rudderPID, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        return true;
+                    }
+                }
             }
 
+            return false;
         }
     }
 }

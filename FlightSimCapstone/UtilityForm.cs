@@ -202,6 +202,20 @@ namespace FlightSimCapstone
                 this.yokeStatusLabel.ForeColor = Color.Red;
                 AppendAppConsole("USB Yoke could not be located\n", Color.OrangeRed);
             }
+
+            appConsole.AppendText("Locating USB Rudder Petals\n");
+            if (BaseDependencyUtility.CheckRudderPedalConnection())
+            {
+                this.rudderStatusLabel.Text = "OK";
+                this.rudderStatusLabel.ForeColor = Color.LightGreen;
+                AppendAppConsole("USB Rudder Pedals Located!\n", Color.LightGreen);
+            }
+            else
+            {
+                this.rudderStatusLabel.Text = "Failed";
+                this.rudderStatusLabel.ForeColor = Color.Red;
+                AppendAppConsole("USB Rudder Pedals could not be located\n", Color.OrangeRed);
+            }    
         }
 
         /// <summary>
