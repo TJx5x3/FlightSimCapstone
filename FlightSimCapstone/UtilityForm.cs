@@ -188,7 +188,7 @@ namespace FlightSimCapstone
                 AppendAppConsole("Arduino could not be located\n", Color.OrangeRed);
             }
 
-
+            // Detect USB Yoke
             appConsole.AppendText("Locating USB Yoke...\n");
             if (BaseDependencyUtility.CheckYokeConnection())
             {
@@ -203,11 +203,12 @@ namespace FlightSimCapstone
                 AppendAppConsole("USB Yoke could not be located\n", Color.OrangeRed);
             }
 
+            // Detect USB Rudder pedals
             appConsole.AppendText("Locating USB Rudder Petals\n");
             if (BaseDependencyUtility.CheckRudderPedalConnection())
             {
                 this.rudderStatusLabel.Text = "OK";
-                this.rudderStatusLabel.ForeColor = Color.LightGreen;
+                this.rudderStatusLabel.ForeColor = Color.Green;
                 AppendAppConsole("USB Rudder Pedals Located!\n", Color.LightGreen);
             }
             else
