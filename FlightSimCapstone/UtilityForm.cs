@@ -35,6 +35,10 @@
  *  Communicating between multiple Windows Forms:
  *  https://stackoverflow.com/questions/1665533/communicate-between-two-windows-forms-in-c-sharp
  *  
+ *  Reading from JSON file in C#:
+ * https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/deserialization 
+ *  Writing to JSON file in C#:
+ *  https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to
  *  
  *  NOTE: Remember, in form designer -> lightning bolt - > propper wat to create event handler
  **********************************************************************************/
@@ -49,7 +53,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
+using System.Text.Json;
 
 namespace FlightSimCapstone
 {
@@ -63,6 +68,15 @@ namespace FlightSimCapstone
     /// </remarks>
     public partial class UtilityForm : Form
     {
+        // Port mapping object
+        //private static ArduinoPortMapping maps;
+
+        // Control mappings
+        private static int throttleMapping;
+        private static int mixtureMapping;
+
+
+        // Determine if an istance of the Graphical Interface already exists
         private bool isGraphicalInterfaceOpen;
 
         public bool IsGraphicalInterfaceOpen
@@ -92,6 +106,11 @@ namespace FlightSimCapstone
 
             // Append starting message to console
             appConsole.AppendText("Application launched.\n");
+
+
+            LoadControlMappings();
+            SaveControlMappings();
+            
             checkSoftwareDependencies();
         }
 
@@ -118,6 +137,8 @@ namespace FlightSimCapstone
             {
             }
         }
+
+
 
 
         /// <summary>
@@ -410,5 +431,40 @@ namespace FlightSimCapstone
                 OpenGraphicalInterface(false);
             }
         }
+
+
+        public static void LoadControlMappings()
+        {
+            // Read Arduino Port Mapping from file
+            string settingsJson = File.ReadAllText("ArduinoSettings.fly");
+
+            // Deserialize JSON to ArduinoPortMapping object
+            var mapping = JsonSerializer.Deserialize<ArduinoPortMapping>(settingsJson);
+
+            // Set mapping values as current class attributes
+            throttleMapping = mapping.Throttle;
+            mixtureMapping = mapping.Mixture;
+
+
+            MessageBox.Show(mapping.Throttle.ToString() + ", " + mapping.Mixture.ToString()); 
+
+
+        }
+
+        public static void SaveControlMappings()
+        {
+            var configData = new ArduinoPortMapping
+            {
+                Throttle = 0,
+                Mixture = 6
+            };
+
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonString = JsonSerializer.Serialize(configData, options);
+            File.WriteAllText("ArduinoSettings.fly", jsonString);
+
+            MessageBox.Show(jsonString);
+        }
+
     }
 }

@@ -43,7 +43,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Text.Json;
 
 namespace FlightSimCapstone
 {
@@ -63,10 +63,13 @@ namespace FlightSimCapstone
         // Timer to update retrieved SimConnect values in text fields
         private Timer valueTimer = null;
 
+        
+        
+
         // Serial port on COM5 to read arduino Serial Print
         // Arduino connected on COM5 on this machine. Baud rate = 9600 (Configured in Arduino IDE)
         // private SerialPort serialPort = new SerialPort("COM7", 9600, Parity.None, 8, StopBits.One);
-        
+
         /// <summary>
         /// Default constructor
         /// This should never be used. Does not allow for cross-form communication.

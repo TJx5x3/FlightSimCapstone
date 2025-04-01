@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.throttleLabel = new System.Windows.Forms.Label();
+            this.arduinoMapLabel = new System.Windows.Forms.Label();
+            this.SecondsLabel = new System.Windows.Forms.Label();
+            this.MinuteLabel = new System.Windows.Forms.Label();
+            this.HourLabel = new System.Windows.Forms.Label();
             this.RollLabel = new System.Windows.Forms.Label();
             this.PitchLabel = new System.Windows.Forms.Label();
             this.AmmeterLabel = new System.Windows.Forms.Label();
@@ -49,9 +55,6 @@
             this.RightSkeleton = new System.Windows.Forms.PictureBox();
             this.LeftSkeleton = new System.Windows.Forms.PictureBox();
             this.TitleGif = new System.Windows.Forms.PictureBox();
-            this.HourLabel = new System.Windows.Forms.Label();
-            this.MinuteLabel = new System.Windows.Forms.Label();
-            this.SecondsLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LeftSkeleton)).BeginInit();
@@ -60,6 +63,10 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.throttleLabel);
+            this.panel1.Controls.Add(this.arduinoMapLabel);
             this.panel1.Controls.Add(this.SecondsLabel);
             this.panel1.Controls.Add(this.MinuteLabel);
             this.panel1.Controls.Add(this.HourLabel);
@@ -84,8 +91,66 @@
             this.panel1.Controls.Add(this.TitleGif);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(707, 495);
+            this.panel1.Size = new System.Drawing.Size(718, 495);
             this.panel1.TabIndex = 1;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Port 1",
+            "Port 2",
+            "Port 3",
+            "Port 4"});
+            this.comboBox1.Location = new System.Drawing.Point(64, 284);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 25;
+            // 
+            // throttleLabel
+            // 
+            this.throttleLabel.AutoSize = true;
+            this.throttleLabel.Location = new System.Drawing.Point(15, 287);
+            this.throttleLabel.Name = "throttleLabel";
+            this.throttleLabel.Size = new System.Drawing.Size(43, 13);
+            this.throttleLabel.TabIndex = 24;
+            this.throttleLabel.Text = "Throttle";
+            // 
+            // arduinoMapLabel
+            // 
+            this.arduinoMapLabel.AutoSize = true;
+            this.arduinoMapLabel.Location = new System.Drawing.Point(15, 261);
+            this.arduinoMapLabel.Name = "arduinoMapLabel";
+            this.arduinoMapLabel.Size = new System.Drawing.Size(95, 13);
+            this.arduinoMapLabel.TabIndex = 23;
+            this.arduinoMapLabel.Text = "Arduino Mappings:";
+            // 
+            // SecondsLabel
+            // 
+            this.SecondsLabel.AutoSize = true;
+            this.SecondsLabel.Location = new System.Drawing.Point(336, 468);
+            this.SecondsLabel.Name = "SecondsLabel";
+            this.SecondsLabel.Size = new System.Drawing.Size(49, 13);
+            this.SecondsLabel.TabIndex = 22;
+            this.SecondsLabel.Text = "Seconds";
+            // 
+            // MinuteLabel
+            // 
+            this.MinuteLabel.AutoSize = true;
+            this.MinuteLabel.Location = new System.Drawing.Point(336, 445);
+            this.MinuteLabel.Name = "MinuteLabel";
+            this.MinuteLabel.Size = new System.Drawing.Size(44, 13);
+            this.MinuteLabel.TabIndex = 21;
+            this.MinuteLabel.Text = "Minutes";
+            // 
+            // HourLabel
+            // 
+            this.HourLabel.AutoSize = true;
+            this.HourLabel.Location = new System.Drawing.Point(335, 423);
+            this.HourLabel.Name = "HourLabel";
+            this.HourLabel.Size = new System.Drawing.Size(35, 13);
+            this.HourLabel.TabIndex = 20;
+            this.HourLabel.Text = "Hours";
             // 
             // RollLabel
             // 
@@ -181,7 +246,7 @@
             // 
             this.potentiometerValueLabel.AutoSize = true;
             this.potentiometerValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.potentiometerValueLabel.Location = new System.Drawing.Point(3, 403);
+            this.potentiometerValueLabel.Location = new System.Drawing.Point(14, 471);
             this.potentiometerValueLabel.Name = "potentiometerValueLabel";
             this.potentiometerValueLabel.Size = new System.Drawing.Size(216, 24);
             this.potentiometerValueLabel.TabIndex = 9;
@@ -189,7 +254,7 @@
             // 
             // CloseSerialPortButton
             // 
-            this.CloseSerialPortButton.Location = new System.Drawing.Point(110, 185);
+            this.CloseSerialPortButton.Location = new System.Drawing.Point(110, 153);
             this.CloseSerialPortButton.Name = "CloseSerialPortButton";
             this.CloseSerialPortButton.Size = new System.Drawing.Size(178, 22);
             this.CloseSerialPortButton.TabIndex = 8;
@@ -200,7 +265,7 @@
             // HeadingIndicatorLabel
             // 
             this.HeadingIndicatorLabel.AutoSize = true;
-            this.HeadingIndicatorLabel.Location = new System.Drawing.Point(336, 153);
+            this.HeadingIndicatorLabel.Location = new System.Drawing.Point(336, 121);
             this.HeadingIndicatorLabel.Name = "HeadingIndicatorLabel";
             this.HeadingIndicatorLabel.Size = new System.Drawing.Size(91, 13);
             this.HeadingIndicatorLabel.TabIndex = 7;
@@ -209,7 +274,7 @@
             // AltimeterLabel
             // 
             this.AltimeterLabel.AutoSize = true;
-            this.AltimeterLabel.Location = new System.Drawing.Point(336, 124);
+            this.AltimeterLabel.Location = new System.Drawing.Point(336, 92);
             this.AltimeterLabel.Name = "AltimeterLabel";
             this.AltimeterLabel.Size = new System.Drawing.Size(47, 13);
             this.AltimeterLabel.TabIndex = 6;
@@ -217,7 +282,7 @@
             // 
             // InitializeSimconnectButton
             // 
-            this.InitializeSimconnectButton.Location = new System.Drawing.Point(110, 153);
+            this.InitializeSimconnectButton.Location = new System.Drawing.Point(110, 121);
             this.InitializeSimconnectButton.Name = "InitializeSimconnectButton";
             this.InitializeSimconnectButton.Size = new System.Drawing.Size(178, 26);
             this.InitializeSimconnectButton.TabIndex = 5;
@@ -227,7 +292,7 @@
             // 
             // TestSimConnect_Button
             // 
-            this.TestSimConnect_Button.Location = new System.Drawing.Point(110, 124);
+            this.TestSimConnect_Button.Location = new System.Drawing.Point(110, 92);
             this.TestSimConnect_Button.Name = "TestSimConnect_Button";
             this.TestSimConnect_Button.Size = new System.Drawing.Size(178, 23);
             this.TestSimConnect_Button.TabIndex = 4;
@@ -238,7 +303,7 @@
             // RightSkeleton
             // 
             this.RightSkeleton.Image = ((System.Drawing.Image)(resources.GetObject("RightSkeleton.Image")));
-            this.RightSkeleton.Location = new System.Drawing.Point(603, 124);
+            this.RightSkeleton.Location = new System.Drawing.Point(603, 75);
             this.RightSkeleton.Name = "RightSkeleton";
             this.RightSkeleton.Size = new System.Drawing.Size(101, 99);
             this.RightSkeleton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -248,7 +313,7 @@
             // LeftSkeleton
             // 
             this.LeftSkeleton.Image = ((System.Drawing.Image)(resources.GetObject("LeftSkeleton.Image")));
-            this.LeftSkeleton.Location = new System.Drawing.Point(3, 124);
+            this.LeftSkeleton.Location = new System.Drawing.Point(3, 75);
             this.LeftSkeleton.Name = "LeftSkeleton";
             this.LeftSkeleton.Size = new System.Drawing.Size(101, 99);
             this.LeftSkeleton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -258,44 +323,17 @@
             // TitleGif
             // 
             this.TitleGif.Image = ((System.Drawing.Image)(resources.GetObject("TitleGif.Image")));
-            this.TitleGif.Location = new System.Drawing.Point(58, 3);
+            this.TitleGif.Location = new System.Drawing.Point(58, -46);
             this.TitleGif.Name = "TitleGif";
             this.TitleGif.Size = new System.Drawing.Size(601, 105);
             this.TitleGif.TabIndex = 0;
             this.TitleGif.TabStop = false;
             // 
-            // HourLabel
-            // 
-            this.HourLabel.AutoSize = true;
-            this.HourLabel.Location = new System.Drawing.Point(335, 423);
-            this.HourLabel.Name = "HourLabel";
-            this.HourLabel.Size = new System.Drawing.Size(35, 13);
-            this.HourLabel.TabIndex = 20;
-            this.HourLabel.Text = "Hours";
-            // 
-            // MinuteLabel
-            // 
-            this.MinuteLabel.AutoSize = true;
-            this.MinuteLabel.Location = new System.Drawing.Point(336, 445);
-            this.MinuteLabel.Name = "MinuteLabel";
-            this.MinuteLabel.Size = new System.Drawing.Size(44, 13);
-            this.MinuteLabel.TabIndex = 21;
-            this.MinuteLabel.Text = "Minutes";
-            // 
-            // SecondsLabel
-            // 
-            this.SecondsLabel.AutoSize = true;
-            this.SecondsLabel.Location = new System.Drawing.Point(336, 468);
-            this.SecondsLabel.Name = "SecondsLabel";
-            this.SecondsLabel.Size = new System.Drawing.Size(49, 13);
-            this.SecondsLabel.TabIndex = 22;
-            this.SecondsLabel.Text = "Seconds";
-            // 
             // DevForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 564);
+            this.ClientSize = new System.Drawing.Size(742, 564);
             this.Controls.Add(this.panel1);
             this.Name = "DevForm";
             this.Text = "Secret Dev Menu";
@@ -333,5 +371,8 @@
         private System.Windows.Forms.Label SecondsLabel;
         private System.Windows.Forms.Label MinuteLabel;
         private System.Windows.Forms.Label HourLabel;
+        private System.Windows.Forms.Label arduinoMapLabel;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label throttleLabel;
     }
 }
