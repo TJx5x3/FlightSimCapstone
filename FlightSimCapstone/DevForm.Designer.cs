@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.throttleComboBox = new System.Windows.Forms.ComboBox();
             this.throttleLabel = new System.Windows.Forms.Label();
             this.arduinoMapLabel = new System.Windows.Forms.Label();
             this.SecondsLabel = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.throttleComboBox);
             this.panel1.Controls.Add(this.throttleLabel);
             this.panel1.Controls.Add(this.arduinoMapLabel);
             this.panel1.Controls.Add(this.SecondsLabel);
@@ -94,23 +94,23 @@
             this.panel1.Size = new System.Drawing.Size(718, 495);
             this.panel1.TabIndex = 1;
             // 
-            // comboBox1
+            // throttleComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.throttleComboBox.FormattingEnabled = true;
+            this.throttleComboBox.Items.AddRange(new object[] {
             "Port 1",
             "Port 2",
             "Port 3",
             "Port 4"});
-            this.comboBox1.Location = new System.Drawing.Point(64, 284);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 25;
+            this.throttleComboBox.Location = new System.Drawing.Point(64, 266);
+            this.throttleComboBox.Name = "throttleComboBox";
+            this.throttleComboBox.Size = new System.Drawing.Size(121, 21);
+            this.throttleComboBox.TabIndex = 25;
             // 
             // throttleLabel
             // 
             this.throttleLabel.AutoSize = true;
-            this.throttleLabel.Location = new System.Drawing.Point(15, 287);
+            this.throttleLabel.Location = new System.Drawing.Point(15, 269);
             this.throttleLabel.Name = "throttleLabel";
             this.throttleLabel.Size = new System.Drawing.Size(43, 13);
             this.throttleLabel.TabIndex = 24;
@@ -119,9 +119,10 @@
             // arduinoMapLabel
             // 
             this.arduinoMapLabel.AutoSize = true;
-            this.arduinoMapLabel.Location = new System.Drawing.Point(15, 261);
+            this.arduinoMapLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.arduinoMapLabel.Location = new System.Drawing.Point(15, 243);
             this.arduinoMapLabel.Name = "arduinoMapLabel";
-            this.arduinoMapLabel.Size = new System.Drawing.Size(95, 13);
+            this.arduinoMapLabel.Size = new System.Drawing.Size(141, 20);
             this.arduinoMapLabel.TabIndex = 23;
             this.arduinoMapLabel.Text = "Arduino Mappings:";
             // 
@@ -372,7 +373,7 @@
         private System.Windows.Forms.Label MinuteLabel;
         private System.Windows.Forms.Label HourLabel;
         private System.Windows.Forms.Label arduinoMapLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox throttleComboBox;
         private System.Windows.Forms.Label throttleLabel;
     }
 }

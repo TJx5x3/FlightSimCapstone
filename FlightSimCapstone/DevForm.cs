@@ -94,6 +94,8 @@ namespace FlightSimCapstone
             this.FormClosing += CloseHandler; // Register FormClosing event
 
 
+            throttleComboBox.SelectedIndex = utilityForm.ThrottleMapping;
+
             // Map event when serial data is recieved and open Serial port on COM
             //serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
 
@@ -181,13 +183,13 @@ namespace FlightSimCapstone
                 RollLabel.Text = $"Roll (degrees): {SimConnectUtility.RollValue}";
 
                 // Update Hour Value
-                HourLabel.Text = $"Hour: {SimConnectUtility.HourValue}"; 
+                HourLabel.Text = $"Hour: {SimConnectUtility.HourValue}";
 
+                // Update Minute Value
                 MinuteLabel.Text = $"Minute: {SimConnectUtility.MinuteValue}";
 
+                // Update Seconds Value
                 SecondsLabel.Text = $"Seconds: {SimConnectUtility.SecondValue}";
-                // Update Hour Value label
-                //HourLabel.Text = $"Hour Value: {SimConnectUtility.HourValue}";
 
                 // Write potentiometer value to SimConnect client
                 if (ArduinoCommunicationUtility.isComOpen == true)
@@ -195,6 +197,9 @@ namespace FlightSimCapstone
                     // Update throttle value in SimConnect from Arduino potentiometer value
                     SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[0]);
                     Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[0]);
+
+                    SimConnectUtility.UpdateMixtureFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[1]);
+                    Console.WriteLine("Mixture Input: " + ArduinoCommunicationUtility.castSerialInput()[1]);
                 }
 
                 // Refresh SimConnect

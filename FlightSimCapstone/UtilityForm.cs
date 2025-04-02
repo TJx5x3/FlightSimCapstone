@@ -75,9 +75,13 @@ namespace FlightSimCapstone
         private static int throttleMapping;
         private static int mixtureMapping;
 
+        public int ThrottleMapping { get => throttleMapping; set => throttleMapping = value; }
 
-        // Determine if an istance of the Graphical Interface already exists
-        private bool isGraphicalInterfaceOpen;
+        public int MixtureMapping { get => mixtureMapping; set => mixtureMapping = value; }
+
+
+    // Determine if an istance of the Graphical Interface already exists
+    private bool isGraphicalInterfaceOpen;
 
         public bool IsGraphicalInterfaceOpen
         {
@@ -446,24 +450,25 @@ namespace FlightSimCapstone
             mixtureMapping = mapping.Mixture;
 
 
-            MessageBox.Show(mapping.Throttle.ToString() + ", " + mapping.Mixture.ToString()); 
-
 
         }
 
+        /// <summary>
+        /// Save the current mappings to IO.
+        /// </summary>
         public static void SaveControlMappings()
         {
             var configData = new ArduinoPortMapping
             {
-                Throttle = 0,
-                Mixture = 6
+                Throttle = throttleMapping,
+                Mixture = mixtureMapping
             };
 
             var options = new JsonSerializerOptions { WriteIndented = true };
             string jsonString = JsonSerializer.Serialize(configData, options);
             File.WriteAllText("ArduinoSettings.fly", jsonString);
 
-            MessageBox.Show(jsonString);
+            //MessageBox.Show(jsonString);
         }
 
     }

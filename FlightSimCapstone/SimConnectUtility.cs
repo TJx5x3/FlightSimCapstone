@@ -110,6 +110,7 @@ namespace FlightSimCapstone
 
 
         private static double throttleValue = 0.0f;
+        private static double mixtureValue = 0.0f;
        
         // getter/setter properties for simconnect attributes
         public static double AltimeterValue
@@ -208,6 +209,12 @@ namespace FlightSimCapstone
             set { throttleValue = value; }
         }
 
+        private static double MixtureValue
+        {
+            get { return mixtureValue; }
+            set { mixtureValue = value; }
+        }
+
         // Enumerations for SimConnect requests
         private enum Requests
         {
@@ -224,7 +231,8 @@ namespace FlightSimCapstone
             Pitch,
             Roll,
             ZuluTime,
-            Throttle
+            Throttle,
+            Mixture
         }
         
         // Enumerations for Definitions 
@@ -243,14 +251,18 @@ namespace FlightSimCapstone
             PitchData,
             RollData,
             ZuluTimeData,
-            ThrottleData
+            ThrottleData,
+            MixtureData
         }
 
         // Custom enum for SimConnect Input Events
         private enum CustomEvents
         {
             THROTTLE_INCREASE = 0,
-            THROTTLE_DECREASE = 1 
+            THROTTLE_DECREASE = 1,
+            MIXTURE_INCREASE = 2,
+            MIXTURE_DECREASE = 3
+
         }
 
         public enum SIMCONNECT_NOTIFICATION_GROUP_ID : uint
@@ -374,10 +386,6 @@ namespace FlightSimCapstone
                 hourValue = (zulutime.ZuluTimeReading / 3600) % 12;
                 minuteValue = (zulutime.ZuluTimeReading / 60) % 60;
                 secondValue = zulutime.ZuluTimeReading % 60;
-                //hourValue = clock.HourReading;
-                //minuteValue = clock.MinuteReading;
-                //secondValue = clock.SecondReading;
-                //Console.WriteLine($"Clock Reading: {clock.HourReading}:{clock.MinuteReading}:{clock.SecondReading}");
             }
 
             // Request Throttle Data
@@ -386,6 +394,13 @@ namespace FlightSimCapstone
                 ThrottleData throttleData = (ThrottleData)data.dwData[0];
                 ThrottleValue = throttleData.ThrottleReading;
                 //Console.WriteLine($"Throttle Reading: {throttleData.ThrottleReading}");
+            }
+
+            if ((Requests)data.dwRequestID == Requests.Mixture)
+            {
+                MixtureData mixtureData = (MixtureData)data.dwData[0];
+                MixtureValue = mixtureData.MixtureReading;
+                //Console.WriteLine($"Mixture Reading: {mixtureData.MixtureReading}");
             }
 
         }
@@ -414,6 +429,8 @@ namespace FlightSimCapstone
             // Map events to Simulator Events
             simconnect.MapClientEventToSimEvent(CustomEvents.THROTTLE_INCREASE, "THROTTLE_INCR");
             simconnect.MapClientEventToSimEvent(CustomEvents.THROTTLE_DECREASE, "THROTTLE_DECR");
+            simconnect.MapClientEventToSimEvent(CustomEvents.MIXTURE_INCREASE, "MIXTURE_INCR");
+            simconnect.MapClientEventToSimEvent(CustomEvents.MIXTURE_DECREASE, "MIXTURE_DECR");
 
             /////////////////////////////////
             // Define and Register Values: //
@@ -489,6 +506,10 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.ThrottleData, "GENERAL ENG THROTTLE LEVER POSITION:1", "Percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<ThrottleData>(Definitions.ThrottleData);
 
+            // Define Mixture value
+            simconnect.AddToDataDefinition(Definitions.MixtureData, "GENERAL ENG MIXTURE LEVER POSITION:1", "Percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            simconnect.RegisterDataDefineStruct<MixtureData>(Definitions.MixtureData);
+
             /////////////////////
             // Request Values: //
             /////////////////////
@@ -538,7 +559,10 @@ namespace FlightSimCapstone
             ///NOTE:  The throttle periiod is every Sim_Frame ////
             //////////////////////////////////////////////////////
             simconnect.RequestDataOnSimObject(Requests.Throttle, Definitions.ThrottleData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SIM_FRAME, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
-            
+
+            //Request Mixture Value
+            simconnect.RequestDataOnSimObject(Requests.Mixture, Definitions.MixtureData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SIM_FRAME, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
+
             // Register Simconnect OnRecvSimobjectData event
             simconnect.OnRecvSimobjectData += Simconnect_OnRecvSimobjectData;
 
@@ -647,6 +671,7 @@ namespace FlightSimCapstone
 
             double tolerance = 5.0;
 
+            // Speed the change in values will  update
             int speed = 1;
 
             for (int i = 0; i < speed; i++)
@@ -661,17 +686,56 @@ namespace FlightSimCapstone
                 // If the current throttle is less than desired, simulate throttle increase
                 if (currentThrottlePercentage < desiredThrottlePercentage)
                 {
-                    Console.WriteLine("\n\nCurrent < Desired\n\n");
+                    //Console.WriteLine("\n\nCurrent < Desired\n\n");
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
                         CustomEvents.THROTTLE_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
                 }
                 // If the current throttle is greater than desired, simulate throttle decrease
                 else if (currentThrottlePercentage > desiredThrottlePercentage)
                 {
-                    Console.WriteLine("\n\nCurrent > Desired\n\n");
+                    //Console.WriteLine("\n\nCurrent > Desired\n\n");
 
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
                         CustomEvents.THROTTLE_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                }
+            }
+        }
+
+        public static void UpdateMixtureFromPotentiometer(int potValue)
+        {
+            // Map potentiometer value (0-1023) to desired throttle percentage (0-100)
+            double desiredMixturePercentage = (potValue / 1023.0) * 100.0;
+
+            // Read the current throttle percentage (assumed already updated via SimConnect)
+            double currentMixturePercentage = MixtureValue;
+
+            double tolerance = 5.0;
+
+            int speed = 1;
+
+            for (int i = 0; i < speed; i++)
+            {
+
+                // Return if throttle within 5% to avoid jittering
+                if (Math.Abs(currentMixturePercentage - desiredMixturePercentage) < tolerance)
+                {
+                    return;
+                }
+
+                // If the current throttle is less than desired, simulate throttle increase
+                if (currentMixturePercentage < desiredMixturePercentage)
+                {
+                    Console.WriteLine("\n\nCurrent < Desired\n\n");
+                    simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                        CustomEvents.MIXTURE_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                }
+                // If the current throttle is greater than desired, simulate throttle decrease
+                else if (currentMixturePercentage > desiredMixturePercentage)
+                {
+                    Console.WriteLine("\n\nCurrent > Desired\n\n");
+
+                    simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                        CustomEvents.MIXTURE_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
                 }
             }
         }
