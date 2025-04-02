@@ -95,7 +95,7 @@ namespace FlightSimCapstone
         /// Overlay transparent images, set size, parent image(s), location, and color.
         /// 
         /// <br/>
-        /// Instantiate Timer
+        /// Instantiate Timer 
         /// </summary>
         public GraphicalInterface_Left(UtilityForm callingUtilityForm)
         {
