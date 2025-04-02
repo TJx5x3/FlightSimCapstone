@@ -68,20 +68,25 @@ namespace FlightSimCapstone
     /// </remarks>
     public partial class UtilityForm : Form
     {
-        // Port mapping object
-        //private static ArduinoPortMapping maps;
-
         // Control mappings
         private static int throttleMapping;
         private static int mixtureMapping;
 
-        public int ThrottleMapping { get => throttleMapping; set => throttleMapping = value; }
+        public static int ThrottleMapping
+        {
+            get { return throttleMapping; }
+            set { throttleMapping = value; }
+        }
 
-        public int MixtureMapping { get => mixtureMapping; set => mixtureMapping = value; }
+        public static int MixtureMapping
+        {
+            get { return mixtureMapping; }
+            set { mixtureMapping = value; }
+        }
 
 
-    // Determine if an istance of the Graphical Interface already exists
-    private bool isGraphicalInterfaceOpen;
+        // Determine if an istance of the Graphical Interface already exists
+        private bool isGraphicalInterfaceOpen;
 
         public bool IsGraphicalInterfaceOpen
         {
@@ -113,7 +118,7 @@ namespace FlightSimCapstone
 
 
             LoadControlMappings();
-            SaveControlMappings();
+            //SaveControlMappings();
             
             checkSoftwareDependencies();
         }
@@ -159,6 +164,7 @@ namespace FlightSimCapstone
         {
             appConsole.SelectionColor = color;
             appConsole.AppendText(text);
+            appConsole.ScrollToCaret();
         }
 
         /// <summary>
@@ -245,7 +251,7 @@ namespace FlightSimCapstone
             }    
 
             // Get number of connected displays
-            appConsole.AppendText($"Number of connected displays: {screens.Length}\n");
+            AppendAppConsole($"Number of connected displays: {screens.Length}\n", Color.White);
             if (screens.Length < 3)
                 displayStatusLabel.ForeColor = Color.Red; // Set display status to red if less than 3 screens are detected
             else
@@ -448,9 +454,6 @@ namespace FlightSimCapstone
             // Set mapping values as current class attributes
             throttleMapping = mapping.Throttle;
             mixtureMapping = mapping.Mixture;
-
-
-
         }
 
         /// <summary>
@@ -468,7 +471,7 @@ namespace FlightSimCapstone
             string jsonString = JsonSerializer.Serialize(configData, options);
             File.WriteAllText("ArduinoSettings.fly", jsonString);
 
-            //MessageBox.Show(jsonString);
+            
         }
 
     }

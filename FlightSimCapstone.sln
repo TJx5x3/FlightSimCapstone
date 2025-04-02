@@ -8,9 +8,6 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FlightSimCapstoneInstaller", "FlightSimCapstoneInstaller\FlightSimCapstoneInstaller.vdproj", "{63253F6B-7310-4B92-87FB-E8F1A2368CA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7833BF2-7C5A-413C-AC99-8BF78C32D03E}"
-	ProjectSection(SolutionItems) = preProject
-		FlightSimCapstone\bin\x64\Debug\ArduinoSettings.fly = FlightSimCapstone\bin\x64\Debug\ArduinoSettings.fly
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

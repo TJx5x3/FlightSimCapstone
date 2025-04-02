@@ -100,6 +100,7 @@ namespace FlightSimCapstone
         public GraphicalInterface_Left(UtilityForm callingUtilityForm)
         {
             InitializeComponent();
+            ArduinoCommunicationUtility.Initialize();
 
             // initialize calling utility form
             utilityForm = callingUtilityForm;
@@ -164,7 +165,7 @@ namespace FlightSimCapstone
 
             // initialize form timer
             formTimer = new Timer();
-            formTimer.Interval = 1000;
+            formTimer.Interval = 200;
             formTimer.Tick += FormTimer_Tick;
             formTimer.Start();
 
@@ -202,16 +203,6 @@ namespace FlightSimCapstone
         {
             
             Bitmap rotatedBitmap = new Bitmap(image.Width, image.Height);
-            //Graphics g = Graphics.FromImage(rotatedBitmap);
-
-            //// Scale image down /2 and rotate
-            //g.TranslateTransform((float)image.Width / 2, (float)image.Height / 2);
-            //g.RotateTransform(degree);
-
-            //// Scale rotated image back to full size before drawing (To avoid visible resizing)
-            //g.TranslateTransform(-(float)image.Width / 2, -(float)image.Height / 2);
-            //g.DrawImage(image, new Point(0,0));
-            //return rotatedBitmap;
 
             using (Graphics g = Graphics.FromImage(rotatedBitmap))
             {
@@ -341,7 +332,19 @@ namespace FlightSimCapstone
 
                 // Rotate Atitude Indicator Base dial
                 rotatedAltitudeIndicatorBase = SetImageRotation(originalAltitudeIndicatorBase, (float)SimConnectUtility.RollValue);
-                AltitudeIndicatorBase.Image = rotatedAltitudeIndicatorBase;                
+                AltitudeIndicatorBase.Image = rotatedAltitudeIndicatorBase;
+
+                // Write potentiometer value to SimConnect client
+                if (ArduinoCommunicationUtility.isComOpen == true)
+                {
+                    //// Update throttle value in SimConnect from Arduino potentiometer value
+                    SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.ThrottleMapping]);
+                    Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[UtilityForm.ThrottleMapping]);
+
+                    SimConnectUtility.UpdateMixtureFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.MixtureMapping]);
+                    Console.WriteLine("Mixture Input: " + ArduinoCommunicationUtility.castSerialInput()[UtilityForm.MixtureMapping]);
+                }
+
             }
 
             Console.WriteLine("Tick");

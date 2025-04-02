@@ -32,6 +32,8 @@ using System.IO.Ports;
 using System.Management;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using System.IO;
+using System.Threading;
 
 
 // This class will probably be removed
@@ -44,6 +46,7 @@ namespace FlightSimCapstone
     {
         public static String comPort; // COM port number
 
+        private static Timer connectionTimer = null;
 
         //static SerialPort serialPort = new SerialPort("COM7", 11520, Parity.None, 8, StopBits.One);
         //static SerialPort serialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
@@ -58,7 +61,7 @@ namespace FlightSimCapstone
         /// </summary>
         static ArduinoCommunicationUtility()
         {
-            Initialize();
+            Initialize();  
         }
 
         /// <summary>
@@ -110,8 +113,16 @@ namespace FlightSimCapstone
         /// <param name="e"></param>
         private static void SerialPortReadEvent(object sender, SerialDataReceivedEventArgs e)
         {
-            if (serialPort.IsOpen)
-                serialData = serialPort.ReadLine();
+            try
+            {
+                if (serialPort.IsOpen)
+                    serialData = serialPort.ReadLine();
+
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Error reading serial data: " + ex.Message);
+            }
         }
 
         /// <summary>
@@ -140,7 +151,7 @@ namespace FlightSimCapstone
                     }
                 }
             }
-            return "none"; 
+            return "none";
         }
 
         /// <summary>
@@ -164,6 +175,6 @@ namespace FlightSimCapstone
         {
             int[] cast = Array.ConvertAll(serialData.Split(','), int.Parse);
             return cast;
-        }
+        }        
     }
 }

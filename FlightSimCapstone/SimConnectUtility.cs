@@ -400,7 +400,7 @@ namespace FlightSimCapstone
             {
                 MixtureData mixtureData = (MixtureData)data.dwData[0];
                 MixtureValue = mixtureData.MixtureReading;
-                //Console.WriteLine($"Mixture Reading: {mixtureData.MixtureReading}");
+                
             }
 
         }
@@ -623,7 +623,7 @@ namespace FlightSimCapstone
             }
             connectionStatus = false;
             readingsInitialized = false;
-            MessageBox.Show("Terminated SimConnect Session", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Terminated SimConnect Session", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return true;
         }
@@ -672,7 +672,7 @@ namespace FlightSimCapstone
             double tolerance = 5.0;
 
             // Speed the change in values will  update
-            int speed = 1;
+            int speed = 5;
 
             for (int i = 0; i < speed; i++)
             {
@@ -701,6 +701,10 @@ namespace FlightSimCapstone
             }
         }
 
+        /// <summary>
+        /// Update MSFS Mixture from Arduino Potentiometer reading
+        /// </summary>
+        /// <param name="potValue"></param>
         public static void UpdateMixtureFromPotentiometer(int potValue)
         {
             // Map potentiometer value (0-1023) to desired throttle percentage (0-100)
@@ -711,7 +715,7 @@ namespace FlightSimCapstone
 
             double tolerance = 5.0;
 
-            int speed = 1;
+            int speed = 5;
 
             for (int i = 0; i < speed; i++)
             {

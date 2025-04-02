@@ -63,8 +63,11 @@ namespace FlightSimCapstone
         // Timer to update retrieved SimConnect values in text fields
         private Timer valueTimer = null;
 
-        
-        
+
+        int throttleValue = 0; // Throttle value from Arduino potentiometer
+
+
+
 
         // Serial port on COM5 to read arduino Serial Print
         // Arduino connected on COM5 on this machine. Baud rate = 9600 (Configured in Arduino IDE)
@@ -88,18 +91,23 @@ namespace FlightSimCapstone
         /// <param name="callingUtilityForm"></param>
         public DevForm(Form callingUtilityForm)
         {
-            
+
+            InitializeComponent();
+
             // Register UtilityForm Instance as previously called form
             utilityForm = callingUtilityForm as UtilityForm; 
+
             this.FormClosing += CloseHandler; // Register FormClosing event
 
 
-            throttleComboBox.SelectedIndex = utilityForm.ThrottleMapping;
+            //Initialize Selected Combo box items;
+            throttleComboBox.SelectedIndex = UtilityForm.ThrottleMapping;
+            mixtureComboBox.SelectedIndex = UtilityForm.MixtureMapping;
 
             // Map event when serial data is recieved and open Serial port on COM
             //serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
 
-            InitializeComponent();
+
 
             ArduinoCommunicationUtility.Initialize(); // Initialize Arduino Communication Utility
 
@@ -194,12 +202,12 @@ namespace FlightSimCapstone
                 // Write potentiometer value to SimConnect client
                 if (ArduinoCommunicationUtility.isComOpen == true)
                 {
-                    // Update throttle value in SimConnect from Arduino potentiometer value
-                    SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[0]);
-                    Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[0]);
+                    //// Update throttle value in SimConnect from Arduino potentiometer value
+                    //SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[0]);
+                    //Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[0]);
 
-                    SimConnectUtility.UpdateMixtureFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[1]);
-                    Console.WriteLine("Mixture Input: " + ArduinoCommunicationUtility.castSerialInput()[1]);
+                    //SimConnectUtility.UpdateMixtureFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[1]);
+                    //Console.WriteLine("Mixture Input: " + ArduinoCommunicationUtility.castSerialInput()[1]);
                 }
 
                 // Refresh SimConnect
@@ -267,6 +275,28 @@ namespace FlightSimCapstone
             {
                 MessageBox.Show($"Read Error: {ex.Message}");
             }
+        }
+
+        private void SetArduinoMappings()
+        {
+            UtilityForm.ThrottleMapping = throttleComboBox.SelectedIndex;
+            UtilityForm.MixtureMapping = mixtureComboBox.SelectedIndex;
+
+        }
+
+        /// <summary>
+        /// When clicked, set control mappings to selected ports in combo boxes
+        /// </summary>
+        private void SetButton_OnClick(object sender, EventArgs e)
+        {
+            SetArduinoMappings();
+        }
+
+        private void SaveButton_OnClick(object sender, EventArgs e)
+        {
+            SetArduinoMappings();
+            UtilityForm.SaveControlMappings();
+            MessageBox.Show("Mappings Saved!");
         }
     }
 }
