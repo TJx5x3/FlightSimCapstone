@@ -59,9 +59,9 @@
             // 
             this.AltitudeIndicatorMiddle.BackColor = System.Drawing.Color.Transparent;
             this.AltitudeIndicatorMiddle.Image = global::FlightSimCapstone.Properties.Resources.AltitudeIndicator_Middle;
-            this.AltitudeIndicatorMiddle.Location = new System.Drawing.Point(624, 29);
+            this.AltitudeIndicatorMiddle.Location = new System.Drawing.Point(948, 0);
             this.AltitudeIndicatorMiddle.Name = "AltitudeIndicatorMiddle";
-            this.AltitudeIndicatorMiddle.Size = new System.Drawing.Size(400, 400);
+            this.AltitudeIndicatorMiddle.Size = new System.Drawing.Size(450, 450);
             this.AltitudeIndicatorMiddle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AltitudeIndicatorMiddle.TabIndex = 10;
             this.AltitudeIndicatorMiddle.TabStop = false;
@@ -70,9 +70,9 @@
             // 
             this.AltitudeIndicatorBase.BackColor = System.Drawing.Color.Transparent;
             this.AltitudeIndicatorBase.Image = global::FlightSimCapstone.Properties.Resources.AltitudeIndicator_Base;
-            this.AltitudeIndicatorBase.Location = new System.Drawing.Point(624, 29);
+            this.AltitudeIndicatorBase.Location = new System.Drawing.Point(948, 0);
             this.AltitudeIndicatorBase.Name = "AltitudeIndicatorBase";
-            this.AltitudeIndicatorBase.Size = new System.Drawing.Size(400, 400);
+            this.AltitudeIndicatorBase.Size = new System.Drawing.Size(450, 450);
             this.AltitudeIndicatorBase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AltitudeIndicatorBase.TabIndex = 9;
             this.AltitudeIndicatorBase.TabStop = false;
@@ -81,9 +81,9 @@
             // 
             this.AirspeedIndicatorDial.BackColor = System.Drawing.Color.Transparent;
             this.AirspeedIndicatorDial.Image = global::FlightSimCapstone.Properties.Resources.AirspeedIndicator_Dial;
-            this.AirspeedIndicatorDial.Location = new System.Drawing.Point(12, 29);
+            this.AirspeedIndicatorDial.Location = new System.Drawing.Point(460, 0);
             this.AirspeedIndicatorDial.Name = "AirspeedIndicatorDial";
-            this.AirspeedIndicatorDial.Size = new System.Drawing.Size(400, 400);
+            this.AirspeedIndicatorDial.Size = new System.Drawing.Size(450, 450);
             this.AirspeedIndicatorDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AirspeedIndicatorDial.TabIndex = 8;
             this.AirspeedIndicatorDial.TabStop = false;
@@ -92,9 +92,9 @@
             // 
             this.AirspeedIndicatorBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.AirspeedIndicatorBack.Image = global::FlightSimCapstone.Properties.Resources.AirspeedIndicator;
-            this.AirspeedIndicatorBack.Location = new System.Drawing.Point(12, 29);
+            this.AirspeedIndicatorBack.Location = new System.Drawing.Point(460, 0);
             this.AirspeedIndicatorBack.Name = "AirspeedIndicatorBack";
-            this.AirspeedIndicatorBack.Size = new System.Drawing.Size(400, 400);
+            this.AirspeedIndicatorBack.Size = new System.Drawing.Size(450, 450);
             this.AirspeedIndicatorBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AirspeedIndicatorBack.TabIndex = 7;
             this.AirspeedIndicatorBack.TabStop = false;
@@ -103,9 +103,9 @@
             // 
             this.SuctionGaugeDial.BackColor = System.Drawing.Color.Transparent;
             this.SuctionGaugeDial.Image = global::FlightSimCapstone.Properties.Resources.SuctionGauge_Dial;
-            this.SuctionGaugeDial.Location = new System.Drawing.Point(418, 355);
+            this.SuctionGaugeDial.Location = new System.Drawing.Point(161, 336);
             this.SuctionGaugeDial.Name = "SuctionGaugeDial";
-            this.SuctionGaugeDial.Size = new System.Drawing.Size(200, 200);
+            this.SuctionGaugeDial.Size = new System.Drawing.Size(225, 225);
             this.SuctionGaugeDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SuctionGaugeDial.TabIndex = 6;
             this.SuctionGaugeDial.TabStop = false;
@@ -114,9 +114,9 @@
             // 
             this.SuctionGauge.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.SuctionGauge.Image = global::FlightSimCapstone.Properties.Resources.SuctionGauge;
-            this.SuctionGauge.Location = new System.Drawing.Point(418, 355);
+            this.SuctionGauge.Location = new System.Drawing.Point(161, 336);
             this.SuctionGauge.Name = "SuctionGauge";
-            this.SuctionGauge.Size = new System.Drawing.Size(200, 200);
+            this.SuctionGauge.Size = new System.Drawing.Size(225, 225);
             this.SuctionGauge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.SuctionGauge.TabIndex = 5;
             this.SuctionGauge.TabStop = false;
@@ -125,9 +125,9 @@
             // 
             this.TurnCoordinatorAirplane.BackColor = System.Drawing.Color.Transparent;
             this.TurnCoordinatorAirplane.Image = global::FlightSimCapstone.Properties.Resources.TurnCoordinatorAirplane;
-            this.TurnCoordinatorAirplane.Location = new System.Drawing.Point(12, 498);
+            this.TurnCoordinatorAirplane.Location = new System.Drawing.Point(460, 456);
             this.TurnCoordinatorAirplane.Name = "TurnCoordinatorAirplane";
-            this.TurnCoordinatorAirplane.Size = new System.Drawing.Size(400, 400);
+            this.TurnCoordinatorAirplane.Size = new System.Drawing.Size(450, 450);
             this.TurnCoordinatorAirplane.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TurnCoordinatorAirplane.TabIndex = 4;
             this.TurnCoordinatorAirplane.TabStop = false;
@@ -136,9 +136,9 @@
             // 
             this.TurnCoordinatorBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.TurnCoordinatorBack.Image = global::FlightSimCapstone.Properties.Resources.TurnCoordinator;
-            this.TurnCoordinatorBack.Location = new System.Drawing.Point(12, 498);
+            this.TurnCoordinatorBack.Location = new System.Drawing.Point(460, 456);
             this.TurnCoordinatorBack.Name = "TurnCoordinatorBack";
-            this.TurnCoordinatorBack.Size = new System.Drawing.Size(400, 400);
+            this.TurnCoordinatorBack.Size = new System.Drawing.Size(450, 450);
             this.TurnCoordinatorBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TurnCoordinatorBack.TabIndex = 3;
             this.TurnCoordinatorBack.TabStop = false;
@@ -147,9 +147,9 @@
             // 
             this.HeadingIndicatorOverlay.BackColor = System.Drawing.Color.Transparent;
             this.HeadingIndicatorOverlay.Image = global::FlightSimCapstone.Properties.Resources.HeadingIndicator1_Airplane;
-            this.HeadingIndicatorOverlay.Location = new System.Drawing.Point(624, 498);
+            this.HeadingIndicatorOverlay.Location = new System.Drawing.Point(946, 456);
             this.HeadingIndicatorOverlay.Name = "HeadingIndicatorOverlay";
-            this.HeadingIndicatorOverlay.Size = new System.Drawing.Size(400, 400);
+            this.HeadingIndicatorOverlay.Size = new System.Drawing.Size(450, 450);
             this.HeadingIndicatorOverlay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.HeadingIndicatorOverlay.TabIndex = 2;
             this.HeadingIndicatorOverlay.TabStop = false;
@@ -158,9 +158,9 @@
             // 
             this.HeadingIndicatorBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.HeadingIndicatorBack.Image = global::FlightSimCapstone.Properties.Resources.HeadingIndicator1;
-            this.HeadingIndicatorBack.Location = new System.Drawing.Point(624, 498);
+            this.HeadingIndicatorBack.Location = new System.Drawing.Point(946, 456);
             this.HeadingIndicatorBack.Name = "HeadingIndicatorBack";
-            this.HeadingIndicatorBack.Size = new System.Drawing.Size(400, 400);
+            this.HeadingIndicatorBack.Size = new System.Drawing.Size(450, 450);
             this.HeadingIndicatorBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.HeadingIndicatorBack.TabIndex = 0;
             this.HeadingIndicatorBack.TabStop = false;
@@ -169,9 +169,9 @@
             // 
             this.AltitudeIndicatorRoll.BackColor = System.Drawing.Color.Transparent;
             this.AltitudeIndicatorRoll.Image = global::FlightSimCapstone.Properties.Resources.AltitudeIndicator_Roll;
-            this.AltitudeIndicatorRoll.Location = new System.Drawing.Point(624, 29);
+            this.AltitudeIndicatorRoll.Location = new System.Drawing.Point(948, 0);
             this.AltitudeIndicatorRoll.Name = "AltitudeIndicatorRoll";
-            this.AltitudeIndicatorRoll.Size = new System.Drawing.Size(400, 400);
+            this.AltitudeIndicatorRoll.Size = new System.Drawing.Size(450, 450);
             this.AltitudeIndicatorRoll.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AltitudeIndicatorRoll.TabIndex = 11;
             this.AltitudeIndicatorRoll.TabStop = false;
@@ -180,9 +180,9 @@
             // 
             this.AltitudeIndicatorStatic.BackColor = System.Drawing.Color.Transparent;
             this.AltitudeIndicatorStatic.Image = global::FlightSimCapstone.Properties.Resources.AltitudeIndicator_Overlay;
-            this.AltitudeIndicatorStatic.Location = new System.Drawing.Point(622, 29);
+            this.AltitudeIndicatorStatic.Location = new System.Drawing.Point(946, 0);
             this.AltitudeIndicatorStatic.Name = "AltitudeIndicatorStatic";
-            this.AltitudeIndicatorStatic.Size = new System.Drawing.Size(400, 400);
+            this.AltitudeIndicatorStatic.Size = new System.Drawing.Size(450, 450);
             this.AltitudeIndicatorStatic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AltitudeIndicatorStatic.TabIndex = 12;
             this.AltitudeIndicatorStatic.TabStop = false;
@@ -192,7 +192,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1034, 911);
+            this.ClientSize = new System.Drawing.Size(1471, 911);
             this.Controls.Add(this.AltitudeIndicatorStatic);
             this.Controls.Add(this.AltitudeIndicatorRoll);
             this.Controls.Add(this.AltitudeIndicatorMiddle);
@@ -205,9 +205,11 @@
             this.Controls.Add(this.TurnCoordinatorBack);
             this.Controls.Add(this.HeadingIndicatorOverlay);
             this.Controls.Add(this.HeadingIndicatorBack);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GraphicalInterface_Left";
             this.Text = "Graphical Interface - Left";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorMiddle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AltitudeIndicatorBase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AirspeedIndicatorDial)).EndInit();

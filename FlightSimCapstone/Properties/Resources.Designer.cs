@@ -223,6 +223,16 @@ namespace FlightSimCapstone.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Rickrolling_QR_code {
+            get {
+                object obj = ResourceManager.GetObject("Rickrolling_QR_code", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SuctionGauge {
             get {
                 object obj = ResourceManager.GetObject("SuctionGauge", resourceCulture);

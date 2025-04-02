@@ -20,6 +20,11 @@
  *  Identify Arduino Mega 2560 Vendor and Product ID:
  *  https://forum.arduino.cc/t/whats-the-vid-and-pid/305399
  *  
+ *  Win32_PnPEntity columns:
+ *  https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-pnpentity
+ *  
+ *  Locating Device ID:
+ *  https://www.anoopcnair.com/find-usb-drive-hardware-id-on-windows-11-device/
  *  
  **********************************************************************************/
 
@@ -46,6 +51,7 @@ namespace FlightSimCapstone
     /// </summary>
     public static class BaseDependencyUtility
     {
+
         // Locate the Microsoft FLight Sim directory
         // NOTE: This will only work if MSFS 2020 is installed using Steam
         private const string steamFlightSimPath = @"C:\Program Files (x86)\Steam\steamapps\common\MicrosoftFlightSimulator";
@@ -72,6 +78,9 @@ namespace FlightSimCapstone
         // Rudder pedals Vendor ID and Product ID
         private const string rudderPID = "PID_B679";
         private const string rudderVID = "VID_044F";
+
+        // Number of detected screens
+        private static int numscreens;
 
         public static UtilityForm UtilityForm
         {
@@ -192,6 +201,16 @@ namespace FlightSimCapstone
             }
 
             return false;
+        }
+
+
+        /// <summary>
+        /// Get the number of display sources connected to the system.
+        /// </summary>
+        /// <returns>int</returns>
+        public static int GetNumDisplaySources()
+        {
+            return Screen.AllScreens.Length;
         }
     }
 }

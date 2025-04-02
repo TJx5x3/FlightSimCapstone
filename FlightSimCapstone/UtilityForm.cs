@@ -71,6 +71,7 @@ namespace FlightSimCapstone
             set { isGraphicalInterfaceOpen = value; }
         }
 
+        private Screen[] screens = Screen.AllScreens;
 
         /// <summary>
         /// Utility Form Constructor
@@ -217,6 +218,14 @@ namespace FlightSimCapstone
                 this.rudderStatusLabel.ForeColor = Color.Red;
                 AppendAppConsole("USB Rudder Pedals could not be located\n", Color.OrangeRed);
             }    
+
+            // Get number of connected displays
+            appConsole.AppendText($"Number of connected displays: {screens.Length}\n");
+            if (screens.Length < 3)
+                displayStatusLabel.ForeColor = Color.Red; // Set display status to red if less than 3 screens are detected
+            else
+                displayStatusLabel.ForeColor = Color.Green;
+            displayStatusLabel.Text = screens.Length.ToString(); // Set display status label to number of screens detected
         }
 
         /// <summary>
@@ -274,9 +283,6 @@ namespace FlightSimCapstone
             // Disconnect Simconnect Client (If exists)
             SimConnectUtility.DisconnectSimconnectClient();
 
-            // Close Arduino Serial Port (If open)
-
-
             /*
             * NOTE: This needs to be formatted better once you figure out where it will be used
             * If close is set to anything other than 0, the utility form will not close. 
@@ -292,6 +298,62 @@ namespace FlightSimCapstone
             {
                 e.Cancel = false;
             }
+        }
+
+        private void OpenGraphicalInterface(bool fullscreen)
+        {
+            SimConnectUtility.InitializeSimReadings();
+
+            // Define Graphical Interface Forms (Left and right)
+            GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left(this);
+            GraphicalInterface_Right graphicalInterfaceRight = new GraphicalInterface_Right();
+
+            // Format graphical interface if fullscreen is enabled
+            if (fullscreen == true)
+            {
+                // Set back color to black
+                graphicalInterfaceRight.BackColor = Color.Black;
+                graphicalInterfaceLeft.BackColor = Color.Black;
+
+                graphicalInterfaceLeft.WindowState = FormWindowState.Maximized; // Set Left form to fullscreen
+                graphicalInterfaceRight.WindowState = FormWindowState.Maximized; // Set Left form to fullscreen
+            }
+            else
+            {
+                graphicalInterfaceLeft.WindowState = FormWindowState.Normal; // Set Left form to normal window state
+                graphicalInterfaceRight.WindowState = FormWindowState.Normal; // Set Right form to normal window state
+
+                // enable window borders
+                graphicalInterfaceLeft.FormBorderStyle = FormBorderStyle.Sizable; // Allow resizing of the window for the right form
+                graphicalInterfaceRight.FormBorderStyle = FormBorderStyle.Sizable; // Allow resizing of the window for the right form
+            }
+
+
+            if (screens.Length == 3)
+            {
+                // Set start position of forms to manual
+                graphicalInterfaceLeft.StartPosition = FormStartPosition.Manual;
+                graphicalInterfaceRight.StartPosition = FormStartPosition.Manual;
+
+
+                // Set location of forms to the left and right of the screen
+                graphicalInterfaceLeft.Location = screens[2].WorkingArea.Location;
+                graphicalInterfaceRight.Location = screens[1].WorkingArea.Location;
+            }
+
+            //Link graphical interface forms together to ensure they close each other.
+            graphicalInterfaceLeft.setLinkedForm(graphicalInterfaceRight); // Link Left Graphical Interface to Right 
+            graphicalInterfaceRight.setLinkedForm(graphicalInterfaceLeft);  // Link Right Graphical Interface to Left 
+
+            // Show Graphical Interface Forms
+            graphicalInterfaceLeft.Show();
+            graphicalInterfaceRight.Show();
+
+            // Write warning message to app console
+            AppendAppConsole("Please Start Microsoft Flight Simulator before opening graphical interface.\n", Color.Yellow);
+
+            // Declare graphical interface instance as true
+            IsGraphicalInterfaceOpen = true;
         }
 
         /// <summary>
@@ -314,47 +376,38 @@ namespace FlightSimCapstone
             // If SimConnect Client can be created, initialize Sim Readings and Open Graphical Interface form
             if (SimConnectUtility.ConnectSimconnectClient())
             {
-                AppendAppConsole("Opening Graphical Interface\n", Color.White);
-                SimConnectUtility.InitializeSimReadings();
+                //AppendAppConsole("Opening Graphical Interface\n", Color.White);
+                //SimConnectUtility.InitializeSimReadings();
 
-                // Define Graphical Interface Forms (Left and right)
-                GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left(this);
-                GraphicalInterface_Right graphicalInterfaceRight = new GraphicalInterface_Right();
+                //// Define Graphical Interface Forms (Left and right)
+                //GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left(this);
+                //GraphicalInterface_Right graphicalInterfaceRight = new GraphicalInterface_Right();
 
-                //Link graphical interface forms together to ensure they close each other.
-                graphicalInterfaceLeft.setLinkedForm(graphicalInterfaceRight); // Link Left Graphical Interface to Right 
-                graphicalInterfaceRight.setLinkedForm(graphicalInterfaceLeft);  // Link Right Graphical Interface to Left 
+                //// Set start position of forms to manual
+                //graphicalInterfaceLeft.StartPosition = FormStartPosition.Manual;
+                //graphicalInterfaceRight.StartPosition = FormStartPosition.Manual;
 
-                // Show Graphical Interface Forms
-                graphicalInterfaceLeft.Show();
-                graphicalInterfaceRight.Show();
+                //// Set location of forms to the left and right of the screen
+                //graphicalInterfaceLeft.Location = screens[1].WorkingArea.Location;
+
+                ////Link graphical interface forms together to ensure they close each other.
+                //graphicalInterfaceLeft.setLinkedForm(graphicalInterfaceRight); // Link Left Graphical Interface to Right 
+                //graphicalInterfaceRight.setLinkedForm(graphicalInterfaceLeft);  // Link Right Graphical Interface to Left 
+
+                //// Show Graphical Interface Forms
+                //graphicalInterfaceLeft.Show();
+                //graphicalInterfaceRight.Show();
 
 
-                // Declare graphical interface instance as true
-                IsGraphicalInterfaceOpen = true;
+                //// Declare graphical interface instance as true
+                //IsGraphicalInterfaceOpen = true;
+                
+                OpenGraphicalInterface(true);
             }
             else
             {
                 MessageBox.Show("Please Start Microsoft Flight Simulator before opening graphical interface.", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                SimConnectUtility.InitializeSimReadings();
-                
-                // Define Graphical Interface Forms (Left and right)
-                GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left(this);
-                GraphicalInterface_Right graphicalInterfaceRight = new GraphicalInterface_Right();
-
-                //Link graphical interface forms together to ensure they close each other.
-                graphicalInterfaceLeft.setLinkedForm(graphicalInterfaceRight); // Link Left Graphical Interface to Right 
-                graphicalInterfaceRight.setLinkedForm(graphicalInterfaceLeft);  // Link Right Graphical Interface to Left 
-
-                // Show Graphical Interface Forms
-                graphicalInterfaceLeft.Show();
-                graphicalInterfaceRight.Show();
-
-                // Write warning message to app console
-                AppendAppConsole("Please Start Microsoft Flight Simulator before opening graphical interface.\n", Color.Yellow);
-
-                // Declare graphical interface instance as true
-                IsGraphicalInterfaceOpen = true;
+                OpenGraphicalInterface(false);
             }
         }
     }

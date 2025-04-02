@@ -69,6 +69,8 @@ namespace FlightSimCapstone
 
         // Link Left form to current form
         private GraphicalInterface_Left linkedForm;
+
+        private float currentVerticalAirspeedValue;
         
         // Check if OnClosing event first fired in left form
         public bool isLeftClosing { get; set; }
@@ -201,10 +203,15 @@ namespace FlightSimCapstone
 
                 }
                 // Vertical Airspeed Indicator //
+                currentVerticalAirspeedValue = (float)SimConnectUtility.VerticalAirspeedIndicatorValue;
 
-                // Rotate background image based on rotational value of the Heading Indicator retrieved from SimConnect.
                 // // TODO: Stop vertical airspeed indicator if speed > 200 feet/sec
-                rotatedVerticalAirspeedIndicatorDial = SetImageRotation(originalVerticalAirspeedIndicatorDial, (float)(SimConnectUtility.VerticalAirspeedIndicatorValue) * 5.0f);
+                if (SimConnectUtility.VerticalAirspeedIndicatorValue > 34.00f)
+                    currentVerticalAirspeedValue = 34.0f;
+                if (SimConnectUtility.VerticalAirspeedIndicatorValue < -34.00f)
+                    currentVerticalAirspeedValue = -34.0f;
+
+                rotatedVerticalAirspeedIndicatorDial = SetImageRotation(originalVerticalAirspeedIndicatorDial, currentVerticalAirspeedValue * 5.0f);
                 VerticalAirspeedIndicatorDial.Image = rotatedVerticalAirspeedIndicatorDial;
 
                 // Altimeter //
