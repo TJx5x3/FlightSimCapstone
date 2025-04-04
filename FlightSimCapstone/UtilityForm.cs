@@ -71,7 +71,9 @@ namespace FlightSimCapstone
         // Control mappings
         private static int throttleMapping;
         private static int mixtureMapping;
-        private static int brakeMapping; // Not used in this version but left for future use
+        private static int brakeMapping;
+        private static int flapSwitchMapping;
+
 
         public static int ThrottleMapping
         {
@@ -89,6 +91,11 @@ namespace FlightSimCapstone
         {
             get { return brakeMapping; }
             set { brakeMapping = value; }
+        }
+        public static int FlapSwitchMapping
+        {
+            get { return flapSwitchMapping; }
+            set { flapSwitchMapping = value; }
         }
 
 
@@ -367,7 +374,7 @@ namespace FlightSimCapstone
             }
 
 
-            if (screens.Length == 3)
+            if (screens.Length >= 3)
             {
                 // Set start position of forms to manual
                 graphicalInterfaceLeft.StartPosition = FormStartPosition.Manual;
@@ -462,6 +469,7 @@ namespace FlightSimCapstone
             throttleMapping = mapping.Throttle;
             mixtureMapping = mapping.Mixture;
             brakeMapping = mapping.Brake;
+            flapSwitchMapping = mapping.FlapSwitch;
         }
 
         /// <summary>
@@ -473,7 +481,8 @@ namespace FlightSimCapstone
             {
                 Throttle = throttleMapping,
                 Mixture = mixtureMapping,
-                Brake = brakeMapping
+                Brake = brakeMapping,
+                FlapSwitch = flapSwitchMapping
             };
 
             var options = new JsonSerializerOptions { WriteIndented = true };

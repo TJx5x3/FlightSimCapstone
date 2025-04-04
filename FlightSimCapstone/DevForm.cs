@@ -104,6 +104,7 @@ namespace FlightSimCapstone
             throttleComboBox.SelectedIndex = UtilityForm.ThrottleMapping;
             mixtureComboBox.SelectedIndex = UtilityForm.MixtureMapping;
             parkingBrakeComboBox.SelectedIndex = UtilityForm.BrakeMapping; // Load brake mapping as well, if needed
+            flapSwitchComboBox.SelectedIndex = UtilityForm.FlapSwitchMapping; // Load Flap Switch mapping as well, if needed
 
             // Map event when serial data is recieved and open Serial port on COM
             //serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
@@ -284,7 +285,8 @@ namespace FlightSimCapstone
 
             UtilityForm.ThrottleMapping = throttleComboBox.SelectedIndex;
             UtilityForm.MixtureMapping = mixtureComboBox.SelectedIndex;
-            UtilityForm.BrakeMapping = parkingBrakeComboBox.SelectedIndex; // Save brake mapping as well, if needed
+            UtilityForm.BrakeMapping = parkingBrakeComboBox.SelectedIndex; 
+            UtilityForm.FlapSwitchMapping = flapSwitchComboBox.SelectedIndex;
 
         }
 
