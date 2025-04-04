@@ -343,6 +343,8 @@ namespace FlightSimCapstone
 
                     SimConnectUtility.UpdateMixtureFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.MixtureMapping]);
                     Console.WriteLine("Mixture Input: " + ArduinoCommunicationUtility.castSerialInput()[UtilityForm.MixtureMapping]);
+
+                    SimConnectUtility.UpdateBrakeFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.BrakeMapping]);
                 }
 
             }

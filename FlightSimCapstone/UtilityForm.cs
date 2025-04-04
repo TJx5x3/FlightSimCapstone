@@ -71,6 +71,7 @@ namespace FlightSimCapstone
         // Control mappings
         private static int throttleMapping;
         private static int mixtureMapping;
+        private static int brakeMapping; // Not used in this version but left for future use
 
         public static int ThrottleMapping
         {
@@ -82,6 +83,12 @@ namespace FlightSimCapstone
         {
             get { return mixtureMapping; }
             set { mixtureMapping = value; }
+        }
+
+        public static int BrakeMapping
+        {
+            get { return brakeMapping; }
+            set { brakeMapping = value; }
         }
 
 
@@ -454,6 +461,7 @@ namespace FlightSimCapstone
             // Set mapping values as current class attributes
             throttleMapping = mapping.Throttle;
             mixtureMapping = mapping.Mixture;
+            brakeMapping = mapping.Brake;
         }
 
         /// <summary>
@@ -464,7 +472,8 @@ namespace FlightSimCapstone
             var configData = new ArduinoPortMapping
             {
                 Throttle = throttleMapping,
-                Mixture = mixtureMapping
+                Mixture = mixtureMapping,
+                Brake = brakeMapping
             };
 
             var options = new JsonSerializerOptions { WriteIndented = true };

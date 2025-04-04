@@ -30,6 +30,7 @@ namespace FlightSimCapstone
     {
         private int throttle;
         private int mixture;
+        private int brake;
 
         public int Throttle
         {
@@ -43,6 +44,10 @@ namespace FlightSimCapstone
             set { mixture = value; }
         }
 
-
+        public int Brake
+        {
+            get { return brake; }
+            set { brake = value; }
+        }
     }
 }

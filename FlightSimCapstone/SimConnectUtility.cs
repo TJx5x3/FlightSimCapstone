@@ -81,6 +81,8 @@ namespace FlightSimCapstone
         private static bool connectionStatus = false; // Simconnect Client established
         private static bool readingsInitialized = false; // Simconnect values initialized
 
+        private static bool brakeEnable = false;
+
         // TODO: Tweak this, get proper get/set logic
         // Getter/setter
         public static bool ConnectionStatus
@@ -232,7 +234,8 @@ namespace FlightSimCapstone
             Roll,
             ZuluTime,
             Throttle,
-            Mixture
+            Mixture,
+            BrakeData
         }
         
         // Enumerations for Definitions 
@@ -252,7 +255,8 @@ namespace FlightSimCapstone
             RollData,
             ZuluTimeData,
             ThrottleData,
-            MixtureData
+            MixtureData,
+            BrakeData
         }
 
         // Custom enum for SimConnect Input Events
@@ -261,8 +265,8 @@ namespace FlightSimCapstone
             THROTTLE_INCREASE = 0,
             THROTTLE_DECREASE = 1,
             MIXTURE_INCREASE = 2,
-            MIXTURE_DECREASE = 3
-
+            MIXTURE_DECREASE = 3,
+            BRAKE_TOGGLE = 4
         }
 
         public enum SIMCONNECT_NOTIFICATION_GROUP_ID : uint
@@ -432,6 +436,9 @@ namespace FlightSimCapstone
             simconnect.MapClientEventToSimEvent(CustomEvents.MIXTURE_INCREASE, "MIXTURE_INCR");
             simconnect.MapClientEventToSimEvent(CustomEvents.MIXTURE_DECREASE, "MIXTURE_DECR");
 
+            // https://docs.flightsimulator.com/html/Programming_Tools/Event_IDs/Aircraft_Misc_Events.htm#PARKING_BRAKE_SET
+            simconnect.MapClientEventToSimEvent(CustomEvents.BRAKE_TOGGLE, "PARKING_BRAKES");
+
             /////////////////////////////////
             // Define and Register Values: //
             /////////////////////////////////
@@ -510,6 +517,9 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.MixtureData, "GENERAL ENG MIXTURE LEVER POSITION:1", "Percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<MixtureData>(Definitions.MixtureData);
 
+            // Define Brake Value
+            
+
             /////////////////////
             // Request Values: //
             /////////////////////
@@ -553,11 +563,12 @@ namespace FlightSimCapstone
             // Request Clock
             simconnect.RequestDataOnSimObject(Requests.ZuluTime, Definitions.ZuluTimeData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
-            // Request Throttle Value
+            
 
             //////////////////////////////////////////////////////
             ///NOTE:  The throttle periiod is every Sim_Frame ////
             //////////////////////////////////////////////////////
+            // Request Throttle Value
             simconnect.RequestDataOnSimObject(Requests.Throttle, Definitions.ThrottleData, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SIM_FRAME, SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT, 0, 0, 0);
 
             //Request Mixture Value
@@ -601,6 +612,8 @@ namespace FlightSimCapstone
                 catch (COMException ex)
                 {
                    // MessageBox.Show("SimConnect not connected!", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    Console.WriteLine($"SimConnect Connection failed: {ex.Message}");
                     return false;
                 }
             }
@@ -649,6 +662,8 @@ namespace FlightSimCapstone
                 {
                     // Handle exception
                     DisconnectSimconnectClient();
+
+                    Console.WriteLine($"SimConnect Refresh failed: {ex.Message}");
                     return false;
                 }
             }
@@ -715,7 +730,7 @@ namespace FlightSimCapstone
 
             double tolerance = 5.0;
 
-            int speed = 5;
+            int speed = 3;
 
             for (int i = 0; i < speed; i++)
             {
@@ -741,6 +756,26 @@ namespace FlightSimCapstone
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
                         CustomEvents.MIXTURE_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
                 }
+            }
+        }
+        /// <summary>
+        /// Toggle the Parking Brake in MSFS based on potentiometer value
+        /// </summary>
+        /// <param name="potValue"></param>
+        public static void UpdateBrakeFromPotentiometer(int potValue)
+        {
+            // If potentiometer is high, Toggle brake status and brakeEnable debounce.
+            if (potValue > 923 && brakeEnable == false)
+            {
+                brakeEnable = true;
+                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, CustomEvents.BRAKE_TOGGLE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+            }
+
+            // If potentiometer is low, toggle brake status and brakeEnable debounce.
+            else if (potValue < 100 && brakeEnable == true)
+            {
+                brakeEnable = false;
+                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, CustomEvents.BRAKE_TOGGLE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             }
         }
     }

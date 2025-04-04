@@ -138,4 +138,9 @@ namespace FlightSimCapstone
     {
         public double MixtureReading;
     }   
+
+    struct BrakeData
+    {
+        public double BrakeReading;
+    }
 }

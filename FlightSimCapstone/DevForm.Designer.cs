@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.mixtureComboBox = new System.Windows.Forms.ComboBox();
+            this.mixtureLabel = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.setButton = new System.Windows.Forms.Button();
             this.throttleComboBox = new System.Windows.Forms.ComboBox();
             this.throttleLabel = new System.Windows.Forms.Label();
             this.arduinoMapLabel = new System.Windows.Forms.Label();
@@ -55,10 +59,10 @@
             this.RightSkeleton = new System.Windows.Forms.PictureBox();
             this.LeftSkeleton = new System.Windows.Forms.PictureBox();
             this.TitleGif = new System.Windows.Forms.PictureBox();
-            this.setButton = new System.Windows.Forms.Button();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.mixtureLabel = new System.Windows.Forms.Label();
-            this.mixtureComboBox = new System.Windows.Forms.ComboBox();
+            this.parkingBrakeLabel = new System.Windows.Forms.Label();
+            this.parkingBrakeComboBox = new System.Windows.Forms.ComboBox();
+            this.flapSwitchComboBox = new System.Windows.Forms.ComboBox();
+            this.flapSwitchLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LeftSkeleton)).BeginInit();
@@ -68,6 +72,10 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.flapSwitchLabel);
+            this.panel1.Controls.Add(this.flapSwitchComboBox);
+            this.panel1.Controls.Add(this.parkingBrakeComboBox);
+            this.panel1.Controls.Add(this.parkingBrakeLabel);
             this.panel1.Controls.Add(this.mixtureComboBox);
             this.panel1.Controls.Add(this.mixtureLabel);
             this.panel1.Controls.Add(this.saveButton);
@@ -102,6 +110,51 @@
             this.panel1.Size = new System.Drawing.Size(718, 510);
             this.panel1.TabIndex = 1;
             // 
+            // mixtureComboBox
+            // 
+            this.mixtureComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mixtureComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mixtureComboBox.FormattingEnabled = true;
+            this.mixtureComboBox.ItemHeight = 13;
+            this.mixtureComboBox.Items.AddRange(new object[] {
+            "Port 1",
+            "Port 2",
+            "Port 3",
+            "Port 4"});
+            this.mixtureComboBox.Location = new System.Drawing.Point(97, 289);
+            this.mixtureComboBox.Name = "mixtureComboBox";
+            this.mixtureComboBox.Size = new System.Drawing.Size(121, 21);
+            this.mixtureComboBox.TabIndex = 29;
+            // 
+            // mixtureLabel
+            // 
+            this.mixtureLabel.AutoSize = true;
+            this.mixtureLabel.Location = new System.Drawing.Point(50, 292);
+            this.mixtureLabel.Name = "mixtureLabel";
+            this.mixtureLabel.Size = new System.Drawing.Size(44, 13);
+            this.mixtureLabel.TabIndex = 28;
+            this.mixtureLabel.Text = "Mixture:";
+            // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(99, 424);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 27;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_OnClick);
+            // 
+            // setButton
+            // 
+            this.setButton.Location = new System.Drawing.Point(18, 424);
+            this.setButton.Name = "setButton";
+            this.setButton.Size = new System.Drawing.Size(75, 23);
+            this.setButton.TabIndex = 26;
+            this.setButton.Text = "Set Mapping";
+            this.setButton.UseVisualStyleBackColor = true;
+            this.setButton.Click += new System.EventHandler(this.SetButton_OnClick);
+            // 
             // throttleComboBox
             // 
             this.throttleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -113,7 +166,7 @@
             "Port 2",
             "Port 3",
             "Port 4"});
-            this.throttleComboBox.Location = new System.Drawing.Point(64, 295);
+            this.throttleComboBox.Location = new System.Drawing.Point(97, 262);
             this.throttleComboBox.Name = "throttleComboBox";
             this.throttleComboBox.Size = new System.Drawing.Size(121, 21);
             this.throttleComboBox.TabIndex = 25;
@@ -121,17 +174,17 @@
             // throttleLabel
             // 
             this.throttleLabel.AutoSize = true;
-            this.throttleLabel.Location = new System.Drawing.Point(15, 298);
+            this.throttleLabel.Location = new System.Drawing.Point(48, 262);
             this.throttleLabel.Name = "throttleLabel";
-            this.throttleLabel.Size = new System.Drawing.Size(43, 13);
+            this.throttleLabel.Size = new System.Drawing.Size(46, 13);
             this.throttleLabel.TabIndex = 24;
-            this.throttleLabel.Text = "Throttle";
+            this.throttleLabel.Text = "Throttle:";
             // 
             // arduinoMapLabel
             // 
             this.arduinoMapLabel.AutoSize = true;
             this.arduinoMapLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.arduinoMapLabel.Location = new System.Drawing.Point(14, 265);
+            this.arduinoMapLabel.Location = new System.Drawing.Point(14, 230);
             this.arduinoMapLabel.Name = "arduinoMapLabel";
             this.arduinoMapLabel.Size = new System.Drawing.Size(141, 20);
             this.arduinoMapLabel.TabIndex = 23;
@@ -341,50 +394,55 @@
             this.TitleGif.TabIndex = 0;
             this.TitleGif.TabStop = false;
             // 
-            // setButton
+            // parkingBrakeLabel
             // 
-            this.setButton.Location = new System.Drawing.Point(18, 394);
-            this.setButton.Name = "setButton";
-            this.setButton.Size = new System.Drawing.Size(75, 23);
-            this.setButton.TabIndex = 26;
-            this.setButton.Text = "Set Mapping";
-            this.setButton.UseVisualStyleBackColor = true;
-            this.setButton.Click += new System.EventHandler(this.SetButton_OnClick);
+            this.parkingBrakeLabel.AutoSize = true;
+            this.parkingBrakeLabel.Location = new System.Drawing.Point(14, 319);
+            this.parkingBrakeLabel.Name = "parkingBrakeLabel";
+            this.parkingBrakeLabel.Size = new System.Drawing.Size(77, 13);
+            this.parkingBrakeLabel.TabIndex = 30;
+            this.parkingBrakeLabel.Text = "Parking Brake:";
             // 
-            // saveButton
+            // parkingBrakeComboBox
             // 
-            this.saveButton.Location = new System.Drawing.Point(99, 394);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 27;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.SaveButton_OnClick);
-            // 
-            // mixtureLabel
-            // 
-            this.mixtureLabel.AutoSize = true;
-            this.mixtureLabel.Location = new System.Drawing.Point(16, 339);
-            this.mixtureLabel.Name = "mixtureLabel";
-            this.mixtureLabel.Size = new System.Drawing.Size(41, 13);
-            this.mixtureLabel.TabIndex = 28;
-            this.mixtureLabel.Text = "Mixture";
-            // 
-            // mixtureComboBox
-            // 
-            this.mixtureComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.mixtureComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mixtureComboBox.FormattingEnabled = true;
-            this.mixtureComboBox.ItemHeight = 13;
-            this.mixtureComboBox.Items.AddRange(new object[] {
+            this.parkingBrakeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.parkingBrakeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.parkingBrakeComboBox.FormattingEnabled = true;
+            this.parkingBrakeComboBox.ItemHeight = 13;
+            this.parkingBrakeComboBox.Items.AddRange(new object[] {
             "Port 1",
             "Port 2",
             "Port 3",
             "Port 4"});
-            this.mixtureComboBox.Location = new System.Drawing.Point(63, 336);
-            this.mixtureComboBox.Name = "mixtureComboBox";
-            this.mixtureComboBox.Size = new System.Drawing.Size(121, 21);
-            this.mixtureComboBox.TabIndex = 29;
+            this.parkingBrakeComboBox.Location = new System.Drawing.Point(97, 316);
+            this.parkingBrakeComboBox.Name = "parkingBrakeComboBox";
+            this.parkingBrakeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.parkingBrakeComboBox.TabIndex = 31;
+            // 
+            // flapSwitchComboBox
+            // 
+            this.flapSwitchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flapSwitchComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.flapSwitchComboBox.FormattingEnabled = true;
+            this.flapSwitchComboBox.ItemHeight = 13;
+            this.flapSwitchComboBox.Items.AddRange(new object[] {
+            "Port 1",
+            "Port 2",
+            "Port 3",
+            "Port 4"});
+            this.flapSwitchComboBox.Location = new System.Drawing.Point(97, 343);
+            this.flapSwitchComboBox.Name = "flapSwitchComboBox";
+            this.flapSwitchComboBox.Size = new System.Drawing.Size(121, 21);
+            this.flapSwitchComboBox.TabIndex = 32;
+            // 
+            // flapSwitchLabel
+            // 
+            this.flapSwitchLabel.AutoSize = true;
+            this.flapSwitchLabel.Location = new System.Drawing.Point(26, 346);
+            this.flapSwitchLabel.Name = "flapSwitchLabel";
+            this.flapSwitchLabel.Size = new System.Drawing.Size(65, 13);
+            this.flapSwitchLabel.TabIndex = 33;
+            this.flapSwitchLabel.Text = "Flap Switch:";
             // 
             // DevForm
             // 
@@ -435,5 +493,9 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.ComboBox mixtureComboBox;
         private System.Windows.Forms.Label mixtureLabel;
+        private System.Windows.Forms.ComboBox parkingBrakeComboBox;
+        private System.Windows.Forms.Label parkingBrakeLabel;
+        private System.Windows.Forms.Label flapSwitchLabel;
+        private System.Windows.Forms.ComboBox flapSwitchComboBox;
     }
 }
