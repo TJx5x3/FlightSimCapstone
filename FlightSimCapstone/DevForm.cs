@@ -101,10 +101,11 @@ namespace FlightSimCapstone
 
 
             //Initialize Selected Combo box items;
-            throttleComboBox.SelectedIndex = UtilityForm.ThrottleMapping;
-            mixtureComboBox.SelectedIndex = UtilityForm.MixtureMapping;
-            parkingBrakeComboBox.SelectedIndex = UtilityForm.BrakeMapping; // Load brake mapping as well, if needed
-            flapSwitchComboBox.SelectedIndex = UtilityForm.FlapSwitchMapping; // Load Flap Switch mapping as well, if needed
+            throttleComboBox.SelectedIndex = UtilityForm.ThrottleMapping; // Load throttle mapping
+            mixtureComboBox.SelectedIndex = UtilityForm.MixtureMapping; // Load mixture mapping 
+            parkingBrakeComboBox.SelectedIndex = UtilityForm.BrakeMapping; // Load brake mapping 
+            trimWheelComboBox.SelectedIndex = UtilityForm.TrimWheelMapping; // Load Trim Wheel mapping
+            flapSwitchComboBox.SelectedIndex = UtilityForm.FlapSwitchMapping; // Load Flap Switch mapping 
 
             // Map event when serial data is recieved and open Serial port on COM
             //serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortDataRecieved);
@@ -279,14 +280,16 @@ namespace FlightSimCapstone
             }
         }
 
+        /// <summary>
+        /// Map selected combo box indexes to the UtilityForm's static arduino mappings.
+        /// </summary>
         private void SetArduinoMappings()
         {
-            
-
             UtilityForm.ThrottleMapping = throttleComboBox.SelectedIndex;
             UtilityForm.MixtureMapping = mixtureComboBox.SelectedIndex;
             UtilityForm.BrakeMapping = parkingBrakeComboBox.SelectedIndex; 
-            UtilityForm.FlapSwitchMapping = flapSwitchComboBox.SelectedIndex;
+            UtilityForm.TrimWheelMapping = trimWheelComboBox.SelectedIndex;
+            UtilityForm.FlapSwitchMapping = flapSwitchComboBox.SelectedIndex; 
 
         }
 
@@ -303,6 +306,15 @@ namespace FlightSimCapstone
             SetArduinoMappings();
             UtilityForm.SaveControlMappings();
             MessageBox.Show("Mappings Saved!");
+        }
+
+        private void ResetButton_Clicked(object sender, EventArgs e)
+        {
+            throttleComboBox.SelectedIndex = -1;
+            mixtureComboBox.SelectedIndex = -1;
+            parkingBrakeComboBox.SelectedIndex = -1; // Reset brake mapping as well, if needed
+            trimWheelComboBox.SelectedIndex = -1;
+            flapSwitchComboBox.SelectedIndex = -1; // Reset Flap Switch mapping as well, if needed
         }
     }
 }

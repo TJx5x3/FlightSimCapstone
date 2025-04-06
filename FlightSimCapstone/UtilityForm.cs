@@ -72,6 +72,7 @@ namespace FlightSimCapstone
         private static int throttleMapping;
         private static int mixtureMapping;
         private static int brakeMapping;
+        private static int trimWheelMapping; 
         private static int flapSwitchMapping;
 
 
@@ -92,6 +93,13 @@ namespace FlightSimCapstone
             get { return brakeMapping; }
             set { brakeMapping = value; }
         }
+
+        public static int TrimWheelMapping
+        {
+            get { return trimWheelMapping; }
+            set { trimWheelMapping = value; }
+        }
+
         public static int FlapSwitchMapping
         {
             get { return flapSwitchMapping; }
@@ -413,40 +421,13 @@ namespace FlightSimCapstone
             // Check if instance of graphical interface is already running
             if(IsGraphicalInterfaceOpen)
             {
-                ;
                 MessageBox.Show("Graphical Interface is already open!", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);           
                 return;
             }
 
             // If SimConnect Client can be created, initialize Sim Readings and Open Graphical Interface form
             if (SimConnectUtility.ConnectSimconnectClient())
-            {
-                //AppendAppConsole("Opening Graphical Interface\n", Color.White);
-                //SimConnectUtility.InitializeSimReadings();
-
-                //// Define Graphical Interface Forms (Left and right)
-                //GraphicalInterface_Left graphicalInterfaceLeft = new GraphicalInterface_Left(this);
-                //GraphicalInterface_Right graphicalInterfaceRight = new GraphicalInterface_Right();
-
-                //// Set start position of forms to manual
-                //graphicalInterfaceLeft.StartPosition = FormStartPosition.Manual;
-                //graphicalInterfaceRight.StartPosition = FormStartPosition.Manual;
-
-                //// Set location of forms to the left and right of the screen
-                //graphicalInterfaceLeft.Location = screens[1].WorkingArea.Location;
-
-                ////Link graphical interface forms together to ensure they close each other.
-                //graphicalInterfaceLeft.setLinkedForm(graphicalInterfaceRight); // Link Left Graphical Interface to Right 
-                //graphicalInterfaceRight.setLinkedForm(graphicalInterfaceLeft);  // Link Right Graphical Interface to Left 
-
-                //// Show Graphical Interface Forms
-                //graphicalInterfaceLeft.Show();
-                //graphicalInterfaceRight.Show();
-
-
-                //// Declare graphical interface instance as true
-                //IsGraphicalInterfaceOpen = true;
-                
+            {   
                 OpenGraphicalInterface(true);
             }
             else
@@ -457,6 +438,9 @@ namespace FlightSimCapstone
         }
 
 
+        /// <summary>
+        /// Load saved mappings from file, and map to arduino ports.
+        /// </summary>
         public static void LoadControlMappings()
         {
             // Read Arduino Port Mapping from file
@@ -469,11 +453,13 @@ namespace FlightSimCapstone
             throttleMapping = mapping.Throttle;
             mixtureMapping = mapping.Mixture;
             brakeMapping = mapping.Brake;
+            trimWheelMapping = mapping.TrimWheel; 
             flapSwitchMapping = mapping.FlapSwitch;
         }
 
         /// <summary>
-        /// Save the current mappings to IO.
+        /// Save the current mappings to IO. (ArduinoSettings.fly).
+        /// This allows the application to load specified mappings when the application restarts.
         /// </summary>
         public static void SaveControlMappings()
         {
@@ -482,15 +468,13 @@ namespace FlightSimCapstone
                 Throttle = throttleMapping,
                 Mixture = mixtureMapping,
                 Brake = brakeMapping,
+                TrimWheel = trimWheelMapping,
                 FlapSwitch = flapSwitchMapping
             };
 
             var options = new JsonSerializerOptions { WriteIndented = true };
             string jsonString = JsonSerializer.Serialize(configData, options);
-            File.WriteAllText("ArduinoSettings.fly", jsonString);
-
-            
+            File.WriteAllText("ArduinoSettings.fly", jsonString);   
         }
-
     }
 }

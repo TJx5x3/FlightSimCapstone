@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.flapSwitchLabel = new System.Windows.Forms.Label();
+            this.flapSwitchComboBox = new System.Windows.Forms.ComboBox();
+            this.parkingBrakeComboBox = new System.Windows.Forms.ComboBox();
+            this.parkingBrakeLabel = new System.Windows.Forms.Label();
             this.mixtureComboBox = new System.Windows.Forms.ComboBox();
             this.mixtureLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
@@ -59,10 +63,9 @@
             this.RightSkeleton = new System.Windows.Forms.PictureBox();
             this.LeftSkeleton = new System.Windows.Forms.PictureBox();
             this.TitleGif = new System.Windows.Forms.PictureBox();
-            this.parkingBrakeLabel = new System.Windows.Forms.Label();
-            this.parkingBrakeComboBox = new System.Windows.Forms.ComboBox();
-            this.flapSwitchComboBox = new System.Windows.Forms.ComboBox();
-            this.flapSwitchLabel = new System.Windows.Forms.Label();
+            this.trimWheelComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.resetButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LeftSkeleton)).BeginInit();
@@ -72,6 +75,9 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.resetButton);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.trimWheelComboBox);
             this.panel1.Controls.Add(this.flapSwitchLabel);
             this.panel1.Controls.Add(this.flapSwitchComboBox);
             this.panel1.Controls.Add(this.parkingBrakeComboBox);
@@ -109,6 +115,56 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(718, 510);
             this.panel1.TabIndex = 1;
+            // 
+            // flapSwitchLabel
+            // 
+            this.flapSwitchLabel.AutoSize = true;
+            this.flapSwitchLabel.Location = new System.Drawing.Point(26, 373);
+            this.flapSwitchLabel.Name = "flapSwitchLabel";
+            this.flapSwitchLabel.Size = new System.Drawing.Size(65, 13);
+            this.flapSwitchLabel.TabIndex = 33;
+            this.flapSwitchLabel.Text = "Flap Switch:";
+            // 
+            // flapSwitchComboBox
+            // 
+            this.flapSwitchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flapSwitchComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.flapSwitchComboBox.FormattingEnabled = true;
+            this.flapSwitchComboBox.ItemHeight = 13;
+            this.flapSwitchComboBox.Items.AddRange(new object[] {
+            "Port 1",
+            "Port 2",
+            "Port 3",
+            "Port 4"});
+            this.flapSwitchComboBox.Location = new System.Drawing.Point(97, 370);
+            this.flapSwitchComboBox.Name = "flapSwitchComboBox";
+            this.flapSwitchComboBox.Size = new System.Drawing.Size(121, 21);
+            this.flapSwitchComboBox.TabIndex = 32;
+            // 
+            // parkingBrakeComboBox
+            // 
+            this.parkingBrakeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.parkingBrakeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.parkingBrakeComboBox.FormattingEnabled = true;
+            this.parkingBrakeComboBox.ItemHeight = 13;
+            this.parkingBrakeComboBox.Items.AddRange(new object[] {
+            "Port 1",
+            "Port 2",
+            "Port 3",
+            "Port 4"});
+            this.parkingBrakeComboBox.Location = new System.Drawing.Point(97, 316);
+            this.parkingBrakeComboBox.Name = "parkingBrakeComboBox";
+            this.parkingBrakeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.parkingBrakeComboBox.TabIndex = 31;
+            // 
+            // parkingBrakeLabel
+            // 
+            this.parkingBrakeLabel.AutoSize = true;
+            this.parkingBrakeLabel.Location = new System.Drawing.Point(14, 319);
+            this.parkingBrakeLabel.Name = "parkingBrakeLabel";
+            this.parkingBrakeLabel.Size = new System.Drawing.Size(77, 13);
+            this.parkingBrakeLabel.TabIndex = 30;
+            this.parkingBrakeLabel.Text = "Parking Brake:";
             // 
             // mixtureComboBox
             // 
@@ -394,55 +450,40 @@
             this.TitleGif.TabIndex = 0;
             this.TitleGif.TabStop = false;
             // 
-            // parkingBrakeLabel
+            // trimWheelComboBox
             // 
-            this.parkingBrakeLabel.AutoSize = true;
-            this.parkingBrakeLabel.Location = new System.Drawing.Point(14, 319);
-            this.parkingBrakeLabel.Name = "parkingBrakeLabel";
-            this.parkingBrakeLabel.Size = new System.Drawing.Size(77, 13);
-            this.parkingBrakeLabel.TabIndex = 30;
-            this.parkingBrakeLabel.Text = "Parking Brake:";
-            // 
-            // parkingBrakeComboBox
-            // 
-            this.parkingBrakeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.parkingBrakeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.parkingBrakeComboBox.FormattingEnabled = true;
-            this.parkingBrakeComboBox.ItemHeight = 13;
-            this.parkingBrakeComboBox.Items.AddRange(new object[] {
+            this.trimWheelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.trimWheelComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.trimWheelComboBox.FormattingEnabled = true;
+            this.trimWheelComboBox.ItemHeight = 13;
+            this.trimWheelComboBox.Items.AddRange(new object[] {
             "Port 1",
             "Port 2",
             "Port 3",
             "Port 4"});
-            this.parkingBrakeComboBox.Location = new System.Drawing.Point(97, 316);
-            this.parkingBrakeComboBox.Name = "parkingBrakeComboBox";
-            this.parkingBrakeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.parkingBrakeComboBox.TabIndex = 31;
+            this.trimWheelComboBox.Location = new System.Drawing.Point(97, 343);
+            this.trimWheelComboBox.Name = "trimWheelComboBox";
+            this.trimWheelComboBox.Size = new System.Drawing.Size(121, 21);
+            this.trimWheelComboBox.TabIndex = 34;
             // 
-            // flapSwitchComboBox
+            // label1
             // 
-            this.flapSwitchComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.flapSwitchComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.flapSwitchComboBox.FormattingEnabled = true;
-            this.flapSwitchComboBox.ItemHeight = 13;
-            this.flapSwitchComboBox.Items.AddRange(new object[] {
-            "Port 1",
-            "Port 2",
-            "Port 3",
-            "Port 4"});
-            this.flapSwitchComboBox.Location = new System.Drawing.Point(97, 343);
-            this.flapSwitchComboBox.Name = "flapSwitchComboBox";
-            this.flapSwitchComboBox.Size = new System.Drawing.Size(121, 21);
-            this.flapSwitchComboBox.TabIndex = 32;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 346);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Trim Wheel:";
             // 
-            // flapSwitchLabel
+            // resetButton
             // 
-            this.flapSwitchLabel.AutoSize = true;
-            this.flapSwitchLabel.Location = new System.Drawing.Point(26, 346);
-            this.flapSwitchLabel.Name = "flapSwitchLabel";
-            this.flapSwitchLabel.Size = new System.Drawing.Size(65, 13);
-            this.flapSwitchLabel.TabIndex = 33;
-            this.flapSwitchLabel.Text = "Flap Switch:";
+            this.resetButton.Location = new System.Drawing.Point(19, 453);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.TabIndex = 36;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.ResetButton_Clicked);
             // 
             // DevForm
             // 
@@ -497,5 +538,8 @@
         private System.Windows.Forms.Label parkingBrakeLabel;
         private System.Windows.Forms.Label flapSwitchLabel;
         private System.Windows.Forms.ComboBox flapSwitchComboBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox trimWheelComboBox;
+        private System.Windows.Forms.Button resetButton;
     }
 }

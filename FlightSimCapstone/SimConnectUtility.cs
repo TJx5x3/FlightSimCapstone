@@ -113,7 +113,10 @@ namespace FlightSimCapstone
 
         private static double throttleValue = 0.0f;
         private static double mixtureValue = 0.0f;
-       
+        private static double trimWheellValue = 0.0f;
+        private static int flapSwitchValue = 0;
+
+
         // getter/setter properties for simconnect attributes
         public static double AltimeterValue
         {
@@ -217,6 +220,12 @@ namespace FlightSimCapstone
             set { mixtureValue = value; }
         }
 
+        private static double TrimWheelValue
+        {
+            get { return trimWheellValue; }
+            set { trimWheellValue = value; }
+        }
+
         // Enumerations for SimConnect requests
         private enum Requests
         {
@@ -235,7 +244,8 @@ namespace FlightSimCapstone
             ZuluTime,
             Throttle,
             Mixture,
-            BrakeData
+            BrakeData,
+            TrimWheel
         }
         
         // Enumerations for Definitions 
@@ -256,7 +266,8 @@ namespace FlightSimCapstone
             ZuluTimeData,
             ThrottleData,
             MixtureData,
-            BrakeData
+            BrakeData,
+            TrimWheelData
         }
 
         // Custom enum for SimConnect Input Events
@@ -266,7 +277,11 @@ namespace FlightSimCapstone
             THROTTLE_DECREASE = 1,
             MIXTURE_INCREASE = 2,
             MIXTURE_DECREASE = 3,
-            BRAKE_TOGGLE = 4
+            BRAKE_TOGGLE = 4,
+            TRIM_INCREASE = 5,
+            TRIM_DECREASE = 6,
+            FLAP_INCREASE = 7,
+            FLAP_DECREASE = 8
         }
 
         public enum SIMCONNECT_NOTIFICATION_GROUP_ID : uint
@@ -407,6 +422,14 @@ namespace FlightSimCapstone
                 
             }
 
+            if ((Requests)data.dwRequestID == Requests.TrimWheel)
+            {
+                // Handle Brake Data if needed
+                // Currently not used in this example
+                Console.WriteLine("Brake Data Received");
+                brakeEnable = true; // Set brake enable to true, if needed for logic
+            }
+
         }
 
         /// <summary>
@@ -438,6 +461,15 @@ namespace FlightSimCapstone
 
             // https://docs.flightsimulator.com/html/Programming_Tools/Event_IDs/Aircraft_Misc_Events.htm#PARKING_BRAKE_SET
             simconnect.MapClientEventToSimEvent(CustomEvents.BRAKE_TOGGLE, "PARKING_BRAKES");
+            simconnect.MapClientEventToSimEvent(CustomEvents.TRIM_INCREASE, "ELEV_UP"); 
+            simconnect.MapClientEventToSimEvent(CustomEvents.TRIM_DECREASE, "ELEV_DOWN");
+
+            // https://docs.flightsimulator.com/html/Programming_Tools/Event_IDs/Aircraft_Flight_Control_Events.htm#AXIS_FLAPS_SET
+            simconnect.MapClientEventToSimEvent(CustomEvents.FLAP_INCREASE, "FLAPS_INCR");
+            simconnect.MapClientEventToSimEvent(CustomEvents.FLAP_DECREASE, "FLAPS_DECR");
+
+
+
 
             /////////////////////////////////
             // Define and Register Values: //
@@ -517,7 +549,6 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.MixtureData, "GENERAL ENG MIXTURE LEVER POSITION:1", "Percent", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<MixtureData>(Definitions.MixtureData);
 
-            // Define Brake Value
             
 
             /////////////////////
@@ -636,7 +667,7 @@ namespace FlightSimCapstone
             }
             connectionStatus = false;
             readingsInitialized = false;
-            //MessageBox.Show("Terminated SimConnect Session", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
             return true;
         }
@@ -705,10 +736,10 @@ namespace FlightSimCapstone
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
                         CustomEvents.THROTTLE_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
                 }
+
                 // If the current throttle is greater than desired, simulate throttle decrease
                 else if (currentThrottlePercentage > desiredThrottlePercentage)
                 {
-                    //Console.WriteLine("\n\nCurrent > Desired\n\n");
 
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
                         CustomEvents.THROTTLE_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
@@ -744,14 +775,14 @@ namespace FlightSimCapstone
                 // If the current throttle is less than desired, simulate throttle increase
                 if (currentMixturePercentage < desiredMixturePercentage)
                 {
-                    Console.WriteLine("\n\nCurrent < Desired\n\n");
+                    //Console.WriteLine("\n\nCurrent < Desired\n\n");
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
                         CustomEvents.MIXTURE_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
                 }
                 // If the current throttle is greater than desired, simulate throttle decrease
                 else if (currentMixturePercentage > desiredMixturePercentage)
                 {
-                    Console.WriteLine("\n\nCurrent > Desired\n\n");
+                    //Console.WriteLine("\n\nCurrent > Desired\n\n");
 
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
                         CustomEvents.MIXTURE_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
@@ -778,5 +809,131 @@ namespace FlightSimCapstone
                 simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, CustomEvents.BRAKE_TOGGLE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             }
         }
+
+
+
+
+        // ELEVATOR_TRIM_SET
+
+        //public static void UpdateTrimWheelFromPotentiometer(int potValue)
+        //{
+        //    // Map potentiometer value (0-1023) to desired throttle percentage (0-100)
+        //    double desiredTrimPercentage = (potValue / 1023.0) * 100.0;
+
+        //    // Read the current throttle percentage (assumed already updated via SimConnect)
+        //    double currentTrimPercentage = TrimWheelValue;
+
+        //    double tolerance = 5.0;
+
+        //    int speed = 3;
+
+        //    for (int i = 0; i < speed; i++)
+        //    {
+
+        //        // Return if throttle within 5% to avoid jittering
+        //        if (Math.Abs(currentTrimPercentage - desiredTrimPercentage) < tolerance)
+        //        {
+        //            return;
+        //        }
+
+        //        // If the current throttle is less than desired, simulate throttle increase
+        //        if (currentTrimPercentage < desiredTrimPercentage)
+        //        {
+        //            Console.WriteLine("\n\nCurrent < Desired\n\n");
+        //            simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+        //                CustomEvents.TRIM_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+        //        }
+        //        // If the current throttle is greater than desired, simulate throttle decrease
+        //        else if (currentTrimPercentage > desiredTrimPercentage)
+        //        {
+        //            Console.WriteLine("\n\nCurrent > Desired\n\n");
+
+        //            simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+        //                CustomEvents.TRIM_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+        //        }
+        //    }
+        //}
+
+        public static void UpdateTrimWheelFromPotentiometer(int potValue)
+        {
+            // Define the center and deadband threshold
+            const int center = 512;
+            const int deadband = 20; // Values within ±10 of center are ignored
+
+            int speed = 3;
+
+            for (int i = 0; i < speed; i++)
+            {
+                // If within the deadband, do nothing
+                if (Math.Abs(potValue - center) < deadband)
+                {
+                    return;
+                }
+
+                // If the potentiometer reading is above center, send a TRIM_UP event.
+                if (potValue > center)
+                {
+                    simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                        CustomEvents.TRIM_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                }
+                // Otherwise, if it's below center, send a TRIM_DOWN event.
+                else
+                {
+                    simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                        CustomEvents.TRIM_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                }
+            }
+        }
+
+        public static void UpdateFlapsFromPotentiometer(int potValue)
+        {
+
+            Console.WriteLine("\n\nUpdating Flaps from Potentiometer: " + potValue + "\n\n");
+            // Map the 0-1023 range to three flap positions:
+            // 0 <= potValue < 341  => Flaps Up (position 0)
+            // 341 <= potValue < 682 => Takeoff flaps (position 1)
+            // 682 <= potValue <= 1023 => Landing flaps (position 2)
+            int desiredFlapPosition;
+            if (potValue < 341)
+            {
+                desiredFlapPosition = 0;
+            }
+            else if (potValue < 682)
+            {
+                desiredFlapPosition = 1;
+            }
+            else
+            {
+                desiredFlapPosition = 2;
+            }
+
+            // Compare with the current flap position and adjust if needed
+            if (desiredFlapPosition > flapSwitchValue)
+            {
+                // Increase flaps by one step
+                simconnect.TransmitClientEvent(
+                    SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                    CustomEvents.FLAP_INCREASE,
+                    0,
+                    SIMCONNECT_NOTIFICATION_GROUP_ID.Default,
+                    SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+
+                flapSwitchValue++;
+            }
+            else if (desiredFlapPosition < flapSwitchValue)
+            {
+                // Decrease flaps by one step
+                simconnect.TransmitClientEvent(
+                    SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                    CustomEvents.FLAP_DECREASE,
+                    0,
+                    SIMCONNECT_NOTIFICATION_GROUP_ID.Default,
+                    SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+
+                flapSwitchValue--;
+            }
+            // If desiredFlapPosition equals currentFlapPosition, do nothing.
+        }
+
     }
 }

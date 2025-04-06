@@ -31,6 +31,7 @@ namespace FlightSimCapstone
         private int throttle;
         private int mixture;
         private int brake;
+        private int trimWheel;
         private int flapSwitch;
 
         public int Throttle
@@ -49,6 +50,12 @@ namespace FlightSimCapstone
         {
             get { return brake; }
             set { brake = value; }
+        }
+
+        public int TrimWheel
+        {
+            get { return trimWheel; }
+            set { trimWheel = value; }
         }
 
         public int FlapSwitch

@@ -338,13 +338,26 @@ namespace FlightSimCapstone
                 if (ArduinoCommunicationUtility.isComOpen == true)
                 {
                     //// Update throttle value in SimConnect from Arduino potentiometer value
-                    SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.ThrottleMapping]);
-                    Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[UtilityForm.ThrottleMapping]);
+                    if (UtilityForm.ThrottleMapping > -1)
+                        SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.ThrottleMapping]);
+                    //Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[UtilityForm.ThrottleMapping]);
 
-                    SimConnectUtility.UpdateMixtureFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.MixtureMapping]);
-                    Console.WriteLine("Mixture Input: " + ArduinoCommunicationUtility.castSerialInput()[UtilityForm.MixtureMapping]);
+                    // Update mixture value in SimConnect from Arduino potentiometer value
+                    if (UtilityForm.MixtureMapping > -1)
+                        SimConnectUtility.UpdateMixtureFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.MixtureMapping]);
+                     //Console.WriteLine("Mixture Input: " + ArduinoCommunicationUtility.castSerialInput()[UtilityForm.MixtureMapping]);
 
-                    SimConnectUtility.UpdateBrakeFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.BrakeMapping]);
+                    // Update brake value in SimConnect from Arduino potentiometer value
+                    if (UtilityForm.BrakeMapping > -1)
+                        SimConnectUtility.UpdateBrakeFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.BrakeMapping]);
+
+                    // Update flap switch in SimConnect from Arduino potentiometer value
+                    if (UtilityForm.TrimWheelMapping > -1)
+                        SimConnectUtility.UpdateTrimWheelFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.TrimWheelMapping]);
+
+
+                    //if (UtilityForm.FlapSwitchMapping >= -1 && UtilityForm.FlapSwitchMapping <= 3)
+                    SimConnectUtility.UpdateFlapsFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.FlapSwitchMapping]);
                 }
 
             }

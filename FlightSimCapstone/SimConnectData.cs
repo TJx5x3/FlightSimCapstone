@@ -143,4 +143,9 @@ namespace FlightSimCapstone
     {
         public double BrakeReading;
     }
+
+    struct TrimWheelData
+    {
+        public double TrimWheelReading; // Value from 0.0 to 1.0 (0% to 100%) for trim wheel position
+    }
 }
