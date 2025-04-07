@@ -429,7 +429,6 @@ namespace FlightSimCapstone
                 Console.WriteLine("Brake Data Received");
                 brakeEnable = true; // Set brake enable to true, if needed for logic
             }
-
         }
 
         /// <summary>
@@ -467,8 +466,6 @@ namespace FlightSimCapstone
             // https://docs.flightsimulator.com/html/Programming_Tools/Event_IDs/Aircraft_Flight_Control_Events.htm#AXIS_FLAPS_SET
             simconnect.MapClientEventToSimEvent(CustomEvents.FLAP_INCREASE, "FLAPS_INCR");
             simconnect.MapClientEventToSimEvent(CustomEvents.FLAP_DECREASE, "FLAPS_DECR");
-
-
 
 
             /////////////////////////////////
@@ -533,12 +530,9 @@ namespace FlightSimCapstone
             simconnect.AddToDataDefinition(Definitions.RollData, "ATTITUDE INDICATOR BANK DEGREES", "degrees", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<RollData>(Definitions.RollData);
 
-            // Define Hour value
-
+            // Define Zulu Time value
             //https://docs.flightsimulator.com/html/Programming_Tools/Environment_Variables.htm?rhhlterm=zulu%20time&rhsearch=zulu%20time
             simconnect.AddToDataDefinition(Definitions.ZuluTimeData, "LOCAL TIME", "seconds", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
-            //simconnect.AddToDataDefinition(Definitions.ClockData, "ZULU TIME", "seconds", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
-            //simconnect.AddToDataDefinition(Definitions.ClockData, "ZULU TIME", "seconds", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             simconnect.RegisterDataDefineStruct<ZuluTimeData>(Definitions.ZuluTimeData);
 
             // Define Throttle value
@@ -799,61 +793,27 @@ namespace FlightSimCapstone
             if (potValue > 923 && brakeEnable == false)
             {
                 brakeEnable = true;
-                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, CustomEvents.BRAKE_TOGGLE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, 
+                    CustomEvents.BRAKE_TOGGLE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             }
 
             // If potentiometer is low, toggle brake status and brakeEnable debounce.
             else if (potValue < 100 && brakeEnable == true)
             {
                 brakeEnable = false;
-                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, CustomEvents.BRAKE_TOGGLE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, 
+                    CustomEvents.BRAKE_TOGGLE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             }
         }
 
 
 
 
-        // ELEVATOR_TRIM_SET
-
-        //public static void UpdateTrimWheelFromPotentiometer(int potValue)
-        //{
-        //    // Map potentiometer value (0-1023) to desired throttle percentage (0-100)
-        //    double desiredTrimPercentage = (potValue / 1023.0) * 100.0;
-
-        //    // Read the current throttle percentage (assumed already updated via SimConnect)
-        //    double currentTrimPercentage = TrimWheelValue;
-
-        //    double tolerance = 5.0;
-
-        //    int speed = 3;
-
-        //    for (int i = 0; i < speed; i++)
-        //    {
-
-        //        // Return if throttle within 5% to avoid jittering
-        //        if (Math.Abs(currentTrimPercentage - desiredTrimPercentage) < tolerance)
-        //        {
-        //            return;
-        //        }
-
-        //        // If the current throttle is less than desired, simulate throttle increase
-        //        if (currentTrimPercentage < desiredTrimPercentage)
-        //        {
-        //            Console.WriteLine("\n\nCurrent < Desired\n\n");
-        //            simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
-        //                CustomEvents.TRIM_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
-        //        }
-        //        // If the current throttle is greater than desired, simulate throttle decrease
-        //        else if (currentTrimPercentage > desiredTrimPercentage)
-        //        {
-        //            Console.WriteLine("\n\nCurrent > Desired\n\n");
-
-        //            simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
-        //                CustomEvents.TRIM_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
-        //        }
-        //    }
-        //}
-
+        /// <summary>
+        /// Update the trim wheel
+        /// Toggles calibration of yoke pich. Does not directly affect trim wheel in MSFS, but should get the same result. 
+        /// </summary>
+        /// <param name="potValue"></param>
         public static void UpdateTrimWheelFromPotentiometer(int potValue)
         {
             // Define the center and deadband threshold
@@ -885,6 +845,11 @@ namespace FlightSimCapstone
             }
         }
 
+
+        // Potentiometer reading will be 350-450 for 30
+        // >450 =< 520 for 20 deg
+        // 521 - 620 for 10 
+        // anything higher should be 0 
         public static void UpdateFlapsFromPotentiometer(int potValue)
         {
 
@@ -894,41 +859,37 @@ namespace FlightSimCapstone
             // 341 <= potValue < 682 => Takeoff flaps (position 1)
             // 682 <= potValue <= 1023 => Landing flaps (position 2)
             int desiredFlapPosition;
-            if (potValue < 341)
+            if (potValue >= 30)
             {
-                desiredFlapPosition = 0;
+                desiredFlapPosition = 3; // 30 
             }
-            else if (potValue < 682)
+            else if (potValue >= 20)
+            {
+                desiredFlapPosition = 2;
+            }
+            else if (potValue >= 10)
             {
                 desiredFlapPosition = 1;
             }
             else
             {
-                desiredFlapPosition = 2;
+                desiredFlapPosition = 0; // 30
             }
 
             // Compare with the current flap position and adjust if needed
             if (desiredFlapPosition > flapSwitchValue)
             {
                 // Increase flaps by one step
-                simconnect.TransmitClientEvent(
-                    SimConnect.SIMCONNECT_OBJECT_ID_USER,
-                    CustomEvents.FLAP_INCREASE,
-                    0,
-                    SIMCONNECT_NOTIFICATION_GROUP_ID.Default,
-                    SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                    CustomEvents.FLAP_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
 
                 flapSwitchValue++;
             }
             else if (desiredFlapPosition < flapSwitchValue)
             {
                 // Decrease flaps by one step
-                simconnect.TransmitClientEvent(
-                    SimConnect.SIMCONNECT_OBJECT_ID_USER,
-                    CustomEvents.FLAP_DECREASE,
-                    0,
-                    SIMCONNECT_NOTIFICATION_GROUP_ID.Default,
-                    SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+                simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
+                    CustomEvents.FLAP_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
 
                 flapSwitchValue--;
             }

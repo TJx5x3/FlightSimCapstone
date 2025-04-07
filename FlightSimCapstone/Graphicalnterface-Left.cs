@@ -357,9 +357,9 @@ namespace FlightSimCapstone
 
 
                     //if (UtilityForm.FlapSwitchMapping >= -1 && UtilityForm.FlapSwitchMapping <= 3)
-                    SimConnectUtility.UpdateFlapsFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.FlapSwitchMapping]);
+                    if(UtilityForm.FlapSwitchMapping > -1)
+                        SimConnectUtility.UpdateFlapsFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[UtilityForm.FlapSwitchMapping]);
                 }
-
             }
 
             Console.WriteLine("Tick");

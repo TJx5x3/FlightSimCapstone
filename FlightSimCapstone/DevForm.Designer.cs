@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.trimWheelComboBox = new System.Windows.Forms.ComboBox();
             this.flapSwitchLabel = new System.Windows.Forms.Label();
             this.flapSwitchComboBox = new System.Windows.Forms.ComboBox();
             this.parkingBrakeComboBox = new System.Windows.Forms.ComboBox();
@@ -63,9 +66,6 @@
             this.RightSkeleton = new System.Windows.Forms.PictureBox();
             this.LeftSkeleton = new System.Windows.Forms.PictureBox();
             this.TitleGif = new System.Windows.Forms.PictureBox();
-            this.trimWheelComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.resetButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RightSkeleton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LeftSkeleton)).BeginInit();
@@ -116,6 +116,47 @@
             this.panel1.Size = new System.Drawing.Size(718, 510);
             this.panel1.TabIndex = 1;
             // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(19, 453);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.TabIndex = 36;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.ResetButton_Clicked);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 346);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Trim Wheel:";
+            // 
+            // trimWheelComboBox
+            // 
+            this.trimWheelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.trimWheelComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.trimWheelComboBox.FormattingEnabled = true;
+            this.trimWheelComboBox.ItemHeight = 13;
+            this.trimWheelComboBox.Items.AddRange(new object[] {
+            "Port 1",
+            "Port 2",
+            "Port 3",
+            "Port 4",
+            "Port 5",
+            "Port 6",
+            "Port 7",
+            "Port 8",
+            "Port 9",
+            "Port 10"});
+            this.trimWheelComboBox.Location = new System.Drawing.Point(97, 343);
+            this.trimWheelComboBox.Name = "trimWheelComboBox";
+            this.trimWheelComboBox.Size = new System.Drawing.Size(121, 21);
+            this.trimWheelComboBox.TabIndex = 34;
+            // 
             // flapSwitchLabel
             // 
             this.flapSwitchLabel.AutoSize = true;
@@ -135,7 +176,13 @@
             "Port 1",
             "Port 2",
             "Port 3",
-            "Port 4"});
+            "Port 4",
+            "Port 5",
+            "Port 6",
+            "Port 7",
+            "Port 8",
+            "Port 9",
+            "Port 10"});
             this.flapSwitchComboBox.Location = new System.Drawing.Point(97, 370);
             this.flapSwitchComboBox.Name = "flapSwitchComboBox";
             this.flapSwitchComboBox.Size = new System.Drawing.Size(121, 21);
@@ -151,7 +198,13 @@
             "Port 1",
             "Port 2",
             "Port 3",
-            "Port 4"});
+            "Port 4",
+            "Port 5",
+            "Port 6",
+            "Port 7",
+            "Port 8",
+            "Port 9",
+            "Port 10"});
             this.parkingBrakeComboBox.Location = new System.Drawing.Point(97, 316);
             this.parkingBrakeComboBox.Name = "parkingBrakeComboBox";
             this.parkingBrakeComboBox.Size = new System.Drawing.Size(121, 21);
@@ -176,7 +229,13 @@
             "Port 1",
             "Port 2",
             "Port 3",
-            "Port 4"});
+            "Port 4",
+            "Port 5",
+            "Port 6",
+            "Port 7",
+            "Port 8",
+            "Port 9",
+            "Port 10"});
             this.mixtureComboBox.Location = new System.Drawing.Point(97, 289);
             this.mixtureComboBox.Name = "mixtureComboBox";
             this.mixtureComboBox.Size = new System.Drawing.Size(121, 21);
@@ -221,7 +280,13 @@
             "Port 1",
             "Port 2",
             "Port 3",
-            "Port 4"});
+            "Port 4",
+            "Port 5",
+            "Port 6",
+            "Port 7",
+            "Port 8",
+            "Port 9",
+            "Port 10"});
             this.throttleComboBox.Location = new System.Drawing.Point(97, 262);
             this.throttleComboBox.Name = "throttleComboBox";
             this.throttleComboBox.Size = new System.Drawing.Size(121, 21);
@@ -449,41 +514,6 @@
             this.TitleGif.Size = new System.Drawing.Size(601, 105);
             this.TitleGif.TabIndex = 0;
             this.TitleGif.TabStop = false;
-            // 
-            // trimWheelComboBox
-            // 
-            this.trimWheelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.trimWheelComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.trimWheelComboBox.FormattingEnabled = true;
-            this.trimWheelComboBox.ItemHeight = 13;
-            this.trimWheelComboBox.Items.AddRange(new object[] {
-            "Port 1",
-            "Port 2",
-            "Port 3",
-            "Port 4"});
-            this.trimWheelComboBox.Location = new System.Drawing.Point(97, 343);
-            this.trimWheelComboBox.Name = "trimWheelComboBox";
-            this.trimWheelComboBox.Size = new System.Drawing.Size(121, 21);
-            this.trimWheelComboBox.TabIndex = 34;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 346);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "Trim Wheel:";
-            // 
-            // resetButton
-            // 
-            this.resetButton.Location = new System.Drawing.Point(19, 453);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(75, 23);
-            this.resetButton.TabIndex = 36;
-            this.resetButton.Text = "Reset";
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.ResetButton_Clicked);
             // 
             // DevForm
             // 
