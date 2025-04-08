@@ -129,7 +129,7 @@ namespace FlightSimCapstone
         {
 
             InitializeComponent();
-
+            
             // Map events
             this.KeyPreview = true;
             this.KeyDown += UtilityForm_KeyDown;

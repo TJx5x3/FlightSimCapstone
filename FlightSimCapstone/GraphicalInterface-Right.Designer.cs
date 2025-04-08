@@ -59,9 +59,9 @@
             // 
             this.compassImage.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.compassImage.Image = global::FlightSimCapstone.Properties.Resources.Compass;
-            this.compassImage.Location = new System.Drawing.Point(499, 483);
+            this.compassImage.Location = new System.Drawing.Point(524, 493);
             this.compassImage.Name = "compassImage";
-            this.compassImage.Size = new System.Drawing.Size(475, 475);
+            this.compassImage.Size = new System.Drawing.Size(450, 450);
             this.compassImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.compassImage.TabIndex = 14;
             this.compassImage.TabStop = false;
@@ -70,7 +70,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pictureBox1.Image = global::FlightSimCapstone.Properties.Resources.Rickrolling_QR_code;
-            this.pictureBox1.Location = new System.Drawing.Point(980, 326);
+            this.pictureBox1.Location = new System.Drawing.Point(1065, 151);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(300, 300);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -81,9 +81,9 @@
             // 
             this.ClockMinutes.BackColor = System.Drawing.Color.Transparent;
             this.ClockMinutes.Image = global::FlightSimCapstone.Properties.Resources.Clock_Minutes;
-            this.ClockMinutes.Location = new System.Drawing.Point(18, 483);
+            this.ClockMinutes.Location = new System.Drawing.Point(28, 493);
             this.ClockMinutes.Name = "ClockMinutes";
-            this.ClockMinutes.Size = new System.Drawing.Size(475, 475);
+            this.ClockMinutes.Size = new System.Drawing.Size(450, 450);
             this.ClockMinutes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ClockMinutes.TabIndex = 12;
             this.ClockMinutes.TabStop = false;
@@ -92,9 +92,9 @@
             // 
             this.ClockSeconds.BackColor = System.Drawing.Color.Transparent;
             this.ClockSeconds.Image = global::FlightSimCapstone.Properties.Resources.Clock_Seconds;
-            this.ClockSeconds.Location = new System.Drawing.Point(18, 483);
+            this.ClockSeconds.Location = new System.Drawing.Point(28, 493);
             this.ClockSeconds.Name = "ClockSeconds";
-            this.ClockSeconds.Size = new System.Drawing.Size(475, 475);
+            this.ClockSeconds.Size = new System.Drawing.Size(450, 450);
             this.ClockSeconds.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ClockSeconds.TabIndex = 11;
             this.ClockSeconds.TabStop = false;
@@ -103,9 +103,9 @@
             // 
             this.ClockHours.BackColor = System.Drawing.Color.Transparent;
             this.ClockHours.Image = global::FlightSimCapstone.Properties.Resources.Clock_Hours;
-            this.ClockHours.Location = new System.Drawing.Point(18, 483);
+            this.ClockHours.Location = new System.Drawing.Point(28, 493);
             this.ClockHours.Name = "ClockHours";
-            this.ClockHours.Size = new System.Drawing.Size(475, 475);
+            this.ClockHours.Size = new System.Drawing.Size(450, 450);
             this.ClockHours.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ClockHours.TabIndex = 10;
             this.ClockHours.TabStop = false;
@@ -114,9 +114,9 @@
             // 
             this.ClockBase.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClockBase.Image = global::FlightSimCapstone.Properties.Resources.Clock_Base;
-            this.ClockBase.Location = new System.Drawing.Point(18, 483);
+            this.ClockBase.Location = new System.Drawing.Point(28, 493);
             this.ClockBase.Name = "ClockBase";
-            this.ClockBase.Size = new System.Drawing.Size(475, 475);
+            this.ClockBase.Size = new System.Drawing.Size(450, 450);
             this.ClockBase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ClockBase.TabIndex = 9;
             this.ClockBase.TabStop = false;
@@ -125,9 +125,9 @@
             // 
             this.Altimeter10kDial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Altimeter10kDial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial10k;
-            this.Altimeter10kDial.Location = new System.Drawing.Point(499, 2);
+            this.Altimeter10kDial.Location = new System.Drawing.Point(524, 12);
             this.Altimeter10kDial.Name = "Altimeter10kDial";
-            this.Altimeter10kDial.Size = new System.Drawing.Size(475, 475);
+            this.Altimeter10kDial.Size = new System.Drawing.Size(450, 450);
             this.Altimeter10kDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Altimeter10kDial.TabIndex = 8;
             this.Altimeter10kDial.TabStop = false;
@@ -136,9 +136,9 @@
             // 
             this.Altimeter1kDial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Altimeter1kDial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial1k;
-            this.Altimeter1kDial.Location = new System.Drawing.Point(499, 2);
+            this.Altimeter1kDial.Location = new System.Drawing.Point(524, 12);
             this.Altimeter1kDial.Name = "Altimeter1kDial";
-            this.Altimeter1kDial.Size = new System.Drawing.Size(475, 475);
+            this.Altimeter1kDial.Size = new System.Drawing.Size(450, 450);
             this.Altimeter1kDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Altimeter1kDial.TabIndex = 7;
             this.Altimeter1kDial.TabStop = false;
@@ -147,9 +147,9 @@
             // 
             this.Altimeter100Dial.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Altimeter100Dial.Image = global::FlightSimCapstone.Properties.Resources.AltimeterDial100;
-            this.Altimeter100Dial.Location = new System.Drawing.Point(499, 2);
+            this.Altimeter100Dial.Location = new System.Drawing.Point(524, 12);
             this.Altimeter100Dial.Name = "Altimeter100Dial";
-            this.Altimeter100Dial.Size = new System.Drawing.Size(475, 475);
+            this.Altimeter100Dial.Size = new System.Drawing.Size(450, 450);
             this.Altimeter100Dial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Altimeter100Dial.TabIndex = 6;
             this.Altimeter100Dial.TabStop = false;
@@ -158,9 +158,9 @@
             // 
             this.AltimeterBack.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.AltimeterBack.Image = global::FlightSimCapstone.Properties.Resources.Altimeter;
-            this.AltimeterBack.Location = new System.Drawing.Point(499, 2);
+            this.AltimeterBack.Location = new System.Drawing.Point(524, 12);
             this.AltimeterBack.Name = "AltimeterBack";
-            this.AltimeterBack.Size = new System.Drawing.Size(475, 475);
+            this.AltimeterBack.Size = new System.Drawing.Size(450, 450);
             this.AltimeterBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AltimeterBack.TabIndex = 5;
             this.AltimeterBack.TabStop = false;
@@ -169,9 +169,9 @@
             // 
             this.VerticalAirspeedIndicatorDial.BackColor = System.Drawing.Color.Transparent;
             this.VerticalAirspeedIndicatorDial.Image = global::FlightSimCapstone.Properties.Resources.VerticalAirspeedIndicatorDial;
-            this.VerticalAirspeedIndicatorDial.Location = new System.Drawing.Point(18, 2);
+            this.VerticalAirspeedIndicatorDial.Location = new System.Drawing.Point(33, 12);
             this.VerticalAirspeedIndicatorDial.Name = "VerticalAirspeedIndicatorDial";
-            this.VerticalAirspeedIndicatorDial.Size = new System.Drawing.Size(475, 475);
+            this.VerticalAirspeedIndicatorDial.Size = new System.Drawing.Size(450, 450);
             this.VerticalAirspeedIndicatorDial.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.VerticalAirspeedIndicatorDial.TabIndex = 3;
             this.VerticalAirspeedIndicatorDial.TabStop = false;
@@ -180,9 +180,9 @@
             // 
             this.VerticalAirspeedIndicator.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.VerticalAirspeedIndicator.Image = global::FlightSimCapstone.Properties.Resources.VerticalAirspeedIndicator;
-            this.VerticalAirspeedIndicator.Location = new System.Drawing.Point(18, 2);
+            this.VerticalAirspeedIndicator.Location = new System.Drawing.Point(33, 12);
             this.VerticalAirspeedIndicator.Name = "VerticalAirspeedIndicator";
-            this.VerticalAirspeedIndicator.Size = new System.Drawing.Size(475, 475);
+            this.VerticalAirspeedIndicator.Size = new System.Drawing.Size(450, 450);
             this.VerticalAirspeedIndicator.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.VerticalAirspeedIndicator.TabIndex = 4;
             this.VerticalAirspeedIndicator.TabStop = false;
