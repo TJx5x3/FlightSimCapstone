@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalInterface_Right));
+            this.compassImage = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ClockMinutes = new System.Windows.Forms.PictureBox();
             this.ClockSeconds = new System.Windows.Forms.PictureBox();
             this.ClockHours = new System.Windows.Forms.PictureBox();
@@ -39,7 +41,8 @@
             this.AltimeterBack = new System.Windows.Forms.PictureBox();
             this.VerticalAirspeedIndicatorDial = new System.Windows.Forms.PictureBox();
             this.VerticalAirspeedIndicator = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.compassImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockMinutes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockSeconds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockHours)).BeginInit();
@@ -50,8 +53,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltimeterBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicatorDial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // compassImage
+            // 
+            this.compassImage.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.compassImage.Image = global::FlightSimCapstone.Properties.Resources.Compass;
+            this.compassImage.Location = new System.Drawing.Point(499, 483);
+            this.compassImage.Name = "compassImage";
+            this.compassImage.Size = new System.Drawing.Size(475, 475);
+            this.compassImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.compassImage.TabIndex = 14;
+            this.compassImage.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBox1.Image = global::FlightSimCapstone.Properties.Resources.Rickrolling_QR_code;
+            this.pictureBox1.Location = new System.Drawing.Point(980, 326);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
             // 
             // ClockMinutes
             // 
@@ -163,22 +187,12 @@
             this.VerticalAirspeedIndicator.TabIndex = 4;
             this.VerticalAirspeedIndicator.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Image = global::FlightSimCapstone.Properties.Resources.Rickrolling_QR_code;
-            this.pictureBox1.Location = new System.Drawing.Point(595, 573);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
             // GraphicalInterface_Right
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 1000);
+            this.ClientSize = new System.Drawing.Size(1526, 1000);
+            this.Controls.Add(this.compassImage);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ClockMinutes);
             this.Controls.Add(this.ClockSeconds);
@@ -195,6 +209,8 @@
             this.Name = "GraphicalInterface_Right";
             this.Text = "Graphical Interface - Right";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.compassImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockMinutes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockSeconds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockHours)).EndInit();
@@ -205,7 +221,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.AltimeterBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicatorDial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VerticalAirspeedIndicator)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -223,5 +238,6 @@
         private System.Windows.Forms.PictureBox ClockSeconds;
         private System.Windows.Forms.PictureBox ClockMinutes;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox compassImage;
     }
 }

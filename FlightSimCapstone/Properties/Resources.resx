@@ -163,6 +163,9 @@
   <data name="AltitudeIndicator-Middle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AltitudeIndicator-Middle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Rickrolling_QR_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rickrolling_QR_code.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TurnCoordinatorAirplane" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TurnCoordinatorAirplane.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -184,7 +187,7 @@
   <data name="AltimeterDial1k" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AltimeterDial1k.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Rickrolling_QR_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rickrolling_QR_code.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Compass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Compass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

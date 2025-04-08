@@ -415,6 +415,7 @@ namespace FlightSimCapstone
                 //Console.WriteLine($"Throttle Reading: {throttleData.ThrottleReading}");
             }
 
+            // Request Mixture Data
             if ((Requests)data.dwRequestID == Requests.Mixture)
             {
                 MixtureData mixtureData = (MixtureData)data.dwData[0];
@@ -422,6 +423,7 @@ namespace FlightSimCapstone
                 
             }
 
+            // Request Trim Wheel Data
             if ((Requests)data.dwRequestID == Requests.TrimWheel)
             {
                 // Handle Brake Data if needed
@@ -777,7 +779,6 @@ namespace FlightSimCapstone
                 else if (currentMixturePercentage > desiredMixturePercentage)
                 {
                     //Console.WriteLine("\n\nCurrent > Desired\n\n");
-
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
                         CustomEvents.MIXTURE_DECREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
                 }
@@ -805,9 +806,6 @@ namespace FlightSimCapstone
                     CustomEvents.BRAKE_TOGGLE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
             }
         }
-
-
-
 
         /// <summary>
         /// Update the trim wheel

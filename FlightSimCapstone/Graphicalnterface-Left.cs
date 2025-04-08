@@ -274,7 +274,9 @@ namespace FlightSimCapstone
                 }
 
                 // Update and set Airspeed Indicator dial
-                rotatedAirspeedIndicatorDial = SetImageRotation(originalAirspeedIndicatorDial, (float)(SimConnectUtility.AirspeedIndicatorValue * (10000.0f / 13909.0f))); // Multiply 9/7 to get proper degree rotation value
+                //rotatedAirspeedIndicatorDial = SetImageRotation(originalAirspeedIndicatorDial, (float)(SimConnectUtility.AirspeedIndicatorValue * (10000.0f / 13909.0f))); // Multiply 9/7 to get proper degree rotation value
+                rotatedAirspeedIndicatorDial = SetImageRotation(originalAirspeedIndicatorDial, (float)(SimConnectUtility.AirspeedIndicatorValue * 2.0f)); // Multiply  to get proper degree rotation value
+
                 AirspeedIndicatorDial.Image = rotatedAirspeedIndicatorDial;
 
                 
@@ -298,9 +300,6 @@ namespace FlightSimCapstone
                 rotatedTurnCoordinatorAirplane = SetImageRotation(originalTurnCoordinatorAirplane, (float)SimConnectUtility.TurnIndicatorValue * 5.0f); // Multiply 5 to get proper degree rotation value
                 TurnCoordinatorAirplane.Image = rotatedTurnCoordinatorAirplane;
 
-
-
-                // TODO: Implement Suction Gauge  
 
                 // Altitude Indicator //
 
