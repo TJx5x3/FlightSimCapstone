@@ -158,6 +158,7 @@
     <Content Include="bin\Debug\Microsoft.FlightSimulator.SimConnect.dll" />
     <Content Include="bin\Debug\SimConnect.dll" />
     <Content Include="bin\x64\Debug\SimConnect.dll" />
+    <None Include="Resources\FlightSimCapstone.png" />
     <None Include="Resources\Compass.png" />
     <None Include="Resources\Rickrolling_QR_code.png" />
     <None Include="Resources\Clock_Minutes.png" />

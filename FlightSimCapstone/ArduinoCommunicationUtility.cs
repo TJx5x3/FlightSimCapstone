@@ -64,6 +64,22 @@ namespace FlightSimCapstone
             Initialize();  
         }
 
+        public static UtilityForm UtilityForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static GraphicalInterface_Right GraphicalInterface_Right
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         /// <summary>
         /// Initialize Arduino Communication Utility
         /// </summary>

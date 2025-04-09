@@ -612,8 +612,7 @@ namespace FlightSimCapstone
             readingsInitialized = true;
         }
 
-        // Test Connection to SimConnect
-        // Currently attempts connection, then disconnects
+
         /// <summary>
         /// Attempt to create an instance of SimConnect client.
         /// </summary>
@@ -636,9 +635,8 @@ namespace FlightSimCapstone
                     connectionStatus = true;
                     return true;
                 }
-                catch (COMException ex)
+                catch (COMException ex) // Simconnect instance can not be created
                 {
-                   // MessageBox.Show("SimConnect not connected!", "Fail!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     Console.WriteLine($"SimConnect Connection failed: {ex.Message}");
                     return false;
@@ -894,5 +892,20 @@ namespace FlightSimCapstone
             // If desiredFlapPosition equals currentFlapPosition, do nothing.
         }
 
+        public static UtilityForm UtilityForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static DevForm DevForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

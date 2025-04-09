@@ -353,6 +353,14 @@ namespace FlightSimCapstone
             }
         }
 
+        /// <summary>
+        /// Logic to handle when the graphical interface should be opened.
+        /// </summary>
+        /// <remarks>
+        /// If fullscreen is enabled, the graphical interface will be opened in fullscreen, and 
+        /// the back color will be set to black.
+        /// </remarks>
+        /// <param name="fullscreen"></param>
         private void OpenGraphicalInterface(bool fullscreen)
         {
             SimConnectUtility.InitializeSimReadings();
@@ -381,7 +389,7 @@ namespace FlightSimCapstone
                 graphicalInterfaceRight.FormBorderStyle = FormBorderStyle.Sizable; // Allow resizing of the window for the right form
             }
 
-
+            // If there are 3 or more screens, set the location of the forms to the left and right instrumentation panel screens
             if (screens.Length >= 3)
             {
                 // Set start position of forms to manual
@@ -463,6 +471,7 @@ namespace FlightSimCapstone
         /// </summary>
         public static void SaveControlMappings()
         {
+            // Create ArduinoPortMapping object, and set values
             var configData = new ArduinoPortMapping
             {
                 Throttle = throttleMapping,
@@ -472,8 +481,11 @@ namespace FlightSimCapstone
                 FlapSwitch = flapSwitchMapping
             };
 
+            // Serialize object to JSON
             var options = new JsonSerializerOptions { WriteIndented = true };
             string jsonString = JsonSerializer.Serialize(configData, options);
+
+            // Write serialized JSON to file
             File.WriteAllText("ArduinoSettings.fly", jsonString);   
         }
     }

@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicalInterface_Right));
             this.compassImage = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.qrPictureBox = new System.Windows.Forms.PictureBox();
             this.ClockMinutes = new System.Windows.Forms.PictureBox();
             this.ClockSeconds = new System.Windows.Forms.PictureBox();
             this.ClockHours = new System.Windows.Forms.PictureBox();
@@ -42,7 +42,7 @@
             this.VerticalAirspeedIndicatorDial = new System.Windows.Forms.PictureBox();
             this.VerticalAirspeedIndicator = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.compassImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qrPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockMinutes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockSeconds)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockHours)).BeginInit();
@@ -66,16 +66,16 @@
             this.compassImage.TabIndex = 14;
             this.compassImage.TabStop = false;
             // 
-            // pictureBox1
+            // qrPictureBox
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Image = global::FlightSimCapstone.Properties.Resources.Rickrolling_QR_code;
-            this.pictureBox1.Location = new System.Drawing.Point(1065, 151);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.qrPictureBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.qrPictureBox.Image = global::FlightSimCapstone.Properties.Resources.FlightSimCapstone;
+            this.qrPictureBox.Location = new System.Drawing.Point(1043, 325);
+            this.qrPictureBox.Name = "qrPictureBox";
+            this.qrPictureBox.Size = new System.Drawing.Size(300, 300);
+            this.qrPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.qrPictureBox.TabIndex = 13;
+            this.qrPictureBox.TabStop = false;
             // 
             // ClockMinutes
             // 
@@ -193,7 +193,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1526, 1000);
             this.Controls.Add(this.compassImage);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.qrPictureBox);
             this.Controls.Add(this.ClockMinutes);
             this.Controls.Add(this.ClockSeconds);
             this.Controls.Add(this.ClockHours);
@@ -210,7 +210,7 @@
             this.Text = "Graphical Interface - Right";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.compassImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qrPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockMinutes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockSeconds)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClockHours)).EndInit();
@@ -237,7 +237,7 @@
         private System.Windows.Forms.PictureBox ClockHours;
         private System.Windows.Forms.PictureBox ClockSeconds;
         private System.Windows.Forms.PictureBox ClockMinutes;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox qrPictureBox;
         private System.Windows.Forms.PictureBox compassImage;
     }
 }
