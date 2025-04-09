@@ -814,7 +814,7 @@ namespace FlightSimCapstone
         {
             // Define the center and deadband threshold
             const int center = 512;
-            const int deadband = 20; // Values within ±10 of center are ignored
+            const int deadband = 100; // Values within ±100 of center are ignored
 
             int speed = 3;
 
@@ -826,13 +826,13 @@ namespace FlightSimCapstone
                     return;
                 }
 
-                // If the potentiometer reading is above center, send a TRIM_UP event.
+                // If the potentiometer reading is above center, send a TRIM_INCREASE event.
                 if (potValue > center)
                 {
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
                         CustomEvents.TRIM_INCREASE, 0, SIMCONNECT_NOTIFICATION_GROUP_ID.Default, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
                 }
-                // Otherwise, if it's below center, send a TRIM_DOWN event.
+                // Otherwise, if it's below center, send a TRIM_DECREASE event.
                 else
                 {
                     simconnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER,
