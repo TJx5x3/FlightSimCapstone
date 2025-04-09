@@ -202,17 +202,6 @@ namespace FlightSimCapstone
                 // Update Seconds Value
                 SecondsLabel.Text = $"Seconds: {SimConnectUtility.SecondValue}";
 
-                // Write potentiometer value to SimConnect client
-                if (ArduinoCommunicationUtility.isComOpen == true)
-                {
-                    //// Update throttle value in SimConnect from Arduino potentiometer value
-                    //SimConnectUtility.UpdateThrottleFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[0]);
-                    //Console.WriteLine("Throttle Input: " + ArduinoCommunicationUtility.castSerialInput()[0]);
-
-                    //SimConnectUtility.UpdateMixtureFromPotentiometer(ArduinoCommunicationUtility.castSerialInput()[1]);
-                    //Console.WriteLine("Mixture Input: " + ArduinoCommunicationUtility.castSerialInput()[1]);
-                }
-
                 // Refresh SimConnect
                 SimConnectUtility.RefreshSimconnect();
             }
@@ -301,6 +290,13 @@ namespace FlightSimCapstone
             SetArduinoMappings();
         }
 
+        /// <summary>
+        /// Save selected arduino mappings.
+        /// 
+        /// Saved mappings will automatically set mapings before saving selected combo box indexes to IO
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveButton_OnClick(object sender, EventArgs e)
         {
             SetArduinoMappings();
@@ -308,6 +304,11 @@ namespace FlightSimCapstone
             MessageBox.Show("Mappings Saved!");
         }
 
+        /// <summary>
+        /// Set the index of all combo boxes to -1 (No selection)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResetButton_Clicked(object sender, EventArgs e)
         {
             throttleComboBox.SelectedIndex = -1;
