@@ -42,7 +42,7 @@ This application requires .NET 4.7.2.
 For to use all features, a licensed copy of Microsoft Flight simulator must be owned and installed.
 
 ### User Manual
-The user manual for this project can be found here: [Flight SIm Capstone User Manual](<https://github.com/TJx5x3/FlightSimCapstone/blob/f65d25aa2f1e3908bbe715bc6e03209404f7f125/FlightSImulatorCapstone%20-%20User%20Manual.pdf>)
+The user manual for this project can be found here: [Flight Sim Capstone User Manual](<https://github.com/TJx5x3/FlightSimCapstone/blob/f65d25aa2f1e3908bbe715bc6e03209404f7f125/FlightSImulatorCapstone%20-%20User%20Manual.pdf>)
 
 ### Application Hardware
 This application was specifically designed to create a flight simulator using the following hardware:
