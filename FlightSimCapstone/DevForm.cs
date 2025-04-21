@@ -313,7 +313,7 @@ namespace FlightSimCapstone
             mixtureComboBox.SelectedIndex = -1;
             parkingBrakeComboBox.SelectedIndex = -1; // Reset brake mapping as well, if needed
             trimWheelComboBox.SelectedIndex = -1;
-            flapSwitchComboBox.SelectedIndex = -1; // Reset Flap Switch mapping as well, if needed
+            flapSwitchComboBox.SelectedIndex = -1; // Reset Flap Switch mapping as well, if needed 
         }
     }
 }
