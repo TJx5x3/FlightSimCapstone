@@ -1,0 +1,579 @@
+### YamlMime:ManagedReference
+items:
+- uid: FlightSimCapstone.ArduinoCommunicationUtility
+  commentId: T:FlightSimCapstone.ArduinoCommunicationUtility
+  id: ArduinoCommunicationUtility
+  parent: FlightSimCapstone
+  children:
+  - FlightSimCapstone.ArduinoCommunicationUtility.CloseSerialPort
+  - FlightSimCapstone.ArduinoCommunicationUtility.GetSerialData
+  - FlightSimCapstone.ArduinoCommunicationUtility.Initialize
+  - FlightSimCapstone.ArduinoCommunicationUtility.castSerialInput
+  - FlightSimCapstone.ArduinoCommunicationUtility.comPort
+  - FlightSimCapstone.ArduinoCommunicationUtility.isComOpen
+  - FlightSimCapstone.ArduinoCommunicationUtility.serialData
+  - FlightSimCapstone.ArduinoCommunicationUtility.serialPort
+  langs:
+  - csharp
+  - vb
+  name: ArduinoCommunicationUtility
+  nameWithType: ArduinoCommunicationUtility
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility
+  type: Class
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: >-
+    This class contains methods used to detect, read, and handle Arduino serial data
+
+    .
+  example: []
+  syntax:
+    content: public static class ArduinoCommunicationUtility
+    content.vb: Public Module ArduinoCommunicationUtility
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.comPort
+  commentId: F:FlightSimCapstone.ArduinoCommunicationUtility.comPort
+  id: comPort
+  parent: FlightSimCapstone.ArduinoCommunicationUtility
+  langs:
+  - csharp
+  - vb
+  name: comPort
+  nameWithType: ArduinoCommunicationUtility.comPort
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.comPort
+  type: Field
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: >-
+    The COM port number for the Arduino device.
+
+    This is automatically set when Initialize() is called.
+  example: []
+  syntax:
+    content: public static string comPort
+    return:
+      type: System.String
+    content.vb: Public Shared comPort As String
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.serialPort
+  commentId: F:FlightSimCapstone.ArduinoCommunicationUtility.serialPort
+  id: serialPort
+  parent: FlightSimCapstone.ArduinoCommunicationUtility
+  langs:
+  - csharp
+  - vb
+  name: serialPort
+  nameWithType: ArduinoCommunicationUtility.serialPort
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.serialPort
+  type: Field
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: The serial port used to communicate with the detected Arduino device.
+  example: []
+  syntax:
+    content: public static SerialPort serialPort
+    return:
+      type: System.IO.Ports.SerialPort
+    content.vb: Public Shared serialPort As SerialPort
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.serialData
+  commentId: F:FlightSimCapstone.ArduinoCommunicationUtility.serialData
+  id: serialData
+  parent: FlightSimCapstone.ArduinoCommunicationUtility
+  langs:
+  - csharp
+  - vb
+  name: serialData
+  nameWithType: ArduinoCommunicationUtility.serialData
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.serialData
+  type: Field
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: The data read from the Arduino device.
+  example: []
+  syntax:
+    content: public static string serialData
+    return:
+      type: System.String
+    content.vb: Public Shared serialData As String
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.isComOpen
+  commentId: F:FlightSimCapstone.ArduinoCommunicationUtility.isComOpen
+  id: isComOpen
+  parent: FlightSimCapstone.ArduinoCommunicationUtility
+  langs:
+  - csharp
+  - vb
+  name: isComOpen
+  nameWithType: ArduinoCommunicationUtility.isComOpen
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.isComOpen
+  type: Field
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: A flag to check if the COM port is currently open.
+  example: []
+  syntax:
+    content: public static bool isComOpen
+    return:
+      type: System.Boolean
+    content.vb: Public Shared isComOpen As Boolean
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.Initialize
+  commentId: M:FlightSimCapstone.ArduinoCommunicationUtility.Initialize
+  id: Initialize
+  parent: FlightSimCapstone.ArduinoCommunicationUtility
+  langs:
+  - csharp
+  - vb
+  name: Initialize()
+  nameWithType: ArduinoCommunicationUtility.Initialize()
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.Initialize()
+  type: Method
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: Initialize Arduino Communication Utility
+  example: []
+  syntax:
+    content: public static void Initialize()
+    content.vb: Public Shared Sub Initialize()
+  overload: FlightSimCapstone.ArduinoCommunicationUtility.Initialize*
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.GetSerialData
+  commentId: M:FlightSimCapstone.ArduinoCommunicationUtility.GetSerialData
+  id: GetSerialData
+  parent: FlightSimCapstone.ArduinoCommunicationUtility
+  langs:
+  - csharp
+  - vb
+  name: GetSerialData()
+  nameWithType: ArduinoCommunicationUtility.GetSerialData()
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.GetSerialData()
+  type: Method
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: Returns the most current line of serial data from the Arduino device.
+  example: []
+  syntax:
+    content: public static string GetSerialData()
+    return:
+      type: System.String
+      description: A string formatted as an int array for each analog or digital Arduino port.
+    content.vb: Public Shared Function GetSerialData() As String
+  overload: FlightSimCapstone.ArduinoCommunicationUtility.GetSerialData*
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.CloseSerialPort
+  commentId: M:FlightSimCapstone.ArduinoCommunicationUtility.CloseSerialPort
+  id: CloseSerialPort
+  parent: FlightSimCapstone.ArduinoCommunicationUtility
+  langs:
+  - csharp
+  - vb
+  name: CloseSerialPort()
+  nameWithType: ArduinoCommunicationUtility.CloseSerialPort()
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.CloseSerialPort()
+  type: Method
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: Close serial port if open
+  example: []
+  syntax:
+    content: public static void CloseSerialPort()
+    content.vb: Public Shared Sub CloseSerialPort()
+  overload: FlightSimCapstone.ArduinoCommunicationUtility.CloseSerialPort*
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.castSerialInput
+  commentId: M:FlightSimCapstone.ArduinoCommunicationUtility.castSerialInput
+  id: castSerialInput
+  parent: FlightSimCapstone.ArduinoCommunicationUtility
+  langs:
+  - csharp
+  - vb
+  name: castSerialInput()
+  nameWithType: ArduinoCommunicationUtility.castSerialInput()
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.castSerialInput()
+  type: Method
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: Cast read Arduino serial data to an array of integers
+  example: []
+  syntax:
+    content: public static int[] castSerialInput()
+    return:
+      type: System.Int32[]
+      description: int array of arduino port values
+    content.vb: Public Shared Function castSerialInput() As Integer()
+  overload: FlightSimCapstone.ArduinoCommunicationUtility.castSerialInput*
+references:
+- uid: FlightSimCapstone
+  commentId: N:FlightSimCapstone
+  isExternal: true
+  href: FlightSimCapstone.html
+  name: FlightSimCapstone
+  nameWithType: FlightSimCapstone
+  fullName: FlightSimCapstone
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.IO.Ports.SerialPort
+  commentId: T:System.IO.Ports.SerialPort
+  parent: System.IO.Ports
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.ports.serialport
+  name: SerialPort
+  nameWithType: SerialPort
+  fullName: System.IO.Ports.SerialPort
+- uid: System.IO.Ports
+  commentId: N:System.IO.Ports
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO.Ports
+  nameWithType: System.IO.Ports
+  fullName: System.IO.Ports
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  - name: .
+  - uid: System.IO.Ports
+    name: Ports
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.ports
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  - name: .
+  - uid: System.IO.Ports
+    name: Ports
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.ports
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.Initialize*
+  commentId: Overload:FlightSimCapstone.ArduinoCommunicationUtility.Initialize
+  isExternal: true
+  href: FlightSimCapstone.ArduinoCommunicationUtility.html#FlightSimCapstone_ArduinoCommunicationUtility_Initialize
+  name: Initialize
+  nameWithType: ArduinoCommunicationUtility.Initialize
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.Initialize
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.GetSerialData*
+  commentId: Overload:FlightSimCapstone.ArduinoCommunicationUtility.GetSerialData
+  isExternal: true
+  href: FlightSimCapstone.ArduinoCommunicationUtility.html#FlightSimCapstone_ArduinoCommunicationUtility_GetSerialData
+  name: GetSerialData
+  nameWithType: ArduinoCommunicationUtility.GetSerialData
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.GetSerialData
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.CloseSerialPort*
+  commentId: Overload:FlightSimCapstone.ArduinoCommunicationUtility.CloseSerialPort
+  isExternal: true
+  href: FlightSimCapstone.ArduinoCommunicationUtility.html#FlightSimCapstone_ArduinoCommunicationUtility_CloseSerialPort
+  name: CloseSerialPort
+  nameWithType: ArduinoCommunicationUtility.CloseSerialPort
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.CloseSerialPort
+- uid: FlightSimCapstone.ArduinoCommunicationUtility.castSerialInput*
+  commentId: Overload:FlightSimCapstone.ArduinoCommunicationUtility.castSerialInput
+  isExternal: true
+  href: FlightSimCapstone.ArduinoCommunicationUtility.html#FlightSimCapstone_ArduinoCommunicationUtility_castSerialInput
+  name: castSerialInput
+  nameWithType: ArduinoCommunicationUtility.castSerialInput
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility.castSerialInput
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )

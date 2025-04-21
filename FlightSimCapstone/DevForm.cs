@@ -64,9 +64,7 @@ namespace FlightSimCapstone
         private Timer valueTimer = null;
 
 
-        int throttleValue = 0; // Throttle value from Arduino potentiometer
-
-
+        //int throttleValue = 0; // Throttle value from Arduino potentiometer
 
 
         // Serial port on COM5 to read arduino Serial Print

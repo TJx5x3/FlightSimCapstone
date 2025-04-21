@@ -813,8 +813,8 @@ namespace FlightSimCapstone
         public static void UpdateTrimWheelFromPotentiometer(int potValue)
         {
             // Define the center and deadband threshold
-            const int center = 512;
-            const int deadband = 100; // Values within ±100 of center are ignored
+            const int center = 350;
+            const int deadband = 300; // Values within ±100 of center are ignored
 
             int speed = 3;
 

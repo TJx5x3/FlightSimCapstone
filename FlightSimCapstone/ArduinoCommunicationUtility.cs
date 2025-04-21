@@ -40,54 +40,72 @@ using System.Threading;
 namespace FlightSimCapstone
 {
     /// <summary>
-    /// This class handles serial and PnP
+    /// This class contains methods used to detect, read, and handle Arduino serial data
+    /// .
     /// </summary>
     public static class ArduinoCommunicationUtility
     {
+        /// <summary>
+        /// The COM port number for the Arduino device.
+        /// This is automatically set when Initialize() is called.
+        /// </summary>
         public static String comPort; // COM port number
 
+        /// <summary>
+        /// Timer to periotically retrieve updated values from the Arduino device.
+        /// </summary>
         private static Timer connectionTimer = null;
 
-        //static SerialPort serialPort = new SerialPort("COM7", 11520, Parity.None, 8, StopBits.One);
-        //static SerialPort serialPort = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
-
+        /// <summary>
+        /// The serial port used to communicate with the detected Arduino device.
+        /// </summary>
         public static SerialPort serialPort;
-        public static String serialData; // Data read from Arduino device
-
-        public static bool isComOpen; // Flag to check if COM port is open
 
         /// <summary>
-        /// Arduino Communication Utility Constructor. Creates event when data is recieved from the COM serial port
+        /// The data read from the Arduino device.
+        /// </summary>
+        public static String serialData;
+
+
+        /// <summary>
+        /// A flag to check if the COM port is currently open.
+        /// </summary>
+        public static bool isComOpen;
+
+        /// <summary>
+        /// Arduino Communication Utility Constructor. Initializes the Arduino communication utility by calling Initialize()
         /// </summary>
         static ArduinoCommunicationUtility()
         {
             Initialize();  
         }
 
-        public static UtilityForm UtilityForm
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        //public static UtilityForm UtilityForm
+        //{
+        //    get => default;
+        //    set
+        //    {
+        //    }
+        //}
 
-        public static GraphicalInterface_Right GraphicalInterface_Right
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        //public static GraphicalInterface_Right GraphicalInterface_Right
+        //{
+        //    get => default;
+        //    set
+        //    {
+        //    }
+        //}
 
         /// <summary>
         /// Initialize Arduino Communication Utility
         /// </summary>
         public static void Initialize()
         {
+            // Close com port if already open
             if (isComOpen)
                 serialPort.Close();
 
+            // Locate COM port for Arduino device
             comPort = locateCOMPort();
             Console.WriteLine("COM PORT: " + comPort);
 
@@ -98,6 +116,7 @@ namespace FlightSimCapstone
 
                 isComOpen = true; // Set open COM flag to true
 
+                // Open serial port with 9600 baud rate, no parity, 8 data bits, and 1 stop bit (Default values)
                 serialPort = new SerialPort(comPort, 9600, Parity.None, 8, StopBits.One);
                 serialPort.Open();
 
@@ -105,7 +124,7 @@ namespace FlightSimCapstone
                 serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPortReadEvent);
 
             }
-            else
+            else // Otherwise , set COM flag to false
             {
                 serialData = "No Arduino device found";
                 isComOpen = false;
@@ -113,9 +132,9 @@ namespace FlightSimCapstone
         }
 
         /// <summary>
-        /// Get last line read from serial port
+        /// Returns the most current line of serial data from the Arduino device.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string formatted as an int array for each analog or digital Arduino port.</returns>
         public static string GetSerialData()
         {
             return serialData;
@@ -124,6 +143,7 @@ namespace FlightSimCapstone
         /// <summary>
         /// Serial Data read event.
         /// Logic each time serial data is recieved.
+        /// Contains logic that should be conducted each time serial data is read.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -131,6 +151,7 @@ namespace FlightSimCapstone
         {
             try
             {
+                // If serial port is open, read serial data
                 if (serialPort.IsOpen)
                     serialData = serialPort.ReadLine();
 
@@ -142,10 +163,10 @@ namespace FlightSimCapstone
         }
 
         /// <summary>
-        /// Search detected COM ports for Arduino device. \n
+        /// Search detected COM ports for Arduino device. 
         /// Return found COM port number if Arduino device is found.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The COM port number if an arduino is found. Otherwise returns "none"</returns>
         private static string locateCOMPort()
         {
             using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%(COM%'"))
@@ -186,7 +207,7 @@ namespace FlightSimCapstone
         /// <summary>
         /// Cast read Arduino serial data to an array of integers
         /// </summary>
-        /// <returns></returns>
+        /// <returns>int array of arduino port values</returns>
         public static int[] castSerialInput()
         {
             int[] cast = Array.ConvertAll(serialData.Split(','), int.Parse);

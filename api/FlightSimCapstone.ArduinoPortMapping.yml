@@ -1,0 +1,478 @@
+### YamlMime:ManagedReference
+items:
+- uid: FlightSimCapstone.ArduinoPortMapping
+  commentId: T:FlightSimCapstone.ArduinoPortMapping
+  id: ArduinoPortMapping
+  parent: FlightSimCapstone
+  children:
+  - FlightSimCapstone.ArduinoPortMapping.#ctor
+  - FlightSimCapstone.ArduinoPortMapping.Brake
+  - FlightSimCapstone.ArduinoPortMapping.FlapSwitch
+  - FlightSimCapstone.ArduinoPortMapping.Mixture
+  - FlightSimCapstone.ArduinoPortMapping.Throttle
+  - FlightSimCapstone.ArduinoPortMapping.TrimWheel
+  langs:
+  - csharp
+  - vb
+  name: ArduinoPortMapping
+  nameWithType: ArduinoPortMapping
+  fullName: FlightSimCapstone.ArduinoPortMapping
+  type: Class
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: >-
+    This class is serialized to JSON data to save 
+
+    Arduino port mapping states defined in the dev form (DevForm.cs).
+  example: []
+  syntax:
+    content: public class ArduinoPortMapping
+    content.vb: Public Class ArduinoPortMapping
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: FlightSimCapstone.ArduinoPortMapping.#ctor
+  commentId: M:FlightSimCapstone.ArduinoPortMapping.#ctor
+  id: '#ctor'
+  parent: FlightSimCapstone.ArduinoPortMapping
+  langs:
+  - csharp
+  - vb
+  name: ArduinoPortMapping()
+  nameWithType: ArduinoPortMapping.ArduinoPortMapping()
+  fullName: FlightSimCapstone.ArduinoPortMapping.ArduinoPortMapping()
+  type: Constructor
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  syntax:
+    content: public ArduinoPortMapping()
+    content.vb: Public Sub New()
+  overload: FlightSimCapstone.ArduinoPortMapping.#ctor*
+  nameWithType.vb: ArduinoPortMapping.New()
+  fullName.vb: FlightSimCapstone.ArduinoPortMapping.New()
+  name.vb: New()
+- uid: FlightSimCapstone.ArduinoPortMapping.Throttle
+  commentId: P:FlightSimCapstone.ArduinoPortMapping.Throttle
+  id: Throttle
+  parent: FlightSimCapstone.ArduinoPortMapping
+  langs:
+  - csharp
+  - vb
+  name: Throttle
+  nameWithType: ArduinoPortMapping.Throttle
+  fullName: FlightSimCapstone.ArduinoPortMapping.Throttle
+  type: Property
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: Get or set the port number for throttle control
+  example: []
+  syntax:
+    content: public int Throttle { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Throttle As Integer
+  overload: FlightSimCapstone.ArduinoPortMapping.Throttle*
+- uid: FlightSimCapstone.ArduinoPortMapping.Mixture
+  commentId: P:FlightSimCapstone.ArduinoPortMapping.Mixture
+  id: Mixture
+  parent: FlightSimCapstone.ArduinoPortMapping
+  langs:
+  - csharp
+  - vb
+  name: Mixture
+  nameWithType: ArduinoPortMapping.Mixture
+  fullName: FlightSimCapstone.ArduinoPortMapping.Mixture
+  type: Property
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: Get or set the port number for mixture control
+  example: []
+  syntax:
+    content: public int Mixture { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Mixture As Integer
+  overload: FlightSimCapstone.ArduinoPortMapping.Mixture*
+- uid: FlightSimCapstone.ArduinoPortMapping.Brake
+  commentId: P:FlightSimCapstone.ArduinoPortMapping.Brake
+  id: Brake
+  parent: FlightSimCapstone.ArduinoPortMapping
+  langs:
+  - csharp
+  - vb
+  name: Brake
+  nameWithType: ArduinoPortMapping.Brake
+  fullName: FlightSimCapstone.ArduinoPortMapping.Brake
+  type: Property
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: Get or set the port number for brake control
+  example: []
+  syntax:
+    content: public int Brake { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Brake As Integer
+  overload: FlightSimCapstone.ArduinoPortMapping.Brake*
+- uid: FlightSimCapstone.ArduinoPortMapping.TrimWheel
+  commentId: P:FlightSimCapstone.ArduinoPortMapping.TrimWheel
+  id: TrimWheel
+  parent: FlightSimCapstone.ArduinoPortMapping
+  langs:
+  - csharp
+  - vb
+  name: TrimWheel
+  nameWithType: ArduinoPortMapping.TrimWheel
+  fullName: FlightSimCapstone.ArduinoPortMapping.TrimWheel
+  type: Property
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: Get or set the port number for the Trim Wheel control
+  example: []
+  syntax:
+    content: public int TrimWheel { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property TrimWheel As Integer
+  overload: FlightSimCapstone.ArduinoPortMapping.TrimWheel*
+- uid: FlightSimCapstone.ArduinoPortMapping.FlapSwitch
+  commentId: P:FlightSimCapstone.ArduinoPortMapping.FlapSwitch
+  id: FlapSwitch
+  parent: FlightSimCapstone.ArduinoPortMapping
+  langs:
+  - csharp
+  - vb
+  name: FlapSwitch
+  nameWithType: ArduinoPortMapping.FlapSwitch
+  fullName: FlightSimCapstone.ArduinoPortMapping.FlapSwitch
+  type: Property
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  summary: Get or set the port number for the Flap Switch control
+  example: []
+  syntax:
+    content: public int FlapSwitch { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property FlapSwitch As Integer
+  overload: FlightSimCapstone.ArduinoPortMapping.FlapSwitch*
+references:
+- uid: FlightSimCapstone
+  commentId: N:FlightSimCapstone
+  isExternal: true
+  href: FlightSimCapstone.html
+  name: FlightSimCapstone
+  nameWithType: FlightSimCapstone
+  fullName: FlightSimCapstone
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: FlightSimCapstone.ArduinoPortMapping.#ctor*
+  commentId: Overload:FlightSimCapstone.ArduinoPortMapping.#ctor
+  isExternal: true
+  href: FlightSimCapstone.ArduinoPortMapping.html#FlightSimCapstone_ArduinoPortMapping__ctor
+  name: ArduinoPortMapping
+  nameWithType: ArduinoPortMapping.ArduinoPortMapping
+  fullName: FlightSimCapstone.ArduinoPortMapping.ArduinoPortMapping
+  nameWithType.vb: ArduinoPortMapping.New
+  fullName.vb: FlightSimCapstone.ArduinoPortMapping.New
+  name.vb: New
+- uid: FlightSimCapstone.ArduinoPortMapping.Throttle*
+  commentId: Overload:FlightSimCapstone.ArduinoPortMapping.Throttle
+  isExternal: true
+  href: FlightSimCapstone.ArduinoPortMapping.html#FlightSimCapstone_ArduinoPortMapping_Throttle
+  name: Throttle
+  nameWithType: ArduinoPortMapping.Throttle
+  fullName: FlightSimCapstone.ArduinoPortMapping.Throttle
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: FlightSimCapstone.ArduinoPortMapping.Mixture*
+  commentId: Overload:FlightSimCapstone.ArduinoPortMapping.Mixture
+  isExternal: true
+  href: FlightSimCapstone.ArduinoPortMapping.html#FlightSimCapstone_ArduinoPortMapping_Mixture
+  name: Mixture
+  nameWithType: ArduinoPortMapping.Mixture
+  fullName: FlightSimCapstone.ArduinoPortMapping.Mixture
+- uid: FlightSimCapstone.ArduinoPortMapping.Brake*
+  commentId: Overload:FlightSimCapstone.ArduinoPortMapping.Brake
+  isExternal: true
+  href: FlightSimCapstone.ArduinoPortMapping.html#FlightSimCapstone_ArduinoPortMapping_Brake
+  name: Brake
+  nameWithType: ArduinoPortMapping.Brake
+  fullName: FlightSimCapstone.ArduinoPortMapping.Brake
+- uid: FlightSimCapstone.ArduinoPortMapping.TrimWheel*
+  commentId: Overload:FlightSimCapstone.ArduinoPortMapping.TrimWheel
+  isExternal: true
+  href: FlightSimCapstone.ArduinoPortMapping.html#FlightSimCapstone_ArduinoPortMapping_TrimWheel
+  name: TrimWheel
+  nameWithType: ArduinoPortMapping.TrimWheel
+  fullName: FlightSimCapstone.ArduinoPortMapping.TrimWheel
+- uid: FlightSimCapstone.ArduinoPortMapping.FlapSwitch*
+  commentId: Overload:FlightSimCapstone.ArduinoPortMapping.FlapSwitch
+  isExternal: true
+  href: FlightSimCapstone.ArduinoPortMapping.html#FlightSimCapstone_ArduinoPortMapping_FlapSwitch
+  name: FlapSwitch
+  nameWithType: ArduinoPortMapping.FlapSwitch
+  fullName: FlightSimCapstone.ArduinoPortMapping.FlapSwitch

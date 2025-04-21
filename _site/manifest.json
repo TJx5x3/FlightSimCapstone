@@ -1,0 +1,235 @@
+{
+  "source_base_path": "C:/Users/jason/source/repos/FlightSimCapstone",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.ArduinoCommunicationUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.ArduinoCommunicationUtility.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone.ArduinoCommunicationUtility",
+      "Summary": "<p sourcefile=\"api/FlightSimCapstone.ArduinoCommunicationUtility.yml\" sourcestartlinenumber=\"1\">This class contains methods used to detect, read, and handle Arduino serial data\n.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.ArduinoPortMapping.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.ArduinoPortMapping.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone.ArduinoPortMapping",
+      "Summary": "<p sourcefile=\"api/FlightSimCapstone.ArduinoPortMapping.yml\" sourcestartlinenumber=\"1\">This class is serialized to JSON data to save\nArduino port mapping states defined in the dev form (DevForm.cs).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.BaseDependencyUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.BaseDependencyUtility.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone.BaseDependencyUtility",
+      "Summary": "<p sourcefile=\"api/FlightSimCapstone.BaseDependencyUtility.yml\" sourcestartlinenumber=\"1\">Holds several methods used to check software and hardware\ndependencies. These methods are called when an instances of forms are created,\nor when Button events are fired.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.DevForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.DevForm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone.DevForm",
+      "Summary": "<p sourcefile=\"api/FlightSimCapstone.DevForm.yml\" sourcestartlinenumber=\"1\">Form Object for the Developer Form. Can be accessed by\npressing F6 in the Utility Form.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.GraphicalInterface_Left.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.GraphicalInterface_Left.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone.GraphicalInterface_Left",
+      "Summary": "<p sourcefile=\"api/FlightSimCapstone.GraphicalInterface_Left.yml\" sourcestartlinenumber=\"1\">This module holds graphical elements to be displayed in the\nLeft Side of the Instrumentation Panel</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.GraphicalInterface_Right.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.GraphicalInterface_Right.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone.GraphicalInterface_Right",
+      "Summary": "<p sourcefile=\"api/FlightSimCapstone.GraphicalInterface_Right.yml\" sourcestartlinenumber=\"1\">This module holds graphical elements to be displayed in the\nRight Side of the Instrumentation Panel</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.SimConnectUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.SimConnectUtility.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone.SimConnectUtility",
+      "Summary": "<p sourcefile=\"api/FlightSimCapstone.SimConnectUtility.yml\" sourcestartlinenumber=\"1\">This class provides various methods to handle the creation, termination, and data handling\nof the SimConnect client.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.UtilityForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.UtilityForm.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone.UtilityForm",
+      "Summary": "<p sourcefile=\"api/FlightSimCapstone.UtilityForm.yml\" sourcestartlinenumber=\"1\">Form object for Utility Window</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/FlightSimCapstone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/FlightSimCapstone.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "FlightSimCapstone",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/PlaneGraphic-v0.1.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/PlaneGraphic-v0.1.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

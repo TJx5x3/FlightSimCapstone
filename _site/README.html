@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> | FlightSimCapstone Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" | FlightSimCapstone Documentation ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TJx5x3/FlightSimCapstone/blob/master/README.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="FlightSimDocFx">
+            FlightSimDocFx
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<h2 id="the-aviator---flight-simulator-capstone">The Aviator - Flight Simulator Capstone</h2>
+<p><img src="PlaneGraphic-v0.1.jpg" alt="Alt text"></p>
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <!-- <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul> -->
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#user-manual">User Manual</a></li>
+        <li><a href="#application-hardware">Application Hardware</a></li>
+        <li><a href="#download">Download</a></li>
+      </ul>
+    <li>
+      <a href="#user-controls">User Controls</a>
+    </li>
+    <li>
+      <a href="#graphical-interface">Graphical Interface</a>
+    </li>
+  </ol>
+</details>
+<h2 id="about-the-project">About The Project</h2>
+<p>This project is designed for the 2025 GCU Flight Simulator Capstone. This project aims to create a custom flight simulator experience built of Microsoft Flight Simulator. The simulator frame will feature a custom-built instrumentation panel, integrating two display sources to showcase graphical modules. Various input sources will be included, integrated with an Arduino Mega 2560. This Application is designed to bridge the flow of data communication between peripheral devices with Microsoft flight simulator, and to create custom graphical modules based on those found in a Cessna-152 Aircraft.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>This application requires .NET 4.7.2.</p>
+<p>For to use all features, a licensed copy of Microsoft Flight simulator must be owned and installed.</p>
+<h3 id="user-manual">User Manual</h3>
+<p>The user manual for this project can be found here: <a href="https://github.com/TJx5x3/FlightSimCapstone/blob/f65d25aa2f1e3908bbe715bc6e03209404f7f125/FlightSImulatorCapstone%20-%20User%20Manual.pdf">Flight Sim Capstone User Manual</a></p>
+<h3 id="application-hardware">Application Hardware</h3>
+<p>This application was specifically designed to create a flight simulator using the following hardware:</p>
+<ul>
+<li>Arduino Mega 2560</li>
+<li>Thrustmaster T.Flight Rudder Pedals</li>
+<li>CH Products Flight Sim Yoke</li>
+</ul>
+<h3 id="download">Download</h3>
+<p>The .msi installer can be found Here:
+<a href="https://github.com/TJx5x3/FlightSimCapstone/raw/refs/heads/master/FlightSimCapstoneInstaller.msi">FlightSimCapstoneInstaller.msi (x64)</a></p>
+<h2 id="user-controls">User Controls</h2>
+<h3 id="yoke">Yoke</h3>
+<p>The yoke is the steering wheel, allowing users to control the pitch and roll of the virtual aircraft.</p>
+<p><b>NOTE: </b>
+If the airplane stalls, the button by the user's left index finger can be used to turn the magneto (turn key).</p>
+<h3 id="rudder-pedals">Rudder Pedals</h3>
+<p>The rudder pedals are used to control the yaw of the virtual aircraft. When taxiing, the rudder pedals are used to steer.</p>
+<h3 id="flap-switch">Flap Switch</h3>
+<p>The flap switches allow users to set the angle of the flaps on the wings to 0, 10, 20, or 30 degrees. They are used to increase or decrease drag.</p>
+<h3 id="trim-wheel">Trim Wheel</h3>
+<p>The trim wheel is used to adjust the pitch calibration of the yoke. This is calibrated through Microsoft Flight Simulator instead of the trim wheel on the yoke.</p>
+<h3 id="throttle-box">Throttle Box</h3>
+<p>The throttle box has three three knobs for</p>
+<ul>
+<li>Throttle: Control throttle power.</li>
+<li>Mixture: Control the fuel/air ratio of the engine. This is needed to start the aircraft.</li>
+<li>Parking Brake:  Toggle the parking brake on/off.</li>
+</ul>
+<h2 id="graphical-interface">Graphical Interface</h2>
+<ul>
+<li><b>Airspeed Indicator:</b> Displays the horizontal airspeed in knots.</li>
+<li><b>Attitude Indicator: </b> Artificial horizon. Displays the aircraft's roll and pitch.</li>
+<li><b>Turn Coordinator: </b> Shows the aircraft's roll in degrees.</li>
+<li><b>Heading Indicator: </b> Shows the aircraft's heading direction.</li>
+<li><b>Suction Gauge: </b> Shows the amount of suction present in the engine.</li>
+<li><b>Vertical Airspeed Indicator: </b>Shows aircraft's vertical airspeed in ft/minute.</li>
+<li><b>Altimeter: </b> Shows aircraft altitude above sea level.
+<ul>
+<li>Shortest arm: 10,000 ft.</li>
+<li>Middle arm: 1,000 ft.</li>
+<li>Tallest/narrowest arm: 100 ft.</li>
+</ul>
+</li>
+<li><b>Clock:</b> Analog clock that shows simulator time.</li>
+</ul>
+<h2 id="licence">Licence</h2>
+<p><a href="https://raw.githubusercontent.com/TJx5x3/FlightSimCapstone/refs/heads/master/LICENSE.txt">MIT</a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/TJx5x3/FlightSimCapstone/blob/master/README.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

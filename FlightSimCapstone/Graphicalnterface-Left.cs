@@ -194,11 +194,12 @@ namespace FlightSimCapstone
         /// <summary>
         /// This image rotates a Bitmap image around the center point.
         /// Image is re-sized accordingly to avoid visible image resize durring transformation. 
+        /// see https://foxlearn.com/csharp/image-rotation-8368.html
         /// </summary>
         /// <param name="image"></param>
         /// <param name="degree"></param>
         /// <returns></returns>
-        /// <see cref="https://foxlearn.com/csharp/image-rotation-8368.html"/>
+        /// 
         public static Bitmap SetImageRotation(Bitmap image, float degree)
         {
             
