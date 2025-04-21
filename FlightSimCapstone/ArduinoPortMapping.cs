@@ -21,9 +21,9 @@ using System.Text.Json;
 namespace FlightSimCapstone
 {
     /// <summary>
-    /// This class is used to create objects where attributes correspond to user controls.
     /// 
-    /// This class is serialized to JSON to save saved states defined in the dev form.
+    /// This class is serialized to JSON data to save 
+    /// Arduino port mapping states defined in the dev form (DevForm.cs).
     /// 
     /// </summary>
     public class ArduinoPortMapping
@@ -34,30 +34,45 @@ namespace FlightSimCapstone
         private int trimWheel;
         private int flapSwitch;
 
+        /// <summary>
+        /// Get or set the port number for throttle control
+        /// </summary>
         public int Throttle
         {
             get { return throttle; }
             set { throttle = value; }
         }
 
+        /// <summary>
+        /// Get or set the port number for mixture control
+        /// </summary>
         public int Mixture
         {
             get { return mixture; }
             set { mixture = value; }
         }
 
+        /// <summary>
+        /// Get or set the port number for brake control
+        /// </summary>
         public int Brake
         {
             get { return brake; }
             set { brake = value; }
         }
 
+        /// <summary>
+        /// Get or set the port number for the Trim Wheel control
+        /// </summary>
         public int TrimWheel
         {
             get { return trimWheel; }
             set { trimWheel = value; }
         }
 
+        /// <summary>
+        /// Get or set the port number for the Flap Switch control
+        /// </summary>
         public int FlapSwitch
         {
             get { return flapSwitch; }

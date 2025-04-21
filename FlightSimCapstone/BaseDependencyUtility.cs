@@ -45,7 +45,7 @@ using System.Text.RegularExpressions;
 namespace FlightSimCapstone
 {
     /// <summary>
-    /// This module holds several methods used to check software and hardware
+    /// Holds several methods used to check software and hardware
     /// dependencies. These methods are called when an instances of forms are created,
     /// or when Button events are fired. 
     /// </summary>
@@ -54,46 +54,78 @@ namespace FlightSimCapstone
 
         // Locate the Microsoft FLight Sim directory
         // NOTE: This will only work if MSFS 2020 is installed using Steam
+
+        /// <summary>
+        /// Default Steam installation path for Microsoft Flight Simulator 2020
+        /// </summary>
         private const string steamFlightSimPath = @"C:\Program Files (x86)\Steam\steamapps\common\MicrosoftFlightSimulator";
+        
+        /// <summary>
+        /// Default path for MSFS SDK installation
+        /// </summary>
         private const string msfsSdkPath= @"C:\MSFS SDK";
+        
+        /// <summary>
+        /// Default location for Simconnect.dll
+        /// </summary>
         private const string simConnectDllPath = @"C:\MSFS SDK\SimConnect SDK\lib\SimConnect.dll";
+
+        /// <summary>
+        /// Default location for Microsoft.FlightSimulator.SimConnect.dll
+        /// </summary>
         private const string simConnectNETDllPath = @"C:\MSFS SDK\SimConnect SDK\lib\managed\Microsoft.FlightSimulator.SimConnect.dll";
+
+        /// <summary>
+        /// Default location for Microsoft Flight Simulator executable
+        /// </summary>
         private const string flightSimExePath = @"C:\Program Files (x86)\Steam\steamapps\common\MicrosoftFlightSimulator\FlightSimulator.exe";
 
         // Path to SimConnect.dll
         // Default to steamFlightSimPath
         private const string simConnectPath = steamFlightSimPath;
 
-        // Arduino Vendor ID and Product ID
-        // These values are used to detect the connected Arduino device
-        // See: https://forum.arduino.cc/t/whats-the-vid-and-pid/305399
+        /// <summary>
+        /// Arduino Vendor ID and Product ID
+        /// </summary>
+        /// <remarks>
+        /// These values are used to detect the connected Arduino device
+        /// </remarks>
+        /// <see href="!:https://forum.arduino.cc/t/whats-the-vid-and-pid/305399">
+        /// what's the vid and pid?
+        /// ]
         private const string arduinoPID = "PID_0042";
         private const string arduinoVID = "VID_2341";
 
 
-        // Yoke Vendor ID and Product ID
+        /// <summary>
+        /// Yoke Vendor ID and Product ID
+        /// </summary>
         private const string yokePID = "PID_00FF";
         private const string yokeVID = "VID_068E";
 
-        // Rudder pedals Vendor ID and Product ID
+        /// <summary>
+        /// Rudder pedals Vendor ID and Product ID
+        /// </summary>
         private const string rudderPID = "PID_B679";
         private const string rudderVID = "VID_044F";
 
-        // Number of detected screens
+        /// <summary>
+        /// Number of display sources connected to the system.
+        /// </summary>
         private static int numscreens;
 
-        public static UtilityForm UtilityForm
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        //public static UtilityForm UtilityForm
+        //{
+        //    get => default;
+        //    set
+        //    {
+        //    }
+        //}
 
         /// <summary>
         /// Return bool if Flight Sim Directory can be located
         /// </summary>
-        /// <returns>bool</returns>
+        /// <returns>Bool. True if MSFS is found, False if not found</returns>
         public static bool LocateFlightSim()
         {
             return Directory.Exists(steamFlightSimPath);
@@ -102,7 +134,7 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return bool if Flight Sim SDK can be located
         /// </summary>
-        /// <returns>bool</returns>
+        /// <returns>Bool. True if SDK is found, false if not found.</returns>
         public static bool LocateFlightSimSDK()
         {
             return Directory.Exists(msfsSdkPath);
@@ -111,7 +143,7 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return bool if Flight Sim DLL can be located
         /// </summary>
-        /// <returns>bool</returns>
+        /// <returns>Bool, True if SimConecct.dll is found, false if not found.</returns>
         public static bool LocateSimConnectDll()
         {
             return File.Exists(simConnectDllPath);
@@ -120,7 +152,7 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return bool if Flight Sim .NET DLL can be located
         /// </summary>
-        /// <returns>bool</returns>
+        /// <returns>Bool. True if .NET dll is found, false if not found.</returns>
         public static bool LocateSimConnectNETDll()
         {
             return File.Exists(simConnectNETDllPath);
@@ -129,7 +161,7 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return the file path to FlightSim.exe
         /// </summary>
-        /// <returns>string</returns>
+        /// <returns>String of the file path to Microsoft Flight Simulator executable</returns>
         public static string GetFlightSimExePath()
         {
             return flightSimExePath;
@@ -138,7 +170,7 @@ namespace FlightSimCapstone
         /// <summary>
         /// Return File Path to SimConnect.DLL
         /// </summary>
-        /// <returns>string</returns>
+        /// <returns>String of the file path to SimConnect.dll</returns>
         public static string GetSimConnectDLLPath()
         {
             return simConnectPath;
@@ -147,7 +179,7 @@ namespace FlightSimCapstone
         /// <summary>
         /// Check if Arduino device is connected to system
         /// </summary>
-        /// <returns>bool</returns>
+        /// <returns>Bool. True if arduino is detected, false if no arduino detected.</returns>
         public static bool CheckArduinoConnection()
         {
             if (ArduinoCommunicationUtility.comPort != "none" & ArduinoCommunicationUtility.comPort != null)
@@ -159,13 +191,14 @@ namespace FlightSimCapstone
         /// <summary>
         /// Check if USB Yoke is connected to system
         /// </summary>
-        /// <returns>bool</returns>
+        /// <returns>Bool. True if yoke is detected, false if not. </returns>
         public static bool CheckYokeConnection()
         {
             using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity"))
             {
                 foreach (ManagementObject device in searcher.Get())
                 {
+                    // Get the PNPDeviceID property of the device
                     string pnpDeviceId = device["PNPDeviceID"]?.ToString() ?? string.Empty;
 
                     // Check if both the VID and PID appear in the PNPDeviceID string.
@@ -183,15 +216,17 @@ namespace FlightSimCapstone
         /// <summary>
         /// Check if Rudder pedals are connected to system
         /// </summary>
-        /// <returns>bool</returns>
+        /// <returns>Return true if rudder pedals are detected. False if not.</returns>
         public static bool CheckRudderPedalConnection()
         {
             using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity"))
             {
                 foreach (ManagementObject device in searcher.Get())
                 {
+                    // Get the PNPDeviceID property of the device
                     string pnpDeviceId = device["PNPDeviceID"]?.ToString() ?? string.Empty;
 
+                    // Check if both the VID and PID appear in the PNPDeviceID string.
                     if (pnpDeviceId.IndexOf(rudderVID, StringComparison.OrdinalIgnoreCase) >= 0 &&
                         pnpDeviceId.IndexOf(rudderPID, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
