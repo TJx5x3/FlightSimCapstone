@@ -1,0 +1,31 @@
+name: Deploy Doc Site
+
+on:
+  push:
+    branches: [ dev_test ]
+
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with: 
+          dotnet-version: '8.x'
+
+      - name: Install DocFX  
+        run: dotnet tool install -g docfx
+
+      - name: Build Docs  
+        run: |
+          docfx metadata
+          docfx build
+
+      - name: Deploy to gh-pages  
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./docfx/_site
+          publish_branch: gh-pages
