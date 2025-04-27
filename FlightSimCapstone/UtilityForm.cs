@@ -406,7 +406,7 @@ namespace FlightSimCapstone
             AppendAppConsole("Please Start Microsoft Flight Simulator before opening graphical interface.\n", Color.Yellow);
 
             // Declare graphical interface instance as true
-            IsGraphicalInterfaceOpen = true;
+            IsGraphicalInterfaceOpen = true; 
         }
 
         /// <summary>
