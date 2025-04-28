@@ -1,0 +1,106 @@
+### YamlMime:ManagedReference
+items:
+- uid: FlightSimCapstone
+  commentId: N:FlightSimCapstone
+  id: FlightSimCapstone
+  children:
+  - FlightSimCapstone.ArduinoCommunicationUtility
+  - FlightSimCapstone.ArduinoPortMapping
+  - FlightSimCapstone.BaseDependencyUtility
+  - FlightSimCapstone.DevForm
+  - FlightSimCapstone.GraphicalInterface_Left
+  - FlightSimCapstone.GraphicalInterface_Right
+  - FlightSimCapstone.SimConnectUtility
+  - FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  - FlightSimCapstone.UtilityForm
+  langs:
+  - csharp
+  - vb
+  name: FlightSimCapstone
+  nameWithType: FlightSimCapstone
+  fullName: FlightSimCapstone
+  type: Namespace
+  assemblies:
+  - FlightSimCapstone
+references:
+- uid: FlightSimCapstone.ArduinoCommunicationUtility
+  commentId: T:FlightSimCapstone.ArduinoCommunicationUtility
+  href: FlightSimCapstone.ArduinoCommunicationUtility.html
+  name: ArduinoCommunicationUtility
+  nameWithType: ArduinoCommunicationUtility
+  fullName: FlightSimCapstone.ArduinoCommunicationUtility
+- uid: FlightSimCapstone.BaseDependencyUtility
+  commentId: T:FlightSimCapstone.BaseDependencyUtility
+  href: FlightSimCapstone.BaseDependencyUtility.html
+  name: BaseDependencyUtility
+  nameWithType: BaseDependencyUtility
+  fullName: FlightSimCapstone.BaseDependencyUtility
+- uid: FlightSimCapstone.ArduinoPortMapping
+  commentId: T:FlightSimCapstone.ArduinoPortMapping
+  href: FlightSimCapstone.ArduinoPortMapping.html
+  name: ArduinoPortMapping
+  nameWithType: ArduinoPortMapping
+  fullName: FlightSimCapstone.ArduinoPortMapping
+- uid: FlightSimCapstone.GraphicalInterface_Right
+  commentId: T:FlightSimCapstone.GraphicalInterface_Right
+  parent: FlightSimCapstone
+  href: FlightSimCapstone.GraphicalInterface_Right.html
+  name: GraphicalInterface_Right
+  nameWithType: GraphicalInterface_Right
+  fullName: FlightSimCapstone.GraphicalInterface_Right
+- uid: FlightSimCapstone.UtilityForm
+  commentId: T:FlightSimCapstone.UtilityForm
+  parent: FlightSimCapstone
+  href: FlightSimCapstone.UtilityForm.html
+  name: UtilityForm
+  nameWithType: UtilityForm
+  fullName: FlightSimCapstone.UtilityForm
+- uid: FlightSimCapstone.DevForm
+  commentId: T:FlightSimCapstone.DevForm
+  parent: FlightSimCapstone
+  href: FlightSimCapstone.DevForm.html
+  name: DevForm
+  nameWithType: DevForm
+  fullName: FlightSimCapstone.DevForm
+- uid: FlightSimCapstone.GraphicalInterface_Left
+  commentId: T:FlightSimCapstone.GraphicalInterface_Left
+  parent: FlightSimCapstone
+  href: FlightSimCapstone.GraphicalInterface_Left.html
+  name: GraphicalInterface_Left
+  nameWithType: GraphicalInterface_Left
+  fullName: FlightSimCapstone.GraphicalInterface_Left
+- uid: FlightSimCapstone.SimConnectUtility
+  commentId: T:FlightSimCapstone.SimConnectUtility
+  href: FlightSimCapstone.SimConnectUtility.html
+  name: SimConnectUtility
+  nameWithType: SimConnectUtility
+  fullName: FlightSimCapstone.SimConnectUtility
+- uid: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  commentId: T:FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  parent: FlightSimCapstone
+  href: FlightSimCapstone.SimConnectUtility.html
+  name: SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  nameWithType: SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  fullName: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  spec.csharp:
+  - uid: FlightSimCapstone.SimConnectUtility
+    name: SimConnectUtility
+    href: FlightSimCapstone.SimConnectUtility.html
+  - name: .
+  - uid: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+    name: SIMCONNECT_NOTIFICATION_GROUP_ID
+    href: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.html
+  spec.vb:
+  - uid: FlightSimCapstone.SimConnectUtility
+    name: SimConnectUtility
+    href: FlightSimCapstone.SimConnectUtility.html
+  - name: .
+  - uid: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+    name: SIMCONNECT_NOTIFICATION_GROUP_ID
+    href: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.html
+- uid: FlightSimCapstone
+  commentId: N:FlightSimCapstone
+  href: FlightSimCapstone.html
+  name: FlightSimCapstone
+  nameWithType: FlightSimCapstone
+  fullName: FlightSimCapstone

@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  commentId: T:FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  id: SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  parent: FlightSimCapstone
+  children:
+  - FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.Default
+  langs:
+  - csharp
+  - vb
+  name: SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  nameWithType: SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  fullName: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  type: Enum
+  source:
+    remote:
+      path: FlightSimCapstone/SimConnectUtility.cs
+      branch: docfx
+      repo: https://github.com/TJx5x3/FlightSimCapstone.git
+    id: SIMCONNECT_NOTIFICATION_GROUP_ID
+    path: FlightSimCapstone/SimConnectUtility.cs
+    startLine: 286
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  syntax:
+    content: 'public enum SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID : uint'
+    content.vb: Public Enum SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID As UInteger
+- uid: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.Default
+  commentId: F:FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.Default
+  id: Default
+  parent: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.Default
+  fullName: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.Default
+  type: Field
+  source:
+    remote:
+      path: FlightSimCapstone/SimConnectUtility.cs
+      branch: docfx
+      repo: https://github.com/TJx5x3/FlightSimCapstone.git
+    id: Default
+    path: FlightSimCapstone/SimConnectUtility.cs
+    startLine: 288
+  assemblies:
+  - FlightSimCapstone
+  namespace: FlightSimCapstone
+  syntax:
+    content: Default = 0
+    return:
+      type: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+references:
+- uid: FlightSimCapstone
+  commentId: N:FlightSimCapstone
+  href: FlightSimCapstone.html
+  name: FlightSimCapstone
+  nameWithType: FlightSimCapstone
+  fullName: FlightSimCapstone
+- uid: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  commentId: T:FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  parent: FlightSimCapstone
+  href: FlightSimCapstone.SimConnectUtility.html
+  name: SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  nameWithType: SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  fullName: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+  spec.csharp:
+  - uid: FlightSimCapstone.SimConnectUtility
+    name: SimConnectUtility
+    href: FlightSimCapstone.SimConnectUtility.html
+  - name: .
+  - uid: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+    name: SIMCONNECT_NOTIFICATION_GROUP_ID
+    href: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.html
+  spec.vb:
+  - uid: FlightSimCapstone.SimConnectUtility
+    name: SimConnectUtility
+    href: FlightSimCapstone.SimConnectUtility.html
+  - name: .
+  - uid: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID
+    name: SIMCONNECT_NOTIFICATION_GROUP_ID
+    href: FlightSimCapstone.SimConnectUtility.SIMCONNECT_NOTIFICATION_GROUP_ID.html
