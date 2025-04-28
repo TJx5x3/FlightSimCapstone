@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SimConnectUtility | Flight Simulator Capstone </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SimConnectUtility | Flight Simulator Capstone ">
+      
+      <meta name="description" content="This class provides various methods to handle the creation, termination, and data handling of the SimConnect client.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/TJx5x3/FlightSimCapstone/new/docfx/apiSpec/new?filename=FlightSimCapstone_SimConnectUtility.md&amp;value=---%0Auid%3A%20FlightSimCapstone.SimConnectUtility%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Flight Simulator Capstone">
+            Flight Simulator Capstone
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="FlightSimCapstone.SimConnectUtility">
+
+
+
+  <h1 id="FlightSimCapstone_SimConnectUtility" data-uid="FlightSimCapstone.SimConnectUtility" class="text-break">
+Class SimConnectUtility  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="FlightSimCapstone.html">FlightSimCapstone</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>FlightSimCapstone.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>This class provides various methods to handle the creation, termination, and data handling
+of the SimConnect client.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class SimConnectUtility</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">SimConnectUtility</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="FlightSimCapstone_SimConnectUtility_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This class declares the datatypes of all values retrieved from SimConnect,
+and maps</p>
+</div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_AirspeedIndicatorValue_" data-uid="FlightSimCapstone.SimConnectUtility.AirspeedIndicatorValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_AirspeedIndicatorValue" data-uid="FlightSimCapstone.SimConnectUtility.AirspeedIndicatorValue">
+  AirspeedIndicatorValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double AirspeedIndicatorValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_AltimeterValue_" data-uid="FlightSimCapstone.SimConnectUtility.AltimeterValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_AltimeterValue" data-uid="FlightSimCapstone.SimConnectUtility.AltimeterValue">
+  AltimeterValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L121"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double AltimeterValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_AmmeterValue_" data-uid="FlightSimCapstone.SimConnectUtility.AmmeterValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_AmmeterValue" data-uid="FlightSimCapstone.SimConnectUtility.AmmeterValue">
+  AmmeterValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L175"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double AmmeterValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_ConnectionStatus_" data-uid="FlightSimCapstone.SimConnectUtility.ConnectionStatus*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_ConnectionStatus" data-uid="FlightSimCapstone.SimConnectUtility.ConnectionStatus">
+  ConnectionStatus
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ConnectionStatus { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_CurrentFuelValue_" data-uid="FlightSimCapstone.SimConnectUtility.CurrentFuelValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_CurrentFuelValue" data-uid="FlightSimCapstone.SimConnectUtility.CurrentFuelValue">
+  CurrentFuelValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L169"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double CurrentFuelValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_DevForm_" data-uid="FlightSimCapstone.SimConnectUtility.DevForm*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_DevForm" data-uid="FlightSimCapstone.SimConnectUtility.DevForm">
+  DevForm
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L903"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DevForm DevForm { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FlightSimCapstone.DevForm.html">DevForm</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_HeadingIndicatorValue_" data-uid="FlightSimCapstone.SimConnectUtility.HeadingIndicatorValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_HeadingIndicatorValue" data-uid="FlightSimCapstone.SimConnectUtility.HeadingIndicatorValue">
+  HeadingIndicatorValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L127"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double HeadingIndicatorValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_HourValue_" data-uid="FlightSimCapstone.SimConnectUtility.HourValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_HourValue" data-uid="FlightSimCapstone.SimConnectUtility.HourValue">
+  HourValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L193"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double HourValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_MinuteValue_" data-uid="FlightSimCapstone.SimConnectUtility.MinuteValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_MinuteValue" data-uid="FlightSimCapstone.SimConnectUtility.MinuteValue">
+  MinuteValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L199"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double MinuteValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_PitchValue_" data-uid="FlightSimCapstone.SimConnectUtility.PitchValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_PitchValue" data-uid="FlightSimCapstone.SimConnectUtility.PitchValue">
+  PitchValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double PitchValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_RollValue_" data-uid="FlightSimCapstone.SimConnectUtility.RollValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_RollValue" data-uid="FlightSimCapstone.SimConnectUtility.RollValue">
+  RollValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L187"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double RollValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_SecondValue_" data-uid="FlightSimCapstone.SimConnectUtility.SecondValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_SecondValue" data-uid="FlightSimCapstone.SimConnectUtility.SecondValue">
+  SecondValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L205"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double SecondValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_SuctuionGaugeValue_" data-uid="FlightSimCapstone.SimConnectUtility.SuctuionGaugeValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_SuctuionGaugeValue" data-uid="FlightSimCapstone.SimConnectUtility.SuctuionGaugeValue">
+  SuctuionGaugeValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L157"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double SuctuionGaugeValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_TotalFuelValue_" data-uid="FlightSimCapstone.SimConnectUtility.TotalFuelValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_TotalFuelValue" data-uid="FlightSimCapstone.SimConnectUtility.TotalFuelValue">
+  TotalFuelValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L163"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double TotalFuelValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_TurnCoordinatorValue_" data-uid="FlightSimCapstone.SimConnectUtility.TurnCoordinatorValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_TurnCoordinatorValue" data-uid="FlightSimCapstone.SimConnectUtility.TurnCoordinatorValue">
+  TurnCoordinatorValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L133"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double TurnCoordinatorValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_TurnIndicatorValue_" data-uid="FlightSimCapstone.SimConnectUtility.TurnIndicatorValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_TurnIndicatorValue" data-uid="FlightSimCapstone.SimConnectUtility.TurnIndicatorValue">
+  TurnIndicatorValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double TurnIndicatorValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_UtilityForm_" data-uid="FlightSimCapstone.SimConnectUtility.UtilityForm*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_UtilityForm" data-uid="FlightSimCapstone.SimConnectUtility.UtilityForm">
+  UtilityForm
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L895"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UtilityForm UtilityForm { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="FlightSimCapstone.UtilityForm.html">UtilityForm</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_VerticalAirspeedIndicatorValue_" data-uid="FlightSimCapstone.SimConnectUtility.VerticalAirspeedIndicatorValue*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_VerticalAirspeedIndicatorValue" data-uid="FlightSimCapstone.SimConnectUtility.VerticalAirspeedIndicatorValue">
+  VerticalAirspeedIndicatorValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double VerticalAirspeedIndicatorValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_ConnectSimconnectClient_" data-uid="FlightSimCapstone.SimConnectUtility.ConnectSimconnectClient*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_ConnectSimconnectClient" data-uid="FlightSimCapstone.SimConnectUtility.ConnectSimconnectClient">
+  ConnectSimconnectClient()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L622"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Attempt to create an instance of SimConnect client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ConnectSimconnectClient()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>bool - True/False if SimConnect Client could be established</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_DisconnectSimconnectClient_" data-uid="FlightSimCapstone.SimConnectUtility.DisconnectSimconnectClient*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_DisconnectSimconnectClient" data-uid="FlightSimCapstone.SimConnectUtility.DisconnectSimconnectClient">
+  DisconnectSimconnectClient()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L654"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Disconnect SimConnect Client from MSFS</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool DisconnectSimconnectClient()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_InitializeSimReadings_" data-uid="FlightSimCapstone.SimConnectUtility.InitializeSimReadings*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_InitializeSimReadings" data-uid="FlightSimCapstone.SimConnectUtility.InitializeSimReadings">
+  InitializeSimReadings()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L445"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method initializes the process of reading Microsoft Flight Simulator data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void InitializeSimReadings()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="FlightSimCapstone_SimConnectUtility_InitializeSimReadings_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Declarations are defined to Simconnect environment variables.
+Retrieved data mapped to declared structs (See SimConnectData.cs)
+<br>
+TODO: See if refresh rate can be sped up using SIMCONNECT_PERIOD.SIM_FRAME</p>
+</div>
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_RefreshSimconnect_" data-uid="FlightSimCapstone.SimConnectUtility.RefreshSimconnect*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_RefreshSimconnect" data-uid="FlightSimCapstone.SimConnectUtility.RefreshSimconnect">
+  RefreshSimconnect()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L676"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Refresh values retrieved from SimConnect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool RefreshSimconnect()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="FlightSimCapstone_SimConnectUtility_RefreshSimconnect_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method should called on each timer itteration of Form objects
+Returns true if successful, returns false if exception thrown</p>
+</div>
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_Simconnect_OnRecvSimobjectData_" data-uid="FlightSimCapstone.SimConnectUtility.Simconnect_OnRecvSimobjectData*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_Simconnect_OnRecvSimobjectData_Microsoft_FlightSimulator_SimConnect_SimConnect_Microsoft_FlightSimulator_SimConnect_SIMCONNECT_RECV_SIMOBJECT_DATA_" data-uid="FlightSimCapstone.SimConnectUtility.Simconnect_OnRecvSimobjectData(Microsoft.FlightSimulator.SimConnect.SimConnect,Microsoft.FlightSimulator.SimConnect.SIMCONNECT_RECV_SIMOBJECT_DATA)">
+  Simconnect_OnRecvSimobjectData(SimConnect, SIMCONNECT_RECV_SIMOBJECT_DATA)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L299"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method specifies what data the SimConnect Client should expect to recieve
+from Microsoft Flight Simulator</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Simconnect_OnRecvSimobjectData(SimConnect sender, SIMCONNECT_RECV_SIMOBJECT_DATA data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sender</code> <span class="xref">SimConnect</span></dt>
+    <dd></dd>
+    <dt><code>data</code> <span class="xref">SIMCONNECT_RECV_SIMOBJECT_DATA</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_UpdateBrakeFromPotentiometer_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateBrakeFromPotentiometer*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_UpdateBrakeFromPotentiometer_System_Int32_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateBrakeFromPotentiometer(System.Int32)">
+  UpdateBrakeFromPotentiometer(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L789"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Toggle the Parking Brake in MSFS based on potentiometer value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void UpdateBrakeFromPotentiometer(int potValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>potValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_UpdateFlapsFromPotentiometer_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateFlapsFromPotentiometer*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_UpdateFlapsFromPotentiometer_System_Int32_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateFlapsFromPotentiometer(System.Int32)">
+  UpdateFlapsFromPotentiometer(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L849"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void UpdateFlapsFromPotentiometer(int potValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>potValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_UpdateMixtureFromPotentiometer_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateMixtureFromPotentiometer*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_UpdateMixtureFromPotentiometer_System_Int32_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateMixtureFromPotentiometer(System.Int32)">
+  UpdateMixtureFromPotentiometer(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L748"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update MSFS Mixture from Arduino Potentiometer reading</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void UpdateMixtureFromPotentiometer(int potValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>potValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_UpdateThrottleFromPotentiometer_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateThrottleFromPotentiometer*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_UpdateThrottleFromPotentiometer_System_Int32_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateThrottleFromPotentiometer(System.Int32)">
+  UpdateThrottleFromPotentiometer(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L704"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update MSFS Throttle from Arduino Potentiometer value
+(Range: 0-1023)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void UpdateThrottleFromPotentiometer(int potValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>potValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="FlightSimCapstone_SimConnectUtility_UpdateTrimWheelFromPotentiometer_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateTrimWheelFromPotentiometer*"></a>
+
+  <h3 id="FlightSimCapstone_SimConnectUtility_UpdateTrimWheelFromPotentiometer_System_Int32_" data-uid="FlightSimCapstone.SimConnectUtility.UpdateTrimWheelFromPotentiometer(System.Int32)">
+  UpdateTrimWheelFromPotentiometer(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L813"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Update the trim wheel
+Toggles calibration of yoke pich. Does not directly affect trim wheel in MSFS, but should get the same result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void UpdateTrimWheelFromPotentiometer(int potValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>potValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/TJx5x3/FlightSimCapstone/blob/docfx/FlightSimCapstone/SimConnectUtility.cs/#L71" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
